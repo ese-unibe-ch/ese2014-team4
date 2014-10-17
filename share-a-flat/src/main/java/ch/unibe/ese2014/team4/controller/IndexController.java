@@ -34,7 +34,7 @@ public class IndexController {
     	if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
-            	model = new ModelAndView("show");
+            	model = new ModelAndView("home");
             } catch (InvalidUserException e) {
             	model = new ModelAndView("index");
             	model.addObject("page_error", e.getMessage());

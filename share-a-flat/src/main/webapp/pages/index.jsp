@@ -4,7 +4,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<c:import url="template/header.jsp" />
+<c:import url="template/headerLogin.jsp" />
+
 
 <h1>Sign Up Here!</h1>
 

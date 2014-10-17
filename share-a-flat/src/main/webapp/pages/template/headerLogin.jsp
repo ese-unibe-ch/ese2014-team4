@@ -31,14 +31,8 @@ body {
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
-			 <a class="brand" href="#"><img src="img/logo3.png" alt="logo"
-					style="width: 180px; height: 60px"></a> 
-				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">My Page</a></li>
-					<li><a href="#">My Favorites</a></li>
-					<li><a href="#">Search</a></li>					
-				</ul>
+			<img src="img/logo3.png" alt="logo"
+					style="width: 180px; height: 60px">
 			</div>
 		</div>
 		</div>
