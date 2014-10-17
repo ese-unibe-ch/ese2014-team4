@@ -22,18 +22,20 @@
     </style>
 </head>
 <body>
+<!--  Header -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
+        <!--  
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </a>
+            </a>-->
             
-
+<img src="img/test.png" alt="logo" style="width:30px;height:22px">
         </div>
     </div>
 </div>
-<img src="img/test.png" alt="logo" style="width:30px;height:22px">
+
 <div class="container">
