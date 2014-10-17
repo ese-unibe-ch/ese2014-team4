@@ -13,13 +13,14 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    
 
-    private String firstName;
+    private String userName;
+    
     private String lastName;
     private String email;
     
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Address address; 
+
     
     public Long getId() {
         return id;
@@ -29,12 +30,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getLastName() {
@@ -53,13 +54,6 @@ public class User {
         this.email = email;
     }
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 
     
 	

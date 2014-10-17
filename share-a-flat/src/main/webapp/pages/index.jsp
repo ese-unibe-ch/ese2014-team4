@@ -23,22 +23,25 @@
                 <form:errors path="email" cssClass="help-inline" element="span"/>
             </div>
         </div>
-        <c:set var="firstNameErrors"><form:errors path="firstName"/></c:set>
-        <div class="control-group<c:if test="${not empty firstNameErrors}"> error</c:if>">
-            <label class="control-label" for="field-firstName">First Name</label>
+        
+        <c:set var="userNameErrors"><form:errors path="userName"/></c:set>
+        <div class="control-group<c:if test="${not empty userNameErrors}"> error</c:if>">
+            <label class="control-label" for="field-userName">User Name</label>
             <div class="controls">
-                <form:input path="firstName" id="field-firstName" tabindex="2" maxlength="35" placeholder="First Name"/>
-                <form:errors path="firstName" cssClass="help-inline" element="span"/>
+                <form:input path="userName" id="field-userName" tabindex="2" maxlength="35" placeholder="User Name"/>
+                <form:errors path="userName" cssClass="help-inline" element="span"/>
             </div>
         </div>
-        <c:set var="lastNameErrors"><form:errors path="lastName"/></c:set>
-        <div class="control-group<c:if test="${not empty lastNameErrors}"> error</c:if>">
-            <label class="control-label" for="field-lastName">Last Name</label>
+        
+        <c:set var="passwordErrors"><form:errors path="password"/></c:set>
+        <div class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
+            <label class="control-label" for="field-password">password</label>
             <div class="controls">
-                <form:input path="lastName" id="field-lastName" tabindex="3" maxlength="35" placeholder="Last Name"/>
-                <form:errors path="lastName" cssClass="help-inline" element="span"/>
+                <form:password path="password" id="field-password" tabindex="3" maxlength="35" placeholder="password"/>
+                <form:errors path="password" cssClass="help-inline" element="span"/>
             </div>
         </div>
+        
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <button type="button" class="btn">Cancel</button>

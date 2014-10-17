@@ -7,8 +7,10 @@ public class SignupForm {
 
 
     private Long id;
-    private String firstName;
-    private String lastName;
+    @NotNull
+    private String userName;
+    @NotNull
+    private String password;
 
 
     @NotNull
@@ -16,20 +18,21 @@ public class SignupForm {
     message = "Must be valid email address")
     private String email;
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
+    }
+    
+    
+    public void setUserName(String UserName) {
+        this.userName = userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getPassword() {
+        return password;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
