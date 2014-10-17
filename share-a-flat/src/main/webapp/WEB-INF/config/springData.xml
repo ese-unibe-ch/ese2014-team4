@@ -32,7 +32,6 @@
 
     <!-- SPRING - JPA -->
     <jpa:repositories base-package="ch.unibe.ese2014.team4.model.dao" entity-manager-factory-ref="entityManagerFactory" />
-	<tx:annotation-driven transaction-manager="transactionManager" />
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"  id="transactionManager">
         <property name="entityManagerFactory"  ref="entityManagerFactory" />
