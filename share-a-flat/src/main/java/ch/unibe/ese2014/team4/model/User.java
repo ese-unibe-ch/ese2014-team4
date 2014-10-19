@@ -14,15 +14,20 @@ public class User {
     @GeneratedValue
     private Long id;
     
-
     private String userName;
-    
-    private String lastName;
-    private String email;
-    
+//    private String lastName;
+    private String email;  
+    private String password;
+     
+    public String getPassword() {
+		return password;
+	}
 
-    
-    public Long getId() {
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -38,13 +43,13 @@ public class User {
         this.userName = userName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public String getEmail() {
         return email;
@@ -54,8 +59,4 @@ public class User {
         this.email = email;
     }
 
-
-    
-	
-	
 }

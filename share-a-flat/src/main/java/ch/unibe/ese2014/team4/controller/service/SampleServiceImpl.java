@@ -25,21 +25,14 @@ public class SampleServiceImpl implements SampleService {
         if(!StringUtils.isEmpty(firstName) && "ESE".equalsIgnoreCase(firstName)) {
             throw new InvalidUserException("Sorry, ESE is not a valid name");   // throw exception
         }
-
-
-        
+      
         User user = new User();
         user.setUserName(signupForm.getUserName());
         user.setEmail(signupForm.getEmail());
-        user.setLastName(signupForm.getPassword());
-
+        user.setPassword(signupForm.getPassword());
         
         user = userDao.save(user);   // save object to DB
-        
-        
-
-        
-        
+     
         signupForm.setId(user.getId());
 
         return signupForm;

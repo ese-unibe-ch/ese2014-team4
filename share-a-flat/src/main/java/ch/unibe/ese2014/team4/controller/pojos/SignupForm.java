@@ -7,9 +7,13 @@ public class SignupForm {
 
 
     private Long id;
+    
     @NotNull
+    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a User Name")
     private String userName;
+    
     @NotNull
+    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
     private String password;
 
 
@@ -23,7 +27,7 @@ public class SignupForm {
     }
     
     
-    public void setUserName(String UserName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
