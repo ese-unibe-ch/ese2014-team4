@@ -27,6 +27,20 @@ body {
 }
 </style>
 </head>
+
+	<%!
+  		String isActive(String ref, HttpServletRequest request) {
+        	String components[] = request.getRequestURI().split("/");
+         	String test = components[components.length - 1];
+        	test = test.substring(0, test.length()-4);
+        	
+			if(ref.equals(test)) {
+				return " class=\"active\" ";
+            } 
+           	return "";
+        }
+	 %>
+
 <body>
 
 	<div class="navbar">
@@ -35,13 +49,15 @@ body {
 				<a class="brand" href="#"><img src="img/logo3.png" alt="logo"
 					style="width: 180px; height: 60px"></a>
 				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">My Page</a></li>
-					<li><a href="#">My Favorites</a></li>
-					<li><a href="#">Search</a></li>
+					<li <%= isActive("home", request) %>><a href="home">Home</a></li>
+					<li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li>
+					<li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
+					<li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+
+<!-- <%= request.getRequestURI() %> , nur damit wir wissen, ob url richtig eingelesen worden wird...-->
 
 	<div id="centerDoc" class="container">

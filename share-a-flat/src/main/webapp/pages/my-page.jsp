@@ -8,8 +8,12 @@
 
 
 
-<h1>Sign Up Complete!</h1>
+<h1>My Page</h1>
 
-
+        <!-- Auswahlreiter -->
+        <ul>
+  		<li class="profile"><a href="profile" class="inactive">
+                <span>Profile</span></a></li>
+		</ul>
 
 <c:import url="template/footer.jsp" />

@@ -8,7 +8,7 @@
 
 
 
-<h1>Sign Up Complete!</h1>
+<h1>My Favorites</h1>
 
 
 

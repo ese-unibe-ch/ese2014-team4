@@ -8,8 +8,13 @@
 
 
 
-<h1>Sign Up Complete!</h1>
+<h1>Search Map</h1>
 
+        <!-- Auswahlreiter -->
+        <ul>
+  		<li class="buton"><a href="search-list" class="inactive">
+                <span><!--  <img src="/neutral/images/homegate/icon_tab_list_active.gif" />-->Auf Liste</span></a></li>
+		</ul>
 
 
 <c:import url="template/footer.jsp" />

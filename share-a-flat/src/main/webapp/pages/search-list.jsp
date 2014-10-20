@@ -8,8 +8,15 @@
 
 
 
-<h1>Sign Up Complete!</h1>
+<h1>Search List</h1>
+        
 
-
+        <!-- Auswahlreiter -->
+        
+        <ul>
+            <li class="map"><a href="search-map" class="inactive">
+                <span><!-- <img src="/neutral/images/homegate/icon_tab_map.gif" />-->Auf Karte</span></a></li>
+        </ul>
+  
 
 <c:import url="template/footer.jsp" />
