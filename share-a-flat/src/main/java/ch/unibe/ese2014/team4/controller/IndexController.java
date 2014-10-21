@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.SampleService;
+import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class IndexController {
@@ -35,6 +36,8 @@ public class IndexController {
             try {
             	sampleService.saveFrom(signupForm);
             	model = new ModelAndView("home");
+            	User user = sampleService.getUser(signupForm.getId());
+				model.addObject("user", user);
             } catch (InvalidUserException e) {
             	model = new ModelAndView("index");
             	model.addObject("page_error", e.getMessage());
