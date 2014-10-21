@@ -7,6 +7,7 @@
 <c:import url="template/header.jsp" />
 
 
+
 <h2> hi ${user.userName}, welcome to RoomMate! </h2>
 <h3> The best online room market!</h3>
 
