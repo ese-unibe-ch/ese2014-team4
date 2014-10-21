@@ -13,7 +13,7 @@
   </tr>
   
   <tr>
-    <td><form:form method="post" modelAttribute="signupForm" action="home" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+    <td><form:form method="post" modelAttribute="signupForm" action="signIn" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Information</legend>
 
@@ -53,7 +53,7 @@
 </form:form></td>
 
 
-  <!-- <td><form:form method="post" modelAttribute="signupForm" action="home" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+  <!-- <td><form:form method="post" modelAttribute="signupForm" action="signIn" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Information</legend>
 
@@ -98,7 +98,7 @@
 <!-- <h1>Sign Up Here!</h1>
 
 
-<form:form method="post" modelAttribute="signupForm" action="home" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="signupForm" action="signIn" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Information</legend>
 

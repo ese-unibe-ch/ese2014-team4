@@ -28,8 +28,8 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
-    public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
+    public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	
     	if (!result.hasErrors()) {
             try {
@@ -45,47 +45,7 @@ public class IndexController {
     	return model;
     }
     
-    @RequestMapping(value = "/favorites", method = RequestMethod.GET)
-    public ModelAndView favorites() {
-    	ModelAndView model = new ModelAndView("favorites");
-    	model.addObject("signupForm", new SignupForm());    	
-        return model;
-    }
-    
-    @RequestMapping(value = "/search-list", method = RequestMethod.GET)
-    public ModelAndView searchList() {
-    	ModelAndView model = new ModelAndView("search-list");
-    	model.addObject("signupForm", new SignupForm());    	
-        return model;
-    }
-    
-    @RequestMapping(value = "/search-map", method = RequestMethod.GET)
-    public ModelAndView searchMap() {
-    	ModelAndView model = new ModelAndView("search-map");
-    	model.addObject("signupForm", new SignupForm());    	
-        return model;
-    }
-    
-    @RequestMapping(value = "/my-page", method = RequestMethod.GET)
-    public ModelAndView myPage() {
-    	ModelAndView model = new ModelAndView("my-page");
-    	model.addObject("signupForm", new SignupForm());    	
-        return model;
-    }
-    
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile() {
-    	ModelAndView model = new ModelAndView("profile");
-    	model.addObject("signupForm", new SignupForm());    	
-        return model;
-    }
-        
-    @RequestMapping(value = "/security-error", method = RequestMethod.GET)
-    public String securityError(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("page_error", "You do have have permission to do that!");
-        return "redirect:/";
-    }
-
+   
 }
 
 

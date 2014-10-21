@@ -46,7 +46,7 @@ body {
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="#"><img src="img/logo3.png" alt="logo"
+				<a class="brand" href="home"><img src="img/logo3.png" alt="logo"
 					style="width: 180px; height: 60px"></a>
 				<ul class="nav">
 					<li <%= isActive("home", request) %>><a href="home">Home</a></li>
