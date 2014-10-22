@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.pojos.LoginForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.SampleService;
 import ch.unibe.ese2014.team4.model.User;
@@ -25,10 +26,20 @@ public class IndexController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
-    	model.addObject("signupForm", new SignupForm());    	
+    	model.addObject("signupForm", new SignupForm());
+    	model.addObject("loginForm", new LoginForm());
         return model;
     }
 
+    
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(){
+    	ModelAndView model;
+    	model = new ModelAndView("home");
+    	//to do
+    	System.out.println("to do: method");
+    	return model;
+    }
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	

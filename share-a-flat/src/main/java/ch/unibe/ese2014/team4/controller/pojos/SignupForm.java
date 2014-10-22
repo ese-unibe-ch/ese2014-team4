@@ -15,6 +15,9 @@ public class SignupForm {
     @NotNull
     @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
     private String password;
+    
+    @NotNull
+    private String passwordRepeated;
 
 
     @NotNull
@@ -37,6 +40,13 @@ public class SignupForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getPasswordRepeated() {
+        return passwordRepeated;
+    }
+
+    public void setPasswordRepeated(String passwordRepeated) {
+        this.passwordRepeated = passwordRepeated;
     }
 
     public String getEmail() {
