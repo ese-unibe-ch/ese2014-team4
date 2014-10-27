@@ -5,10 +5,10 @@
 
 
 <c:import url="template/headerLogin.jsp" />
-
+ <th><h1>Index Page: Not used currently. You should not be here!</h1></th> <!-- 
 <table>
   <tr>
-    <!--  <th><h1>Log in!</h1></th> -->
+    
     <th><h1>Not a member yet?<br>Register here!</h1></th>
   </tr>
   
@@ -63,6 +63,27 @@
   </tr>
 </table>
 
+        <H1>Test Login index page</H1>
+        <form id="form" action="<c:url value="/index"/>" method="POST">
+         
+            <c:if test="${not empty param.err}">
+                <div><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></div>
+            </c:if>
+            <c:if test="${not empty param.out}">
+                <div>You've logged out successfully.</div>
+            </c:if>
+            <c:if test="${not empty param.time}">
+                <div>You've been logged out due to inactivity.</div>
+            </c:if>
+             
+            Username:<br>
+            <input type="text" name="j_username" value=""/><br><br>
+            Password:<br>
+            <input type="password" name="j_password" value=""/>
+             
+            <input value="Login" name="submit" type="submit"/>
+        </form>-->
+<!-- 
 
 <table>
   <tr>
@@ -103,7 +124,7 @@
 
   </tr>
 </table>
-
+-->
 
 	<c:if test="${page_error != null }">
         <div class="alert alert-error">

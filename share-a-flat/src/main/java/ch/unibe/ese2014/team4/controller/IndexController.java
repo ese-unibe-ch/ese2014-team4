@@ -11,14 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
-import ch.unibe.ese2014.team4.controller.pojos.LoginForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.SampleService;
+import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class IndexController {
-
+/*
     @Autowired
     SampleService sampleService;
 
@@ -58,7 +57,7 @@ public class IndexController {
         }   	
     	return model;
     }
-    
+    */
    
 }
 

@@ -3,8 +3,10 @@ package ch.unibe.ese2014.team4.controller.pojos;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-public class SignupForm {
 
+
+public class SignupForm {
+//TODO: validate password = passwordRepeated
 
     private Long id;
     

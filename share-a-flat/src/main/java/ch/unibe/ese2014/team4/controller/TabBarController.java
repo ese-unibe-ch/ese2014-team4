@@ -12,14 +12,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.SampleService;
+import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class TabBarController {
 
 	@Autowired
-	SampleService sampleService;
+	NewAccountService sampleService;
 
 	@RequestMapping(value = "/favorites", method = RequestMethod.GET)
 	public ModelAndView favorites() {
@@ -49,14 +49,12 @@ public class TabBarController {
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage() {
 		ModelAndView model = new ModelAndView("my-page");
-		model.addObject("signupForm", new SignupForm());
 		return model;
 	}
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ModelAndView profile() {
 		ModelAndView model = new ModelAndView("profile");
-		model.addObject("signupForm", new SignupForm());
 		return model;
 	}
 
