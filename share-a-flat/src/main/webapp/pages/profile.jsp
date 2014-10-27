@@ -10,7 +10,7 @@
 
 <h1>Profile</h1>
 
-<p><b>First Name: </b>${user.userName}</p> 
+<p><b>First Name: </b>${user.username}</p> 
 <p><b>Email: </b>${user.email}</p>  
 
 <c:import url="template/footer.jsp" />

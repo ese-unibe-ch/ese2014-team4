@@ -17,6 +17,7 @@ import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.User;
  /**
   * LoginController: Login process is routed via Spring Security.
+  * Controlls /, /login (currently not needed), /createAccount: result page after account creation.
   * 
   *
   */
@@ -24,7 +25,7 @@ import ch.unibe.ese2014.team4.model.User;
 public class LoginController
 {
     @Autowired
-    NewAccountService sampleService;
+    NewAccountService newAccountService;
 
 /**
  * Probably never accessed currently. Should be captured by Spring Security in SpringSecurity.xml
@@ -32,7 +33,7 @@ public class LoginController
  */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
-    	ModelAndView model = new ModelAndView("login");
+    	ModelAndView model = new ModelAndView("index");
     	model.addObject("signupForm", new SignupForm());
         return model;
     }
@@ -49,9 +50,10 @@ public class LoginController
     	ModelAndView model;    	
     	if (!result.hasErrors()) {
             try {
-            	sampleService.saveFrom(signupForm);
+ 
+            	newAccountService.saveFrom(signupForm);
             	model = new ModelAndView("home");
-            	User user = sampleService.getUser(signupForm.getId());
+            	User user = newAccountService.getUser(signupForm.getId());
 				model.addObject("user", user);
             } catch (InvalidUserException e) {
             	model = new ModelAndView("index");

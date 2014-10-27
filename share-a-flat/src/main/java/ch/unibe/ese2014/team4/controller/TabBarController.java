@@ -27,12 +27,7 @@ public class TabBarController {
 		return model;
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView home() {
-		ModelAndView model = new ModelAndView("home");
 
-		return model;
-	}
 
 	@RequestMapping(value = "/search-list", method = RequestMethod.GET)
 	public ModelAndView searchList() {
@@ -46,17 +41,6 @@ public class TabBarController {
 		return model;
 	}
 
-	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
-	public ModelAndView myPage() {
-		ModelAndView model = new ModelAndView("my-page");
-		return model;
-	}
-
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public ModelAndView profile() {
-		ModelAndView model = new ModelAndView("profile");
-		return model;
-	}
 
 	@RequestMapping(value = "/security-error", method = RequestMethod.GET)
 	public String securityError(RedirectAttributes redirectAttributes) {

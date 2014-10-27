@@ -11,7 +11,8 @@ import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.model.Profile;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
-//TODO: make sure, that username does not exist.
+
+
 @Service
 public class NewAccountServiceImpl implements NewAccountService {
 
@@ -22,9 +23,13 @@ public class NewAccountServiceImpl implements NewAccountService {
 	public SignupForm saveFrom(SignupForm signupForm)
 			throws InvalidUserException {
 
-
+		if (doesUserAlreadyExists(signupForm.getUsername()) ){
+			throw new InvalidUserException("username already exists.");
+			
+		};
 		User user = new User();
-		user.setUserName(signupForm.getUserName());
+		
+		user.setUsername(signupForm.getUsername());
 		user.setEmail(signupForm.getEmail());
 		user.setPassword(DigestUtils.shaHex(signupForm.getPassword()));
 		user.setProfile(new Profile());
@@ -34,6 +39,10 @@ public class NewAccountServiceImpl implements NewAccountService {
 
 		return signupForm;
 
+	}
+
+	private boolean doesUserAlreadyExists(String username) {
+		return!(userDao.findByUsername(username) == null);
 	}
 
 	@Transactional

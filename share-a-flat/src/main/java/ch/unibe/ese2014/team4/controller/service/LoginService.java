@@ -14,6 +14,12 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 
+
+/**
+ * Provides a UserDetails token used by String Security to check credentials.
+ * 
+ *
+ */
 @Service
 public class LoginService implements  UserDetailsService {
 
@@ -22,12 +28,15 @@ public class LoginService implements  UserDetailsService {
 
 
 	@Transactional
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		User user = userDao.findByUserName(username);
+	public UserDetails loadUserByUsername(String username){
+		User user = userDao.findByUsername(username);
+		
+		if (user==null){throw new InvalidUserException("User does not exist.");}
+
+		
 		ArrayList<GrantedAuthority> list = translateRole(user.getRole());
 		org.springframework.security.core.userdetails.User securityUser;
-		securityUser = new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), list);
+		securityUser = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), list);
 		return securityUser;
 	}
 	

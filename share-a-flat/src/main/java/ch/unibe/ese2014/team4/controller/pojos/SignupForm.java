@@ -12,7 +12,7 @@ public class SignupForm {
     
     @NotNull
     @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a User Name")
-    private String userName;
+    private String username;
     
     @NotNull
     @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
@@ -27,13 +27,13 @@ public class SignupForm {
     message = "Must be valid email address")
     private String email;
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
     
     
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {

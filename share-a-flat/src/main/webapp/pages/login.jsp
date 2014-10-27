@@ -27,12 +27,12 @@
             </div>
         </div>      
         
-        <c:set var="userNameErrors"><form:errors path="userName"/></c:set>
-        <div class="control-group<c:if test="${not empty userNameErrors}"> error</c:if>">
+        <c:set var="usernameErrors"><form:errors path="username"/></c:set>
+        <div class="control-group<c:if test="${not empty usernameErrors}"> error</c:if>">
             <label class="control-label" for="field-userName">User Name</label>
             <div class="controls">
-                <form:input path="userName" id="field-userName" tabindex="2" maxlength="35" placeholder="User Name"/>
-                <form:errors path="userName" cssClass="help-inline" element="span"/>
+                <form:input path="username" id="field-username" tabindex="2" maxlength="35" placeholder="User Name"/>
+                <form:errors path="username" cssClass="help-inline" element="span"/>
             </div>
         </div>
         
@@ -65,7 +65,7 @@
 
 
         <H1>Test Login login page</H1>
-        <form id="form" action="<c:url value="/login.do"/>" Class="form-horizontal" method="POST">
+        <form id="form" action="<c:url value="/login.hey"/>" Class="form-horizontal" method="POST">
          
             <c:if test="${not empty param.err}">
                 <div><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></div>

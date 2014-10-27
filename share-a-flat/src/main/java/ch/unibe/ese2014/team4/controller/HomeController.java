@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +18,20 @@ import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
-public class IndexController {
-/*
-    @Autowired
-    SampleService sampleService;
+public class HomeController {
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index() {
-    	ModelAndView model = new ModelAndView("index");
-    	model.addObject("signupForm", new SignupForm());
-    	model.addObject("loginForm", new LoginForm());
-        return model;
-    }
 
-    
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public ModelAndView home(Principal principal) {
+		ModelAndView model = new ModelAndView("home");
+		
+		String username = principal.getName();
+		model.addObject("username", username);
+		return model;
+	}
+ /*   
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(){
     	ModelAndView model;

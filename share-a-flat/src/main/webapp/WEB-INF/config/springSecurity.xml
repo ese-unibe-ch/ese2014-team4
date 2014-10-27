@@ -14,18 +14,19 @@
 	
 	
 	<security:http auto-config="false" use-expressions="true" access-denied-page="/access-denied">
-		<security:session-management invalid-session-url="/login?time=1">
+		<security:session-management invalid-session-url="/?time=1">
             <security:concurrency-control max-sessions="1" expired-url="/login?time=1" />
         </security:session-management>
 		
 		
 		<security:intercept-url pattern="/login*" access="permitAll" />	
-		        <!-- <security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" /> -->	
+		     
 		<security:intercept-url pattern="/" access="permitAll" />	
-		<security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" />
-	
+	   	<!-- <security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" /> -->
+	   	
+	   		
 		<!-- login-page: the page spring sec hijacks, leading you to login-processing-url -->
-		<security:form-login login-page="/" login-processing-url="/login.do" default-target-url="/home" always-use-default-target="true" authentication-failure-url="/login?err=1" username-parameter="j_username" password-parameter="j_password" />
+		<security:form-login login-page="/" login-processing-url="/letMeIn!" default-target-url="/home" always-use-default-target="true" authentication-failure-url="/?err=1" username-parameter="j_username" password-parameter="j_password" />
  
         <security:logout logout-url="/logout" logout-success-url="/login?out=1" delete-cookies="JSESSIONID" invalidate-session="true" />
 
