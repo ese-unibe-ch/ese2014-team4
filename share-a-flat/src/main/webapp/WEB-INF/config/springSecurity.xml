@@ -20,9 +20,8 @@
 		
 		
 		<security:intercept-url pattern="/login*" access="permitAll" />	
-		<security:intercept-url pattern="/" access="permitAll" />	
-		<security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" />
-
+		        <!--  <security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" />
+	-->	
 		<!-- login-page: the page spring sec hijacks, leading you to login-processing-url -->
 		<security:form-login login-page="/" login-processing-url="/login.do" default-target-url="/home" always-use-default-target="true" authentication-failure-url="/login?err=1" username-parameter="j_username" password-parameter="j_password" />
  
