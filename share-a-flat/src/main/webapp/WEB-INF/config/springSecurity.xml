@@ -13,8 +13,8 @@
 	<security:global-method-security pre-post-annotations="enabled" />
 	
 
-	<security:http pattern="/css" security="none" /> 
-	<security:http pattern="/img" security="none" />  
+	<security:http pattern="/css/**" security="none" /> 
+	<security:http pattern="/img/**" security="none" />  
 
 	<security:http auto-config="false" use-expressions="true" access-denied-page="/?access-denied">
 		<security:session-management invalid-session-url="/?time=1">
