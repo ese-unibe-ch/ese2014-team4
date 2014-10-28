@@ -34,14 +34,13 @@ public class LoginController
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
-    	model.addObject("signupForm", new SignupForm());
         return model;
     }
 
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView login(){
-    	ModelAndView model = new ModelAndView("login");
+    	ModelAndView model = new ModelAndView("register");
     	model.addObject("signupForm", new SignupForm());
         return model;
     }
