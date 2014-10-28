@@ -12,17 +12,21 @@
 
 	<security:global-method-security pre-post-annotations="enabled" />
 	
-	
-	<security:http auto-config="false" use-expressions="true" access-denied-page="/access-denied">
+
+	<security:http pattern="/css" security="none" /> 
+	<security:http pattern="/img" security="none" />  
+
+	<security:http auto-config="false" use-expressions="true" access-denied-page="/?access-denied">
 		<security:session-management invalid-session-url="/?time=1">
-            <security:concurrency-control max-sessions="1" expired-url="/login?time=1" />
+            <security:concurrency-control max-sessions="1" expired-url="/?time=1" />
         </security:session-management>
 		
 		
-		<security:intercept-url pattern="/login*" access="permitAll" />	
-		     
-		<security:intercept-url pattern="/" access="permitAll" />	
-	   	<!-- <security:intercept-url  pattern="/**" access="hasRole('ROLE_USER')" /> -->
+		<!-- css and img folder not protected, / and /register can be accessed when not logged in -->	
+   
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/register" access="permitAll" />	
+	   	<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 	   	
 	   		
 		<!-- login-page: the page spring sec hijacks, leading you to login-processing-url -->
