@@ -29,6 +29,18 @@
 
 </head>
 
+<%!
+  		String isActive(String ref, HttpServletRequest request) {
+        	String components[] = request.getRequestURI().split("/");
+         	String test = components[components.length - 1];
+        	test = test.substring(0, test.length()-4);
+        	
+			if(ref.equals(test)) {
+				return " class=\"active\" ";
+            } 
+           	return "";
+        }
+	 %>
 
 <body>
 
@@ -41,13 +53,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home"><img src="img/logo3.png" alt="logo" style="width: 90px; height: 30px"></a>
+          <a class="navbar-brand" href="home"><img src="img/logo3.png" alt="logo" style="width: 95px; height: 35px"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="my-page">My Page</a></li>
-            <li><a href="favorites">My Favorites</a></li>
-            <li><a href="search-list">Search</a></li>
+            <li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li>
+            <li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
+            <li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -12,8 +12,8 @@
 
         <!-- Auswahlreiter -->
         <ul>
-  		<li class="profile"><a href="profile" class="inactive">
-                <span>Profile</span></a></li>
+  		<li class="profile"><a href="profile" class="inactive"><span>Profile</span></a></li>
+        <li class="createAd"><a href="createAd" class="inactive"><span>Create Ad</span></a></li> 
 		</ul>
 
 <c:import url="template/footer.jsp" />

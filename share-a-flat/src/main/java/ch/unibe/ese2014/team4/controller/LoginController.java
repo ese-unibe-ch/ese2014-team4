@@ -44,6 +44,14 @@ public class LoginController
     	model.addObject("signupForm", new SignupForm());
         return model;
     }
+    
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile(){
+    	ModelAndView model = new ModelAndView("profile");
+    	model.addObject("signupForm", new SignupForm());
+        return model;
+    }
+    
     @RequestMapping(value = "/createAccount", method = RequestMethod.POST)
     public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	
