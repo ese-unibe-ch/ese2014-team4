@@ -8,7 +8,7 @@
 
 
 
-<form:form method="post" modelAttribute="adForm" action="createAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
         <legend>Enter Your Information</legend>
 
