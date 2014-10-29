@@ -27,11 +27,11 @@ public class TabBarController {
 		return model;
 	}
 
-	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
-	public ModelAndView myPage() {
-		ModelAndView model = new ModelAndView("my-page");
-		return model;
-	}
+//	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
+//	public ModelAndView myPage() {
+//		ModelAndView model = new ModelAndView("my-page");
+//		return model;
+//	}
 
 	@RequestMapping(value = "/search-list", method = RequestMethod.GET)
 	public ModelAndView searchList() {

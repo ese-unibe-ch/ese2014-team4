@@ -22,7 +22,8 @@
             <c:if test="${not empty param.time}">
                 <div>You've been logged out due to inactivity.</div>
             </c:if>
-             
+
+          
             Username:<br>
             <input type="text" name="j_username" value=""/><br><br>
             Password:<br>

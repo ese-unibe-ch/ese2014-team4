@@ -27,10 +27,7 @@ public class LoginController
     @Autowired
     NewAccountService newAccountService;
 
-/**
- * Probably never accessed currently. Should be captured by Spring Security in SpringSecurity.xml
- * @return
- */
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
@@ -45,12 +42,7 @@ public class LoginController
         return model;
     }
     
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile(){
-    	ModelAndView model = new ModelAndView("profile");
-    	model.addObject("signupForm", new SignupForm());
-        return model;
-    }
+
     
     @RequestMapping(value = "/createAccount", method = RequestMethod.POST)
     public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {

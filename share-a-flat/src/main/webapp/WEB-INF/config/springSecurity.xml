@@ -38,14 +38,7 @@
 	
 	</security:http>
 
-	<!-- very basic login user information
-	<security:authentication-manager>
-		<security:authentication-provider>
-    		<security:user-service>
-        		<security:user name="user" password="user" authorities="ROLE_USER" />
-    		</security:user-service>
-		</security:authentication-provider>
-	</security:authentication-manager> -->
+
 
 	<bean id="LoginService" class="ch.unibe.ese2014.team4.controller.service.LoginService"/>
 	<security:authentication-manager>

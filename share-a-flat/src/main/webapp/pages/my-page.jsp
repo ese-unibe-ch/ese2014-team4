@@ -16,4 +16,10 @@
         <li class="createAd"><a href="createAd" class="inactive"><span>Create Ad</span></a></li> 
 		</ul>
 
+        <div class="form-actions">
+        	<button type="button" action = "/modifyProfile" class="btn btn-primary">Modify Profile</button>
+            <button type="button" action = "/deleteProfile" class="btn btn-danger">Delete Profile</button>
+        </div>
+        
+
 <c:import url="template/footer.jsp" />
