@@ -8,7 +8,7 @@
 
 
 
-<h2> hi ${user.username}, welcome to RoomMate! </h2>
+<h2> hi ${username}, welcome to RoomMate! </h2>
 <h3> The best online room market!</h3>
 
 <h2> username from principal: ${username}, welcome to RoomMate! </h2>
