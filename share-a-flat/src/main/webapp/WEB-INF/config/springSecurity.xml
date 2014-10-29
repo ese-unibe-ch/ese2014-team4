@@ -26,6 +26,7 @@
    
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/register" access="permitAll" />	
+		<security:intercept-url pattern="/createAccount" access="permitAll" />	
 	   	<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 	   	
 	   		
