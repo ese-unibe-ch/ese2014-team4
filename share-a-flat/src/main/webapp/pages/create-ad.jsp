@@ -35,7 +35,7 @@
         <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
             <label class="control-label" for="field-description">Description</label>
             <div class="controls">
-                <form:input path="description" id="field-description" tabindex="3" maxlength="35" placeholder="Description"/>
+                <form:textarea path="description" id="field-description" rows="6" width="350px" style="resize:vertical"tabindex="3" maxlength="35" placeholder="Description"/>
                 <form:errors path="description" cssClass="help-inline" element="span"/>
             </div>
         </div>

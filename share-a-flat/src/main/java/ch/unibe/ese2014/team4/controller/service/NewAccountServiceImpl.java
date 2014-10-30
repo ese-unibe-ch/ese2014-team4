@@ -24,13 +24,16 @@ public class NewAccountServiceImpl implements NewAccountService {
 	ProfileDao profileDao;
 
 	@Transactional
-	public SignupForm saveFrom(SignupForm signupForm)
-			throws InvalidUserException {
+	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
 
-		if (doesUserAlreadyExists(signupForm.getUsername()) ){
-			throw new InvalidUserException("username already exists.");
-			
+		if (doesUserAlreadyExists(signupForm.getUsername()) ) {
+			throw new InvalidUserException("username already exists.");	
 		};
+		
+		if(!signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
+			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
+		}
+		
 		User user = new User();
 		
 		user.setUsername(signupForm.getUsername());

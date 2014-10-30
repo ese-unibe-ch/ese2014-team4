@@ -36,9 +36,6 @@ public class MyPageController {
 	@Autowired
 	ProfileService profileService;
 
-
-
-
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
 		ModelAndView model = new ModelAndView("my-page");
