@@ -4,13 +4,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<c:import url="template/header.jsp" />
+
+<!-- only used as imported part of other pages, therefore no header / footer. -->
 
 
+<h2>My Profile</h2>
 
-<h1>Profile</h1>
+<p><b>First Name: </b>${profile.owner.username}</p> 
+<p><b>Email: </b>${profile.owner.email}</p>  
+<p><b>Age: </b>${profile.age}</p>  
+<p><b>Sex: </b>${profile.sex}</p>
+<p><b>Further Information: </b>${profile.description}</p>
 
-<p><b>First Name: </b>${user.username}</p> 
-<p><b>Email: </b>${user.email}</p>  
-
-<c:import url="template/footer.jsp" />

@@ -12,14 +12,19 @@
 
         <!-- Auswahlreiter -->
         <ul>
-  		<li class="profile"><a href="profile" class="inactive"><span>Profile</span></a></li>
         <li class="createAd"><a href="createAd" class="inactive"><span>Create Ad</span></a></li> 
 		</ul>
 
         <div class="form-actions">
-        	<button type="button" action = "/modifyProfile" class="btn btn-primary">Modify Profile</button>
-            <button type="button" action = "/deleteProfile" class="btn btn-danger">Delete Profile</button>
+        	<a type="button" href = "${pageContext.request.contextPath}/modifyProfile" class="btn btn-primary">Modify Profile</a>
+            
         </div>
         
+ <!-- appends user profile. the /profile method does not get invoked, only /my-page! -->       
+<c:import  url="profile.jsp" />
+
+
+<!--  link to delete profile -->        
+<h6><small><a href = "${pageContext.request.contextPath}/deleteProfile">Delete Profile</a></small></h6>
 
 <c:import url="template/footer.jsp" />

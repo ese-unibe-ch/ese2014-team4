@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 
@@ -20,11 +21,14 @@ public class Ad {
     @JoinColumn(name="user_id")
     private User user;
     
+    @OneToOne
+    private Address address;
+    
     private String place;
-    private String address;
+
     private int price;
     private String description;
-    
+    private String title;
     
 	public Long getId() {
         return id;
@@ -42,11 +46,11 @@ public class Ad {
 		this.place = place;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
@@ -64,6 +68,18 @@ public class Ad {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String toString(){
+		return title;
 	}
 
 

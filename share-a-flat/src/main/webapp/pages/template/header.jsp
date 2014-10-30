@@ -86,4 +86,4 @@
 <div class="container">
 
      <div class="container theme-showcase">
-        <h2> username from principal: ${username}, welcome to RoofffmMate! </h2>
+

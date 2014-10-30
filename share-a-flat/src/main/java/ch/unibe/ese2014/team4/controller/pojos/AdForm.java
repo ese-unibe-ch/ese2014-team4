@@ -1,31 +1,34 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import ch.unibe.ese2014.team4.model.Address;
 
+/**
+ * Used to transfer ad-information from form to controller.
+ * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
+ */
 
 public class AdForm {
-//TODO: validate password = passwordRepeated
+
 
     private Long id;
     
     @NotNull
-    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a User Name")
     private String place;
-    
+
     @NotNull
-    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
-    private String address;
-    
-    @NotNull
-    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
     private int price;
 
     @NotNull
-    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a Password")
     private String description;
 
+    private String title;
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -42,13 +45,6 @@ public class AdForm {
 		this.place = place;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public int getPrice() {
 		return price;
@@ -65,6 +61,54 @@ public class AdForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+//Address-Info, same field as Ad itself.
+	private int streetNumber;
+    private String city;
+    private int zipCode;
+    
+    private String street;
+    public int getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(int streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public int getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+    
+    
 
     
 }
