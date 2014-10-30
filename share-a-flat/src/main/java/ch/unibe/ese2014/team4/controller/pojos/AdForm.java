@@ -10,15 +10,10 @@ import ch.unibe.ese2014.team4.model.Address;
 /**
  * Used to transfer ad-information from form to controller.
  * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
+ * TODO: controller for /submitAd and corresponding service to save ad.
  */
 
 public class AdForm {
-
-
-    private Long id;
-    
-    @NotNull
-    private String place;
 
     @NotNull
     private int price;
@@ -28,23 +23,18 @@ public class AdForm {
 
     private String title;
     
+    private int nrOfRoomMates;
     
-	public Long getId() {
-		return id;
+    
+
+
+	public int getNrOfRoomMates() {
+		return nrOfRoomMates;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setNrOfRoomMates(int nrOfRoomMates) {
+		this.nrOfRoomMates = nrOfRoomMates;
 	}
-
-	public String getPlace() {
-		return place;
-	}
-
-	public void setPlace(String place) {
-		this.place = place;
-	}
-
 
 	public int getPrice() {
 		return price;
