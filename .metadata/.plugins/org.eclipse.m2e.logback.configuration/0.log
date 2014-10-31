@@ -17,3 +17,162 @@
 2014-10-27 13:04:43,359 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
 2014-10-27 13:04:43,437 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
 2014-10-27 13:04:43,437 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 10:41:03,593 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:41:03,624 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:41:03,624 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:41:03,655 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:41:03,655 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:41:07,680 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:41:07,680 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:41:07,680 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:41:07,680 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:41:07,695 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:41:25,988 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-10-31 10:41:26,050 [Worker-9] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 10:41:26,050 [Worker-9] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 10:43:27,387 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:43:27,387 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:43:27,387 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:43:27,403 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:43:27,403 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:44:44,867 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:44:44,867 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:44:44,883 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:44:44,883 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:44:44,883 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:44:46,926 [Worker-11] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 10:44:46,942 [Worker-11] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 10:46:21,960 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:46:21,960 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:46:21,960 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:46:21,960 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:46:21,960 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:51:02,308 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:51:02,308 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:51:02,324 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:51:02,324 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:51:02,324 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:51:07,644 [Worker-8] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 10:51:07,659 [Worker-8] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 10:52:25,635 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:52:25,635 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:52:25,635 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:52:25,651 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:52:25,651 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 10:52:27,679 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 10:52:27,679 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 10:54:38,727 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:54:38,728 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:54:38,740 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 10:54:38,743 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 10:54:38,747 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:01:59,545 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:01:59,545 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:01:59,545 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:01:59,545 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:01:59,561 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:05:31,242 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:05:31,242 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:05:31,242 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:05:31,242 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:05:31,242 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:07:39,170 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:07:39,170 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:07:39,170 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:07:39,185 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:07:39,185 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:08:35,849 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:08:35,849 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:08:35,849 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:08:35,851 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:08:35,851 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:08:52,839 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:08:52,839 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:08:52,839 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:08:52,839 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:08:52,839 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:08:58,518 [Worker-9] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:08:58,518 [Worker-9] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:10:05,193 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:10:05,193 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:10:05,193 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:10:05,193 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:10:05,209 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:10:19,888 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:10:19,888 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:23:58,380 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:23:58,389 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:23:58,394 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:23:58,399 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:23:58,399 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:24:00,112 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:24:00,112 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:25:18,697 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:25:18,697 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:25:18,697 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:25:18,699 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:25:18,699 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:25:20,587 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:25:20,593 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:28:26,611 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:28:26,621 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:28:26,621 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:28:26,631 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:28:26,631 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:28:30,832 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:28:30,832 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:32:09,654 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:32:09,657 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:32:09,657 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:32:09,657 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:32:09,667 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:32:11,397 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:32:11,397 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:38:18,885 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:38:18,889 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:38:18,893 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:38:18,900 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:38:18,901 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:38:38,509 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:38:38,510 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:38:38,510 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:38:38,511 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:38:38,516 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:38:40,877 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:38:40,877 [Worker-15] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:39:19,105 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:39:19,105 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:39:19,110 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:39:19,116 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:39:19,117 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:42:33,776 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:42:33,776 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:42:33,777 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:42:33,778 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:42:33,779 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:43:44,639 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:43:44,639 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:43:44,639 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:43:44,639 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:43:44,639 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:43:47,268 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:43:47,268 [Worker-12] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:44:06,052 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:44:06,062 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:44:06,062 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:44:06,062 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:44:06,072 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:46:47,359 [Worker-14] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:46:47,359 [Worker-14] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:47:22,112 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:47:22,117 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:47:22,120 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:47:22,127 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:47:22,127 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-10-31 11:47:30,210 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-10-31 11:47:30,210 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
+2014-10-31 11:48:16,187 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:48:16,187 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:48:16,187 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
+2014-10-31 11:48:16,197 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-10-31 11:48:16,197 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
