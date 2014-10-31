@@ -19,7 +19,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.MyPageService;
+import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.ProfileService;
 import ch.unibe.ese2014.team4.model.Profile;
@@ -32,16 +32,14 @@ import ch.unibe.ese2014.team4.model.User;
 public class MyPageController {
 
 	@Autowired
-	MyPageService myPageService;
+	UserService myPageService;
 	@Autowired
 	ProfileService profileService;
 
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
 		ModelAndView model = new ModelAndView("my-page");
-
 		model.addObject("profile", profileService.getMyProfile(principal));
-		System.out.println(profileService.getMyProfile(principal));
 		return model;
 	}
 

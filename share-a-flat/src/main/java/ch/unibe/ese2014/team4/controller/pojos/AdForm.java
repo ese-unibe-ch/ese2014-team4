@@ -17,23 +17,17 @@ public class AdForm {
 
     @NotNull
     private int price;
-
     @NotNull
     private String description;
-
     private String title;
-    
-    private int nrOfRoomMates;
-    
-    private String place;
-    
+    private int nrOfRoomMates;  
     private Long id;
     
   //Address-Info, same field as Ad itself.
   	private int streetNumber;
     private String city;
     private int zipCode;
-
+    private String street;
 
 	public int getNrOfRoomMates() {
 		return nrOfRoomMates;
@@ -69,7 +63,7 @@ public class AdForm {
 
 
     
-    private String street;
+
     public int getStreetNumber() {
 		return streetNumber;
 	}
@@ -102,13 +96,6 @@ public class AdForm {
 		this.street = street;
 	}
 
-	public String getPlace() {
-		return place;
-	}
-
-	public void setPlace(String place) {
-		this.place = place;
-	}
 
 	public Long getId() {
 		return id;

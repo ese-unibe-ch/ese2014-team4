@@ -1,6 +1,9 @@
 package ch.unibe.ese2014.team4.model;
 
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,19 +20,32 @@ public class Ad {
     @GeneratedValue
     private Long id;
     
-    @ManyToOne
+    @ManyToOne		//many Ads, one user
     @JoinColumn(name="user_id")
-    private User user;
+    private User owner;
     
-    @OneToOne
+
+
+	@OneToOne(cascade = CascadeType.REMOVE)
     private Address address;
     
-    private String place;
+    private int nrOfRoomMates;
 
     private int price;
     private String description;
     private String title;
     
+    
+    private Date adAddedDate;
+    
+	public Date getAdAddedDate() {
+		return adAddedDate;
+	}
+
+	public void setAdAddedDate(Date adAddedDate) {
+		this.adAddedDate = adAddedDate;
+	}
+
 	public Long getId() {
         return id;
     }
@@ -38,12 +54,12 @@ public class Ad {
         this.id = id;
     }
 
-	public String getPlace() {
-		return place;
+	public int getNrOfRoomMates() {
+		return nrOfRoomMates;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
+	public void setNrOfRoomMates(int nrOfRoomMates) {
+		this.nrOfRoomMates = nrOfRoomMates;
 	}
 
 	public Address getAddress() {
@@ -77,7 +93,13 @@ public class Ad {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+    public User getOwner() {
+		return owner;
+	}
 
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 	public String toString(){
 		return title;
 	}

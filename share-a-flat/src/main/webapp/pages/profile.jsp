@@ -10,7 +10,7 @@
 
 <h2>My Profile</h2>
 
-<p><b>First Name: </b>${profile.owner.username}</p> 
+<p><b>Username: </b>${profile.owner.username}</p> 
 <p><b>Email: </b>${profile.owner.email}</p>  
 <p><b>Age: </b>${profile.age}</p>  
 <p><b>Sex: </b>${profile.sex}</p>

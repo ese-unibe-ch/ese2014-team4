@@ -7,8 +7,8 @@
 <c:import url="template/header.jsp" />
 
 
+<h1>${adData.title} </h1>
 
-<h1>Sign Up Complete!</h1>
 
 
 

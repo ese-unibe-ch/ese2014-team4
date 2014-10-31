@@ -7,5 +7,6 @@ import ch.unibe.ese2014.team4.model.User;
 
 public interface AdDao extends CrudRepository<Ad,Long> {
 
-	User findByUsername(String username);
+	public User findByOwner(String owner);
+	public Ad findById(Long id);
 }
