@@ -14,7 +14,7 @@
 	</tr>
 	<tr><td>
 	<form:form method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
-    <fieldset>
+<fieldset>
         <legend>Enter Your Information</legend>
 
         <c:set var="ageErrors"><form:errors path="age"/></c:set>
@@ -52,12 +52,23 @@
             <label class="control-label" for="field-description">Further Information</label>
             <form:textarea path="description" rows="4" class="form-control" value="${profile.description}"/>
         </div>
+        
+        <c:set var="descriptionErrors"><form:errors path="description"/></c:set>
+        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+            <form:form path="profileForm.description">
+            <label class="control-label" for="field-description">Further Information</label>
+            <textarea>${profile.description}</textarea>
+            </form:form>
+        </div>
+
+
+
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save Profile</button>
             <a href="profile" type="button" class="btn">Cancel</a>
         </div>
-    </fieldset>
+</fieldset>
 </form:form>
        </td>
 

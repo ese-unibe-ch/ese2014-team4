@@ -24,6 +24,7 @@
 	
 	<!-- Changes language used via parameter /?lang=de -->
 	<!-- /messages/messages.properties as default, /messages_de.properties as other language -->
+	<!-- doesnt really work currently -->
   	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="en" />

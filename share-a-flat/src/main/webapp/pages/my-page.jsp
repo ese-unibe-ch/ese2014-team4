@@ -11,13 +11,13 @@
 <h1>My Page</h1>
 
         <!-- Auswahlreiter -->
-        <ul>
-        <li class="createAd"><a href="createAd" class="inactive"><span>Create Ad</span></a></li> 
-		</ul>
+        
+        
+		
 
         <div class="form-actions">
+        	<a type ="button" href="createAd" class="btn btn-primary"><span>Create Ad</span></a>
         	<a type="button" href = "${pageContext.request.contextPath}/modifyProfile" class="btn btn-primary">Modify Profile</a>
-            
         </div>
         
  <!-- appends user profile. the /profile method does not get invoked, only /my-page! -->       

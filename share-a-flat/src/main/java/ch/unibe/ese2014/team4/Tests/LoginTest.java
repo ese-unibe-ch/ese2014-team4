@@ -3,11 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
  
 
+
+
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,22 +28,21 @@ import ch.unibe.ese2014.team4.controller.service.LoginService;
   * @author Bachtler
   *
   */
+@Configuration("classpath*:spring-test.xml")
 public class LoginTest {
    
-    //static ApplicationContext applicationContext = null;
-   //static LoginService loginService = null;
-     
-    /**
-     * Initialize the application context to re-use in all test cases
-     * */
+    static ApplicationContext applicationContext = null; //Manages all dependency injection-related things.
+    static LoginService loginService = null;
+    @Test
+    public void testTest(){
+    	assert 5 ==new Integer(5);
+    }
 	
-	
-	/*
     @BeforeClass
     public static void setup()
     {
         //Create application context instance
-        applicationContext = new ClassPathXmlApplicationContext("application-security.xml");
+        applicationContext = new ClassPathXmlApplicationContext("/WEB-INF/config/springSecurity.xml");
         loginService = applicationContext.getBean(LoginService.class);
     }
      
@@ -46,14 +51,18 @@ public class LoginTest {
     public void testValidRole()
     {
         //Get the user by username from configured user details service
-        UserDetails userDetails = userDetailsService.loadUserByUsername ("lokesh");
+        UserDetails userDetails = loginService.loadUserByUsername ("m");
         Authentication authToken = new UsernamePasswordAuthenticationToken (userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
-        DemoService service = (DemoService) applicationContext.getBean("demoService");
-        service.method();
+        
+        roleTester();
     }
-     
-
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    private void roleTester(){
+    	
+    }
+/*
     @Test (expected = AccessDeniedException.class)
     public void testInvalidRole()
     {

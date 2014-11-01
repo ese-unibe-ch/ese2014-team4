@@ -11,12 +11,12 @@
     </welcome-file-list>
         
     
-    <!-- import config files -->    
+    <!-- import config files  -->   
     <context-param>
     	<param-name>contextConfigLocation</param-name>
     	<param-value>
-    		/WEB-INF/config/springData.xml
-    		/WEB-INF/config/springSecurity.xml
+    		classpath*:springData.xml
+    		classpath*:springSecurity.xml
     	</param-value>
 	</context-param>
     
@@ -42,11 +42,12 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  <!-- Dispatcher Servlet -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/config/springMVC.xml</param-value>		<!-- Servlet config -->
+            <param-value>classpath*:springMVC.xml</param-value>		
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
+	
+	<!-- Sets defined and configured servlet to / -->
     <servlet-mapping>
         <servlet-name>Share-a-Flat</servlet-name>
         <url-pattern>/</url-pattern>			<!-- use servlet for any page matching url pattern  -->
