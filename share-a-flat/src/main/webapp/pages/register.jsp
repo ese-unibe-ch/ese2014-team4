@@ -119,14 +119,14 @@ div.transbox {
 						         <div class="control-group<c:if test="${not empty passwordRepeatedErrors}"> error</c:if>">
 						            <label class="control-label" for="field-passwordRepeated">Repeat password</label>
 						            <div class="controls">
-						                <form:password path="passwordRepeated" id="field-passwordRepeated" tabindex="3" maxlength="35" placeholder="Repeat password"/>
+						                <form:password path="passwordRepeated" id="field-passwordRepeated" tabindex="4" maxlength="35" placeholder="Repeat password"/>
 						                <form:errors path="passwordRepeated" cssClass="help-inline" element="span"/><br><br>
 						            </div>
 						        </div>
 			               
 						        <div class="form-actions">
-						            <button type="submit" class="btn btn-primary">Register</button>
-						            <button type="button" class="btn">Cancel</button>
+						            <button type="submit" class="btn btn-primary" tabindex="5">Register</button>
+						            <button type="button" class="btn" tabindex="6">Cancel</button>
 						        </div>
 						        
 							</form:form>

@@ -79,13 +79,13 @@ div.transbox {
 	
 	          
 			            Username:<br>
-			            <input type="text" name="j_username" value=""/><br><br>
+			            <input type="text" name="j_username" value="" tabindex="1"/><br><br>
 			           
 			            Password:<br>
-			            <input type="password" name="j_password" value=""/><br><br>
+			            <input type="password" name="j_password" value="" tabindex="2"/><br><br>
 			            
 			            <div class="form-actions">
-			            	<input value="Login" name="submit" type="submit" class="btn btn-primary"/>
+			            	<input value="Login" name="submit" type="submit" class="btn btn-primary" tabindex="3"/>
 			        	</div>
             
         			</form>
