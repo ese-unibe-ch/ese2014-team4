@@ -19,6 +19,7 @@ public class SignupForm {
     private String password;
     
     @NotNull
+    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please renter the Password")
     private String passwordRepeated;
 
 
