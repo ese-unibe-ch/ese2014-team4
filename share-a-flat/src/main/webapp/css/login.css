@@ -29,6 +29,7 @@ html,
 body {
   height: 100%;
   background-image: url("http://cdn.freshome.com/wp-content/uploads/2010/08/apartment_living3.jpg");
+  background-size: 53% 65%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000;
