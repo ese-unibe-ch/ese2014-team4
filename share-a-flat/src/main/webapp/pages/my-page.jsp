@@ -5,7 +5,7 @@
 
 
 <c:import url="template/header.jsp" />
-
+<img src="${pageContext.request.contextPath}/imageController/profile?${profile.id}" alt="profileImage" >
 <div id="masthead">  
   <div class="container">
       <div class="row">

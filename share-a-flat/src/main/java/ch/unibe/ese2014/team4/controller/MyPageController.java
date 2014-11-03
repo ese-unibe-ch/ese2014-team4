@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,6 +21,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
+import ch.unibe.ese2014.team4.controller.service.ImageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.ProfileService;
@@ -35,6 +38,8 @@ public class MyPageController {
 	UserService myPageService;
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	ImageService uploadService;
 
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
@@ -61,10 +66,10 @@ public class MyPageController {
 		return model;
 	}
 	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-	public ModelAndView saveProfile(ModelAndView oldModel, ProfileForm profileForm, BindingResult result, Principal principal) throws ProfileException {
+	public ModelAndView saveProfile(@RequestParam("uploadedProfileImage") MultipartFile profileImageFile, ProfileForm profileForm, BindingResult result, Principal principal) throws ProfileException {
 		ModelAndView model;
 		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal));
+				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal), uploadService.getByteArrayFromMultipart(profileImageFile));
 				model = new ModelAndView("my-page");
 				model.addObject("profile", profileService.getMyProfile(principal));
 				return model;

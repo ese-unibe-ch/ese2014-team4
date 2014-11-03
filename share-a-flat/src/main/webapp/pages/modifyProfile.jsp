@@ -11,14 +11,14 @@
   	<hr>
 	<div class="row">
       <!-- left column -->
-      	      <form:form method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
+      	      <form:form enctype="multipart/form-data" method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
       <div class="col-md-3">
         <div class="text-center">
           <img src=${profile.profileImage} class="avatar img-circle" alt="avatar">
           <h6>Upload a different photo...</h6>
           
-          <form:input path="profileImage" class="form-control" type="file"/>
+          <form:input path="uploadedProfileImage" class="form-control" type="file"/>
         </div>
       </div>
       

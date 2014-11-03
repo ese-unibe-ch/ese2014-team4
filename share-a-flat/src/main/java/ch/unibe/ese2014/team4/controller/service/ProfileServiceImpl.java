@@ -36,11 +36,11 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 	
 	@Transactional
-	public void updateProfileFrom(ProfileForm profileForm, Profile profile){
+	public void updateProfileFrom(ProfileForm profileForm, Profile profile, byte[] profileImageByte){
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
 		profile.setDescription(profileForm.getDescription());
-		profile.setProfileImage(profileForm.getProfileImage());
+		profile.setProfileImage(profileImageByte);
 		profileDao.save(profile);
 	}
 }

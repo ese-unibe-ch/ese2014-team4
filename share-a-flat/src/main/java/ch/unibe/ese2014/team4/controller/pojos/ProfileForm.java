@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang.BitField;
+import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.model.User;
 
@@ -17,7 +18,7 @@ public class ProfileForm {
     private int age;
     private String description;
     private Sex sex;
-    private byte[] profileImage;
+    private MultipartFile uploadedProfileImage;
     
  
 
@@ -46,11 +47,12 @@ public class ProfileForm {
 		this.description = description;
 	}
 
-	public byte[] getProfileImage() {
-		return profileImage;
+
+	public MultipartFile getUploadedProfileImage() {
+		return uploadedProfileImage;
 	}
 
-	public void setProfileImage(byte[] profileImage) {
-		this.profileImage = profileImage;
+	public void setUploadedProfileImage(MultipartFile uploadedProfileImage) {
+		this.uploadedProfileImage = uploadedProfileImage;
 	}
 }

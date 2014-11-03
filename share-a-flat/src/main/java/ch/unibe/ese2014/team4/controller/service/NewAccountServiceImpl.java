@@ -1,6 +1,17 @@
 package ch.unibe.ese2014.team4.controller.service;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +55,8 @@ public class NewAccountServiceImpl implements NewAccountService {
 		
 		Profile profile = new Profile();
 		profile.setOwner(user);
+		
+		//profile.setProfileImage(getDefaultProfileImage());
 		profileDao.save(profile);
 		
 		user.setProfile(profile);
@@ -52,9 +65,27 @@ public class NewAccountServiceImpl implements NewAccountService {
 		signupForm.setId(user.getId());
 
 		return signupForm;
-
+		
 	}
-
+	//doesnt work
+	private byte[] getDefaultProfileImage(){
+		File file = new File("/share-a-flat/img/defaultProfileImage.png");
+		byte[] byteImg=null;
+		InputStream input=null;
+		try {
+			input = new FileInputStream(file);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			byteImg= IOUtils.toByteArray(input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return byteImg;
+	}
 	private boolean doesUserAlreadyExists(String username) {
 		return!(userDao.findByUsername(username) == null);
 	}
