@@ -7,14 +7,22 @@
 <c:import url="template/header.jsp" />
 
 
-RESULT!!
+<h1>Search List</h1>
+        
+
+        <!-- Auswahlreiter -->
+        
+        <ul>
+            <li class="map"><a href="search-map" class="inactive">
+                <span><!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf Karte</span></a></li>
+        </ul>
 
 <!--  <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${ad.title}" /></label> -->
 <%-- <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${price}" /></label>  --%>
 
 <c:forEach items="${ads}" var="ad">
-price: ${ad.price}
-<c:out value="ad"/>
+price: ${ad.price} <br>
+
 </c:forEach>
 
 
