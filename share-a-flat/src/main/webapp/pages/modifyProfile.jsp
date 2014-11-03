@@ -11,12 +11,14 @@
   	<hr>
 	<div class="row">
       <!-- left column -->
+      	      <form:form method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
+    <fieldset>
       <div class="col-md-3">
         <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          <img src=${profile.profileImage} class="avatar img-circle" alt="avatar">
           <h6>Upload a different photo...</h6>
           
-          <input class="form-control" type="file">
+          <form:input path="profileImage" class="form-control" type="file"/>
         </div>
       </div>
       
@@ -27,8 +29,7 @@
         </div>
               
           
-	      <form:form method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
-    <fieldset>
+
         <legend>Personal info</legend>
 
 	 	  <div class="form-group">
@@ -74,7 +75,7 @@
                 <label><input type="radio" name="sex" id="Female" value="F" ${checkedF}>Female</label><br><br>
             </div>
         </div>
-        
+        im
         <div class="form-group">
         	<label class="col-md-3 control-label"></label>
             <div class="col-md-8">
@@ -82,7 +83,7 @@
             <a href="${pageContext.request.contextPath}/my-page" type="button" class="btn">Cancel</a>
               </div>
           </div>
-        </div>
+
     </fieldset>
 </form:form>
        

@@ -56,6 +56,7 @@ public class MyPageController {
 		ModelAndView model = new ModelAndView("modifyProfile");
 		ProfileForm profileForm = new ProfileForm();
 		model.addObject("profileForm", profileForm);
+		System.out.println(profileService.getMyProfile(principal).getOwner().getUsername());
 		model.addObject("profile", profileService.getMyProfile(principal));
 		return model;
 	}

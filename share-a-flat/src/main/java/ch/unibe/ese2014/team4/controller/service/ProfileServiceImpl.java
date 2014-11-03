@@ -40,8 +40,7 @@ public class ProfileServiceImpl implements ProfileService {
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
 		profile.setDescription(profileForm.getDescription());
-		System.out.println(profileForm.getAge());
-		System.out.println(profile.getOwner().getUsername());
+		profile.setProfileImage(profileForm.getProfileImage());
 		profileDao.save(profile);
 	}
 }

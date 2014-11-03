@@ -1,9 +1,13 @@
 package ch.unibe.ese2014.team4.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+
+import org.apache.commons.lang.BitField;
 
 import ch.unibe.ese2014.team4.controller.pojos.Sex;
 
@@ -18,7 +22,12 @@ public class Profile {
     private User owner;
     private int age;
     private String description;
-    private Sex sex;  
+    private Sex sex; 
+    
+    
+    @Lob //big data format
+    @Column(name="profileImage",  columnDefinition="mediumblob")
+    private byte[] profileImage;
     
     
     public User getOwner() {
@@ -65,5 +74,13 @@ public class Profile {
 	
 	public String toString(){
 		return "Profile of " + owner.getUsername();
+	}
+
+	public byte[] getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(byte[] profileImage) {
+		this.profileImage = profileImage;
 	}
 }
