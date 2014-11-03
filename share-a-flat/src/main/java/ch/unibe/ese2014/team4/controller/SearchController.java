@@ -28,8 +28,8 @@ public class SearchController {
 	public ModelAndView search(@Valid SearchForm searchForm,
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model = new ModelAndView("search-result");
-		java.util.List<Ad> ads = adService.getAd(searchForm.getPrice());
-		model.addObject(ads);
+//		java.util.List<Ad> ads = adService.getAd(searchForm.getPrice());
+		model.addObject("ads", adService.getAd(searchForm.getPrice()));
 
 		return model;
 	}

@@ -65,24 +65,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-<!-- 	<div class="navbar"> -->
-<!-- 		<div class="navbar-inner"> -->
-<!-- 			<div class="container"> -->
-<!-- 				<a class="brand" href="home"><img src="img/logo3.png" alt="logo" style="width: 180px; height: 60px"></a> -->
-<!-- 				<ul class="nav"> -->
-<%-- 					<li <%= isActive("home", request) %>><a href="home">Home</a></li> --%>
-<%-- 					<li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li> --%>
-<%-- 					<li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li> --%>
-<%-- 					<li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li> --%>
-<!-- 				</ul> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-<%-- <!-- <%= request.getRequestURI() %> , nur damit wir wissen, ob url richtig eingelesen worden wird...--> --%>
-
-<!-- 	<div id="centerDoc" class="container"> -->
 	
 <div class="container">
 

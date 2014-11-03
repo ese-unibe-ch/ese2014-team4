@@ -20,41 +20,7 @@ div.transbox {
 
 <c:import url="template/headerLogin.jsp" />
 
-<%-- <h1><a href="${pageContext.request.contextPath}/register" >Not yet a Member? Register!</a></h1> --%>
-<!-- <table> -->
-<!--   	<tr> -->
-<!-- 		<th><h2> Login!</h2></th> -->
-<!-- 	</tr> -->
-<!-- 	<tr><td><fieldset>  -->
-<%--         <form id="form" action="<c:url value="/letMeIn!"/>" Class="form-horizontal" method="POST"> --%>
-         
-<%--             <c:if test="${not empty param.err}"> --%>
-<%--                 <div><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></div> --%>
-<%--             </c:if> --%>
-<%--             <c:if test="${not empty param.out}"> --%>
-<!--                 <div>You've logged out successfully.</div> -->
-<%--             </c:if> --%>
-<%--             <c:if test="${not empty param.time}"> --%>
-<!--                 <div>You've been logged out due to inactivity.</div> -->
-<%--             </c:if> --%>
-
-          
-<!--             Username:<br> -->
-<!--             <input type="text" name="j_username" value=""/><br><br> -->
-<!--             Password:<br> -->
-<!--             <input type="password" name="j_password" value=""/> -->
-<!--             <div class="form-actions"> -->
-<!--             	<input value="Login" name="submit" type="submit" class="btn btn-primary"/> -->
-<!--         	</div> -->
-            
-<%--         </form></fieldset> --%>
-<!--        </td> -->
-
-<!--   </tr> -->
-<!-- </table> -->
-
-
-                <li class="inactive"><a href="${pageContext.request.contextPath}/register">Not yet a Member? Register!</a></li>
+<li class="inactive"><a href="${pageContext.request.contextPath}/register">Not yet a Member? Register!</a></li>
                
               </ul>
             </div>

@@ -12,10 +12,11 @@ RESULT!!
 <!--  <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${ad.title}" /></label> -->
 <%-- <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${price}" /></label>  --%>
 
-<body>
 <c:forEach items="${ads}" var="ad">
 price: ${ad.price}
 <c:out value="ad"/>
 </c:forEach>
-</body>
+
+
+
 <c:import url="template/footer.jsp" />

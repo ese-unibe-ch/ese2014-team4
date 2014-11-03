@@ -14,23 +14,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-<!-- <style> -->
-
-<!-- </style> -->
-
-<!-- </head> -->
-
-<!-- <body> -->
-<!-- 	<div class="navbar"> -->
-<!-- 		<div class="navbar-inner"> -->
-<!-- 			<div class="container"> -->
-<!-- 				<img src="img/logo3.png" alt="logo" style="width: 180px; height: 60px"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-<!-- <div class="container"> -->
-
  <body>
 
 	<div class="site-wrapper">
