@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.model.dao;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import ch.unibe.ese2014.team4.model.Ad;
@@ -9,4 +11,5 @@ public interface AdDao extends CrudRepository<Ad,Long> {
 
 	public User findByOwner(String owner);
 	public Ad findById(Long id);
+	public List<Ad> findAllByPrice(int price);
 }

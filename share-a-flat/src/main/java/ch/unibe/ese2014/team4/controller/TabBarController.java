@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.User;
@@ -36,6 +37,7 @@ public class TabBarController {
 	@RequestMapping(value = "/search-list", method = RequestMethod.GET)
 	public ModelAndView searchList() {
 		ModelAndView model = new ModelAndView("search-list");
+		model.addObject("searchForm", new SearchForm());
 		return model;
 	}
 

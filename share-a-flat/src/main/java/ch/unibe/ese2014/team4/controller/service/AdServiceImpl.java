@@ -1,7 +1,9 @@
 package ch.unibe.ese2014.team4.controller.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +62,13 @@ public class AdServiceImpl implements AdService {
 	public Collection<Ad> getNewestAds(int days) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Ad> getAd(int price) {
+
+		List<Ad> ads = adDao.findAllByPrice(price);
+		assert (ads.size()!=0);
+		return ads;
 	}
 
 }
