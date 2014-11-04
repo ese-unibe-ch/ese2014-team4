@@ -79,5 +79,10 @@ public class MyPageController {
 		return model;
 		
 	}	
+	@RequestMapping(value = "/deleteProfile", method = RequestMethod.POST)
+	public ModelAndView deleteProfile(Principal principal) throws ProfileException {
+		return null;
+	}
+
 	
 }

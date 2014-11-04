@@ -13,6 +13,10 @@ import java.nio.file.Paths;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -33,6 +37,10 @@ public class NewAccountServiceImpl implements NewAccountService {
 	
 	@Autowired
 	ProfileDao profileDao;
+	
+    
+    @Autowired
+    ApplicationContext appContext;
 
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
@@ -56,7 +64,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 		Profile profile = new Profile();
 		profile.setOwner(user);
 		
-		//profile.setProfileImage(getDefaultProfileImage());
+		profile.setProfileImage(getDefaultProfileImage());
 		profileDao.save(profile);
 		
 		user.setProfile(profile);
@@ -67,9 +75,17 @@ public class NewAccountServiceImpl implements NewAccountService {
 		return signupForm;
 		
 	}
-	//doesnt work
+
 	private byte[] getDefaultProfileImage(){
-		File file = new File("/share-a-flat/img/defaultProfileImage.png");
+
+		File file=null;
+		try {
+			file = appContext.getResource("classpath:defaultProfileImage.png").getFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+
 		byte[] byteImg=null;
 		InputStream input=null;
 		try {
