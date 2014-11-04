@@ -57,9 +57,11 @@ public class LoginController
             	User user = newAccountService.getUser(signupForm.getId());
 				model.addObject("user", user);
             } catch (InvalidUserException e) {
-            	System.out.println(e);
-            	model = new ModelAndView("index");
+
+            	model = new ModelAndView("register");
+            	model.addObject("signupForm", new SignupForm());
             	model.addObject("page_error", e.getMessage());
+            	return model;
             }
         } else {
         	model = new ModelAndView("index");

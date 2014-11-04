@@ -29,7 +29,12 @@ div.transbox {
 		          	<div class="transbox">
 		          		<p>
 		           			<h1 class="cover-heading">Register!</h1>
-		           			
+		           			<c:if test="${page_error != null }"> 
+		           			        <div class="text-danger">
+            
+            <h4>Error!</h4>
+                ${page_error}
+                </c:if>
 		            		<form:form method="post" modelAttribute="signupForm" action="createAccount" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
 		
 			       				<c:set var="emailErrors"><form:errors path="email"/></c:set>
@@ -73,6 +78,10 @@ div.transbox {
 						        </div>
 						        
 							</form:form>
+								
+
+        </div>
+    
 						</p>
 					</div>
 				</div>
@@ -88,13 +97,7 @@ div.transbox {
 	</div>
     
 
-	<c:if test="${page_error != null }">
-        <div class="alert alert-error">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Error!</h4>
-                ${page_error}
-        </div>
-    </c:if>
+
     
 <c:import url="template/footer.jsp" />
 

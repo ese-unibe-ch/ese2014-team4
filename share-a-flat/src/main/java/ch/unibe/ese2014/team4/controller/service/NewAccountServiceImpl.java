@@ -49,6 +49,10 @@ public class NewAccountServiceImpl implements NewAccountService {
 			throw new InvalidUserException("username already exists.");	
 		};
 		
+		if (doesEmailAddresslreadyExists(signupForm.getEmail())) {
+			throw new InvalidUserException("email address already exists.");	
+		};
+		
 		if(!signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
 			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
 		}
@@ -74,6 +78,11 @@ public class NewAccountServiceImpl implements NewAccountService {
 
 		return signupForm;
 		
+	}
+
+	private boolean doesEmailAddresslreadyExists(String email) {
+		// TODO Auto-generated method stub
+		return !(userDao.findByEmail(email) == null);
 	}
 
 	private byte[] getDefaultProfileImage(){
