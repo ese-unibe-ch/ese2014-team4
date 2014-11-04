@@ -20,11 +20,14 @@
 <!--  <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${ad.title}" /></label> -->
 <%-- <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${price}" /></label>  --%>
 
-<c:forEach items="${ads}" var="ad">
+<c:forEach items="${adsPrice}" var="ad">
 price: ${ad.price} <br>
 
 </c:forEach>
 
+<c:forEach items="${adsTitle}" var="ad">
+price: ${ad.title} <br>
 
+</c:forEach>
 
 <c:import url="template/footer.jsp" />

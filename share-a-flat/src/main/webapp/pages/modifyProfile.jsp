@@ -35,14 +35,14 @@
 	 	  <div class="form-group">
             <label class="col-lg-3 control-label">Username:</label>
             <div class="col-lg-8">
-              <input class="form-control" value="${profile.owner.username}" type="text">
+              <input class="form-control" value="${profile.owner.username}" type="text" tabindex="1">
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" value="${profile.owner.email}" type="text">
+              <input class="form-control" value="${profile.owner.email}" type="text" tabindex="2">
             </div>
           </div>
 
@@ -51,7 +51,7 @@
             <label class="col-lg-3 control-label" for="field-age">Age:</label>
 
             <div class="col-lg-8">
-                <form:input class="form-control" path="age" id="field-age" tabindex="1" maxlength="45" value="${profile.age}"/>
+                <form:input class="form-control" path="age" id="field-age" tabindex="3" maxlength="45" value="${profile.age}"/>
                 <form:errors path="age" cssClass="help-inline" element="span" />
             </div>
         </div>      
@@ -71,18 +71,18 @@
         <div class="form-group<c:if test="${not empty sexErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-sex">Sex:</label>
             <div class="radio">
-                <label><input type="radio" name="sex" id="male" value="M" ${checkedM}>Male</label>
-                <label><input type="radio" name="sex" id="Female" value="F" ${checkedF}>Female</label><br><br>
+                <label><input type="radio" name="sex" id="male" tabindex="4" value="M" ${checkedM}>Male</label>
+                <label><input type="radio" name="sex" id="female" tabindex="5" value="F" ${checkedF}>Female</label><br><br>
             </div>
         </div>
-        im
+        
         <div class="form-group">
         	<label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-            <button type="submit" class="btn btn-primary">Save Profile</button>
-            <a href="${pageContext.request.contextPath}/my-page" type="button" class="btn">Cancel</a>
-              </div>
-          </div>
+            <button type="submit" tabindex="6" class="btn btn-primary">Save Profile</button>
+            <button type="button" onclick="history.go(-1);return true" tabindex="7" class=" btn">Cancel</button>
+            </div>
+        </div>
 
     </fieldset>
 </form:form>

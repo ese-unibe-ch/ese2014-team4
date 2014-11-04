@@ -24,18 +24,16 @@ public class Ad {
     @JoinColumn(name="user_id")
     private User owner;
     
-
-
 	@OneToOne(cascade = CascadeType.REMOVE)
-    private Address address;
-    
-    private int nrOfRoomMates;
-
+    private Address address;  
+	
+	private String title;
+	private int size;
     private int price;
-    private String description;
-    private String title;
-    
-    
+//    private Date fromDate;
+//    private Date toDate;	
+	private String description;
+    private int nrOfRoomMates;
     private Date adAddedDate;
     
 	public Date getAdAddedDate() {
@@ -104,5 +102,27 @@ public class Ad {
 		return title;
 	}
 
+	 public int getSize() {
+			return size;
+	}
 
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+//	public Date getFromDate() {
+//		return fromDate;
+//	}
+//
+//	public void setFromDate(Date fromDate) {
+//		this.fromDate = fromDate;
+//	}
+//
+//	public Date getToDate() {
+//		return toDate;
+//	}
+//
+//	public void setToDate(Date toDate) {
+//		this.toDate = toDate;
+//	}
 }

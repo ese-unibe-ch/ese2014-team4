@@ -13,7 +13,10 @@ public interface AdService {
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException;
 	public Ad getAd(Long id);
 	public Collection<Ad> getNewestAds(int days);
-	public List<Ad> getAd(int price);
+	public List<Ad> getAdByPrice(int price);
+	public List<Ad> getAdByTitle(String title);
+//	public List<Ad> getAdByStreet(String street);
+
 
 
 }

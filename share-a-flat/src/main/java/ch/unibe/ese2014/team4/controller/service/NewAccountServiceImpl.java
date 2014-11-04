@@ -39,34 +39,61 @@ public class NewAccountServiceImpl implements NewAccountService {
 
 		if (doesUserAlreadyExists(signupForm.getUsername()) ) {
 			throw new InvalidUserException("username already exists.");	
-		};
-		
-		if(!signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
-			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
 		}
 		
-		User user = new User();
+//		for (User existingUser : userDao.findAll()) {
+//			if (existingUser.getUsername().equals(signupForm.getUsername())) {
+//				throw new InvalidUserException("Username already exists. Please enter another one.");
+//			}
+//		}
+				
+		String email = signupForm.getEmail();
+		if (StringUtils.isEmpty(email)) {
+			throw new InvalidUserException("Please enter a valid Email");
+		}
 		
-		user.setUsername(signupForm.getUsername());
-		user.setEmail(signupForm.getEmail());
-		user.setPassword(DigestUtils.shaHex(signupForm.getPassword()));
-		user = userDao.save(user); // save object to DB
+		for (User existingUser : userDao.findAll()) {
+			if (existingUser.getEmail().equals(email)) {
+				throw new InvalidUserException("Email already exists. Please enter another one.");
+			}
+		}
 		
+		if (StringUtils.isEmpty(signupForm.getPassword())) {
+			throw new InvalidUserException("Please enter a Password.");
+		}
 		
-		Profile profile = new Profile();
-		profile.setOwner(user);
+		if (StringUtils.isEmpty(signupForm.getPasswordRepeated())) {
+			throw new InvalidUserException("Please enter the the same Password as before.");
+		}
 		
-		//profile.setProfileImage(getDefaultProfileImage());
-		profileDao.save(profile);
-		
-		user.setProfile(profile);
-		
-		user = userDao.save(user); // update user to contain its profile
-		signupForm.setId(user.getId());
+		if (signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
+			
+			User user = new User();
+			
+			user.setUsername(signupForm.getUsername());
+			user.setEmail(signupForm.getEmail());
+			user.setPassword(DigestUtils.shaHex(signupForm.getPassword()));
+			user = userDao.save(user); // save object to DB
+			
+			
+			Profile profile = new Profile();
+			profile.setOwner(user);
+			
+			//profile.setProfileImage(getDefaultProfileImage());
+			profileDao.save(profile);
+			
+			user.setProfile(profile);
+			
+			user = userDao.save(user); // update user to contain its profile
+			signupForm.setId(user.getId());
+		} else {
+			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
+		}
 
 		return signupForm;
 		
 	}
+	
 	//doesnt work
 	private byte[] getDefaultProfileImage(){
 		File file = new File("/share-a-flat/img/defaultProfileImage.png");

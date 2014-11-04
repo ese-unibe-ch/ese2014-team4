@@ -21,7 +21,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.ImageService;
+//import ch.unibe.ese2014.team4.controller.service.ImageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.ProfileService;
@@ -38,8 +38,8 @@ public class MyPageController {
 	UserService myPageService;
 	@Autowired
 	ProfileService profileService;
-	@Autowired
-	ImageService uploadService;
+//	@Autowired
+//	ImageService uploadService;
 
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
@@ -65,19 +65,20 @@ public class MyPageController {
 		model.addObject("profile", profileService.getMyProfile(principal));
 		return model;
 	}
-	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-	public ModelAndView saveProfile(@RequestParam("uploadedProfileImage") MultipartFile profileImageFile, ProfileForm profileForm, BindingResult result, Principal principal) throws ProfileException {
-		ModelAndView model;
-		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal), uploadService.getByteArrayFromMultipart(profileImageFile));
-				model = new ModelAndView("my-page");
-				model.addObject("profile", profileService.getMyProfile(principal));
-				return model;
-
-		}
-		else {model = new ModelAndView("my-page");}
-		return model;
-		
-	}	
+	
+//	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+//	public ModelAndView saveProfile(@RequestParam("uploadedProfileImage") MultipartFile profileImageFile, ProfileForm profileForm, BindingResult result, Principal principal) throws ProfileException {
+//		ModelAndView model;
+//		if (!result.hasErrors()){
+//				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal), uploadService.getByteArrayFromMultipart(profileImageFile));
+//				model = new ModelAndView("my-page");
+//				model.addObject("profile", profileService.getMyProfile(principal));
+//				return model;
+//
+//		}
+//		else {model = new ModelAndView("my-page");}
+//		return model;
+//		
+//	}	
 	
 }

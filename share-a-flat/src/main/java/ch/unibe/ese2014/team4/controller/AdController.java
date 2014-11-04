@@ -44,6 +44,7 @@ public class AdController {
     	model.addObject("adForm", new AdForm());
         return model;
     }
+	
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
     public ModelAndView submitAd(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
     	ModelAndView model = new ModelAndView("home");   

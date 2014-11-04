@@ -45,7 +45,7 @@
         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
             <label class="control-label" for="field-streetNumber">StreetNumber</label>
             <div class="controls">
-                <form:input path="streetNumber" id="field-streetNumber" tabindex="2" maxlength="35" placeholder="StreetNumber"/>
+                <form:input path="streetNumber" id="field-streetNumber" tabindex="3" maxlength="35" placeholder="StreetNumber"/>
                 <form:errors path="streetNumber" cssClass="help-inline" element="span"/>
             </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
             <label class="control-label" for="field-city">City</label>
             <div class="controls">
-                <form:input path="city" id="field-city" tabindex="2" maxlength="35" placeholder="City"/>
+                <form:input path="city" id="field-city" tabindex="4" maxlength="35" placeholder="City"/>
                 <form:errors path="city" cssClass="help-inline" element="span"/>
             </div>
         </div>      
@@ -63,16 +63,26 @@
         <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
             <label class="control-label" for="field-zipCode">Zip-Code</label>
             <div class="controls">
-                <form:input path="zipCode" id="field-zipCode" tabindex="3" maxlength="35" placeholder="Zip-Code"/>
+                <form:input path="zipCode" id="field-zipCode" tabindex="5" maxlength="35" placeholder="Zip-Code"/>
                 <form:errors path="zipCode" cssClass="help-inline" element="span"/>
             </div>
         </div>   
+       
+        <c:set var="sizeErrors"><form:errors path="size"/></c:set>
+        <div class="control-group<c:if test="${not empty sizeErrors}"> error</c:if>">
+            <label class="control-label" for="field-size">Size</label>
+
+            <div class="controls">
+                <form:input path="size" id="field-size" tabindex="6" maxlength="45" placeholder="Size"/>
+                <form:errors path="size" cssClass="help-inline" element="span"/>
+            </div>
+        </div>
         
         <c:set var="priceErrors"><form:errors path="price"/></c:set>
         <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
             <label class="control-label" for="field-price">Price</label>
             <div class="controls">
-                <form:input path="price" id="field-price" tabindex="3" maxlength="35" placeholder="Price"/>
+                <form:input path="price" id="field-price" tabindex="7" maxlength="35" placeholder="Price"/>
                 <form:errors path="price" cssClass="help-inline" element="span"/>
             </div>
         </div>
@@ -81,15 +91,15 @@
         <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
             <label class="control-label" for="field-nrOfRoomMates">Number of RoomMates</label>
             <div class="controls">
-                <form:input path="nrOfRoomMates" id="field-nrOfRoomMates" tabindex="3" maxlength="35" placeholder="Number of Roommates"/>
+                <form:input path="nrOfRoomMates" id="field-nrOfRoomMates" tabindex="8" maxlength="35" placeholder="Number of Roommates"/>
                 <form:errors path="nrOfRoomMates" cssClass="help-inline" element="span"/><br><br>
             </div>
         </div>     
 
         
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Create Ad</button>
-            <button type="button" onclick="${pageContext.request.contextPath}/my-page" class=" btn">Cancel</button>
+            <button type="submit" class="btn btn-primary" tabindex="10">Create Ad</button>
+            <button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="11">Cancel</button>
         </div>
 
 
@@ -120,7 +130,7 @@
 	        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 	            <label class="control-label" for="field-description">Description</label>
 	            <div class="controls">
-	                <form:textarea path="description" id="field-description" style="width:483px; height:121px"tabindex="3" placeholder="Description"/>
+	                <form:textarea path="description" id="field-description" style="width:483px; height:121px"tabindex="9" placeholder="Description"/>
 	                <form:errors path="description" cssClass="help-inline" element="span"/>
 	            </div>
 	        </div>

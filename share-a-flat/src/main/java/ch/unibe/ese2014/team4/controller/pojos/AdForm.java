@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
+import java.util.Date;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -15,19 +17,49 @@ import ch.unibe.ese2014.team4.model.Address;
 
 public class AdForm {
 
+	private Long id;
+	
+	private String title;
+	private int size;
     @NotNull
     private int price;
     @NotNull
-    private String description;
-    private String title;
+    private String description;   
     private int nrOfRoomMates;  
-    private Long id;
+    
+//    private Date fromDate;
+//    private Date toDate;
     
   //Address-Info, same field as Ad itself.
-  	private int streetNumber;
+    private String street;
+    private int streetNumber;
     private String city;
     private int zipCode;
-    private String street;
+
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+//	public Date getFromDate() {
+//		return fromDate;
+//	}
+//
+//	public void setFromDate(Date fromDate) {
+//		this.fromDate = fromDate;
+//	}
+//
+//	public Date getToDate() {
+//		return toDate;
+//	}
+//
+//	public void setToDate(Date toDate) {
+//		this.toDate = toDate;
+//	}
 
 	public int getNrOfRoomMates() {
 		return nrOfRoomMates;

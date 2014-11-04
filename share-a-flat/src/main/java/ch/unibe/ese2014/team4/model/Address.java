@@ -11,11 +11,12 @@ public class Address {
 	    @GeneratedValue
 	    private Long id;
 
+	  	private String street;
 		private int streetNumber;
 	    private String city;
 	    private int zipCode;
 	    
-	    private String street;
+	    
 	    public int getStreetNumber() {
 			return streetNumber;
 		}
