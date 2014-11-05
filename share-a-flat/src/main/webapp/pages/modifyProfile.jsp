@@ -15,7 +15,7 @@
     <fieldset>
       <div class="col-md-3">
         <div class="text-center">
-          <img src=${profile.profileImage} class="avatar img-circle" alt="avatar">
+          <img src="${pageContext.request.contextPath}/imageController/profile/${profile.id}" class="img-responsive" alt="profileImage" >
           <h6>Upload a different photo...</h6>
           
           <form:input path="uploadedProfileImage" class="form-control" type="file"/>

@@ -20,7 +20,7 @@
 
 
 <form:form method="post" modelAttribute="searchForm" action="search" id="searchForm" cssClass="form-horizontal"  autocomplete="off">
-
+<fieldset>
     <div class="col-md-3">    
           
         <c:set var="cityErrors"><form:errors path="city"/></c:set>
@@ -109,6 +109,7 @@
             <button type="button" onclick="${pageContext.request.contextPath}/my-page" tabindex="9" class=" btn">Cancel</button>
         </div>
 	</div>
+	</fieldset>
 </form:form>
 
 <c:forEach items="${searchResults}" var="ad"></c:forEach>
