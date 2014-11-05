@@ -108,10 +108,9 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	@SuppressWarnings("null")
 	public List<Ad> getAdByCity(String city) {
 		List<Address> addresses = addressDao.findAllByCity(city);
-		List<Ad> ads = null;
+		ArrayList<Ad> ads = new ArrayList<Ad>();
 		for (Address address: addresses){
 			ads.add(adDao.findByAddressId(address.getId()));
 		}

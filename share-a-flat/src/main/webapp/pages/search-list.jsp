@@ -34,7 +34,7 @@
         
         <c:set var="priceErrors"><form:errors path="price"/></c:set>
         <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-            <label class="control-label" for="field-price">Price</label>
+            <label class="control-label" for="field-price">Price (will check +- 100.- Fr)</label>
             <div class="controls">
                 <form:input class="form-control" path="price" id="field-price" tabindex="2" maxlength="35" placeholder="Price"/>
                 <form:errors path="price" cssClass="help-inline" element="span"/>

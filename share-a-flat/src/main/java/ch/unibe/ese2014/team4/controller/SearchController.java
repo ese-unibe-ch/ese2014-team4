@@ -35,18 +35,18 @@ public class SearchController {
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
 		ModelAndView model = new ModelAndView("search-result");
-		List<Ad> adsByPrice = adService.getAdByPrice(searchForm.getPrice());
-	//	java.util.List<Ad> adsByCity = adService.getAdByCity(searchForm.getCity().trim().toLowerCase());
-		adsToAdd = getRelevantAds(searchForm.getCity(), adsByPrice);
+//		List<Ad> adsByPrice = adService.getAdByPrice(searchForm.getPrice());
+		java.util.List<Ad> adsByCity = adService.getAdByCity(searchForm.getCity().trim().toLowerCase());
+		adsToAdd = getRelevantAds(searchForm.getPrice(), adsByCity);
 
 		model.addObject("adsToAdd", adsToAdd);
 		return model;
 	}
 
-	private ArrayList<Ad> getRelevantAds(String city, List<Ad> adsByPrice) {
+	private ArrayList<Ad> getRelevantAds(int price, List<Ad> adsByCity) {
 		ArrayList<Ad> tempAds = new ArrayList<Ad>();
-		for (Ad ad: adsByPrice){
-			if ((ad.getAddress().getCity().trim()).equalsIgnoreCase(city.trim()))
+		for (Ad ad: adsByCity){
+			if ((-100<=(ad.getPrice()-price)&&(ad.getPrice()-price) <=100))
 				tempAds.add(ad);
 		}
 		assert tempAds!=null;
