@@ -4,10 +4,12 @@ package ch.unibe.ese2014.team4.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,6 +33,7 @@ public class LoginController
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
+    	System.out.println();
         return model;
     }
 
@@ -54,9 +57,11 @@ public class LoginController
             	User user = newAccountService.getUser(signupForm.getId());
 				model.addObject("user", user);
             } catch (InvalidUserException e) {
-            	System.out.println(e);
-            	model = new ModelAndView("index");
+
+            	model = new ModelAndView("register");
+            	model.addObject("signupForm", new SignupForm());
             	model.addObject("page_error", e.getMessage());
+            	return model;
             }
         } else {
         	model = new ModelAndView("index");

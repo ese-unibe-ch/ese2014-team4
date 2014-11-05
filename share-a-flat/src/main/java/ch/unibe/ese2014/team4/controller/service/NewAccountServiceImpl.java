@@ -13,6 +13,10 @@ import java.nio.file.Paths;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -33,6 +37,10 @@ public class NewAccountServiceImpl implements NewAccountService {
 	
 	@Autowired
 	ProfileDao profileDao;
+	
+    
+    @Autowired
+    ApplicationContext appContext;
 
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
@@ -41,12 +49,14 @@ public class NewAccountServiceImpl implements NewAccountService {
 			throw new InvalidUserException("username already exists.");	
 		}
 		
-//		for (User existingUser : userDao.findAll()) {
-//			if (existingUser.getUsername().equals(signupForm.getUsername())) {
-//				throw new InvalidUserException("Username already exists. Please enter another one.");
-//			}
-//		}
-				
+		if (doesEmailAddresslreadyExists(signupForm.getEmail())) {
+			throw new InvalidUserException("email address already exists.");	
+		}
+		
+		if(!signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
+			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
+		}
+						
 		String email = signupForm.getEmail();
 		if (StringUtils.isEmpty(email)) {
 			throw new InvalidUserException("Please enter a valid Email");
@@ -79,7 +89,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 			Profile profile = new Profile();
 			profile.setOwner(user);
 			
-			//profile.setProfileImage(getDefaultProfileImage());
+			profile.setProfileImage(getDefaultProfileImage());
 			profileDao.save(profile);
 			
 			user.setProfile(profile);
@@ -93,10 +103,22 @@ public class NewAccountServiceImpl implements NewAccountService {
 		return signupForm;
 		
 	}
-	
-	//doesnt work
+
+	private boolean doesEmailAddresslreadyExists(String email) {
+		// TODO Auto-generated method stub
+		return !(userDao.findByEmail(email) == null);
+	}
+
 	private byte[] getDefaultProfileImage(){
-		File file = new File("/share-a-flat/img/defaultProfileImage.png");
+
+		File file=null;
+		try {
+			file = appContext.getResource("classpath:defaultProfileImage.png").getFile();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+
 		byte[] byteImg=null;
 		InputStream input=null;
 		try {
@@ -113,6 +135,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 		}
 		return byteImg;
 	}
+	
 	private boolean doesUserAlreadyExists(String username) {
 		return!(userDao.findByUsername(username) == null);
 	}
