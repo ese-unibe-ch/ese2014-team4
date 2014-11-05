@@ -1,5 +1,11 @@
 package ch.unibe.ese2014.team4.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +33,24 @@ public class SearchController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView search(@Valid SearchForm searchForm,
 			BindingResult result, RedirectAttributes redirectAttributes) {
+		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
 		ModelAndView model = new ModelAndView("search-result");
-//		java.util.List<Ad> ads = adService.getAd(searchForm.getPrice());
-		model.addObject("adsPrice", adService.getAdByPrice(searchForm.getPrice()));
-		model.addObject("adsTitle", adService.getAdByTitle(searchForm.getTitle()));
+		List<Ad> adsByPrice = adService.getAdByPrice(searchForm.getPrice());
+	//	java.util.List<Ad> adsByCity = adService.getAdByCity(searchForm.getCity().trim().toLowerCase());
+		adsToAdd = getRelevantAds(searchForm.getCity(), adsByPrice);
+
+		model.addObject("adsToAdd", adsToAdd);
 		return model;
+	}
+
+	private ArrayList<Ad> getRelevantAds(String city, List<Ad> adsByPrice) {
+		ArrayList<Ad> tempAds = new ArrayList<Ad>();
+		for (Ad ad: adsByPrice){
+			if ((ad.getAddress().getCity().trim()).equalsIgnoreCase(city.trim()))
+				tempAds.add(ad);
+		}
+		assert tempAds!=null;
+		return tempAds;
 	}
 
 }

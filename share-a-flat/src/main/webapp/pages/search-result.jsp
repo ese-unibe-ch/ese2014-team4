@@ -7,27 +7,20 @@
 <c:import url="template/header.jsp" />
 
 
-<h1>Search List</h1>
+	<h1>Search List</h1>
         
 
-        <!-- Auswahlreiter -->
-        
-        <ul>
-            <li class="map"><a href="search-map" class="inactive">
-                <span><!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf Karte</span></a></li>
-        </ul>
+	<!-- Auswahlreiter -->
+	<ul>
+	    <li class="map"><a href="search-map" class="inactive">
+	        <span><!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf Karte</span></a></li>
+	</ul>
 
-<!--  <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${ad.title}" /></label> -->
-<%-- <label class="control-labe" for="field-adId"><b>Ad Id: </b><c:out value="${price}" /></label>  --%>
-
-<c:forEach items="${adsPrice}" var="ad">
-price: ${ad.price} <br>
-
-</c:forEach>
-
-<c:forEach items="${adsTitle}" var="ad">
-price: ${ad.title} <br>
-
-</c:forEach>
+	<c:forEach items="${adsToAdd}" var="ad">
+		title: ${ad.title} <br>
+		price: ${ad.price} <br>
+	</c:forEach>
+	
+	
 
 <c:import url="template/footer.jsp" />

@@ -109,7 +109,7 @@ public class AdForm {
 	}
 
 	public void setCity(String city) {
-		this.city = city;
+		this.city = city.toLowerCase();
 	}
 
 	public int getZipCode() {

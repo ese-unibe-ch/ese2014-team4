@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Address {
+	
 	  	@Id
 	    @GeneratedValue
 	    private Long id;

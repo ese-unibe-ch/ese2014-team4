@@ -15,7 +15,7 @@ public interface AdService {
 	public Collection<Ad> getNewestAds(int days);
 	public List<Ad> getAdByPrice(int price);
 	public List<Ad> getAdByTitle(String title);
-//	public List<Ad> getAdByStreet(String street);
+	public List<Ad> getAdByCity(String city);
 
 
 
