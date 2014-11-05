@@ -40,7 +40,7 @@ public class MyPageController {
 	@Autowired
 	ProfileService profileService;
 	@Autowired
-	ImageService uploadService;
+	ImageService imageService;
 
 	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
@@ -65,12 +65,12 @@ public class MyPageController {
 		model.addObject("profile", profileService.getMyProfile(principal));
 		return model;
 	}
-
+//TODO: http://viralpatel.net/blogs/spring-mvc-multiple-file-upload-example/
 	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 	public ModelAndView saveProfile(@RequestParam("uploadedProfileImage") MultipartFile profileImageFile, ProfileForm profileForm, BindingResult result, Principal principal) throws ProfileException {
 		ModelAndView model;
 		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal), uploadService.getByteArrayFromMultipart(profileImageFile));
+				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal), imageService.getByteArrayFromMultipart(profileImageFile)); //overload function to provide a method for MultiparfIle[]
 				model = new ModelAndView("my-page");
 				model.addObject("profile", profileService.getMyProfile(principal));
 				return model;

@@ -18,7 +18,6 @@
   </div><!--/container-->
 </div><!--/masthead-->
 
-
 <form:form method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
 
     <div class="col-md-3">    
@@ -33,6 +32,15 @@
             </div>
         </div>
         
+        <c:set var="adTypeErrors"><form:errors path="adType"/></c:set>
+        <div class="form-group<c:if test="${not empty adTypeErrors}"> error</c:if>">
+            <label class="col-lg-3 control-label" for="field-adType">Type:</label>
+            <div class="radio">
+                <label><input type="radio" name="adType" id="room" tabindex="4" value="ROOM" checked >Room</label>
+                <label><input type="radio" name="adType" id="flat" tabindex="5" value="FLAT" >Flat</label><br><br>
+            </div>
+        </div>
+
         <c:set var="streetErrors"><form:errors path="street"/></c:set>
         <div class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
             <label class="control-label" for="field-street">Street</label>
@@ -68,13 +76,27 @@
             </div>
         </div>   
        
+
+
+		
+		
         <c:set var="sizeErrors"><form:errors path="size"/></c:set>
         <div class="control-group<c:if test="${not empty sizeErrors}"> error</c:if>">
-            <label class="control-label" for="field-size">Size</label>
+            <label class="control-label" for="field-size">Size of Room or Flat</label>
 
             <div class="controls">
                 <form:input path="size" id="field-size" tabindex="6" maxlength="45" placeholder="Size"/>
                 <form:errors path="size" cssClass="help-inline" element="span"/>
+            </div>
+        </div>
+        
+        <c:set var="nrOfRoomsErrors"><form:errors path="nrOfRooms"/></c:set>
+        <div class="control-group<c:if test="${not empty nrOfRoomsErrors}"> error</c:if>">
+            <label class="control-label" for="field-nrOfRooms">Number of Rooms (whole flat)</label>
+
+            <div class="controls">
+                <form:input path="nrOfRooms" id="field-nrOfRooms" tabindex="6" maxlength="45" placeholder="nrOfRooms"/>
+                <form:errors path="nrOfRooms" cssClass="help-inline" element="span"/>
             </div>
         </div>
         

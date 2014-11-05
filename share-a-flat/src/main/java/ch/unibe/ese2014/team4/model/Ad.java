@@ -2,14 +2,19 @@ package ch.unibe.ese2014.team4.model;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
 
 
@@ -27,6 +32,14 @@ public class Ad {
 	@OneToOne(cascade = CascadeType.REMOVE)
     private Address address;  
 	
+
+
+	private AdType type;
+	
+//	@OneToMany(targetEntity=User.class)
+//	private List<User> roomMates;
+	private int nrOfRooms;
+	
 	private String title;
 	private int size;
     private int price;
@@ -35,7 +48,30 @@ public class Ad {
 	private String description;
     private int nrOfRoomMates;
     private Date adAddedDate;
-    
+	
+    public AdType getType() {
+		return type;
+	}
+
+	public void setType(AdType type) {
+		this.type = type;
+	}
+
+//	public List<User> getRoomMates() {
+//		return roomMates;
+//	}
+//
+//	public void setRoomMates(List<User> roomMates) {
+//		this.roomMates = roomMates;
+//	}
+
+	public int getNrOfRooms() {
+		return nrOfRooms;
+	}
+
+	public void setNrOfRooms(int nrOfRooms) {
+		this.nrOfRooms = nrOfRooms;
+	} 
 	public Date getAdAddedDate() {
 		return adAddedDate;
 	}

@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,11 +9,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import ch.unibe.ese2014.team4.model.Address;
+import ch.unibe.ese2014.team4.model.User;
 
 /**
  * Used to transfer ad-information from form to controller.
  * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
- * TODO: controller for /submitAd and corresponding service to save ad.
  */
 
 public class AdForm {
@@ -29,6 +30,11 @@ public class AdForm {
     
 //    private Date fromDate;
 //    private Date toDate;
+    
+	private AdType adType;
+//	private List<User> roomMates;
+	private int nrOfRooms;
+    
     
   //Address-Info, same field as Ad itself.
     private String street;
@@ -135,6 +141,30 @@ public class AdForm {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public AdType getAdType() {
+		return adType;
+	}
+
+	public void setAdType(AdType type) {
+		this.adType = type;
+	}
+
+//	public List<User> getRoomMates() {
+//		return roomMates;
+//	}
+//
+//	public void setRoomMates(List<User> roomMates) {
+//		this.roomMates = roomMates;
+//	}
+
+	public int getNrOfRooms() {
+		return nrOfRooms;
+	}
+
+	public void setNrOfRooms(int nrOfRooms) {
+		this.nrOfRooms = nrOfRooms;
 	}
     
     
