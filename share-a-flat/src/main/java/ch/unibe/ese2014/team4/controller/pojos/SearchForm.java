@@ -16,8 +16,11 @@ import ch.unibe.ese2014.team4.model.Address;
 public class SearchForm {
 
     @NotNull
-    private int price;
+    private int minPrice;
     @NotNull
+    private int maxPrice;
+    
+	@NotNull
     private String description;
     private String title;
     private int nrOfRoomMates;  
@@ -37,12 +40,20 @@ public class SearchForm {
 		this.nrOfRoomMates = nrOfRoomMates;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getMinPrice() {
+		return minPrice;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setMinPrice(int minPrice) {
+		this.minPrice = minPrice;
+	}
+
+	public int getMaxPrice() {
+		return maxPrice;
+	}
+
+	public void setMaxPrice(int maxPrice) {
+		this.maxPrice = maxPrice;
 	}
 
 	public String getDescription() {

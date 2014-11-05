@@ -32,13 +32,29 @@
             </div>
         </div>    
         
-        <c:set var="priceErrors"><form:errors path="price"/></c:set>
-        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-            <label class="control-label" for="field-price">Price (will check +- 100.- Fr)</label>
-            <div class="controls">
-                <form:input class="form-control" path="price" id="field-price" tabindex="2" maxlength="35" placeholder="Price"/>
-                <form:errors path="price" cssClass="help-inline" element="span"/>
+        <div>
+        	<div class="col-md-6" style="padding-left:0px; padding-right:3px">
+		        <c:set var="minPriceErrors"><form:errors path="minPrice"/></c:set>
+		        <div class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
+	            <label class="control-label" for="field-minPrice">Min-Price</label>
+	            <div class="controls">
+                <form:input class="form-control" path="minPrice" id="field-minPrice" tabindex="2" maxlength="35" placeholder="Min-Price"/>
+                <form:errors path="minPrice" cssClass="help-inline" element="span"/>
+	            </div>
+	            </div>
             </div>
+            
+            <div class="col-md-6" style="padding-left:3px; padding-right:0px">
+		        <c:set var="maxPriceErrors"><form:errors path="maxPrice"/></c:set>
+		        <div class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
+	            <label class="control-label" for="field-maxPrice">Max-Price</label>
+	            <div class="controls">
+                <form:input class="form-control" path="maxPrice" id="field-maxPrice" tabindex="2" maxlength="35" placeholder="Max-Price"/>
+                <form:errors path="maxPrice" cssClass="help-inline" element="span"/>
+	            </div>
+	            </div>
+            </div>
+            
         </div>
             
 <%--         <c:set var="titleErrors"><form:errors path="title"/></c:set> --%>
@@ -96,5 +112,7 @@
 </form:form>
 
 <c:forEach items="${searchResults}" var="ad"></c:forEach>
+
+
 
 <c:import url="template/footer.jsp" />
