@@ -176,3 +176,19 @@
 2014-10-31 11:48:16,187 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\main\resources
 2014-10-31 11:48:16,197 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2014-10-31 11:48:16,197 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-11-06 20:40:20,522 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: ese2014-team4:share-a-flat:1.0 @ C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\pom.xml.
+2014-11-06 20:40:24,542 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-11-06 20:40:24,557 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-06 20:40:24,573 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2014-11-06 20:40:24,620 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-11-06 20:40:24,620 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-11-06 20:40:24,620 [Worker-0] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of share-a-flat
+2014-11-06 20:40:24,620 [Worker-0] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for share-a-flat
+2014-11-06 20:40:24,635 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-11-06 20:40:42,357 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-11-06 20:40:42,357 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-06 20:40:42,372 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2014-11-06 20:40:42,404 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2014-11-06 20:40:42,404 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat\src\test\resources
+2014-11-06 20:40:42,591 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Zoyela\Uni\ESE\ese2014-team4\share-a-flat
+2014-11-06 20:40:42,591 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B jetty:stop jetty:run
