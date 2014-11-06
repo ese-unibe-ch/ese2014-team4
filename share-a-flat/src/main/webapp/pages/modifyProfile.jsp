@@ -11,6 +11,7 @@
   	<hr>
 	<div class="row">
       <!-- left column -->
+      <!-- enctyp="multipart/form-data": enables MultipartFile-upload -->
       	      <form:form enctype="multipart/form-data" method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
       <div class="col-md-3">
@@ -22,10 +23,12 @@
         </div>
       </div>
       
+      
+      
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         <div class="alert alert-info alert-dismissable">
-           Username, Email, Password can't be changed yet. pic upload doesn't work yet.
+           Username, Email, Password can't be changed yet.
         </div>
               
           

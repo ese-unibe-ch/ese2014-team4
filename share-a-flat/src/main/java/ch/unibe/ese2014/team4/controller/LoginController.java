@@ -1,6 +1,8 @@
 package ch.unibe.ese2014.team4.controller;
 
 //TODO: login after registering
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,13 +50,14 @@ public class LoginController
 
     
     @RequestMapping(value = "/createAccount", method = RequestMethod.POST)
-    public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
+    public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
     	ModelAndView model;    	
     	if (!result.hasErrors()) {
             try {
             	newAccountService.saveFrom(signupForm);
             	model = new ModelAndView("home");
             	User user = newAccountService.getUser(signupForm.getId());
+
 				model.addObject("user", user);
             } catch (InvalidUserException e) {
 

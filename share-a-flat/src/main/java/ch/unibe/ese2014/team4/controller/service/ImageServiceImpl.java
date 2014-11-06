@@ -3,6 +3,7 @@ package ch.unibe.ese2014.team4.controller.service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,16 @@ public class ImageServiceImpl implements ImageService {
 		}
 		return fileByte;
 	}
+	
+	public ArrayList<byte[]> getByteArrayFromMultipart(
+			ArrayList<MultipartFile> files) {
+		ArrayList<byte[]> byteList = new ArrayList<byte[]>();
+		for(MultipartFile mf : files){
+			byteList.add(getByteArrayFromMultipart(mf));
+		}
+		return null;
+	}
+	
 //adapted from http://www.digitalsanctuary.com/tech-blog/java/how-to-resize-uploaded-images-using-java-better-way.html
 //    /**
 //     * The JAI.create action name for handling a stream.
@@ -119,5 +130,7 @@ public class ImageServiceImpl implements ImageService {
 		// TODO Auto-generated method stub
 		return  profileDao.findById(profileId).getProfileImage();
 	}
+
+
 
 }

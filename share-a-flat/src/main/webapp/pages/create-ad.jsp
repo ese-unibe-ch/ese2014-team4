@@ -18,7 +18,10 @@
   </div><!--/container-->
 </div><!--/masthead-->
 
-<form:form method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form enctype="multipart/form-data" method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
+
+
+
 
     <div class="col-md-3">    
 
@@ -131,8 +134,10 @@
 <!-- middle column -->
 
 	<div class="layout-content-column">
-	
-	    <!-- gallery -->
+	<form:input path="uploadedAdPictures" class="form-control" type="file"/>
+			<form:input path="uploadedAdPictures" class="form-control" type="file"/>
+
+	    <!-- gallery 
 	    <div class="gallery" data-gallery-closetext="Schliessen">
 	
 	        <a class="gallery-opener cover" target="_blank" data-gallery-image-desc="" data-gallery-image-title="Sicht" data-gallery-image-enum="Bild 1 von 5" href="http://img.immoscout24.ch/rev33mr-15.jpg">
@@ -146,7 +151,7 @@
 	            </a>
 	  
 	        </div>
-	    </div>
+	    </div>-->
 	    
 	<c:set var="descriptionErrors"><form:errors path="description"/></c:set>
 	        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
@@ -183,4 +188,21 @@
 
 </form:form>
 
+
+<!--  script for adding another file upload possibility -->
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    //add more file components if Add is clicked
+    $('#addFile').click(function() {
+        var fileIndex = $('#fileTable tr').children().length - 1;
+        $('#fileTable').append(
+                '<tr><td>'+
+                '   <input type="file" name="files['+ fileIndex +']" />'+
+                '</td></tr>');
+    });
+     
+});
+</script>
 <c:import url="template/footer.jsp" />

@@ -1,15 +1,18 @@
 package ch.unibe.ese2014.team4.model;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -40,6 +43,9 @@ public class Ad {
 //	private List<User> roomMates;
 	private int nrOfRooms;
 	
+	@Lob
+	@Column(name="bytePictureList",  columnDefinition="mediumblob")
+	private ArrayList<byte[]> bytePictureList;
 	private String title;
 	private int size;
     private int price;
@@ -144,6 +150,14 @@ public class Ad {
 
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+	public ArrayList<byte[]> getBytePictureList() {
+		return bytePictureList;
+	}
+
+	public void setBytePictureList(ArrayList<byte[]> bytePictureList) {
+		this.bytePictureList = bytePictureList;
 	}
 
 //	public Date getFromDate() {

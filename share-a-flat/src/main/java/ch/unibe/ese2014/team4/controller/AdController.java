@@ -2,6 +2,7 @@ package ch.unibe.ese2014.team4.controller;
 
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,9 +48,10 @@ public class AdController {
     }
 	
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
-    public ModelAndView submitAd(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
-    	ModelAndView model = new ModelAndView("home");   
-    	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
+    public ModelAndView submitAd(@RequestParam("uploadedAdPictures")ArrayList<MultipartFile> fileList, @Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
+    	ModelAndView model = new ModelAndView("home"); 
+    	System.out.println(adForm.getUploadedAdPictures().get(1).getClass());
+    	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()), fileList);
     	Ad ad = newAdService.getAd(adForm.getId());
     	model.addObject("ad", ad);
         return model;

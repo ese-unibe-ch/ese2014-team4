@@ -41,7 +41,7 @@ public class SearchController {
 		model.addObject("adsToAdd", adsToAdd);
 		return model;
 	}
-
+//useful to create queries: http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
 	private ArrayList<Ad> getRelevantAds(int minPrice, int maxPrice, List<Ad> adsByCity) {
 		ArrayList<Ad> tempAds = new ArrayList<Ad>();
 		for (Ad ad: adsByCity){

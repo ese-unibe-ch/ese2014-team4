@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.User;
@@ -34,7 +37,7 @@ public class AdForm {
 	private AdType adType;
 //	private List<User> roomMates;
 	private int nrOfRooms;
-    
+    private ArrayList<MultipartFile> uploadedAdPictures;
     
   //Address-Info, same field as Ad itself.
     private String street;
@@ -166,7 +169,16 @@ public class AdForm {
 	public void setNrOfRooms(int nrOfRooms) {
 		this.nrOfRooms = nrOfRooms;
 	}
-    
+
+	public ArrayList<MultipartFile> getUploadedAdPictures() {
+		return uploadedAdPictures;
+	}
+
+	public void setUploadedAdPictures(ArrayList<MultipartFile> uploadedAdPictures) {
+		this.uploadedAdPictures = uploadedAdPictures;
+	}
+
+
     
 
     
