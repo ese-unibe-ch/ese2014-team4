@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.mapping.Map;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
@@ -43,9 +47,13 @@ public class Ad {
 //	private List<User> roomMates;
 	private int nrOfRooms;
 	
-	@Lob
-	@Column(name="bytePictureList",  columnDefinition="mediumblob")
-	private ArrayList<byte[]> bytePictureList;
+	@ElementCollection
+	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
+	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
+
+
+
+
 	private String title;
 	private int size;
     private int price;
@@ -53,7 +61,17 @@ public class Ad {
 //    private Date toDate;	
 	private String description;
     private int nrOfRoomMates;
-    private Date adAddedDate;
+    
+    
+	public void setBytePictureList(List<byte[]> bytePictureList) {
+		this.bytePictureList = bytePictureList;
+	}    
+    public List<byte[]> getBytePictureList() {
+		return bytePictureList;
+	}
+
+
+	private Date adAddedDate;
 	
     public AdType getType() {
 		return type;
@@ -152,13 +170,9 @@ public class Ad {
 		this.size = size;
 	}
 
-	public ArrayList<byte[]> getBytePictureList() {
-		return bytePictureList;
-	}
 
-	public void setBytePictureList(ArrayList<byte[]> bytePictureList) {
-		this.bytePictureList = bytePictureList;
-	}
+
+
 
 //	public Date getFromDate() {
 //		return fromDate;

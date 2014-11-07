@@ -36,39 +36,8 @@ public class AdServiceImpl implements AdService {
 	
 	
 	@Transactional
-	public AdForm saveAdForm(AdForm adForm, User owner, ArrayList<MultipartFile> fileList) throws InvalidAdException {
+	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
 
-
-		//überflüssig
-		String title = adForm.getTitle();
-		String description = adForm.getDescription();
-		int Price = adForm.getPrice();
-		int nrOfRoomMates = adForm.getNrOfRoomMates();
-		int size = adForm.getSize();
-		
-		String city = adForm.getCity();
-		String street = adForm.getStreet();
-		int streetNr = adForm.getStreetNumber();
-		int zipCode = adForm.getZipCode();
-		
-		// check if necessary data entered
-//		if (StringUtils.isEmpty(title)) {
-//			throw new InvalidAdException("Please enter a Title."); // throw exception
-//		}
-//		
-//		if (StringUtils.isEmpty(description)) {
-//			throw new InvalidAdException("Please describe the object briefly."); // throw exception
-//		}
-//				
-//		if (StringUtils.isEmpty(street)) {
-//			throw new InvalidAdException("Street must not be empty"); // throw exception
-//		}
-//		
-//		if (StringUtils.isEmpty(city)) {
-//			throw new InvalidAdException("City must not be empty"); // throw exception
-//		}
-
-		
 		Ad ad = new Ad();
 
 		ad.setPrice(adForm.getPrice());
@@ -78,22 +47,9 @@ public class AdServiceImpl implements AdService {
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
 		ad.setAdAddedDate(new Date());
-		ArrayList<byte[]> byteList = new ArrayList<byte[]>();
+
+		ad.setBytePictureList(imageService.getByteArrayFromMultipart(adForm.getUploadedAdPictures()));
 		
-		try {
-			byteList.add(fileList.get(0).getBytes());
-			byteList.add(fileList.get(1).getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-/*todo: save: @ElementCollection
-		Map<Key, Value> collection;
-		
-		conversion from MultipartFile to byte[] method
-		//ad.setBytePictureList(byteList);
-*/		
 		Address address = new Address();
 		address.setCity(adForm.getCity());
 		address.setZipCode(adForm.getZipCode());

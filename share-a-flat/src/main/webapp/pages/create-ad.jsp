@@ -39,11 +39,14 @@
         <div class="form-group<c:if test="${not empty adTypeErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-adType">Type:</label>
             <div class="radio">
-                <label><input type="radio" name="adType" id="room" tabindex="4" value="ROOM" checked >Room</label>
-                <label><input type="radio" name="adType" id="flat" tabindex="5" value="FLAT" >Flat</label><br><br>
+                <label><form:radiobutton  path="adType" id="room" tabindex="4" value="ROOM" checked="true"/>Room</label>
+                <label><form:radiobutton path="adType" id="flat" tabindex="5" value="FLAT"/>Flat</label><br><br>
             </div>
         </div>
-
+		<!-- 
+			<c:if test="${adType eq 'ROOM'}">
+			asdfasdf
+			</c:if> -->
         <c:set var="streetErrors"><form:errors path="street"/></c:set>
         <div class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
             <label class="control-label" for="field-street">Street</label>
@@ -134,8 +137,28 @@
 <!-- middle column -->
 
 	<div class="layout-content-column">
-	<form:input path="uploadedAdPictures" class="form-control" type="file"/>
-			<form:input path="uploadedAdPictures" class="form-control" type="file"/>
+		<table id="fileTable">
+			<tr><td><form:input path="uploadedAdPictures" class="form-control" type="file"/></td></tr>
+			<tr><td><form:input path="uploadedAdPictures" class="form-control" type="file"/></td></tr>
+		</table>
+		<button id="addFile" type="button" onclick="addMore">Add more pictures</button> 
+		
+		<!--  script for adding another file upload possibility -->
+		<!--  needs to be placed within <form:form></form:form> -->
+		<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script>
+		$(document).ready(function() {
+		    //add more file components if Add is clicked
+		    $('#addFile').click(function() {
+		
+		        $('#fileTable').append(
+		                '<tr><td>'+ '   <form:input path="uploadedAdPictures" class="form-control" type="file"/>'+
+		                '</td></tr>');
+		    });
+		     
+		});
+		</script>
 
 	    <!-- gallery 
 	    <div class="gallery" data-gallery-closetext="Schliessen">
@@ -161,9 +184,11 @@
 	                <form:errors path="description" cssClass="help-inline" element="span"/>
 	            </div>
 	        </div>
+	       
 	</div>
 </div>
-
+ </form:form>
+ 
 <div class="col-md-3">
 <!-- right column -->	
 <div class="panel panel-default">
@@ -172,11 +197,7 @@
               </div>
             </div>
             
-            <div class="panel panel-default">
-              <div class="panel-heading"><h3>Options</h3></div>
-              <div class="panel-body"><a href="createAd" class="inactive"><span>Create Ad</span></a>
-              </div>
-            </div>
+
 </div>
 	<c:if test="${page_error != null }">
         <div class="alert alert-error">
@@ -186,23 +207,7 @@
         </div>
     </c:if>
 
-</form:form>
 
 
-<!--  script for adding another file upload possibility -->
-<script
-src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    //add more file components if Add is clicked
-    $('#addFile').click(function() {
-        var fileIndex = $('#fileTable tr').children().length - 1;
-        $('#fileTable').append(
-                '<tr><td>'+
-                '   <input type="file" name="files['+ fileIndex +']" />'+
-                '</td></tr>');
-    });
-     
-});
-</script>
+
 <c:import url="template/footer.jsp" />

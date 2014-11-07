@@ -20,6 +20,14 @@ div.transbox {
 
 <c:import url="template/headerLogin.jsp" />
 
+<!-- focuses userfield on load -->
+<script type="text/javascript">
+window.onload = function(){
+  var text_input = document.getElementById ('userField');
+  text_input.focus ();
+  text_input.select ();
+}
+</script>
 <li class="inactive"><a href="${pageContext.request.contextPath}/register">Not yet a Member? Register!</a></li>
                
               </ul>
@@ -31,7 +39,7 @@ div.transbox {
           		<p>
             		<h1 class="cover-heading">Login!</h1>
             		
-             		<form id="form" action="<c:url value="/letMeIn!"/>" Class="form-horizontal" method="POST">
+             		<form id="loginForm" action="<c:url value="/letMeIn!"/>" Class="form-horizontal" method="POST">
          
 			            <c:if test="${not empty param.err}">
 			                <div><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></div>
@@ -45,7 +53,7 @@ div.transbox {
 	
 	          
 			            Username:<br>
-			            <input type="text" name="j_username" value="" tabindex="1"/><br><br>
+			            <input id="userField" type="text" name="j_username" value="" tabindex="1"/><br><br>
 			           
 			            Password:<br>
 			            <input type="password" name="j_password" value="" tabindex="2"/><br><br>

@@ -46,12 +46,13 @@ public class AdController {
     	model.addObject("adForm", new AdForm());
         return model;
     }
-	
+	/*
+	 * @RequestParam("uploadedAdPictures") needed, not sure why though. adForm would contain a field uploadedAdPictures.
+	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
-    public ModelAndView submitAd(@RequestParam("uploadedAdPictures")ArrayList<MultipartFile> fileList, @Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal){
+    public ModelAndView submitAd(@Valid AdForm adForm, Principal principal) throws Exception{
     	ModelAndView model = new ModelAndView("home"); 
-    	System.out.println(adForm.getUploadedAdPictures().get(1).getClass());
-    	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()), fileList);
+    	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
     	Ad ad = newAdService.getAd(adForm.getId());
     	model.addObject("ad", ad);
         return model;

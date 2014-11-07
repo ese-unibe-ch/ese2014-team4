@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,24 +21,20 @@ public class ImageServiceImpl implements ImageService {
 	@Autowired
 	ProfileDao profileDao;
 	
-	public byte[] getByteArrayFromMultipart(MultipartFile file) {
-		byte[] fileByte=null;
-		try {
+	public byte[] getByteArrayFromMultipart(MultipartFile file) throws Exception {
+		byte[] fileByte = new byte[(int) file.getSize()];
 			fileByte = file.getBytes();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		return fileByte;
 	}
 	
-	public ArrayList<byte[]> getByteArrayFromMultipart(
-			ArrayList<MultipartFile> files) {
-		ArrayList<byte[]> byteList = new ArrayList<byte[]>();
-		for(MultipartFile mf : files){
-			byteList.add(getByteArrayFromMultipart(mf));
+	public List<byte[]> getByteArrayFromMultipart(
+			List<MultipartFile> files) throws Exception {
+		List<byte[]> byteList = new ArrayList<byte[]>();
+		for (MultipartFile mf : files){
+			byteList.add(mf.getBytes());
 		}
-		return null;
+		return byteList;
 	}
 	
 //adapted from http://www.digitalsanctuary.com/tech-blog/java/how-to-resize-uploaded-images-using-java-better-way.html

@@ -13,7 +13,7 @@ import ch.unibe.ese2014.team4.model.User;
 
 public interface AdService {
 
-	public AdForm saveAdForm(AdForm adForm, User owner, ArrayList<MultipartFile> fileList) throws InvalidUserException;
+	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
 	public Ad getAd(Long id);
 	public Collection<Ad> getNewestAds(int days);
 	public List<Ad> getAdByPrice(int price);
