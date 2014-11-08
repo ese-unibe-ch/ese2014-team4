@@ -139,7 +139,6 @@
 	<div class="layout-content-column">
 		<table id="fileTable">
 			<tr><td><form:input path="uploadedAdPictures" class="form-control" type="file"/></td></tr>
-			<tr><td><form:input path="uploadedAdPictures" class="form-control" type="file"/></td></tr>
 		</table>
 		<button id="addFile" type="button" onclick="addMore">Add more pictures</button> 
 		

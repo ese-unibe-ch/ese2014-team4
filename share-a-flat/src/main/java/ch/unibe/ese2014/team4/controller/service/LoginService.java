@@ -33,17 +33,7 @@ public class LoginService implements  UserDetailsService {
 		
 		if (user==null){throw new InvalidUserException("User does not exist.");}
 
-		
-		ArrayList<GrantedAuthority> list = translateRole(user.getRole());
-		org.springframework.security.core.userdetails.User securityUser;
-		securityUser = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), list);
-		return securityUser;
-	}
-	
-	private ArrayList<GrantedAuthority> translateRole(String roleString){
-		ArrayList<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
-		list.add(new SimpleGrantedAuthority("ROLE_USER"));
-		return list;
+		return user;
 	}
 	
 }
