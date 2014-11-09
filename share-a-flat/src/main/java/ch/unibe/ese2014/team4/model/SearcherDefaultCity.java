@@ -29,33 +29,34 @@ public class SearcherDefaultCity implements ISearcher {
 	private ArrayList<Ad> getRelevantAds(List<Ad> adsByCity) {
 		ArrayList<Ad> tempAds = new ArrayList<Ad>();
 		checkPrice(adsByCity, tempAds);
-		checkZip(adsByCity, tempAds);
-		checkNrRoomMates(adsByCity, tempAds);
+		checkZip(tempAds);
+		checkNrRoomMates(tempAds);
 		return tempAds;
-	}
-
-	private void checkNrRoomMates(List<Ad> adsByCity, ArrayList<Ad> tempAds) {
-		for (Ad ad : adsByCity) {
-			if ((searchForm.getNrOfRoomMates() == ad.getNrOfRoomMates() || searchForm
-					.getNrOfRoomMates() == 0))
-				tempAds.add(ad);
-		}
-	}
-
-	private void checkZip(List<Ad> adsByCity, ArrayList<Ad> tempAds) {
-		for (Ad ad : adsByCity) {
-			if ((searchForm.getZipCode() == ad.getAddress().getZipCode())||searchForm.getZipCode()==0)
-				tempAds.add(ad);
-		}
 	}
 
 	private void checkPrice(List<Ad> adsByCity, ArrayList<Ad> tempAds) {
 		for (Ad ad : adsByCity) {
-			if ((searchForm.getMinPrice() <= ad.getPrice())
+			if ((searchForm.getMinPrice() <= ad.getPrice() && !tempAds
+					.contains(ad))
 					&& (ad.getPrice() <= searchForm.getMaxPrice())
 					&& searchForm.getMaxPrice() != 0)
 				tempAds.add(ad);
 		}
 	}
 
+	private void checkZip(ArrayList<Ad> tempAds) {
+		for (Ad ad : tempAds) {
+			if (((searchForm.getZipCode() != ad.getAddress().getZipCode()) && searchForm
+					.getZipCode() != 0))
+				tempAds.remove(ad);
+		}
+	}
+
+	private void checkNrRoomMates(ArrayList<Ad> tempAds) {
+		for (Ad ad : tempAds) {
+			if ((searchForm.getNrOfRoomMates() != ad.getNrOfRoomMates() && searchForm
+					.getNrOfRoomMates() != 0))
+				tempAds.remove(ad);
+		}
+	}
 }
