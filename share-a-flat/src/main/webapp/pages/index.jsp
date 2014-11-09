@@ -52,11 +52,11 @@ window.onload = function(){
 			            </c:if>
 	
 	          
-			            Username:<br>
-			            <input id="userField" type="text" name="j_username" value="" tabindex="1"/><br><br>
-			           
-			            Password:<br>
-			            <input type="password" name="j_password" value="" tabindex="2"/><br><br>
+			            <b>Username:</b><br>
+			            <input id="userField" type="text" name="j_username" value="" tabindex="1" placeholder="Username"/><br><br>
+			           		           
+			            <b>Password:</b><br>
+			            <input type="password" name="j_password" value="" tabindex="2" placeholder="Password"/><br><br>
 			            
 			            <div class="form-actions">
 			            	<input value="Login" name="submit" type="submit" class="btn btn-primary" tabindex="3"/>

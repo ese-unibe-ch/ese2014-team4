@@ -49,7 +49,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
 
 		if (doesUserAlreadyExists(signupForm.getUsername()) ) {
-			throw new InvalidUserException("username already exists.");	
+			throw new InvalidUserException("username already dsfexists.");	
 		}
 		
 		if (doesEmailAddresslreadyExists(signupForm.getEmail())) {
