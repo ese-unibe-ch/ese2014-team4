@@ -8,11 +8,10 @@
 <c:import url="template/header.jsp" />
 
 <script type="text/javascript">
- function FocusOnInput()
- {
- document.getElementById("field-city").focus();
- }
- </script>
+	function FocusOnInput() {
+		document.getElementById("field-city").focus();
+	}
+</script>
 
 
 <h1>Search List</h1>
@@ -30,6 +29,8 @@
 <body onload="FocusOnInput()">
 
 
+
+
 	<form:form method="post" modelAttribute="searchForm" action="search"
 		onSubmit="return(f(this));" id="searchForm" cssClass="form-horizontal"
 		autocomplete="off">
@@ -45,26 +46,43 @@
 					<div class="controls">
 						<form:input class="form-control" path="city" id="field-city"
 							tabindex="1" maxlength="35" placeholder="City" />
+						Or
 						<form:errors path="city" cssClass="help-inline" element="span" />
 
-						<script type="text/javascript">   
+						<c:set var="zipCodeErrors">
+							<form:errors path="zipCode" />
+						</c:set>
+						<div
+							class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+							<label class="control-label" for="field-zipCode">Zip-Code</label>
+							<div class="controls">
+								<form:input class="form-control" path="zipCode"
+									id="field-zipCode" tabindex="2" maxlength="35"
+									placeholder="Zip-Code" />
+								<form:errors path="zipCode" cssClass="help-inline"
+									element="span" />
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<script type="text/javascript">
+				   var zip = document.getElementById("field-zipCode");
 					var city = document.getElementById("field-city");
 
 					function checkCity() {
-					  if (city.value=="") {
-					    alert("You must enter a city!");
-					    city.focus();
-					    return false;
-					  } 
-					  else{
-						    return true;
-					  }
+						if (city.value == "" && zip.value == 0) {
+							alert("You must enter a city or a zip!");
+							city.focus();
+							return false;
+						} else {
+							return true;
+						}
 					}
-					city.addEventListener("blur", checkCity , false);
-					            
-                </script>
-					</div>
-				</div>
+					city.addEventListener("blur", checkCity, false);
+				</script>
 
 				<div>
 					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
@@ -76,7 +94,7 @@
 							<label class="control-label" for="field-minPrice">Min-Price</label>
 							<div class="controls">
 								<form:input class="form-control" path="minPrice"
-									id="field-minPrice" tabindex="2" maxlength="35"
+									id="field-minPrice" tabindex="3" maxlength="35"
 									placeholder="Min-Price" />
 								<form:errors path="minPrice" cssClass="help-inline"
 									element="span" />
@@ -93,27 +111,30 @@
 							<label class="control-label" for="field-maxPrice">Max-Price</label>
 							<div class="controls">
 								<form:input class="form-control" path="maxPrice"
-									id="field-maxPrice" tabindex="3" maxlength="35"
+									id="field-maxPrice" tabindex="4" maxlength="35"
 									placeholder="Max-Price" />
 								<form:errors path="maxPrice" cssClass="help-inline"
 									element="span" />
 
-								<script type="text/javascript">  
-							var max = document.getElementById("field-maxPrice");
+								<script type="text/javascript">
+									var max = document
+											.getElementById("field-maxPrice");
+									var min = document
+											.getElementById("field-minPrice");
 
-							function checkMaxPrice() {
-							  if (max.value ==0) {
-							    alert("You must set a max price!");
-							    max.focus();
-							    return false;
-							  } else {
-							    return true;
-							  }
-							}
+									function checkMaxPrice() {
+										if (max.value <= min.value) {
+											alert("Max prive must be higher than min price (that's like basic math, dude..)");
+											max.focus();
+											return false;
+										} else {
+											return true;
+										}
+									}
 
-							max.addEventListener("blur", checkMaxPrice , false);							
-                    
-                </script>
+									max.addEventListener("blur", checkMaxPrice,
+											false);
+								</script>
 
 							</div>
 						</div>
@@ -131,14 +152,7 @@
 				<!--             </div> -->
 				<!--         </div> -->
 
-				<%--         <c:set var="streetErrors"><form:errors path="street"/></c:set> --%>
-				<%--         <div class="control-group<c:if test="${not empty streetErrors}"> error</c:if>"> --%>
-				<!--             <label class="control-label" for="field-street">Street</label> -->
-				<!--             <div class="controls"> -->
-				<%--                 <form:input class="form-control" path="street" id="field-title" tabindex="4" maxlength="35" placeholder="Street"/> --%>
-				<%--                 <form:errors path="street" cssClass="help-inline" element="span"/> --%>
-				<!--             </div> -->
-				<!--         </div> -->
+
 
 				<%--         <c:set var="streetNumberErrors"><form:errors path="streetNumber"/></c:set> --%>
 				<%--         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>"> --%>
@@ -149,18 +163,7 @@
 				<!--             </div> -->
 				<!--         </div> -->
 
-				<c:set var="zipCodeErrors">
-					<form:errors path="zipCode" />
-				</c:set>
-				<div
-					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-					<label class="control-label" for="field-zipCode">Zip-Code</label>
-					<div class="controls">
-						<form:input class="form-control" path="zipCode" id="field-zipCode"
-							tabindex="6" maxlength="35" placeholder="Zip-Code" />
-						<form:errors path="zipCode" cssClass="help-inline" element="span" />
-					</div>
-				</div>
+
 
 				<c:set var="nrOfRoomMatesErrors">
 					<form:errors path="nrOfRoomMates" />
@@ -168,28 +171,36 @@
 				<div
 					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 					<label class="control-label" for="field-nrOfRoomMates">Number
-						of RoomMates</label>
+						of RoomMates </label>
 					<div class="controls">
 						<form:input class="form-control" path="nrOfRoomMates"
-							id="field-nrOfRoomMates" tabindex="7" maxlength="35"
-							placeholder="Number of Roommates" />
+							id="field-nrOfRoomMates"  
+							 tabindex="5" maxlength="35"
+							placeholder="Number of Roommates"/>
 						<form:errors path="nrOfRoomMates" cssClass="help-inline"
-							element="span" />
+							element="span" />							
 						<br> <br>
 					</div>
 				</div>
-
+				
 
 				<div class="form-actions">
-					<button type="submit" tabindex="8" class="btn btn-primary">Search
+					<button type="submit" tabindex="6" class="btn btn-primary">Search
 						Ad</button>
-		<input type="button" onclick="location.href('http://localhost:8080/share-a-flat/my-page');" value="Cancel">
+					<input type="button"
+						onclick="location.href('http://localhost:8080/share-a-flat/my-page');"
+						value="Cancel">
 				</div>
 			</div>
 		</fieldset>
 	</form:form>
 
-	<c:forEach items="${searchResults}" var="ad"></c:forEach>
+
+<script type="text/javascript">
+	
+
+	
+</script>
 
 
 	<c:import url="template/footer.jsp" />
