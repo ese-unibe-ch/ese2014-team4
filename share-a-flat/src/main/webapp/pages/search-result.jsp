@@ -20,7 +20,6 @@
 
 
 <c:forEach items="${adsToAdd}" var="ad">
-
 	<table>
 		<tr>
 			<td width="80">

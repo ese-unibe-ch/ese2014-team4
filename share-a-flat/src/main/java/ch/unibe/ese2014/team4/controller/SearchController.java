@@ -36,11 +36,16 @@ public class SearchController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView search(@Valid SearchForm searchForm,
 			BindingResult result, RedirectAttributes redirectAttributes) {
+		ModelAndView model = null;
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
-		ModelAndView model = new ModelAndView("search-result");
 		searcher = new SearcherDefaultCity(searchForm, adService);
 		adsToAdd = searcher.getAdList();
+		if (!adsToAdd.isEmpty()){
+		model = new ModelAndView("search-result");
 		model.addObject("adsToAdd", adsToAdd);
+		}
+		else
+			model = new ModelAndView("empty-search-result");
 		return model;
 	}
 

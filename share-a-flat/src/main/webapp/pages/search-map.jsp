@@ -25,6 +25,17 @@
         var map = new google.maps.Map(mapCanvas, mapOptions)
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+      
+      var kmlLayer = new google.maps.KmlLayer();
+
+      var kmlUrl = 'https://docsouth.unc.edu/gtts/map/kml/city/new-bern.kml';
+      var kmlOptions = {
+        suppressInfoWindows: true,
+        preserveViewport: false,
+        map: map
+      };
+      var kmlLayer = new google.maps.KmlLayer(kmlUrl, kmlOptions);
+
     </script>
   </head>
 

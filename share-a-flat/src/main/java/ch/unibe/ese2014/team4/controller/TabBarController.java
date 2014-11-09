@@ -46,8 +46,8 @@ public class TabBarController {
 		ModelAndView model = new ModelAndView("search-map");
 		return model;
 	}
-
-
+	
+	
 	@RequestMapping(value = "/security-error", method = RequestMethod.GET)
 	public String securityError(RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("page_error",
