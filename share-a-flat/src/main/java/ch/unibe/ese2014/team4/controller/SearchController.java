@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.SearcherDefaultCity;
 
 /**
  * Controls all pages / commands concerning ads.
@@ -26,6 +27,8 @@ import ch.unibe.ese2014.team4.model.Ad;
 
 @Controller
 public class SearchController {
+	
+	SearcherDefaultCity searcher;
 
 	@Autowired
 	AdService adService;
@@ -35,20 +38,11 @@ public class SearchController {
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
 		ModelAndView model = new ModelAndView("search-result");
-		java.util.List<Ad> adsByCity = adService.getAdByCity(searchForm.getCity().trim().toLowerCase());
-		adsToAdd = getRelevantAds(searchForm.getMinPrice(), searchForm.getMaxPrice(), adsByCity);
-
+		searcher = new SearcherDefaultCity(searchForm, adService);
+		adsToAdd = searcher.getAdList();
 		model.addObject("adsToAdd", adsToAdd);
 		return model;
 	}
-//useful to create queries: http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
-	private ArrayList<Ad> getRelevantAds(int minPrice, int maxPrice, List<Ad> adsByCity) {
-		ArrayList<Ad> tempAds = new ArrayList<Ad>();
-		for (Ad ad: adsByCity){
-			if ((minPrice <= ad.getPrice()) && (ad.getPrice() <= maxPrice))
-				tempAds.add(ad);
-		}
-		return tempAds;
-	}
+
 
 }

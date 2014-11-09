@@ -21,20 +21,18 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 import ch.unibe.ese2014.team4.model.dao.AddressDao;
 
-
 @Service
 public class AdServiceImpl implements AdService {
 
 	@Autowired
 	AdDao adDao;
-	
+
 	@Autowired
 	AddressDao addressDao;
-	
+
 	@Autowired
 	ImageService imageService;
-	
-	
+
 	@Transactional
 	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
 
@@ -48,15 +46,16 @@ public class AdServiceImpl implements AdService {
 		ad.setOwner(owner);
 		ad.setAdAddedDate(new Date());
 
-		ad.setBytePictureList(imageService.getByteArrayFromMultipart(adForm.getUploadedAdPictures()));
-		
+		ad.setBytePictureList(imageService.getByteArrayFromMultipart(adForm
+				.getUploadedAdPictures()));
+
 		Address address = new Address();
 		address.setCity(adForm.getCity());
 		address.setZipCode(adForm.getZipCode());
 		address.setStreet(adForm.getStreet());
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
-		
+
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
@@ -64,7 +63,7 @@ public class AdServiceImpl implements AdService {
 
 		return adForm;
 	}
-	
+
 	@Transactional
 	public Ad getAd(Long id) {
 		Ad ad = adDao.findById(id);
@@ -78,22 +77,19 @@ public class AdServiceImpl implements AdService {
 
 	public List<Ad> getAdByPrice(int price) {
 		List<Ad> ads = adDao.findAllByPrice(price);
-		assert (ads.size()!=0);
+		assert (ads.size() != 0);
 		return ads;
 	}
 
 	public List<Ad> getAdByTitle(String title) {
 		List<Ad> ads = adDao.findAllByTitle(title);
-		assert (ads.size()!=0);
+		assert (ads.size() != 0);
 		return ads;
 	}
 
 	public List<Ad> getAdByCity(String city) {
-		List<Address> addresses = addressDao.findAllByCity(city);
-		ArrayList<Ad> ads = new ArrayList<Ad>();
-		for (Address address: addresses){
-			ads.add(adDao.findByAddressId(address.getId()));
-		}
+		List<Ad> ads = adDao.findAllByAddressCity(city);
+
 		return ads;
 	}
 

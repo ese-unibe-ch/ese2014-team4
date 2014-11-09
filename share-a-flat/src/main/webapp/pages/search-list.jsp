@@ -1,7 +1,8 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
 <c:import url="template/header.jsp" />
@@ -9,111 +10,167 @@
 
 
 <h1>Search List</h1>
-        
-
-        <!-- Auswahlreiter -->
-        
-        <ul>
-            <li class="map"><a href="search-map" class="inactive">
-                <span><!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf Karte</span></a></li>
-        </ul>
 
 
-<form:form method="post" modelAttribute="searchForm" action="search" id="searchForm" cssClass="form-horizontal"  autocomplete="off">
-<fieldset>
-    <div class="col-md-3">    
-          
-        <c:set var="cityErrors"><form:errors path="city"/></c:set>
-        <div class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
-            <label class="control-label" for="field-city">City</label>
-            <div class="controls">
-                <form:input class="form-control" path="city" id="field-city" tabindex="1" maxlength="35" placeholder="City"/>
-                <form:errors path="city" cssClass="help-inline" element="span"/>
-            </div>
-        </div>    
-        
-        <div>
-        	<div class="col-md-6" style="padding-left:0px; padding-right:3px">
-		        <c:set var="minPriceErrors"><form:errors path="minPrice"/></c:set>
-		        <div class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
-	            <label class="control-label" for="field-minPrice">Min-Price</label>
-	            <div class="controls">
-                <form:input class="form-control" path="minPrice" id="field-minPrice" tabindex="2" maxlength="35" placeholder="Min-Price"/>
-                <form:errors path="minPrice" cssClass="help-inline" element="span"/>
-	            </div>
-	            </div>
-            </div>
-            
-            <div class="col-md-6" style="padding-left:3px; padding-right:0px">
-		        <c:set var="maxPriceErrors"><form:errors path="maxPrice"/></c:set>
-		        <div class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
-	            <label class="control-label" for="field-maxPrice">Max-Price</label>
-	            <div class="controls">
-                <form:input class="form-control" path="maxPrice" id="field-maxPrice" tabindex="2" maxlength="35" placeholder="Max-Price"/>
-                <form:errors path="maxPrice" cssClass="help-inline" element="span"/>
-	            </div>
-	            </div>
-            </div>
-            
-        </div>
-            
-<%--         <c:set var="titleErrors"><form:errors path="title"/></c:set> --%>
-<%--         <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>"> --%>
-<!--             <label class="control-label" for="field-title">Title</label> -->
+<!-- Auswahlreiter -->
 
-<!--             <div class="controls"> -->
-<%--                 <form:input class="form-control" path="title" id="field-title" tabindex="3" maxlength="45" placeholder="Title"/> --%>
-<%--                 <form:errors path="title" cssClass="help-inline" element="span"/> --%>
-<!--             </div> -->
-<!--         </div> -->
-        
-<%--         <c:set var="streetErrors"><form:errors path="street"/></c:set> --%>
-<%--         <div class="control-group<c:if test="${not empty streetErrors}"> error</c:if>"> --%>
-<!--             <label class="control-label" for="field-street">Street</label> -->
-<!--             <div class="controls"> -->
-<%--                 <form:input class="form-control" path="street" id="field-title" tabindex="4" maxlength="35" placeholder="Street"/> --%>
-<%--                 <form:errors path="street" cssClass="help-inline" element="span"/> --%>
-<!--             </div> -->
-<!--         </div> -->
+<ul>
+	<li class="map"><a href="search-map" class="inactive"> <span>
+				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf
+				Karte
+		</span></a></li>
+</ul>
 
-<%--         <c:set var="streetNumberErrors"><form:errors path="streetNumber"/></c:set> --%>
-<%--         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>"> --%>
-<!--             <label class="control-label" for="field-streetNumber">StreetNumber</label> -->
-<!--             <div class="controls"> -->
-<%--                 <form:input class="form-control" path="streetNumber" id="field-streetNumber" tabindex="5" maxlength="35" placeholder="StreetNumber"/> --%>
-<%--                 <form:errors path="streetNumber" cssClass="help-inline" element="span"/> --%>
-<!--             </div> -->
-<!--         </div> -->
 
-        <c:set var="zipCodeErrors"><form:errors path="zipCode"/></c:set>
-        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-            <label class="control-label" for="field-zipCode">Zip-Code</label>
-            <div class="controls">
-                <form:input class="form-control" path="zipCode" id="field-zipCode" tabindex="6" maxlength="35" placeholder="Zip-Code"/>
-                <form:errors path="zipCode" cssClass="help-inline" element="span"/>
-            </div>
-        </div>   
-        
-        <c:set var="nrOfRoomMatesErrors"><form:errors path="nrOfRoomMates"/></c:set>
-        <div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-            <label class="control-label" for="field-nrOfRoomMates">Number of RoomMates</label>
-            <div class="controls">
-                <form:input class="form-control" path="nrOfRoomMates" id="field-nrOfRoomMates" tabindex="7" maxlength="35" placeholder="Number of Roommates"/>
-                <form:errors path="nrOfRoomMates" cssClass="help-inline" element="span"/><br><br>
-            </div>
-        </div>     
+<form:form method="post" modelAttribute="searchForm" action="search"
+	onsubmit="return validateMaxPrice() & validateCity()" id="searchForm"
+	cssClass="form-horizontal" autocomplete="off">
+	<fieldset>
+		<div class="col-md-3">
 
-        
-        <div class="form-actions">
-            <button type="submit" tabindex="8" class="btn btn-primary">Search Ad</button>
-            <button type="button" onclick="${pageContext.request.contextPath}/my-page" tabindex="9" class=" btn">Cancel</button>
-        </div>
-	</div>
+			<c:set var="cityErrors">
+				<form:errors path="city" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
+				<label class="control-label" for="field-city">City</label>
+				<div class="controls">
+					<form:input class="form-control" path="city" id="field-city"
+						tabindex="1" maxlength="35" placeholder="City" />
+					<form:errors path="city" cssClass="help-inline" element="span" />
+
+					<script type="text/javascript">                
+                function validateCity() {
+                    var city = document.forms["searchForm"]["maxPrice"].value;
+                    if (city==city) {
+                    	alert("you must add a city");
+                        return false;
+                    }
+                }                
+                </script>
+				</div>
+			</div>
+
+			<div>
+				<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
+					<c:set var="minPriceErrors">
+						<form:errors path="minPrice" />
+					</c:set>
+					<div
+						class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
+						<label class="control-label" for="field-minPrice">Min-Price</label>
+						<div class="controls">
+							<form:input class="form-control" path="minPrice"
+								id="field-minPrice" tabindex="2" maxlength="35"
+								placeholder="Min-Price" />
+							<form:errors path="minPrice" cssClass="help-inline"
+								element="span" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
+					<c:set var="maxPriceErrors">
+						<form:errors path="maxPrice" />
+					</c:set>
+					<div
+						class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
+						<label class="control-label" for="field-maxPrice">Max-Price</label>
+						<div class="controls">
+							<form:input class="form-control" path="maxPrice"
+								id="field-maxPrice" requiredtabindex="2" maxlength="35"
+								placeholder="Max-Price" />
+							<form:errors path="maxPrice" cssClass="help-inline"
+								element="span" />
+
+							<script type="text/javascript">                
+                function validateMaxPrice() {
+                    var max = document.forms["searchForm"]["maxPrice"].value;
+                    if (max==0) {
+                    	alert("Max Price must not be 0");
+                        return false;
+                    }
+                }                
+                </script>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<%--         <c:set var="titleErrors"><form:errors path="title"/></c:set> --%>
+			<%--         <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>"> --%>
+			<!--             <label class="control-label" for="field-title">Title</label> -->
+
+			<!--             <div class="controls"> -->
+			<%--                 <form:input class="form-control" path="title" id="field-title" tabindex="3" maxlength="45" placeholder="Title"/> --%>
+			<%--                 <form:errors path="title" cssClass="help-inline" element="span"/> --%>
+			<!--             </div> -->
+			<!--         </div> -->
+
+			<%--         <c:set var="streetErrors"><form:errors path="street"/></c:set> --%>
+			<%--         <div class="control-group<c:if test="${not empty streetErrors}"> error</c:if>"> --%>
+			<!--             <label class="control-label" for="field-street">Street</label> -->
+			<!--             <div class="controls"> -->
+			<%--                 <form:input class="form-control" path="street" id="field-title" tabindex="4" maxlength="35" placeholder="Street"/> --%>
+			<%--                 <form:errors path="street" cssClass="help-inline" element="span"/> --%>
+			<!--             </div> -->
+			<!--         </div> -->
+
+			<%--         <c:set var="streetNumberErrors"><form:errors path="streetNumber"/></c:set> --%>
+			<%--         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>"> --%>
+			<!--             <label class="control-label" for="field-streetNumber">StreetNumber</label> -->
+			<!--             <div class="controls"> -->
+			<%--                 <form:input class="form-control" path="streetNumber" id="field-streetNumber" tabindex="5" maxlength="35" placeholder="StreetNumber"/> --%>
+			<%--                 <form:errors path="streetNumber" cssClass="help-inline" element="span"/> --%>
+			<!--             </div> -->
+			<!--         </div> -->
+
+			<c:set var="zipCodeErrors">
+				<form:errors path="zipCode" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+				<label class="control-label" for="field-zipCode">Zip-Code</label>
+				<div class="controls">
+					<form:input class="form-control" path="zipCode" id="field-zipCode"
+						tabindex="6" maxlength="35" placeholder="Zip-Code" />
+					<form:errors path="zipCode" cssClass="help-inline" element="span" />
+				</div>
+			</div>
+
+			<c:set var="nrOfRoomMatesErrors">
+				<form:errors path="nrOfRoomMates" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+				<label class="control-label" for="field-nrOfRoomMates">Number
+					of RoomMates</label>
+				<div class="controls">
+					<form:input class="form-control" path="nrOfRoomMates"
+						id="field-nrOfRoomMates" tabindex="7" maxlength="35"
+						placeholder="Number of Roommates" />
+					<form:errors path="nrOfRoomMates" cssClass="help-inline"
+						element="span" />
+					<br>
+					<br>
+				</div>
+			</div>
+
+
+			<div class="form-actions">
+				<button type="submit" tabindex="8" class="btn btn-primary">Search
+					Ad</button>
+				<button type="button"
+					onclick="${pageContext.request.contextPath}/my-page" tabindex="9"
+					class=" btn">Cancel</button>
+			</div>
+		</div>
 	</fieldset>
 </form:form>
 
 <c:forEach items="${searchResults}" var="ad"></c:forEach>
-
 
 
 <c:import url="template/footer.jsp" />
