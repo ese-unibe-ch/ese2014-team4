@@ -26,6 +26,9 @@ public class ProfileServiceImpl implements ProfileService {
 	
 	@Autowired
 	ProfileDao profileDao;
+	
+	@Autowired
+	ImageService imageService;
 
 	@Transactional
 	public Profile getMyProfile(Principal principal) throws ProfileException{
@@ -36,11 +39,16 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 	
 	@Transactional
-	public void updateProfileFrom(ProfileForm profileForm, Profile profile, byte[] profileImageByte){
+	public void updateProfileFrom(ProfileForm profileForm, Profile profile){
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
 		profile.setDescription(profileForm.getDescription());
-		profile.setProfileImage(profileImageByte);
+		try {
+			profile.setProfileImage(imageService.getByteArrayFromMultipart(profileForm.getUploadedProfileImage()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		profileDao.save(profile);
 	}
 }

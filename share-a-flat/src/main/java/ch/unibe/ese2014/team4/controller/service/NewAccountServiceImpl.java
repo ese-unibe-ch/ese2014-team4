@@ -49,36 +49,15 @@ public class NewAccountServiceImpl implements NewAccountService {
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
 
 		if (doesUserAlreadyExists(signupForm.getUsername()) ) {
-			throw new InvalidUserException("username already dsfexists.");	
+			throw new InvalidUserException("Username is already in use. Select another username.");	
 		}
 		
-		if (doesEmailAddresslreadyExists(signupForm.getEmail())) {
-			throw new InvalidUserException("email address already exists.");	
+		if (doesEmailAddressAlreadyExist(signupForm.getEmail())) {
+			throw new InvalidUserException("Email-address is already in use. Do you already have an account?");	
 		}
 		
-		if(!signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
-			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
-		}
-						
-		String email = signupForm.getEmail();
-		if (StringUtils.isEmpty(email)) {
-			throw new InvalidUserException("Please enter a valid Email");
-		}
-		
-		for (User existingUser : userDao.findAll()) {
-			if (existingUser.getEmail().equals(email)) {
-				throw new InvalidUserException("Email already exists. Please enter another one.");
-			}
-		}
-		
-		if (StringUtils.isEmpty(signupForm.getPassword())) {
-			throw new InvalidUserException("Please enter a Password.");
-		}
-		
-		if (StringUtils.isEmpty(signupForm.getPasswordRepeated())) {
-			throw new InvalidUserException("Please enter the the same Password as before.");
-		}
-		
+
+		//doublecheck, javascript already testing this client-side.
 		if (signupForm.getPasswordRepeated().equals(signupForm.getPassword())) {
 			
 			User user = new User();
@@ -107,7 +86,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 		
 	}
 
-	private boolean doesEmailAddresslreadyExists(String email) {
+	private boolean doesEmailAddressAlreadyExist(String email) {
 		// TODO Auto-generated method stub
 		return !(userDao.findByEmail(email) == null);
 	}

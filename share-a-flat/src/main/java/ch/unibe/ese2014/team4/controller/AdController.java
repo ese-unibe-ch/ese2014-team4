@@ -47,7 +47,7 @@ public class AdController {
         return model;
     }
 	/*
-	 * @RequestParam("uploadedAdPictures") needed, not sure why though. adForm would contain a field uploadedAdPictures.
+	 * Controls submission of newly created ad.
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
     public ModelAndView submitAd(@Valid AdForm adForm, Principal principal) throws Exception{

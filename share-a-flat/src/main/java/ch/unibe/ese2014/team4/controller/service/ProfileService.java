@@ -8,5 +8,5 @@ import ch.unibe.ese2014.team4.model.Profile;
 
 public interface ProfileService {
 	public Profile getMyProfile(Principal principal) throws ProfileException;
-	public void updateProfileFrom(ProfileForm profileForm, Profile profile, byte[] profileImageByte);
+	public void updateProfileFrom(ProfileForm profileForm, Profile profile);
 }
