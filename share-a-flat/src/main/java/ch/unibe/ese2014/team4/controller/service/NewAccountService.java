@@ -12,4 +12,6 @@ public interface NewAccountService {
 
 	public User getUser(Long id);
 
+	public void loginManually(User user);
+
 }

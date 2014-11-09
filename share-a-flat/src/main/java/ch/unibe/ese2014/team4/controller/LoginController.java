@@ -57,7 +57,7 @@ public class LoginController
             	newAccountService.saveFrom(signupForm);
             	model = new ModelAndView("home");
             	User user = newAccountService.getUser(signupForm.getId());
-
+            	newAccountService.loginManually(user);
 				model.addObject("user", user);
             } catch (InvalidUserException e) {
 
