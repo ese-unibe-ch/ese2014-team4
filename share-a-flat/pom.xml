@@ -238,7 +238,13 @@
 			</exclusions>
 		</dependency>
 		
-		<!-- test dependencies -->
+		<!-- Spring test -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-test</artifactId>
+    		<version>3.2.3.RELEASE</version>
+		</dependency>
+		
 		<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

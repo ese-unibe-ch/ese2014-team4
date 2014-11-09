@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.User;
  /**
   * LoginController: Login process is routed via Spring Security.
@@ -30,6 +31,9 @@ public class LoginController
 {
     @Autowired
     NewAccountService newAccountService;
+    
+    @Autowired
+    UserService userService;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -56,7 +60,7 @@ public class LoginController
             try {
             	newAccountService.saveFrom(signupForm);
             	model = new ModelAndView("home");
-            	User user = newAccountService.getUser(signupForm.getId());
+            	User user = userService.getUser(signupForm.getId());
             	newAccountService.loginManually(user);
 				model.addObject("user", user);
             } catch (InvalidUserException e) {

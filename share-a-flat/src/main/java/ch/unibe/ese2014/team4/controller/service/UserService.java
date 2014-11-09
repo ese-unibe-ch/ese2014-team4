@@ -5,7 +5,9 @@ import ch.unibe.ese2014.team4.model.User;
 
 public interface UserService {
 
-	Profile getMyProfile();
-	User getUserByUsername(String username);
-
+	public Profile getMyProfile();
+	public User getUserByUsername(String username);
+	public User getUser(Long id);
+	public boolean doesEmailAddressAlreadyExist(String email);
+	public boolean doesUserAlreadyExists(String username);
 }
