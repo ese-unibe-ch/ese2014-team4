@@ -14,17 +14,17 @@
 </script>
 
 <script type="text/javascript">
-	//SearchErrorMessage = "Hallo";
-	//document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+								
 	function checkMaxPrice() {
-		var max = document.getElementById("field-maxPrice");
-		var min = document.getElementById("field-minPrice");
+		var max = document.getElementById("field-maxPrice").value;
+		var min = document.getElementById("field-minPrice").value;
 		if (max.value < min.value) {
 			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
 			document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
-			max.focus();
+			max.focus();			
 			return false;
-		} else return true;				
+		} else return true;
+				
 	}
 			
 </script>
@@ -109,6 +109,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 				<c:set var="nrOfRoomMatesErrors">
@@ -129,7 +130,7 @@
 					</div>
 				</div>
 				
-				<span id = "SearchErrorMessage"></span>
+				<span id = "SearchErrorMessage"> </span>
 				
 
 				<div class="form-actions">
@@ -140,7 +141,8 @@
 						value="Cancel">
 				</div>
 			</div>
-		</fieldset>		
+		</fieldset>
+		
 	</form:form>
 
 

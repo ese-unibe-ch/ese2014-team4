@@ -24,7 +24,8 @@
 			document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
 			max.focus();
 			return false;
-		} else return true;				
+		} else return true;
+				
 	}
 			
 </script>
@@ -109,6 +110,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 				<c:set var="nrOfRoomMatesErrors">
@@ -140,7 +142,8 @@
 						value="Cancel">
 				</div>
 			</div>
-		</fieldset>		
+		</fieldset>
+		
 	</form:form>
 
 

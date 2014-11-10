@@ -14,17 +14,19 @@
 </script>
 
 <script type="text/javascript">
-	//SearchErrorMessage = "Hallo";
-	//document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+								
 	function checkMaxPrice() {
 		var max = document.getElementById("field-maxPrice");
 		var min = document.getElementById("field-minPrice");
 		if (max.value < min.value) {
-			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
-			document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+			//alert("Max price must be higher than min price (that's like basic math, dude..)")
+			//$("#SearchErrorMessage.html").
+			//SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)"
 			max.focus();
+						
 			return false;
-		} else return true;				
+		} else return true;
+				
 	}
 			
 </script>
@@ -44,7 +46,8 @@
 
 	<form:form method="post" modelAttribute="searchForm" action="search"onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
-				<div class="col-md-3">
+				<div class="error">this is the error message.</div>
+			
 
 				<c:set var="cityErrors">
 					<form:errors path="city" />
@@ -55,7 +58,7 @@
 					<div class="controls">
 						<form:input class="form-control" path="city" id="field-city"
 							tabindex="1" maxlength="35" placeholder="City" />
-						<form:errors path="city" cssClass="help-inline" element="span"/>
+						<form:errors path="city" cssClass="help-inline" element="span" />
 
 						<c:set var="zipCodeErrors">
 							<form:errors path="zipCode" />
@@ -71,6 +74,7 @@
 									element="span" />
 							</div>
 						</div>
+
 					</div>
 				</div>
 
@@ -106,10 +110,35 @@
 									placeholder="Max-Price" />
 								<form:errors path="maxPrice" cssClass="help-inline"
 									element="span" />
+
 							</div>
 						</div>
 					</div>
+
 				</div>
+
+				<%--         <c:set var="titleErrors"><form:errors path="title"/></c:set> --%>
+				<%--         <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>"> --%>
+				<!--             <label class="control-label" for="field-title">Title</label> -->
+
+				<!--             <div class="controls"> -->
+				<%--                 <form:input class="form-control" path="title" id="field-title" tabindex="3" maxlength="45" placeholder="Title"/> --%>
+				<%--                 <form:errors path="title" cssClass="help-inline" element="span"/> --%>
+				<!--             </div> -->
+				<!--         </div> -->
+
+
+
+				<%--         <c:set var="streetNumberErrors"><form:errors path="streetNumber"/></c:set> --%>
+				<%--         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>"> --%>
+				<!--             <label class="control-label" for="field-streetNumber">StreetNumber</label> -->
+				<!--             <div class="controls"> -->
+				<%--                 <form:input class="form-control" path="streetNumber" id="field-streetNumber" tabindex="5" maxlength="35" placeholder="StreetNumber"/> --%>
+				<%--                 <form:errors path="streetNumber" cssClass="help-inline" element="span"/> --%>
+				<!--             </div> -->
+				<!--         </div> -->
+
+
 
 				<c:set var="nrOfRoomMatesErrors">
 					<form:errors path="nrOfRoomMates" />
@@ -129,7 +158,7 @@
 					</div>
 				</div>
 				
-				<span id = "SearchErrorMessage"></span>
+				<span id = "SearchErrorMessage" > </span>
 				
 
 				<div class="form-actions">
@@ -140,7 +169,8 @@
 						value="Cancel">
 				</div>
 			</div>
-		</fieldset>		
+		</fieldset>
+		
 	</form:form>
 
 
