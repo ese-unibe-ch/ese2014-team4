@@ -39,6 +39,7 @@ public class AdServiceImpl implements AdService {
 		Ad ad = new Ad();
 
 		ad.setPrice(adForm.getPrice());
+		ad.setNrOfRooms(adForm.getNrOfRooms());
 		ad.setNrOfRoomMates(adForm.getNrOfRoomMates());
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
@@ -70,9 +71,17 @@ public class AdServiceImpl implements AdService {
 		return ad;
 	}
 
-	public Collection<Ad> getNewestAds(int days) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Ad> getNewestAds() {
+		ArrayList<Ad> tmp = adDao.findAll();
+		int length = tmp.size();
+		
+		ArrayList<Ad> ads = new ArrayList<Ad>();
+
+		for (int i = length - 1; i > length - 5; i--) {
+			ads.add(tmp.get(i));
+		}
+
+		return ads;
 	}
 
 	public List<Ad> getAdByPrice(int price) {
@@ -87,14 +96,24 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	public List<Ad> getAdByCity(String city) {
-		List<Ad> ads = adDao.findAllByAddressCity(city);
-
+	public ArrayList<Ad> getAdByCity(String city) {
+		ArrayList<Ad> ads = new ArrayList<Ad>(); 		
+			ads = adDao.findAllByAddressCity(city);
 		return ads;
 	}
 
 	public void setAdDao(AdDao mockDao) {
 		adDao = mockDao;
+	}
+
+	public List<String> getImageList(long adId) {
+		Ad ad = adDao.findById(adId);
+		List<String> list = new ArrayList<String>();
+		
+		for (int i = 0; i<ad.getBytePictureList().size();i++){
+			list.add(new Integer(i).toString());
+		}
+		return list;
 	}
 
 }

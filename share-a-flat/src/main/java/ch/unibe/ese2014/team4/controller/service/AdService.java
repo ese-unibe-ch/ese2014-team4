@@ -16,11 +16,12 @@ public interface AdService {
 
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
 	public Ad getAd(Long id);
-	public Collection<Ad> getNewestAds(int days);
+	public ArrayList<Ad> getNewestAds();
 	public List<Ad> getAdByPrice(int price);
 	public List<Ad> getAdByTitle(String title);
 	public List<Ad> getAdByCity(String city);
 	public void setAdDao(AdDao mockDao);
+	public List<String> getImageList(long adId);
 
 
 

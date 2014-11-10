@@ -39,6 +39,9 @@ public class NewAccountServiceImpl implements NewAccountService {
 	UserDao userDao;
 	
 	@Autowired
+	UserService userService;
+	
+	@Autowired
 	ProfileDao profileDao;
 	
     
@@ -48,11 +51,11 @@ public class NewAccountServiceImpl implements NewAccountService {
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
 
-		if (doesUserAlreadyExists(signupForm.getUsername()) ) {
+		if (userService.doesUserAlreadyExists(signupForm.getUsername()) ) {
 			throw new InvalidUserException("Username is already in use. Select another username.");	
 		}
 		
-		if (doesEmailAddressAlreadyExist(signupForm.getEmail())) {
+		if (userService.doesEmailAddressAlreadyExist(signupForm.getEmail())) {
 			throw new InvalidUserException("Email-address is already in use. Do you already have an account?");	
 		}
 		
@@ -86,10 +89,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 		
 	}
 
-	private boolean doesEmailAddressAlreadyExist(String email) {
-		// TODO Auto-generated method stub
-		return !(userDao.findByEmail(email) == null);
-	}
+
 
 	private byte[] getDefaultProfileImage(){
 
@@ -118,18 +118,9 @@ public class NewAccountServiceImpl implements NewAccountService {
 		return byteImg;
 	}
 	
-	private boolean doesUserAlreadyExists(String username) {
-		return!(userDao.findByUsername(username) == null);
-	}
 
-	@Transactional
-	public User getUser(Long id) {
-		User user = userDao.findOne(id);
-		if (user == null) {
-			throw new InvalidUserException("There is no such user...");
-		}
-		return user;
-	}
+
+
 
 	public void loginManually(User user) {
 		Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());

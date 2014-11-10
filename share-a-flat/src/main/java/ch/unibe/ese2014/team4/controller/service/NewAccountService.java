@@ -10,7 +10,7 @@ public interface NewAccountService {
 
     public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException;
 
-	public User getUser(Long id);
+	
 
 	public void loginManually(User user);
 

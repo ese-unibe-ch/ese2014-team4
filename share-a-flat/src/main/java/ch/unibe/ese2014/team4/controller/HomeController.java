@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -14,13 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
+import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class HomeController {
 
-
+	@Autowired
+	AdService adService;
 
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -29,17 +33,20 @@ public class HomeController {
 		
 		String username = principal.getName();
 		model.addObject("username", username);
+		
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		model.addObject("addList", newestAdds);
+		
 		return model;
 	}
- /*   
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+   
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView login(){
     	ModelAndView model;
-    	model = new ModelAndView("home");
-    	//to do
-    	System.out.println("to do: method");
+    	model = new ModelAndView("template/test");
+
     	return model;
-    }
+    } /*
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	

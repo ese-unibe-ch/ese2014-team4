@@ -49,7 +49,7 @@ public class ImageController {
 	ImageService imageService;
 	
 	@Autowired
-	UserService userService;
+	AdService adService;
 
 	@ResponseBody
 	@RequestMapping(value = "/imageController/profile/{id}", method = RequestMethod.GET)
@@ -59,12 +59,14 @@ public class ImageController {
 		return im;
     }
 	
-	
-	@RequestMapping(value = "/imageController/ad", method = RequestMethod.GET)
-    public ModelAndView createAd(){
+	@ResponseBody
+	@RequestMapping(value = "/imageController/ad/{adId}/{imageNr}", method = RequestMethod.GET)
+    public byte[] provideAdImage(@PathVariable("imageNr") int imageNr, @PathVariable("adId") long adId){
 
 
-        return null;
+		byte[] im = adService.getAd(adId).getBytePictureList().get(imageNr);
+
+		return im;
     }
 
 }

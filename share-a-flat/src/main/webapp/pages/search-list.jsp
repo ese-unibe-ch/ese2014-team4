@@ -145,10 +145,13 @@
 	</form:form>
 
 
+<<<<<<< HEAD
 <script type="text/javascript">
 	
 	
 </script>
+=======
+>>>>>>> 44d997be380395a984ed1041e5902786c345b4a9
 
 
 	<c:import url="template/footer.jsp" />

@@ -54,22 +54,6 @@ public class AdForm {
 		this.size = size;
 	}
 
-//	public Date getFromDate() {
-//		return fromDate;
-//	}
-//
-//	public void setFromDate(Date fromDate) {
-//		this.fromDate = fromDate;
-//	}
-//
-//	public Date getToDate() {
-//		return toDate;
-//	}
-//
-//	public void setToDate(Date toDate) {
-//		this.toDate = toDate;
-//	}
-
 	public int getNrOfRoomMates() {
 		return nrOfRoomMates;
 	}
@@ -102,9 +86,6 @@ public class AdForm {
 		this.title = title;
 	}
 
-
-    
-
     public int getStreetNumber() {
 		return streetNumber;
 	}
@@ -118,7 +99,7 @@ public class AdForm {
 	}
 
 	public void setCity(String city) {
-		this.city = city.toLowerCase();
+		this.city = makeCapital(city);
 	}
 
 	public int getZipCode() {
@@ -133,10 +114,9 @@ public class AdForm {
 		return street;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setStreet(String street) { 
+		this.street = makeCapital(street);
 	}
-
 
 	public Long getId() {
 		return id;
@@ -179,7 +159,13 @@ public class AdForm {
 	}
 
 
-    
+	private String makeCapital(String str) {
+		String tmp = str;
+		String firstChar = tmp.substring(0, 1).toUpperCase();
+		String rest = tmp.substring(1, tmp.length()).toLowerCase();
+		tmp = firstChar.concat(rest);
+		return tmp;
+	}
 
     
 }

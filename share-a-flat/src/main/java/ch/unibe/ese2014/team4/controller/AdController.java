@@ -3,7 +3,9 @@ package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,11 @@ public class AdController {
 	
 	@Autowired
 	UserService userService;
-
+	
+	@Autowired
+	AdService adService;
+	
+	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
     public ModelAndView createAd(){
     	ModelAndView model = new ModelAndView("create-ad");
@@ -50,8 +56,9 @@ public class AdController {
 	 * Controls submission of newly created ad.
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
-    public ModelAndView submitAd(@Valid AdForm adForm, Principal principal) throws Exception{
-    	ModelAndView model = new ModelAndView("home"); 
+    public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal) throws Exception{
+    	System.out.println(result.getErrorCount());
+		ModelAndView model = new ModelAndView("home"); 
     	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
     	Ad ad = newAdService.getAd(adForm.getId());
     	model.addObject("ad", ad);
@@ -63,9 +70,13 @@ public class AdController {
 	 * @return ad-page containing ad with adId x.
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
-    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId){
+    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId, HttpSession session){
     	ModelAndView model = new ModelAndView("ad");   
+    	
     	Ad ad = newAdService.getAd(adId);
+    	
+    	List<String> list =adService.getImageList(adId);	
+    	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;
     }
