@@ -19,7 +19,7 @@
 
 
 
-<c:import url="addList.jsp" />
+<c:import url="resultsTable.jsp" />
 
 
 

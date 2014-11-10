@@ -8,7 +8,7 @@
 	<table>
 		<tr>
 			<td width="80">
-				<b style="font-size:14pt; color:blue">${ad.title}</b><br> 
+				<b><a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a></b><br> 
 				<b>Address:</b><br> <b></b>
 				<b>Place:</b><br> 
 			</td>
