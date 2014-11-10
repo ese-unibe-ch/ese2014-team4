@@ -1,6 +1,5 @@
 package ch.unibe.ese2014.team4.model;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,57 +22,50 @@ import org.hibernate.mapping.Map;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
-
-
 @Entity
 public class Ad {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-    
-    @ManyToOne		//many Ads, one user
-    @JoinColumn(name="user_id")
-    private User owner;
-    
-	@OneToOne(cascade = CascadeType.REMOVE)
-    private Address address;  
-	
+	@Id
+	@GeneratedValue
+	private Long id;
 
+	@ManyToOne
+	// many Ads, one user
+	@JoinColumn(name = "user_id")
+	private User owner;
+
+	@OneToOne(cascade = CascadeType.REMOVE)
+	private Address address;
 
 	private AdType type;
-	
-//	@OneToMany(targetEntity=User.class)
-//	private List<User> roomMates;
+
+	// @OneToMany(targetEntity=User.class)
+	// private List<User> roomMates;
 	private int nrOfRooms;
-	
+
 	@ElementCollection
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
-
-
+	private Date creationDate = new Date();
 
 	private String title;
 	private int size;
-    private int price;
-//    private Date fromDate;
-//    private Date toDate;	
+	private int price;
+	// private Date fromDate;
+	// private Date toDate;
 	private String description;
-    private int nrOfRoomMates;
-    
-    
+	private int nrOfRoomMates;
+
 	public void setBytePictureList(List<byte[]> bytePictureList) {
 		this.bytePictureList = bytePictureList;
-	}    
-    public List<byte[]> getBytePictureList() {
+	}
+
+	public List<byte[]> getBytePictureList() {
 		return bytePictureList;
 	}
 
-
-	private Date adAddedDate;
-	
-    public AdType getType() {
+	public AdType getType() {
 		return type;
 	}
 
@@ -81,13 +73,13 @@ public class Ad {
 		this.type = type;
 	}
 
-//	public List<User> getRoomMates() {
-//		return roomMates;
-//	}
-//
-//	public void setRoomMates(List<User> roomMates) {
-//		this.roomMates = roomMates;
-//	}
+	// public List<User> getRoomMates() {
+	// return roomMates;
+	// }
+	//
+	// public void setRoomMates(List<User> roomMates) {
+	// this.roomMates = roomMates;
+	// }
 
 	public int getNrOfRooms() {
 		return nrOfRooms;
@@ -95,22 +87,23 @@ public class Ad {
 
 	public void setNrOfRooms(int nrOfRooms) {
 		this.nrOfRooms = nrOfRooms;
-	} 
+	}
+
 	public Date getAdAddedDate() {
-		return adAddedDate;
+		return creationDate;
 	}
 
 	public void setAdAddedDate(Date adAddedDate) {
-		this.adAddedDate = adAddedDate;
+		this.creationDate = adAddedDate;
 	}
 
 	public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public int getNrOfRoomMates() {
 		return nrOfRoomMates;
@@ -151,42 +144,42 @@ public class Ad {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-    public User getOwner() {
+
+	public User getOwner() {
 		return owner;
 	}
 
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	public String toString(){
+
+	public String toString() {
 		return title;
 	}
 
-	 public int getSize() {
-			return size;
+	public int getSize() {
+		return size;
 	}
 
 	public void setSize(int size) {
 		this.size = size;
 	}
 
-
-
-
-
-//	public Date getFromDate() {
-//		return fromDate;
-//	}
-//
-//	public void setFromDate(Date fromDate) {
-//		this.fromDate = fromDate;
-//	}
-//
-//	public Date getToDate() {
-//		return toDate;
-//	}
-//
-//	public void setToDate(Date toDate) {
-//		this.toDate = toDate;
-//	}
+	// public Date getFromDate() {
+	// return fromDate;
+	// }
+	//
+	// public void setFromDate(Date fromDate) {
+	// this.fromDate = fromDate;
+	// }
+	//
+	// public Date getToDate() {
+	// return toDate;
+	// }
+	//
+	// public void setToDate(Date toDate) {
+	// this.toDate = toDate;
+	// }
+	
+	
 }

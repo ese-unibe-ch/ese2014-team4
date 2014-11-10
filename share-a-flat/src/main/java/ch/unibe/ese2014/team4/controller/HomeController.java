@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -14,13 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
+import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class HomeController {
 
-
+	@Autowired
+	AdService adService;
 
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -29,6 +33,10 @@ public class HomeController {
 		
 		String username = principal.getName();
 		model.addObject("username", username);
+		
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		model.addObject("newestAdds", newestAdds);
+		
 		return model;
 	}
  /*   
