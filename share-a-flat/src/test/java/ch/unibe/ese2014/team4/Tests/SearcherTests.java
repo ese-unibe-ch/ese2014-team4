@@ -20,44 +20,7 @@ public class SearcherTests {
 
 	private AdDao mockDao;
 	private SearchForm searchForm = new SearchForm();
-	private AdService adService = new AdService() {
-		
-		public void setAdDao(AdDao mockDao) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		public AdForm saveAdForm(AdForm adForm, User owner)
-				throws InvalidUserException, Exception {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		public Collection<Ad> getNewestAds(int days) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		public List<Ad> getAdByTitle(String title) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		public List<Ad> getAdByPrice(int price) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		public List<Ad> getAdByCity(String city) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		public Ad getAd(Long id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}; 
+	private AdService adService ; 
 	private ISearcher searcher = new SearcherDefaultCity(searchForm, adService);
 
 	@Before
