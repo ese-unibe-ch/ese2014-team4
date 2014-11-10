@@ -60,7 +60,7 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>${adData.title} </h1>
+<h1>${adData.title} </h1>	<!-- will be used for bookmarking <span class="glyphicon glyphicon-star-empty"></span> -->
         <!-- sets current_profile sex -->
         <c:set var="adTypeToShow" value="apartment" />
 		<c:if test="${adData.type eq 'ROOM'}">
@@ -74,6 +74,9 @@
 <p><b>Address</b><br>
 ${adData.address.street} ${adData.address.streetNumber}<br>
 ${adData.address.zipCode} ${adData.address.city}</p>
+
+
+
 	<!-- image address will get mapped by ImageController -->
 	<div class="container"><ul class="row">
 	<c:forEach items="${imageList}" var="imgId">
