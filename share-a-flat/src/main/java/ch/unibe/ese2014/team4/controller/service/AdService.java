@@ -19,10 +19,9 @@ public interface AdService {
 	public ArrayList<Ad> getNewestAds();
 	public List<Ad> getAdByPrice(int price);
 	public List<Ad> getAdByTitle(String title);
-	public List<Ad> getAdByCity(String city);
+	public ArrayList<Ad> getAdByCity(String city);
 	public void setAdDao(AdDao mockDao);
 	public List<String> getImageList(long adId);
-
-
-
+	public ArrayList<Ad> getAdByZip(int zipCode);
+	public ArrayList<Ad> getAll();
 }
