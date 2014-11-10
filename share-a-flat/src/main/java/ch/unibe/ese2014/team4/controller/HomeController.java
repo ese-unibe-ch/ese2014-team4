@@ -35,7 +35,7 @@ public class HomeController {
 		model.addObject("username", username);
 		
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
-		model.addObject("newestAdds", newestAdds);
+		model.addObject("addList", newestAdds);
 		
 		return model;
 	}

@@ -43,7 +43,7 @@ public class SearchController {
 		adsToAdd = searcher.getAdList();
 		if (!adsToAdd.isEmpty()){
 		model = new ModelAndView("search-result");
-		model.addObject("adsToAdd", adsToAdd);
+		model.addObject("addList", adsToAdd);
 		}
 		else
 			model = new ModelAndView("empty-search-result");
