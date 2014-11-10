@@ -96,9 +96,9 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	public List<Ad> getAdByCity(String city) {
-		List<Ad> ads = adDao.findAllByAddressCity(city);
-
+	public ArrayList<Ad> getAdByCity(String city) {
+		ArrayList<Ad> ads = new ArrayList<Ad>(); 		
+			ads = adDao.findAllByAddressCity(city);
 		return ads;
 	}
 
