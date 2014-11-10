@@ -55,28 +55,10 @@
 					<div class="controls">
 						<form:input class="form-control" path="city" id="field-city"
 							tabindex="1" maxlength="35" placeholder="City" />
-<<<<<<< HEAD
 						<form:errors path="city" cssClass="help-inline" element="span" />	
-=======
 						<form:errors path="city" cssClass="help-inline" element="span"/>
 
-						<c:set var="zipCodeErrors">
-							<form:errors path="zipCode" />
-						</c:set>
-						<div
-							class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-							<label class="control-label" for="field-zipCode">Zip-Code</label>
-							<div class="controls">
-								<form:input class="form-control" path="zipCode"
-									id="field-zipCode" tabindex="2" maxlength="35"
-									placeholder="Zip-Code" />
-								<form:errors path="zipCode" cssClass="help-inline"
-									element="span" />
-							</div>
-						</div>
->>>>>>> origin/master
-					</div>
-				</div>
+						
 
 
 				<div>
@@ -149,13 +131,10 @@
 	</form:form>
 
 
-<<<<<<< HEAD
 <script type="text/javascript">
 	
 	
 </script>
-=======
->>>>>>> 44d997be380395a984ed1041e5902786c345b4a9
 
 
 	<c:import url="template/footer.jsp" />
