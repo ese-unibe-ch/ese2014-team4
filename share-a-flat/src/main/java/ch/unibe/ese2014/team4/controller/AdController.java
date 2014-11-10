@@ -56,8 +56,9 @@ public class AdController {
 	 * Controls submission of newly created ad.
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
-    public ModelAndView submitAd(@Valid AdForm adForm, Principal principal) throws Exception{
-    	ModelAndView model = new ModelAndView("home"); 
+    public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal) throws Exception{
+    	System.out.println(result.getErrorCount());
+		ModelAndView model = new ModelAndView("home"); 
     	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
     	Ad ad = newAdService.getAd(adForm.getId());
     	model.addObject("ad", ad);
@@ -74,8 +75,7 @@ public class AdController {
     	
     	Ad ad = newAdService.getAd(adId);
     	
-    	List<String> list =adService.getImageList(adId);
-    		System.out.println(list.get(1));	
+    	List<String> list =adService.getImageList(adId);	
     	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;
