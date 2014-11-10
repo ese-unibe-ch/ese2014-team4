@@ -12,6 +12,6 @@
 
 
 
-<c:import url="addList.jsp" />
+<c:import url="resultsTable.jsp" />
 
 <c:import url="template/footer.jsp" />

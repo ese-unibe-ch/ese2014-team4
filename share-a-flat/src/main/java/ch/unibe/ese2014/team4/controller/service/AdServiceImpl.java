@@ -106,4 +106,14 @@ public class AdServiceImpl implements AdService {
 		adDao = mockDao;
 	}
 
+	public List<String> getImageList(long adId) {
+		Ad ad = adDao.findById(adId);
+		List<String> list = new ArrayList<String>();
+		
+		for (int i = 0; i<ad.getBytePictureList().size();i++){
+			list.add(new Integer(i).toString());
+		}
+		return list;
+	}
+
 }

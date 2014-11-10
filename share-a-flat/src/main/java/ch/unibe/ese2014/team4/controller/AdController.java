@@ -3,6 +3,7 @@ package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -40,7 +41,11 @@ public class AdController {
 	
 	@Autowired
 	UserService userService;
-
+	
+	@Autowired
+	AdService adService;
+	
+	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
     public ModelAndView createAd(){
     	ModelAndView model = new ModelAndView("create-ad");
@@ -68,7 +73,10 @@ public class AdController {
     	ModelAndView model = new ModelAndView("ad");   
     	
     	Ad ad = newAdService.getAd(adId);
-    	System.out.println(ad.getBytePictureList().size());
+    	
+    	List<Integer> list =adService.getImageList(adId);
+    		System.out.println(list.get(1));	
+    	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;
     }

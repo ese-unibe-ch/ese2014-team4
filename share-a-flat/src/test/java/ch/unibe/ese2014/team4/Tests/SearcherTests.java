@@ -13,6 +13,8 @@ import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
+import ch.unibe.ese2014.team4.controller.service.ISearcher;
+import ch.unibe.ese2014.team4.controller.service.SearcherDefaultCity;
 import ch.unibe.ese2014.team4.model.*;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 

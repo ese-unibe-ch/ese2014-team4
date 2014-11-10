@@ -21,6 +21,7 @@ public interface AdService {
 	public List<Ad> getAdByTitle(String title);
 	public List<Ad> getAdByCity(String city);
 	public void setAdDao(AdDao mockDao);
+	public List<String> getImageList(long adId);
 
 
 

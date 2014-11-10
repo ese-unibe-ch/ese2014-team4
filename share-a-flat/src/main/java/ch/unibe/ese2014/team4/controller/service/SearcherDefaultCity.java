@@ -1,10 +1,10 @@
-package ch.unibe.ese2014.team4.model;
+package ch.unibe.ese2014.team4.controller.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
-import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.model.Ad;
 
 public class SearcherDefaultCity implements ISearcher {
 

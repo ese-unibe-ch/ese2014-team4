@@ -21,9 +21,12 @@
 ${adData.address.street} ${adData.address.streetNumber}<br>
 ${adData.address.zipCode} ${adData.address.city}</p>
 
-
-<c:forEach items="${adData.bytePictureList}" var="img">
-	<img src="img[0]" alt="logo" style="width: 120px; height: 35px">
-	<hr>
+<div class="col-md-3">
+<table><tr>
+<c:forEach items="${imageList}" var="imgId">
+	<td>
+	<img src="${pageContext.request.contextPath}/imageController/ad/${adData.id}/${imgId}" class="img-responsive" alt="${adData.id}/${imgId}" width="100px" height="100px"/>
+	</td>
 </c:forEach>
+</tr></table></div>
 <c:import url="template/footer.jsp" />

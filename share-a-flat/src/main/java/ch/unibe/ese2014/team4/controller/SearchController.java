@@ -18,9 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.controller.service.ISearcher;
+import ch.unibe.ese2014.team4.controller.service.SearcherDefaultCity;
 import ch.unibe.ese2014.team4.model.Ad;
-import ch.unibe.ese2014.team4.model.ISearcher;
-import ch.unibe.ese2014.team4.model.SearcherDefaultCity;
 
 /**
  * Controls all pages / commands concerning ads.
