@@ -93,4 +93,8 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
+	public void setAdDao(AdDao mockDao) {
+		adDao = mockDao;
+	}
+
 }
