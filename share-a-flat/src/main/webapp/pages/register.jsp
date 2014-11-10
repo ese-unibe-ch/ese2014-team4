@@ -65,7 +65,7 @@
        		<div id="error"><b>Error!</b></div>
            	${page_error}
            	</div>
-           </c:if>
+        </c:if>
            
 		<form:form method="post" modelAttribute="signupForm" action="createAccount" onsubmit="return isValid()" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
 

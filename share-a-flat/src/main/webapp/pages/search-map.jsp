@@ -44,7 +44,7 @@
         <!-- Auswahlreiter -->
         <ul>
   		<li class="buton"><a href="search-list" class="inactive">
-                <span><!--  <img src="/neutral/images/homegate/icon_tab_list_active.gif" />-->Auf Liste</span></a></li>
+                <span><!--  <img src="/neutral/images/homegate/icon_tab_list_active.gif" />-->Search List</span></a></li>
 		</ul>
 
   <body>

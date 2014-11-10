@@ -13,6 +13,23 @@
 	}
 </script>
 
+<script type="text/javascript">
+								
+	function checkMaxPrice() {
+		var max = document.getElementById("field-maxPrice");
+		var min = document.getElementById("field-minPrice");
+		if (max.value < min.value) {
+			//alert("Max price must be higher than min price (that's like basic math, dude..)")
+			//$("#SearchErrorMessage.html").
+			//SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)"
+			max.focus();
+						
+			return false;
+		} else return true;
+				
+	}
+			
+</script>
 
 <h1>Search List</h1>
 
@@ -21,21 +38,16 @@
 
 <ul>
 	<li class="map"><a href="search-map" class="inactive"> <span>
-				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf
-				Karte
-		</span></a></li>
+				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Search Map</span></a></li>
 </ul>
 
 <body onload="FocusOnInput()">
 
 
-
-
-	<form:form method="post" modelAttribute="searchForm" action="search"
-		onSubmit="return(f(this));" id="searchForm" cssClass="form-horizontal"
-		autocomplete="off">
+	<form:form method="post" modelAttribute="searchForm" action="search"onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
-			<div class="col-md-3">
+				<div class="error">this is the error message.</div>
+			
 
 				<c:set var="cityErrors">
 					<form:errors path="city" />
@@ -46,7 +58,6 @@
 					<div class="controls">
 						<form:input class="form-control" path="city" id="field-city"
 							tabindex="1" maxlength="35" placeholder="City" />
-						Or
 						<form:errors path="city" cssClass="help-inline" element="span" />
 
 						<c:set var="zipCodeErrors">
@@ -64,25 +75,9 @@
 							</div>
 						</div>
 
-
 					</div>
 				</div>
 
-				<script type="text/javascript">
-				   var zip = document.getElementById("field-zipCode");
-					var city = document.getElementById("field-city");
-
-					function checkCity() {
-						if (city.value == "" && zip.value == 0) {
-							alert("You must enter a city or a zip!");
-							city.focus();
-							return false;
-						} else {
-							return true;
-						}
-					}
-					city.addEventListener("blur", checkCity, false);
-				</script>
 
 				<div>
 					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
@@ -115,26 +110,6 @@
 									placeholder="Max-Price" />
 								<form:errors path="maxPrice" cssClass="help-inline"
 									element="span" />
-
-								<script type="text/javascript">
-									var max = document
-											.getElementById("field-maxPrice");
-									var min = document
-											.getElementById("field-minPrice");
-
-									function checkMaxPrice() {
-										if (max.value <= min.value) {
-											alert("Max prive must be higher than min price (that's like basic math, dude..)");
-											max.focus();
-											return false;
-										} else {
-											return true;
-										}
-									}
-
-									max.addEventListener("blur", checkMaxPrice,
-											false);
-								</script>
 
 							</div>
 						</div>
@@ -183,6 +158,8 @@
 					</div>
 				</div>
 				
+				<span id = "SearchErrorMessage" > </span>
+				
 
 				<div class="form-actions">
 					<button type="submit" tabindex="6" class="btn btn-primary">Search
@@ -193,12 +170,12 @@
 				</div>
 			</div>
 		</fieldset>
+		
 	</form:form>
 
 
 <script type="text/javascript">
 	
-
 	
 </script>
 
