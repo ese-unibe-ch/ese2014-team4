@@ -74,7 +74,7 @@ public class AdController {
     	
     	Ad ad = newAdService.getAd(adId);
     	
-    	List<Integer> list =adService.getImageList(adId);
+    	List<String> list =adService.getImageList(adId);
     		System.out.println(list.get(1));	
     	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page

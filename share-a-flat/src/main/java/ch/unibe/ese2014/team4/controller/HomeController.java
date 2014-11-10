@@ -39,15 +39,14 @@ public class HomeController {
 		
 		return model;
 	}
- /*   
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+   
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView login(){
     	ModelAndView model;
-    	model = new ModelAndView("home");
-    	//to do
-    	System.out.println("to do: method");
+    	model = new ModelAndView("template/test");
+
     	return model;
-    }
+    } /*
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	
