@@ -13,6 +13,21 @@
 	}
 </script>
 
+<script type="text/javascript">
+	//SearchErrorMessage = "Hallo";
+	//document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+	function checkMaxPrice() {
+		var max = document.getElementById("field-maxPrice");
+		var min = document.getElementById("field-minPrice");
+		if (max.value < min.value) {
+			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
+			document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+			max.focus();
+			return false;
+		} else return true;				
+	}
+			
+</script>
 
 <h1>Search List</h1>
 
@@ -21,21 +36,15 @@
 
 <ul>
 	<li class="map"><a href="search-map" class="inactive"> <span>
-				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf
-				Karte
-		</span></a></li>
+				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Search Map</span></a></li>
 </ul>
 
 <body onload="FocusOnInput()">
 
 
-
-
-	<form:form method="post" modelAttribute="searchForm" action="search"
-		onSubmit="return(f(this));" id="searchForm" cssClass="form-horizontal"
-		autocomplete="off">
+	<form:form method="post" modelAttribute="searchForm" action="search"onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
-			<div class="col-md-3">
+				<div class="col-md-3">
 
 				<c:set var="cityErrors">
 					<form:errors path="city" />
@@ -46,25 +55,29 @@
 					<div class="controls">
 						<form:input class="form-control" path="city" id="field-city"
 							tabindex="1" maxlength="35" placeholder="City" />
+<<<<<<< HEAD
 						<form:errors path="city" cssClass="help-inline" element="span" />	
+=======
+						<form:errors path="city" cssClass="help-inline" element="span"/>
+
+						<c:set var="zipCodeErrors">
+							<form:errors path="zipCode" />
+						</c:set>
+						<div
+							class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+							<label class="control-label" for="field-zipCode">Zip-Code</label>
+							<div class="controls">
+								<form:input class="form-control" path="zipCode"
+									id="field-zipCode" tabindex="2" maxlength="35"
+									placeholder="Zip-Code" />
+								<form:errors path="zipCode" cssClass="help-inline"
+									element="span" />
+							</div>
+						</div>
+>>>>>>> origin/master
 					</div>
 				</div>
 
-				<script type="text/javascript">
-				   var zip = document.getElementById("field-zipCode");
-					var city = document.getElementById("field-city");
-
-					function checkCity() {
-						if (city.value == "" && zip.value == 0) {
-							alert("You must enter a city or a zip!");
-							city.focus();
-							return false;
-						} else {
-							return true;
-						}
-					}
-					city.addEventListener("blur", checkCity, false);
-				</script>
 
 				<div>
 					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
@@ -97,55 +110,10 @@
 									placeholder="Max-Price" />
 								<form:errors path="maxPrice" cssClass="help-inline"
 									element="span" />
-
-								<script type="text/javascript">
-									var max = document
-											.getElementById("field-maxPrice");
-									var min = document
-											.getElementById("field-minPrice");
-
-									function checkMaxPrice() {
-										if (max.value <= min.value) {
-											alert("Max prive must be higher than min price (that's like basic math, dude..)");
-											max.focus();
-											return false;
-										} else {
-											return true;
-										}
-									}
-
-									max.addEventListener("blur", checkMaxPrice,
-											false);
-								</script>
-
 							</div>
 						</div>
 					</div>
-
 				</div>
-
-				<%--         <c:set var="titleErrors"><form:errors path="title"/></c:set> --%>
-				<%--         <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>"> --%>
-				<!--             <label class="control-label" for="field-title">Title</label> -->
-
-				<!--             <div class="controls"> -->
-				<%--                 <form:input class="form-control" path="title" id="field-title" tabindex="3" maxlength="45" placeholder="Title"/> --%>
-				<%--                 <form:errors path="title" cssClass="help-inline" element="span"/> --%>
-				<!--             </div> -->
-				<!--         </div> -->
-
-
-
-				<%--         <c:set var="streetNumberErrors"><form:errors path="streetNumber"/></c:set> --%>
-				<%--         <div class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>"> --%>
-				<!--             <label class="control-label" for="field-streetNumber">StreetNumber</label> -->
-				<!--             <div class="controls"> -->
-				<%--                 <form:input class="form-control" path="streetNumber" id="field-streetNumber" tabindex="5" maxlength="35" placeholder="StreetNumber"/> --%>
-				<%--                 <form:errors path="streetNumber" cssClass="help-inline" element="span"/> --%>
-				<!--             </div> -->
-				<!--         </div> -->
-
-
 
 				<c:set var="nrOfRoomMatesErrors">
 					<form:errors path="nrOfRoomMates" />
@@ -165,19 +133,29 @@
 					</div>
 				</div>
 				
+				<span id = "SearchErrorMessage"></span>
+				
 
 				<div class="form-actions">
+					<br>
 					<button type="submit" tabindex="6" class="btn btn-primary">Search
 						Ad</button>
-					<input type="button"
-						onclick="location.href('http://localhost:8080/share-a-flat/my-page');"
-						value="Cancel">
+					<!--<input type="button" onclick="location.href('http://localhost:8080/share-a-flat/my-page');"
+						value="Cancel">-->
+					<input type="reset" value="Cancel"><br>
 				</div>
 			</div>
-		</fieldset>
+		</fieldset>		
 	</form:form>
 
 
+<<<<<<< HEAD
+<script type="text/javascript">
+	
+	
+</script>
+=======
+>>>>>>> 44d997be380395a984ed1041e5902786c345b4a9
 
 
 	<c:import url="template/footer.jsp" />

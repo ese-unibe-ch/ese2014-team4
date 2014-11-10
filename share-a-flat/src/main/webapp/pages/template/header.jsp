@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024"  charset="utf-8" />
+	
 	
 	
 	<!-- <link rel="stylesheet" type="text/css" href="/share-a-flat/css/main.css" media="all" /> -->
@@ -55,6 +56,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+          	<li <%= isActive("createAd", request) %>><a href="createAd">Create an ad</a></li>
             <li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li>
             <li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
             <li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li>
