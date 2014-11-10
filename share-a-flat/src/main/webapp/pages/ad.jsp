@@ -8,19 +8,22 @@
 
 
 <h1>${adData.title} </h1>
+        <!-- sets current_profile sex -->
+        <c:set var="adTypeToShow" value="apartment" />
+		<c:if test="${adData.type eq 'ROOM'}">
+   		<c:set var="adTypeToShow" value="room" />
+		</c:if>
+		
+<br>		
+<p>${adTypeToShow}</p>
 
-<h2>Send e-mail to someone@example.com:</h2>
-
-<form action="MAILTO:someone@example.com" method="post" enctype="text/plain">
-Name:<br>
-<input type="text" name="name" value="your name"><br>
-E-mail:<br>
-<input type="text" name="mail" value="your email"><br>
-Comment:<br>
-<input type="text" name="comment" value="your comment" size="50"><br><br>
-<input type="submit" value="Send">
-<input type="reset" value="Reset">
-</form>
+<p><b>Address</b><br>
+${adData.address.street} ${adData.address.streetNumber}<br>
+${adData.address.zipCode} ${adData.address.city}</p>
 
 
+<c:forEach items="${adData.bytePictureList}" var="img">
+	<img src="img[0]" alt="logo" style="width: 120px; height: 35px">
+	<hr>
+</c:forEach>
 <c:import url="template/footer.jsp" />

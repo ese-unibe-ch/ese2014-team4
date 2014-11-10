@@ -196,11 +196,6 @@
 	</form:form>
 
 
-<script type="text/javascript">
-	
-
-	
-</script>
 
 
 	<c:import url="template/footer.jsp" />

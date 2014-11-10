@@ -4,6 +4,7 @@ package ch.unibe.ese2014.team4.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,9 +64,11 @@ public class AdController {
 	 * @return ad-page containing ad with adId x.
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
-    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId){
+    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId, HttpSession session){
     	ModelAndView model = new ModelAndView("ad");   
+    	
     	Ad ad = newAdService.getAd(adId);
+    	System.out.println(ad.getBytePictureList().size());
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;
     }

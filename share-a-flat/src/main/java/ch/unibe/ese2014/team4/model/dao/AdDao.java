@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +18,7 @@ public interface AdDao extends CrudRepository<Ad,Long> {
 	public List<Ad> findAllByTitle(String title);
 	public Ad findByAddressId(Long addressId);
 	public List<Ad> findAllByAddressCity(String city);
-
+	public ArrayList<Ad> findAll();
 	
 	
 }

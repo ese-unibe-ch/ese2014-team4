@@ -7,6 +7,11 @@
 <c:import url="template/header.jsp" />
 
 
-<h2> Hi ${username}, welcome back!</h2>
-<h3></h3>
+<h2><b>Hi ${username}</b></h2>
+<h3>Here are the newest adds in RoomMate:</h3>
+
+
+
+<c:import url="addList.jsp" />
+
 <c:import url="template/footer.jsp" />
