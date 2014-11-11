@@ -15,6 +15,7 @@
 				<hr>
 			</div>
 
+
 		</div>
 	</div>
 	<!--/container-->
@@ -53,6 +54,7 @@
 						path="adType" id="flat" tabindex="3" value="FLAT" />Flat</label>
 			</div>
 		</div>
+
 		<!-- 
 			<c:if test="${adType eq 'ROOM'}">
 			asdfasdf

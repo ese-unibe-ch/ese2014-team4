@@ -24,6 +24,7 @@ public class SearchForm {
     private String title;
     private int nrOfFlatMates;
     private int nrOfRooms;
+    private AdType adType;
     
     
    
@@ -113,5 +114,13 @@ public class SearchForm {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public AdType getAdType() {
+		return adType;
+	}
+
+	public void setAdType(AdType adType) {
+		this.adType = adType;
 	}    
 }

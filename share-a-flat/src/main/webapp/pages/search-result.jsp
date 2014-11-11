@@ -10,6 +10,7 @@
 
 <h1>Search Result</h1>
 
+
 <ul>
 	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
 </ul>
@@ -43,6 +44,7 @@
   		</div>
 	</div>  
 </div> 
+
 
 
 <c:import url="template/footer.jsp" />

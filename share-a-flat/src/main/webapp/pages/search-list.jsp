@@ -38,6 +38,7 @@
 	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
 </ul>
 
+
 <!-- <div class="col-md-3"> -->
 <%-- 	<c:import url="search-criteria.jsp" /> --%>
 <!-- </div> -->
@@ -74,3 +75,4 @@
 
 
 <c:import url="template/footer.jsp" />
+
