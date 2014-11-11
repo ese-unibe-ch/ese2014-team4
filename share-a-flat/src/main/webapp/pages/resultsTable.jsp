@@ -7,6 +7,10 @@
 <c:forEach items="${addList}" var="ad">
 	<table>
 		<tr>
+			<td width="200">
+				<img src="//placehold.it/180x100" class="img-responsive">
+			</td>
+		
 			<td width="80">
 				<b><a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a></b><br> 
 				<b>Address:</b><br> <b></b>

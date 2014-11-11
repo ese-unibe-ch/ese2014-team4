@@ -7,11 +7,19 @@
 <c:import url="template/header.jsp" />
 
 
-<h2><b>Hi ${username}</b></h2>
-<h3>Here are the newest adds in RoomMate:</h3>
+<h1><b>Hi ${username}</b></h1>
 
-
-
-<c:import url="resultsTable.jsp" />
+<div class="row">
+	<div class="panel panel-default">
+ 		
+ 		<div class="panel-heading">
+ 			<h3>Here are the newest adds in RoomMate</h3>
+ 		</div>
+ 		
+ 		<div class="panel-body">
+			<c:import url="resultsTable.jsp" />
+ 		</div> 		
+	</div>
+</div> 
 
 <c:import url="template/footer.jsp" />

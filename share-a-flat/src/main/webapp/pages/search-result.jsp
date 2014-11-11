@@ -10,14 +10,40 @@
 
 <h1>Search Result</h1>
 
-<div class="map">
-	<a href="search-map" class="inactive"> <span> <!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Map Search</span></a>
-</div>
-<hr>
 
+<ul>
+	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
+</ul>
 
+<div class="row">
+	<div class="col-md-4">
+ 		<div class="panel panel-default">
+ 		
+			<div class="panel-heading">
+				<h3>Search-Criteria</h3>
+			</div>
+			
+			<div class="panel-body">
+				<c:import url="search-criteria.jsp" />
+			</div>
+			
+ 		</div>
+	</div>
 
-<c:import url="resultsTable.jsp" />
+	<div class="col-md-8">
+  		<div class="panel panel-default">
+    		
+    		<div class="panel-heading">
+    			<h3>Results</h3>
+    		</div>
+    		
+    		<div class="panel-body">
+				<c:import url="resultsTable.jsp" />
+    		</div>
+    		
+  		</div>
+	</div>  
+</div> 
 
 
 

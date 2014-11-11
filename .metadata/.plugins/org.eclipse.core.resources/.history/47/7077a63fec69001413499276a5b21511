@@ -7,41 +7,23 @@
 
 <c:import url="template/header.jsp" />
 
-<script type="text/javascript">
-	function FocusOnInput() {
-		document.getElementById("field-cityOrZip").focus();
-	}
-</script>
 
-<script type="text/javascript">
-	//SearchErrorMessage = "Hallo";
-	//document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
-	function checkMaxPrice() {
-		var max = document.getElementById("field-maxPrice");
-		var min = document.getElementById("field-minPrice");
-		if (max.value < min.value) {
-			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
-			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
-			max.focus();
-			return false;
-		} else
-			return true;
-	}
-</script>
+<h1>Search Result</h1>
 
-<h1>Search List</h1>
+<<<<<<< HEAD
+<div class="map">
+	<a href="search-map" class="inactive"> <span> <!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Map Search</span></a>
+</div>
+<hr>
 
 
-<!-- Auswahlreiter -->
 
+<c:import url="resultsTable.jsp" />
+
+=======
 <ul>
 	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
 </ul>
-
-
-<!-- <div class="col-md-3"> -->
-<%-- 	<c:import url="search-criteria.jsp" /> --%>
-<!-- </div> -->
 
 <div class="row">
 	<div class="col-md-4">
@@ -62,7 +44,7 @@
   		<div class="panel panel-default">
     		
     		<div class="panel-heading">
-    			<h3>Newest Adds</h3>
+    			<h3>Results</h3>
     		</div>
     		
     		<div class="panel-body">
@@ -72,7 +54,7 @@
   		</div>
 	</div>  
 </div> 
+>>>>>>> f35e07c55a6ec19a40805ce3dc189c5d8a5c418a
 
 
 <c:import url="template/footer.jsp" />
-
