@@ -10,30 +10,27 @@
 	
 		<tr>
 			<td width="200">
-				<img src="//placehold.it/180x100" class="img-responsive">
+				<!-- as soon as default image is added: <img src="/imageController/ad/${ad.id}/0" class="img-responsive"> -->
+				<img src="img/defaultAdImage.png" class="img-responsive">
 			</td>
 		
-			<td width="80">
-				 
+			<td width="80"> 
 				<b>Address:</b><br> <b></b>
 				<b>Place:</b><br> 
 			</td>
 				
 
 			<td width="150">
-				<b style="font-size:14pt"> </b><br> 
 				${ad.address.street} ${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 			
 			<td width="60">
-				<b style="font-size:14pt; color:blue"> </b><br> 
 				<b>Price:</b><br>
 				<b>Size:</b><br>
 			</td>
 			
 			<td width="100">
-				<b style="font-size:14pt"> </b><br> 
 				${ad.price} CHF<br>
 				${ad.size} m&sup2<br>
 			</td>
