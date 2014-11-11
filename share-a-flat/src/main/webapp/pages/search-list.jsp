@@ -21,12 +21,12 @@
 		var min = document.getElementById("field-minPrice");
 		if (max.value < min.value) {
 			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
-			document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
+			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
 			max.focus();
 			return false;
-		} else return true;				
+		} else
+			return true;
 	}
-			
 </script>
 
 <h1>Search List</h1>
@@ -35,117 +35,42 @@
 <!-- Auswahlreiter -->
 
 <ul>
-	<li class="map"><a href="search-map" class="inactive"> <span>
-				<!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Search Map</span></a></li>
+	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
 </ul>
 
-<body onload="FocusOnInput()">
+<!-- <div class="col-md-3"> -->
+<%-- 	<c:import url="search-criteria.jsp" /> --%>
+<!-- </div> -->
 
-
-	<form:form method="post" modelAttribute="searchForm" action="search"onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
-		<fieldset>
-				<div class="col-md-3">
-
-				<c:set var="cityOrZipErrors">
-					<form:errors path="cityOrZip" />
-				</c:set>
-				<div
-					class="control-group<c:if test="${not empty cityOrZipErrors}"> error</c:if>">
-					<label class="control-label" for="field-cityOrZip">City or Zip</label>
-					<div class="controls">
-						<form:input class="form-control" path="cityOrZip" id="field-cityOrZip"
-							tabindex="1" maxlength="35" placeholder="cityOrZip" />
-						<form:errors path="cityOrZip" cssClass="help-inline" element="span" />	
-						<form:errors path="cityOrZip" cssClass="help-inline" element="span"/>
-				<div>
-					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
-						<c:set var="minPriceErrors">
-							<form:errors path="minPrice" />
-						</c:set>
-						<div
-							class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
-							<label class="control-label" for="field-minPrice">Min-Price</label>
-							<div class="controls">
-								<form:input class="form-control" path="minPrice"
-									id="field-minPrice" tabindex="3" maxlength="35"
-									placeholder="Min-Price" />
-								<form:errors path="minPrice" cssClass="help-inline"
-									element="span" />
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
-						<c:set var="maxPriceErrors">
-							<form:errors path="maxPrice" />
-						</c:set>
-						<div
-							class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
-							<label class="control-label" for="field-maxPrice">Max-Price</label>
-							<div class="controls">
-								<form:input class="form-control" path="maxPrice"
-									id="field-maxPrice" tabindex="4" maxlength="35"
-									placeholder="Max-Price" />
-								<form:errors path="maxPrice" cssClass="help-inline"
-									element="span" />
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<c:set var="nrOfRoomsErrors">
-					<form:errors path="nrOfRooms" />
-				</c:set>
-				<div
-					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-					<label class="control-label" for="field-nrOfRooms">Number
-						of Rooms </label>
-					<div class="controls">
-						<form:input class="form-control" path="nrOfRooms"
-							id="field-nrOfRooms"  
-							 tabindex="5" maxlength="35"
-							placeholder="Number of Rooms"/>
-						<form:errors path="nrOfRooms" cssClass="help-inline"
-							element="span" />							
-				</div>
-
-				<c:set var="nrOfFlatMatesErrors">
-					<form:errors path="nrOfFlatMates" />
-				</c:set>
-				<div
-					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-					<label class="control-label" for="field-nrOfFlatMates">Number
-						of Flat Mates </label>
-					<div class="controls">
-						<form:input class="form-control" path="nrOfFlatMates"
-							id="field-nrOfFlatMates"  
-							 tabindex="5" maxlength="35"
-							placeholder="Number of Flatmates"/>
-						<form:errors path="nrOfFlatMates" cssClass="help-inline"
-							element="span" />							
-						<br>
-					</div>
-				</div>
-				
-				<span id = "SearchErrorMessage"></span>				
-
-				<div class="form-actions">
-					<br>
-					<button type="submit" tabindex="6" class="btn btn-primary">Search
-						Ad</button>
-					<!--<input type="button" onclick="location.href('http://localhost:8080/share-a-flat/my-page');"
-						value="Cancel">-->
-					<input type="reset" value="Cancel"><br>
-				</div>
+<div class="row">
+	<div class="col-md-4">
+ 		<div class="panel panel-default">
+ 		
+			<div class="panel-heading">
+				<h3>Search-Criteria</h3>
 			</div>
-		</fieldset>		
-	</form:form>
+			
+			<div class="panel-body">
+				<c:import url="search-criteria.jsp" />
+			</div>
+			
+ 		</div>
+	</div>
+
+	<div class="col-md-8">
+  		<div class="panel panel-default">
+    		
+    		<div class="panel-heading">
+    			<h3>Newest Adds</h3>
+    		</div>
+    		
+    		<div class="panel-body">
+				<c:import url="resultsTable.jsp" />
+    		</div>
+    		
+  		</div>
+	</div>  
+</div> 
 
 
-<script type="text/javascript">
-	
-	
-</script>
-
-
-	<c:import url="template/footer.jsp" />
+<c:import url="template/footer.jsp" />
