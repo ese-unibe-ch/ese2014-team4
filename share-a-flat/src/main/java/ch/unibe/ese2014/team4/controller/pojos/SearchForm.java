@@ -10,7 +10,6 @@ import ch.unibe.ese2014.team4.model.Address;
 /**
  * Used to transfer ad-information from form to controller.
  * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
- * TODO: controller for /submitAd and corresponding service to save ad.
  */
 
 public class SearchForm {
@@ -23,21 +22,33 @@ public class SearchForm {
 	@NotNull
     private String description;
     private String title;
-    private int nrOfRoomMates;  
-    private Long id;
+    private int nrOfFlatMates;
+    private int nrOfRooms;
+    
+    
+   
+
+	private Long id;
     
   //Address-Info, same field as Ad itself.
   	private int streetNumber;
-    private String city;
-    private int zipCode;
+    private String cityOrZip;
     private String street;
     
-    public int getNrOfRoomMates() {
-		return nrOfRoomMates;
+    public int getNrOfRooms() {
+		return nrOfRooms;
 	}
 
-	public void setNrOfRoomMates(int nrOfRoomMates) {
-		this.nrOfRoomMates = nrOfRoomMates;
+	public void setNrOfRooms(int nrOfRooms) {
+		this.nrOfRooms = nrOfRooms;
+	}
+    
+    public int getNrOfFlatMates() {
+		return nrOfFlatMates;
+	}
+
+	public void setNrOfFlatMates(int nrOfFlatMates) {
+		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
 	public int getMinPrice() {
@@ -70,10 +81,7 @@ public class SearchForm {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-
-    
+	}    
 
     public int getStreetNumber() {
 		return streetNumber;
@@ -83,21 +91,13 @@ public class SearchForm {
 		this.streetNumber = streetNumber;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCityOrZip() {
+		return cityOrZip;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
+	public void setCityOrZip(String cityOrZip) {
+		this.cityOrZip = cityOrZip;
+	}	
 
 	public String getStreet() {
 		return street;
@@ -107,16 +107,11 @@ public class SearchForm {
 		this.street = street;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-    
-    
-
-    
+	}    
 }

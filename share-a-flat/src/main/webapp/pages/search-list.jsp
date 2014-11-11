@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
 	function FocusOnInput() {
-		document.getElementById("field-city").focus();
+		document.getElementById("field-cityOrZip").focus();
 	}
 </script>
 
@@ -46,21 +46,17 @@
 		<fieldset>
 				<div class="col-md-3">
 
-				<c:set var="cityErrors">
-					<form:errors path="city" />
+				<c:set var="cityOrZipErrors">
+					<form:errors path="cityOrZip" />
 				</c:set>
 				<div
-					class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
-					<label class="control-label" for="field-city">City or Zip</label>
+					class="control-group<c:if test="${not empty cityOrZipErrors}"> error</c:if>">
+					<label class="control-label" for="field-cityOrZip">City or Zip</label>
 					<div class="controls">
-						<form:input class="form-control" path="city" id="field-city"
-							tabindex="1" maxlength="35" placeholder="City" />
-						<form:errors path="city" cssClass="help-inline" element="span" />	
-						<form:errors path="city" cssClass="help-inline" element="span"/>
-
-						
-
-
+						<form:input class="form-control" path="cityOrZip" id="field-cityOrZip"
+							tabindex="1" maxlength="35" placeholder="cityOrZip" />
+						<form:errors path="cityOrZip" cssClass="help-inline" element="span" />	
+						<form:errors path="cityOrZip" cssClass="help-inline" element="span"/>
 				<div>
 					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
 						<c:set var="minPriceErrors">
@@ -96,27 +92,42 @@
 						</div>
 					</div>
 				</div>
-
-				<c:set var="nrOfRoomMatesErrors">
-					<form:errors path="nrOfRoomMates" />
+				
+				<c:set var="nrOfRoomsErrors">
+					<form:errors path="nrOfRooms" />
 				</c:set>
 				<div
 					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-					<label class="control-label" for="field-nrOfRoomMates">Number
+					<label class="control-label" for="field-nrOfRooms">Number
+						of Rooms </label>
+					<div class="controls">
+						<form:input class="form-control" path="nrOfRooms"
+							id="field-nrOfRooms"  
+							 tabindex="5" maxlength="35"
+							placeholder="Number of Rooms"/>
+						<form:errors path="nrOfRooms" cssClass="help-inline"
+							element="span" />							
+				</div>
+
+				<c:set var="nrOfFlatMatesErrors">
+					<form:errors path="nrOfFlatMates" />
+				</c:set>
+				<div
+					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+					<label class="control-label" for="field-nrOfFlatMates">Number
 						of Flat Mates </label>
 					<div class="controls">
-						<form:input class="form-control" path="nrOfRoomMates"
-							id="field-nrOfRoomMates"  
+						<form:input class="form-control" path="nrOfFlatMates"
+							id="field-nrOfFlatMates"  
 							 tabindex="5" maxlength="35"
-							placeholder="Number of Roommates"/>
-						<form:errors path="nrOfRoomMates" cssClass="help-inline"
+							placeholder="Number of Flatmates"/>
+						<form:errors path="nrOfFlatMates" cssClass="help-inline"
 							element="span" />							
-						<br> <br>
+						<br>
 					</div>
 				</div>
 				
-				<span id = "SearchErrorMessage"></span>
-				
+				<span id = "SearchErrorMessage"></span>				
 
 				<div class="form-actions">
 					<br>

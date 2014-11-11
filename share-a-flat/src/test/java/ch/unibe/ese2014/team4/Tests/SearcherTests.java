@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
-import ch.unibe.ese2014.team4.controller.service.SearcherDefaultCity;
+import ch.unibe.ese2014.team4.controller.service.DefaultSearcher;
 import ch.unibe.ese2014.team4.model.*;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
@@ -18,7 +18,7 @@ public class SearcherTests {
 	private AdDao mockDao;
 	private SearchForm searchForm = new SearchForm();
 	private AdService adService = new AdServiceImpl();
-	private SearcherDefaultCity searcher = new SearcherDefaultCity(searchForm,
+	private DefaultSearcher searcher = new DefaultSearcher(searchForm,
 			adService);
 	private ArrayList<Ad> mockedSearchResult;
 	private Ad testAd1 = new Ad();
@@ -64,7 +64,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd1);
 
 		String city = "City1";
-		searchForm.setCity(city);
+		searchForm.setCityOrZip(city);
 
 		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
 				mockedSearchResult);
@@ -82,7 +82,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd1);
 
 		String city = "1111";
-		searchForm.setCity(city);
+		searchForm.setCityOrZip(city);
 
 		expect(mockDao.findAllByAddressZipCode(1111)).andReturn(
 				mockedSearchResult);
@@ -101,7 +101,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfRoomMates(2);
+		searchForm.setNrOfFlatMates(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -162,7 +162,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 
 		String city = "City2";
-		searchForm.setCity(city);
+		searchForm.setCityOrZip(city);
 
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(200);
@@ -174,7 +174,6 @@ public class SearcherTests {
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
-
 	}
 
 	@Test
@@ -184,7 +183,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 
 		String city = "City2";
-		searchForm.setCity(city);
+		searchForm.setCityOrZip(city);
 
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(100);
@@ -207,7 +206,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfRoomMates(2);
+		searchForm.setNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -229,7 +228,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfRoomMates(2);
+		searchForm.setNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(100);
 
@@ -249,8 +248,8 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		String city = "City3";
-		searchForm.setCity(city);
-		searchForm.setNrOfRoomMates(3);
+		searchForm.setCityOrZip(city);
+		searchForm.setNrOfFlatMates(3);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -270,8 +269,8 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		String city = "City3";
-		searchForm.setCity(city);
-		searchForm.setNrOfRoomMates(2);
+		searchForm.setCityOrZip(city);
+		searchForm.setNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -284,11 +283,10 @@ public class SearcherTests {
 		verify(mockDao);
 	}
 
-
 	private void resetSearchForm() {
-		searchForm.setCity("");
+		searchForm.setCityOrZip("");
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
-		searchForm.setNrOfRoomMates(0);
+		searchForm.setNrOfFlatMates(0);
 	}
 }

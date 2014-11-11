@@ -85,11 +85,8 @@ public class NewAccountServiceImpl implements NewAccountService {
 			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
 		}
 
-		return signupForm;
-		
+		return signupForm;		
 	}
-
-
 
 	private byte[] getDefaultProfileImage(){
 
@@ -97,7 +94,6 @@ public class NewAccountServiceImpl implements NewAccountService {
 		try {
 			file = appContext.getResource("classpath:defaultProfileImage.png").getFile();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 
@@ -106,20 +102,15 @@ public class NewAccountServiceImpl implements NewAccountService {
 		try {
 			input = new FileInputStream(file);
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			byteImg= IOUtils.toByteArray(input);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return byteImg;
 	}
-	
-
-
 
 
 	public void loginManually(User user) {

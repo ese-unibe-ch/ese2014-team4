@@ -21,6 +21,11 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 import ch.unibe.ese2014.team4.model.dao.AddressDao;
 
+/**
+ * save ads to and get ads from data base
+ * @author team4
+ *
+ */
 @Service
 public class AdServiceImpl implements AdService {
 
@@ -33,6 +38,9 @@ public class AdServiceImpl implements AdService {
 	@Autowired
 	ImageService imageService;
 
+	/**
+	 * creates an ad from form and saves it to data base
+	 */
 	@Transactional
 	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
 
@@ -120,7 +128,7 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	public ArrayList<Ad> getAll() {
+	public ArrayList<Ad> getAllAds() {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAll();
 		return ads;

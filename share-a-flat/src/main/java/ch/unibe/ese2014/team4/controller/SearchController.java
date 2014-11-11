@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.ISearcher;
-import ch.unibe.ese2014.team4.controller.service.SearcherDefaultCity;
+import ch.unibe.ese2014.team4.controller.service.DefaultSearcher;
 import ch.unibe.ese2014.team4.model.Ad;
 
 /**
@@ -39,7 +39,7 @@ public class SearchController {
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model = null;
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
-		searcher = new SearcherDefaultCity(searchForm, adService);
+		searcher = new DefaultSearcher(searchForm, adService);
 		adsToAdd = searcher.getAdList();
 		if (!adsToAdd.isEmpty()){
 		model = new ModelAndView("search-result");

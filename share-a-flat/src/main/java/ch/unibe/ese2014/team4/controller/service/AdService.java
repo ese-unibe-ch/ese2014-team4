@@ -23,5 +23,5 @@ public interface AdService {
 	public void setAdDao(AdDao mockDao);
 	public List<String> getImageList(long adId);
 	public ArrayList<Ad> getAdByZip(int zipCode);
-	public ArrayList<Ad> getAll();
+	public ArrayList<Ad> getAllAds();
 }

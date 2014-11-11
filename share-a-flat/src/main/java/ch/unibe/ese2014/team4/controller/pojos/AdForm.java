@@ -158,7 +158,6 @@ public class AdForm {
 		this.uploadedAdPictures = uploadedAdPictures;
 	}
 
-
 	private String makeCapital(String str) {
 		String tmp = str;
 		String firstChar = tmp.substring(0, 1).toUpperCase();
