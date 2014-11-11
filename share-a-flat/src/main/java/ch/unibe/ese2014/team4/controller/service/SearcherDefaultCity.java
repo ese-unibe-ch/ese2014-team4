@@ -33,7 +33,7 @@ public class SearcherDefaultCity implements ISearcher {
 		ArrayList<Ad> adsToSort = new ArrayList<Ad>();
 		zip = parseCityZip(searchForm.getCity());
 		if (zip > 0) {
-			adsToSort = adService.getAdByZip(searchForm.getZipCode());
+			adsToSort = adService.getAdByZip(zip);
 		} else {
 			if (searchForm.getCity() != "") {
 				adsToSort = adService.getAdByCity(searchForm.getCity());
@@ -57,8 +57,12 @@ public class SearcherDefaultCity implements ISearcher {
 		return adsToSort;
 	}
 
-	private void checkPrice(List<Ad> adsToSort) {
-		for (Ad ad : adsToSort) {
+	private void checkPrice(ArrayList<Ad> adsToSort) {
+		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
+		for (Ad ad : adsToSort)
+			adsToSortCopy.add(ad);
+		
+		for (Ad ad : adsToSortCopy) {
 			if (searchForm.getMinPrice() > ad.getPrice()
 					|| searchForm.getMaxPrice() < ad.getPrice())
 				adsToSort.remove(ad);
@@ -66,7 +70,11 @@ public class SearcherDefaultCity implements ISearcher {
 	}
 
 	private void checkNrRoomMates(ArrayList<Ad> adsToSort) {
-		for (Ad ad : adsToSort) {
+		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
+		for (Ad ad : adsToSort)
+			adsToSortCopy.add(ad);
+		
+		for (Ad ad : adsToSortCopy) {
 			if ((searchForm.getNrOfRoomMates() != ad.getNrOfRoomMates() && searchForm
 					.getNrOfRoomMates() != 0))
 				adsToSort.remove(ad);

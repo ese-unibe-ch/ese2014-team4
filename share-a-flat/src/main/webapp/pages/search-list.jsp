@@ -103,7 +103,7 @@
 				<div
 					class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 					<label class="control-label" for="field-nrOfRoomMates">Number
-						of Room Mates </label>
+						of Flat Mates </label>
 					<div class="controls">
 						<form:input class="form-control" path="nrOfRoomMates"
 							id="field-nrOfRoomMates"  

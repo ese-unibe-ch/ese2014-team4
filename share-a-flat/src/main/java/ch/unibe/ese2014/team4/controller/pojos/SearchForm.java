@@ -31,8 +31,8 @@ public class SearchForm {
     private String city;
     private int zipCode;
     private String street;
-
-	public int getNrOfRoomMates() {
+    
+    public int getNrOfRoomMates() {
 		return nrOfRoomMates;
 	}
 
