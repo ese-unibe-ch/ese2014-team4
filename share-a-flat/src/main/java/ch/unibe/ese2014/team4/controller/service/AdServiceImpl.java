@@ -99,7 +99,7 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByCity(String city) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
-		ads = adDao.findAllByAddressCity(city);
+		ads = adDao.findAllByAddressCityIgnoreCase(city);
 		return ads;
 	}
 

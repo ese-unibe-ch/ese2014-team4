@@ -32,15 +32,16 @@ public class SearcherTests {
 
 		Address testAddess1 = new Address();
 		Address testAddess2 = new Address();
-		Address testAddess3 = new Address();
+		Address testAddess3 = new Address();		
 
-		String city1 = "city1";
-		String city2 = "city2";
-		String city3 = "city3";
+		testAddess1.setCity("City1");
+		testAddess2.setCity("City2");
+		testAddess3.setCity("City3");
+		
+		testAddess1.setZipCode(1111);
+		testAddess2.setZipCode(2222);
+		testAddess3.setZipCode(3333);
 
-		testAddess1.setCity(city1);
-		testAddess2.setCity(city2);
-		testAddess3.setCity(city3);
 
 		testAd1.setAddress(testAddess1);
 		testAd2.setAddress(testAddess2);
@@ -60,16 +61,36 @@ public class SearcherTests {
 	@Test
 	public void testByCityOneAd() {
 		resetSearchForm();
+		String city = "City1";
+		searchForm.setCity(city);
+
+		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		assertEquals(testAd1, adsFromSearcher.get(0));
+	//	assertEquals(1, adsFromSearcher.size());
+		verify(mockDao);
+	}
+
+	@Test
+	public void testByCityNotCapitalOneAd() {
+		ArrayList<Ad> adsFromSearcher = new ArrayList<Ad>();
+		resetSearchForm();
 		String city = "city1";
 		searchForm.setCity(city);
 
-		expect(mockDao.findAllByAddressCity(city))
-				.andReturn(mockedSearchResult);
+		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
+				mockedSearchResult);
 
 		replay(mockDao);
-		assertEquals(testAd1, searcher.getAdList().get(0));
+		adsFromSearcher = searcher.getAdList();
+		assertEquals(testAd1, adsFromSearcher.get(0));
+	//	assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
-	}	
+
+	}
 
 	@Test
 	public void testByPriceOneAd() {
@@ -85,6 +106,24 @@ public class SearcherTests {
 		verify(mockDao);
 	}
 	
+	@Test
+	public void testByZipOneAd() {
+		ArrayList<Ad> adsFromSearcher = new ArrayList<Ad>();
+		resetSearchForm();
+		String city = "1111";
+		searchForm.setCity(city);
+
+		expect(mockDao.findAllByAddressZipCode(1111)).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		adsFromSearcher = searcher.getAdList();
+		assertEquals(testAd1, adsFromSearcher.get(0));
+	//	assertEquals(1, adsFromSearcher.size());
+		verify(mockDao);
+	}
+
+
 	private void resetSearchForm() {
 		searchForm.setCity("");
 		searchForm.setMaxPrice(0);
