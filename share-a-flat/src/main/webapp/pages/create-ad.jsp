@@ -15,34 +15,7 @@
 				<hr>
 			</div>
 
-<<<<<<< HEAD
-      </div> 
-  </div><!--/container-->
-</div><!--/masthead-->
 
-<form:form enctype="multipart/form-data" method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
-
-
-    <div class="col-md-3">    
-
-        <c:set var="titleErrors"><form:errors path="title"/></c:set>
-        <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>">
-            <label class="control-label" for="field-title">Title:</label>
-            <div class="controls">
-                <form:input path="title" id="field-title" class="form-control" tabindex="1" maxlength="45" placeholder="Title"/>
-                <form:errors path="title" cssClass="help-inline" element="span"/>
-            </div>
-        </div>
-        
-        <c:set var="adTypeErrors"><form:errors path="adType"/></c:set>
-        <div class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>">
-            <label class="control-label" for="field-adType">Type:</label>
-            <div class="radio">
-                <label><form:radiobutton path="adType" id="room" tabindex="2" value="ROOM" checked="true"/>Room</label>
-                <label><form:radiobutton path="adType" id="flat" tabindex="3" value="FLAT"/>Flat</label>
-            </div>
-        </div>
-=======
 		</div>
 	</div>
 	<!--/container-->
@@ -81,7 +54,7 @@
 						path="adType" id="flat" tabindex="3" value="FLAT" />Flat</label>
 			</div>
 		</div>
->>>>>>> f35e07c55a6ec19a40805ce3dc189c5d8a5c418a
+
 		<!-- 
 			<c:if test="${adType eq 'ROOM'}">
 			asdfasdf
