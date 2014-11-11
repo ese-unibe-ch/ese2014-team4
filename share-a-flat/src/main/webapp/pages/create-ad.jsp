@@ -21,14 +21,11 @@
 <form:form enctype="multipart/form-data" method="post" modelAttribute="adForm" action="submitAd" id="adForm" cssClass="form-horizontal"  autocomplete="off">
 
 
-
-
     <div class="col-md-3">    
 
         <c:set var="titleErrors"><form:errors path="title"/></c:set>
         <div class="control-group<c:if test="${not empty titleErrors}"> error</c:if>">
             <label class="control-label" for="field-title">Title:</label>
-
             <div class="controls">
                 <form:input path="title" id="field-title" class="form-control" tabindex="1" maxlength="45" placeholder="Title"/>
                 <form:errors path="title" cssClass="help-inline" element="span"/>

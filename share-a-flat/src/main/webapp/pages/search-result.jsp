@@ -11,9 +11,7 @@
 <h1>Search Result</h1>
 
 <div class="map">
-	<a href="search-map" class="inactive"> <span> <!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Auf
-			Karte
-	</span></a>
+	<a href="search-map" class="inactive"> <span> <!-- <img src="/neutral/imids/homegate/icon_tab_map.gif" />-->Map Search</span></a>
 </div>
 <hr>
 

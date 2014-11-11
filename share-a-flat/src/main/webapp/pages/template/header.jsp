@@ -56,10 +56,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-          	<li <%= isActive("createAd", request) %>><a href="createAd">Create an ad</a></li>
+          	
             <li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li>
             <li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
             <li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li>
+            <li <%= isActive("createAd", request) %>><a href="createAd">Create an ad</a></li>
             <li <%= isActive("logout", request) %>><a href="logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
