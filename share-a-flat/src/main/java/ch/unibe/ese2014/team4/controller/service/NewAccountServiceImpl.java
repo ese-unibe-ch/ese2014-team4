@@ -71,15 +71,11 @@ public class NewAccountServiceImpl implements NewAccountService {
 			user = userDao.save(user); // save object to DB
 			
 			
-			Profile profile = new Profile();
-			profile.setOwner(user);
-			
+
+			Profile profile = user.getProfile();
 			profile.setProfileImage(getDefaultProfileImage());
 			profileDao.save(profile);
-			
-			user.setProfile(profile);
-			
-			user = userDao.save(user); // update user to contain its profile
+
 			signupForm.setId(user.getId());
 		} else {
 			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");

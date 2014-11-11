@@ -42,7 +42,7 @@ public class Ad {
 	// @OneToMany(targetEntity=User.class)
 	// private List<User> roomMates;
 	private int nrOfRooms;
-
+	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();

@@ -60,7 +60,7 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>${adData.title} </h1>	<!-- will be used for bookmarking <span class="glyphicon glyphicon-star-empty"></span> -->
+<h1>${adData.title} <span class="glyphicon glyphicon-star-empty"></span></h1>	
         <!-- sets current_profile sex -->
         <c:set var="adTypeToShow" value="apartment" />
 		<c:if test="${adData.type eq 'ROOM'}">

@@ -54,9 +54,9 @@ public class AdServiceImpl implements AdService {
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
 		ad.setAdAddedDate(new Date());
-
-		ad.setBytePictureList(imageService.getByteArrayFromMultipart(adForm
-				.getUploadedAdPictures()));
+		ArrayList<MultipartFile> fileList =adForm.getUploadedAdPictures();
+		
+		if (fileList!=null)ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
 
 		Address address = new Address();
 		address.setCity(adForm.getCity());

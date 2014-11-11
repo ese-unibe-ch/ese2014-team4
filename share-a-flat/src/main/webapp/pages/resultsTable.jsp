@@ -3,12 +3,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
+<br><hr>
 <c:forEach items="${addList}" var="ad">
+	<a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a>
 	<table>
+	
 		<tr>
 			<td width="80">
-				<b><a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a></b><br> 
+				 
 				<b>Address:</b><br> <b></b>
 				<b>Place:</b><br> 
 			</td>
@@ -31,7 +33,7 @@
 				${ad.price} CHF<br>
 				${ad.size} m&sup2<br>
 			</td>
-			
+			</tr>
 	</table>
 	<hr>
 </c:forEach>
