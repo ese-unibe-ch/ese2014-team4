@@ -44,7 +44,7 @@
 			<div class="controls">
 				<form:input class="form-control" path="cityOrZip"
 					id="field-cityOrZip" tabindex="1" maxlength="35"
-					placeholder="cityOrZip" />
+					placeholder="CityOrZip" />
 				<form:errors path="cityOrZip" cssClass="help-inline" element="span" />
 				<form:errors path="cityOrZip" cssClass="help-inline" element="span" />
 				<div>
@@ -54,7 +54,7 @@
 						</c:set>
 						<div
 							class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
-							<label class="control-label" for="field-minPrice">Min-Price</label>
+							<label class="control-label" for="field-minPrice">Min-Price (CHF)</label>
 							<div class="controls">
 								<form:input class="form-control" path="minPrice"
 									id="field-minPrice" tabindex="3" maxlength="35"
@@ -71,7 +71,7 @@
 						</c:set>
 						<div
 							class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
-							<label class="control-label" for="field-maxPrice">Max-Price</label>
+							<label class="control-label" for="field-maxPrice">Max-Price (CHF)</label>
 							<div class="controls">
 								<form:input class="form-control" path="maxPrice"
 									id="field-maxPrice" tabindex="4" maxlength="35"
