@@ -37,6 +37,12 @@ public class User implements UserDetails {
     @OneToOne(cascade = {CascadeType.ALL})
     private Profile profile;
     
+    
+    public User(){
+    	this.profile = new Profile();
+    	this.profile.setOwner(this);
+    	this.role = "ROLE_USER";
+    }
     public String getPassword() {
 		return password;
 	}

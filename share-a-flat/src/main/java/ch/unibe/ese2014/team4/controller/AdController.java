@@ -29,13 +29,10 @@ import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
 
 
-@Controller
-
 /**
- * According to RequestMapping the controller invokes the right pages.
- * 
- * @author Team4
+ * Controls all pages / commands concerning ads, including the creation, submission and showing ads.
  */
+@Controller
 public class AdController {
 	
 	@Autowired
