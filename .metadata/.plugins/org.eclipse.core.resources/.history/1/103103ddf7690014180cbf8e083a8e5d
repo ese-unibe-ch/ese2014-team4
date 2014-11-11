@@ -116,7 +116,7 @@ function enableNrOfFlatMates() {
 				<div class="control-group<c:if test="${not empty descriptionErrors}">error</c:if>">
 					<label class="control-label" for="field-nrOfRooms">Number of Rooms </label>
 					<div class="controls">
-						<form:input class="form-control" path="nrOfRooms"id="field-nrOfRooms"tabindex="6" maxlength="35"placeholder="Number of Rooms" disabled = "true"/>
+						<form:input class="form-control" path="nrOfRooms"id="field-nrOfRooms"tabindex="6" maxlength="35"placeholder="Number of Rooms"/>
 						<form:errors path="nrOfRooms" cssClass="help-inline"element="span" />							
 					</div>
 				</div>
@@ -125,7 +125,7 @@ function enableNrOfFlatMates() {
 				<div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 					<label class="control-label" for="field-nrOfFlatMates">Number of Room Mates</label>
 					<div class="controls">
-						<form:input class="form-control" path="nrOfFlatMates" id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="Number of Flatmates" />
+						<form:input class="form-control" path="nrOfFlatMates" id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="Number of Flatmates" disabled = "true"/>
 						<form:errors path="nrOfFlatMates" cssClass="help-inline" element="span" />							
 						<br>
 					</div>
