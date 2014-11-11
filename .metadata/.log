@@ -1477,3 +1477,6 @@ Binding(ALT+SHIFT+ARROW_LEFT,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+
+!ENTRY org.eclipse.jdt.core 4 0 2014-11-11 23:52:20.399
+!MESSAGE Invalid ZIP archive: src/main/webapp/pages/ad.jsp [in share-a-flat]
