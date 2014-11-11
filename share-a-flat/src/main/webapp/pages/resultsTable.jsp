@@ -9,6 +9,10 @@
 	<table>
 	
 		<tr>
+			<td width="200">
+				<img src="//placehold.it/180x100" class="img-responsive">
+			</td>
+		
 			<td width="80">
 				 
 				<b>Address:</b><br> <b></b>

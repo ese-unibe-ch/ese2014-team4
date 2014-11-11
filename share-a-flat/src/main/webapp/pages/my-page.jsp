@@ -13,18 +13,6 @@
           <h1>My Page</h1>
           <hr>
         </div>
-<!--         <div class="col-md-5"> -->
-<!--             <div class="well well-lg">  -->
-<!--               <div class="row"> -->
-<!--                 <div class="col-sm-6"> -->
-<!--         	      	<img src="//placehold.it/180x100" class="img-responsive"> -->
-<!--                 </div> -->
-<!--                 <div class="col-sm-6"> -->
-<!-- 	              	Some text here -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--         </div> -->
       </div> 
   </div><!--/container-->
 </div><!--/masthead-->

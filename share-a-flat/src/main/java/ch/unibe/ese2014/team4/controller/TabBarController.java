@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
+import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
@@ -21,6 +25,9 @@ public class TabBarController {
 
 	@Autowired
 	NewAccountService sampleService;
+	
+	@Autowired
+	AdService adService;
 
 	@RequestMapping(value = "/favorites", method = RequestMethod.GET)
 	public ModelAndView favorites() {
@@ -28,16 +35,12 @@ public class TabBarController {
 		return model;
 	}
 
-//	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
-//	public ModelAndView myPage() {
-//		ModelAndView model = new ModelAndView("my-page");
-//		return model;
-//	}
-
 	@RequestMapping(value = "/search-list", method = RequestMethod.GET)
 	public ModelAndView searchList() {
 		ModelAndView model = new ModelAndView("search-list");
 		model.addObject("searchForm", new SearchForm());
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		model.addObject("addList", newestAdds);
 		return model;
 	}
 
@@ -46,8 +49,7 @@ public class TabBarController {
 		ModelAndView model = new ModelAndView("search-map");
 		return model;
 	}
-	
-	
+		
 	@RequestMapping(value = "/security-error", method = RequestMethod.GET)
 	public String securityError(RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("page_error",

@@ -1,6 +1,5 @@
 package ch.unibe.ese2014.team4.controller;
 
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +27,12 @@ import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
- /**
-  * Controls all pages / commands concerning ads, including the creation, submission and showing ads.
-  */
 
+
+/**
+ * Controls all pages / commands concerning ads, including the creation, submission and showing ads.
+ */
 @Controller
-
 public class AdController {
 	
 	@Autowired
@@ -52,8 +51,15 @@ public class AdController {
     	model.addObject("adForm", new AdForm());
         return model;
     }
-	/*
+	
+	/**
 	 * Controls submission of newly created ad.
+	 * 
+	 * @param adForm
+	 * @param result
+	 * @param principal
+	 * @return
+	 * @throws Exception
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
     public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal) throws Exception{
@@ -64,8 +70,10 @@ public class AdController {
     	model.addObject("ad", ad);
         return model;
     }	
+	
 	/**
 	 * Requires /showAd?adId=x.
+	 * 
 	 * @param adId
 	 * @return ad-page containing ad with adId x.
 	 */
