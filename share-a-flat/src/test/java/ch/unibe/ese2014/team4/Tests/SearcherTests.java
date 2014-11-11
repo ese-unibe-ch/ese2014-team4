@@ -55,6 +55,11 @@ public class SearcherTests {
 		testAd1.setNrOfRoomMates(1);
 		testAd2.setNrOfRoomMates(2);
 		testAd3.setNrOfRoomMates(3);
+		
+		testAd1.setNrOfRooms(1);
+		testAd2.setNrOfRooms(2);
+		testAd3.setNrOfRooms(2);
+
 	}
 
 	@Test
@@ -94,7 +99,7 @@ public class SearcherTests {
 	}
 	
 	@Test
-	public void testNrRoomMates() {
+	public void testByNrRoomMates() {
 		resetSearchForm();
 
 		mockedSearchResult.add(testAd1);
@@ -110,6 +115,27 @@ public class SearcherTests {
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
 		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(1, adsFromSearcher.size());
+		verify(mockDao);
+	}
+	
+	@Test
+	public void testByNrRooms() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+		
+		searchForm.setNrOfRooms(2);
+
+		expect(mockDao.findAll()).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(2, adsFromSearcher.size());
 		verify(mockDao);
 	}
 
@@ -190,6 +216,49 @@ public class SearcherTests {
 
 
 		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		assertEquals(0, adsFromSearcher.size());
+		verify(mockDao);
+	}
+	
+	@Test
+	public void testByPriceAndRoomsWithResults() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+
+		searchForm.setNrOfRooms(2);
+		searchForm.setMinPrice(0);
+		searchForm.setMaxPrice(200);
+
+		expect(mockDao.findAll()).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(1, adsFromSearcher.size());
+		verify(mockDao);
+	}
+	
+	@Test
+	public void testByPriceAndRoomsNoResults() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+
+		searchForm.setNrOfRooms(2);
+		searchForm.setMinPrice(0);
+		searchForm.setMaxPrice(150);
+
+		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
 
 		replay(mockDao);

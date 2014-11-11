@@ -56,11 +56,16 @@ public class DefaultSearcher implements ISearcher {
 			checkPrice(adsToSort);
 		}
 		if (searchForm.getNrOfFlatMates() != 0) {
-			checkNrRoomMates(adsToSort);
+			checkNrFlatMates(adsToSort);
 		}
+		
+		if (searchForm.getNrOfRooms()!=0)
+			checkNrRooms(adsToSort);
+		
 		return adsToSort;
 	}
 
+	
 	private void checkPrice(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
 		for (Ad ad : adsToSort)
@@ -73,17 +78,28 @@ public class DefaultSearcher implements ISearcher {
 		}
 	}
 
-	private void checkNrRoomMates(ArrayList<Ad> adsToSort) {
+	private void checkNrFlatMates(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
 		for (Ad ad : adsToSort)
 			adsToSortCopy.add(ad);
 		
 		for (Ad ad : adsToSortCopy) {
-			if ((searchForm.getNrOfFlatMates() != ad.getNrOfRoomMates() && searchForm
-					.getNrOfFlatMates() != 0))
+			if (searchForm.getNrOfFlatMates() != ad.getNrOfRoomMates())
 				adsToSort.remove(ad);
 		}
 	}
+	
+	private void checkNrRooms(ArrayList<Ad> adsToSort) {
+		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
+		for (Ad ad : adsToSort)
+			adsToSortCopy.add(ad);
+		
+		for (Ad ad : adsToSortCopy) {
+			if (searchForm.getNrOfRooms() != ad.getNrOfRooms())
+				adsToSort.remove(ad);
+		}		
+	}
+
 /**
  * checks if the input was a city name or a zip code
  * if zip code - parse it to int
