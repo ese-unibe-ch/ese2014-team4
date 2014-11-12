@@ -5,6 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
+<c:import url="functions/generalFunctions.jsp" /> 
 <c:import url="template/header.jsp" />
 
 <div id="masthead">
@@ -46,7 +47,7 @@
 			<form:errors path="adType" />
 		</c:set>
 		<div
-			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>">
+			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"onclick="disableField()">
 			<label class="control-label" for="field-adType">Type:</label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"
@@ -139,7 +140,7 @@
 			<div class="controls">
 				<form:input path="nrOfRooms" id="field-nrOfRooms"
 					class="form-control" tabindex="9" maxlength="45"
-					placeholder="nrOfRooms" />
+					placeholder="nrOfRooms" disabled = "true" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -157,19 +158,15 @@
 			</div>
 		</div>
 
-		<c:set var="nrOfRoomMatesErrors">
-			<form:errors path="nrOfRoomMates" />
+		<c:set var="nrOfFlatMatesErrors">
+			<form:errors path="nrOfFlatMates" />
 		</c:set>
 		<div
-			class="control-group<c:if test="${not empty nrOfRoomMatesErrors}"> error</c:if>">
-			<label class="control-label" for="field-nrOfRoomMates">Number
-				of RoomMates:</label>
+			class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
+			<label class="control-label" for="field-nrOfFlatMates">Number of FlatMates:</label>
 			<div class="controls">
-				<form:input path="nrOfRoomMates" id="field-nrOfRoomMates"
-					class="form-control" tabindex="11" maxlength="35"
-					placeholder="Number of Roommates" />
-				<form:errors path="nrOfRoomMates" cssClass="help-inline"
-					element="span" />
+				<form:input path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control" tabindex="11" maxlength="35" placeholder="Number of FlatMates" />
+				<form:errors path="nrOfFlatMates" cssClass="help-inline" element="span" />
 				<br>
 				<br>
 			</div>
@@ -223,7 +220,8 @@
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" tabindex="13">Create
 					Ad</button>
-				<a type="button" href="${pageContext.request.contextPath}/my-page" tabindex="14" class="btn btn-default">Cancel</a>
+				<input type="reset" value="Reset">
+				<a type="button" href="${pageContext.request.contextPath}/my-page" tabindex="14" class="btn btn-default" onclick = "return showAlert()">Cancel</a>
 			</div>
 		</div>
 	</div>

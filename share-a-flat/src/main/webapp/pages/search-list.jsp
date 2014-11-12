@@ -6,28 +6,11 @@
 
 
 <c:import url="template/header.jsp" />
+<c:import url="functions/searchFunctions.jsp" />
 
-<script type="text/javascript">
-	function FocusOnInput() {
-		document.getElementById("field-cityOrZip").focus();
-	}
-</script>
 
-<script type="text/javascript">
-	//SearchErrorMessage = "Hallo";
-	//document.getElementById("SearchErrorMessage").innerHTML= SearchErrorMessage;
-	function checkMaxPrice() {
-		var max = document.getElementById("field-maxPrice");
-		var min = document.getElementById("field-minPrice");
-		if (max.value < min.value) {
-			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
-			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
-			max.focus();
-			return false;
-		} else
-			return true;
-	}
-</script>
+
+
 
 <h1>Search List</h1>
 

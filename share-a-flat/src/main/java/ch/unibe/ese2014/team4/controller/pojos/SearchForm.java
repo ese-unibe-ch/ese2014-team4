@@ -122,5 +122,7 @@ public class SearchForm {
 
 	public void setAdType(AdType adType) {
 		this.adType = adType;
-	}    
+	}
+
+	 
 }

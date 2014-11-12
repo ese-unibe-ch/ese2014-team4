@@ -48,7 +48,7 @@ public class AdServiceImpl implements AdService {
 
 		ad.setPrice(adForm.getPrice());
 		ad.setNrOfRooms(adForm.getNrOfRooms());
-		ad.setNrOfRoomMates(adForm.getNrOfRoomMates());
+		ad.setNrOfFlatMate(adForm.getNrOfFlatMates());
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());

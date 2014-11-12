@@ -29,13 +29,13 @@ public class AdForm {
     private int price;
     @NotNull
     private String description;   
-    private int nrOfRoomMates;  
+    private int nrOfFlatMates;  
     
 //    private Date fromDate;
 //    private Date toDate;
     
 	private AdType adType;
-//	private List<User> roomMates;
+//	private List<User> FlatMates;
 	private int nrOfRooms;
     private ArrayList<MultipartFile> uploadedAdPictures;
     
@@ -54,12 +54,12 @@ public class AdForm {
 		this.size = size;
 	}
 
-	public int getNrOfRoomMates() {
-		return nrOfRoomMates;
+	public int getNrOfFlatMates() {
+		return nrOfFlatMates;
 	}
 
-	public void setNrOfRoomMates(int nrOfRoomMates) {
-		this.nrOfRoomMates = nrOfRoomMates;
+	public void setNrOfFlatMates(int nrOfFlatMates) {
+		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
 	public int getPrice() {
@@ -134,12 +134,12 @@ public class AdForm {
 		this.adType = type;
 	}
 
-//	public List<User> getRoomMates() {
-//		return roomMates;
+//	public List<User> getFlatMates() {
+//		return FlatMates;
 //	}
 //
-//	public void setRoomMates(List<User> roomMates) {
-//		this.roomMates = roomMates;
+//	public void setFlatMates(List<User> FlatMates) {
+//		this.FlatMates = FlatMates;
 //	}
 
 	public int getNrOfRooms() {

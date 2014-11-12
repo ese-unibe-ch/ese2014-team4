@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
+<c:import url="functions/generalFunctions.jsp" /> 
 <c:import url="template/header.jsp" />
 
 <div class="container">
@@ -83,7 +83,8 @@
         	<label class="col-md-3 control-label"></label>
             <div class="col-md-8">
             <button type="submit" tabindex="6" class="btn btn-primary">Save Profile</button>
-            <button type="button" onclick="history.go(-1);return true" tabindex="7" class=" btn">Cancel</button>
+            <input type="reset" value="Reset">
+            <a type="button" href="${pageContext.request.contextPath}/my-page" onclick = "return showAlert()" tabindex="7" class="btn btn-default">Cancel</a>
             </div>
         </div>
 

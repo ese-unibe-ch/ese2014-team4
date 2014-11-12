@@ -40,7 +40,7 @@ public class Ad {
 	private AdType type;
 
 	// @OneToMany(targetEntity=User.class)
-	// private List<User> roomMates;
+	// private List<User> FlatMate;
 	private int nrOfRooms;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -55,7 +55,7 @@ public class Ad {
 	// private Date fromDate;
 	// private Date toDate;
 	private String description;
-	private int nrOfRoomMates;
+	private int nrOfFlatMate;
 
 	public void setBytePictureList(List<byte[]> bytePictureList) {
 		this.bytePictureList = bytePictureList;
@@ -73,12 +73,12 @@ public class Ad {
 		this.type = type;
 	}
 
-	// public List<User> getRoomMates() {
-	// return roomMates;
+	// public List<User> getFlatMate() {
+	// return FlatMate;
 	// }
 	//
-	// public void setRoomMates(List<User> roomMates) {
-	// this.roomMates = roomMates;
+	// public void setFlatMate(List<User> FlatMate) {
+	// this.FlatMate = FlatMate;
 	// }
 
 	public int getNrOfRooms() {
@@ -105,12 +105,12 @@ public class Ad {
 		this.id = id;
 	}
 
-	public int getNrOfRoomMates() {
-		return nrOfRoomMates;
+	public int getNrOfFlatMates() {
+		return nrOfFlatMate;
 	}
 
-	public void setNrOfRoomMates(int nrOfRoomMates) {
-		this.nrOfRoomMates = nrOfRoomMates;
+	public void setNrOfFlatMate(int nrOfFlatMate) {
+		this.nrOfFlatMate = nrOfFlatMate;
 	}
 
 	public Address getAddress() {
