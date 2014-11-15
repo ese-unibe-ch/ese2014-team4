@@ -52,9 +52,9 @@ public class SearcherTests {
 		testAd2.setPrice(200);
 		testAd3.setPrice(300);
 		
-		testAd1.setNrOfRoomMates(1);
-		testAd2.setNrOfRoomMates(2);
-		testAd3.setNrOfRoomMates(3);
+		testAd1.setNrOfFlatMate(1);
+		testAd2.setNrOfFlatMate(2);
+		testAd3.setNrOfFlatMate(3);
 		
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
