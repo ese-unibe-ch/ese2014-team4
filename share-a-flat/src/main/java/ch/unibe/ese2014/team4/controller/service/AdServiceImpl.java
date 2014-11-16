@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidAdException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
+import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
@@ -48,15 +49,30 @@ public class AdServiceImpl implements AdService {
 
 		ad.setPrice(adForm.getPrice());
 		ad.setNrOfRooms(adForm.getNrOfRooms());
-		ad.setNrOfFlatMate(adForm.getNrOfFlatMates());
+		
+		if(adForm.getAdType() == AdType.ROOM){
+			ad.setNrOfFlatMate(adForm.getNrOfFlatMates());
+			ad.setNrOfRooms(0);
+		}
+		else{
+			ad.setNrOfRooms(adForm.getNrOfRooms());
+			ad.setNrOfFlatMate(0);
+			
+		}
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
 		ad.setAdAddedDate(new Date());
 		ArrayList<MultipartFile> fileList =adForm.getUploadedAdPictures();
+
 		
-		if (fileList!=null)ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
+		if (fileList.get(0).getSize()!=0){
+			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
+		}
+		else{
+			ad.setBytePictureList(imageService.getDefaultImage());
+		}
 
 		Address address = new Address();
 		address.setCity(adForm.getCity());

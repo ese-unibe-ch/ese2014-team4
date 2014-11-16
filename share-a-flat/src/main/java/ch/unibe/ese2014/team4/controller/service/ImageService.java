@@ -14,5 +14,6 @@ public interface ImageService {
 	byte[] getByteArrayFromMultipart(MultipartFile file) throws Exception;
 	List<byte[]> getByteArrayFromMultipart(List<MultipartFile> files) throws Exception;
 	byte[] getProfileImage(long profileImageID);
+	List<byte[]> getDefaultImage();
 
 }

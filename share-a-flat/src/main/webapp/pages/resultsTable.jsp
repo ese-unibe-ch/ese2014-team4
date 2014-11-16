@@ -9,9 +9,9 @@
 	<table>
 	
 		<tr>
-			<td width="200">
-				<!-- as soon as default image is added: <img src="/imageController/ad/${ad.id}/0" class="img-responsive"> -->
-				<img src="img/defaultAdImage.png" class="img-responsive">
+			<td width="100">
+				<a href="showAd?adId=${ad.id}"><img src="${pageContext.request.contextPath}/imageController/ad/${ad.id}/0" class="img-responsive" width="100"></a>
+
 			</td>
 		
 			<td width="80"> 

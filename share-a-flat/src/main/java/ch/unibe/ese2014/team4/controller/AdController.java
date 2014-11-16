@@ -63,12 +63,10 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
     public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal) throws Exception{
-    	System.out.println(result.getErrorCount());
-		ModelAndView model = new ModelAndView("home"); 
+
     	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
-    	Ad ad = newAdService.getAd(adForm.getId());
-    	model.addObject("ad", ad);
-        return model;
+
+        return submitAd(adForm.getId());
     }	
 	
 	/**
@@ -78,7 +76,7 @@ public class AdController {
 	 * @return ad-page containing ad with adId x.
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
-    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId, HttpSession session){
+    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId){
     	ModelAndView model = new ModelAndView("ad");   
     	
     	Ad ad = newAdService.getAd(adId);
