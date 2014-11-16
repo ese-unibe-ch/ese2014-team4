@@ -17,7 +17,7 @@
 <body onload="FocusOnInput()">
 
 
-	<form:form enctype="multipart/form-data" method="post" modelAttribute="searchForm" action="search"onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
+	<form:form enctype="multipart/form-data" method="post" modelAttribute="searchForm" action="search" onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
 			
 	<div class="col-md-10" style="padding-left: 0px; padding-right: 3px">
@@ -68,10 +68,10 @@
 					
 			
 				<c:set var="nrOfRoomsErrors"><form:errors path="nrOfRooms" /></c:set>
-				<div class="control-group<c:if test="${not empty descriptionErrors}">error</c:if>">
+				<div class="control-group<c:if test="${not empty nrOfRoomsErrors}">error</c:if>">
 					<label class="control-label" for="field-nrOfRooms">Number of Rooms </label>
 					<div class="controls">
-						<form:input class="form-control" path="nrOfRooms"id="field-nrOfRooms"tabindex="6" maxlength="35"placeholder="Number of Rooms" disabled = "true"/>
+						<form:input class="form-control" path="nrOfRooms" id="field-nrOfRooms" tabindex="6" maxlength="35" placeholder="Number of Rooms" disabled = "true"/>
 						<form:errors path="nrOfRooms" cssClass="help-inline"element="span" />							
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 
 			
 				<c:set var="nrOfFlatMatesErrors"><form:errors path="nrOfFlatMates" /></c:set>
-				<div class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+				<div class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
 					<label class="control-label" for="field-nrOfFlatMates">Number of Room Mates</label>
 					<div class="controls">
 						<form:input class="form-control" path="nrOfFlatMates" id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="Number of Flatmates" />
@@ -94,8 +94,8 @@
 				<div class="form-actions">
 					<br>
 					<button type="submit" tabindex="6" class="btn btn-primary">Search Ad</button>
-					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="14">Back</button>
-					<input type="reset" value="Reset"><br>
+<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
+					<button type="reset" tabindex="7" class="btn btn-default">Reset</button>
 				</div>
 	
 	</div>

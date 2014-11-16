@@ -19,7 +19,7 @@
           <img src="${pageContext.request.contextPath}/imageController/profile/${profile.id}" class="img-responsive" alt="profileImage" >
           <h6>Upload a different photo...</h6>
           
-          <form:input path="uploadedProfileImage" class="form-control" type="file"/>
+          <form:input path="uploadedProfileImage" type="file"/>
         </div>
       </div>
       
@@ -83,7 +83,7 @@
         	<label class="col-md-3 control-label"></label>
             <div class="col-md-8">
             <button type="submit" tabindex="6" class="btn btn-primary">Save Profile</button>
-            <input type="reset" value="Reset">
+<!--             <input type="reset" value="Reset"> -->
             <a type="button" href="${pageContext.request.contextPath}/my-page" onclick = "return showAlert()" tabindex="7" class="btn btn-default">Cancel</a>
             </div>
         </div>

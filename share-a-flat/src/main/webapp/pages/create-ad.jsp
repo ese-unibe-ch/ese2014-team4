@@ -5,8 +5,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
-<c:import url="functions/generalFunctions.jsp" /> 
+
 <c:import url="template/header.jsp" />
+<c:import url="functions/generalFunctions.jsp" /> 
+<c:import url="functions/searchFunctions.jsp" />
 
 <div id="masthead">
 	<div class="container">
@@ -47,7 +49,7 @@
 			<form:errors path="adType" />
 		</c:set>
 		<div
-			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"onclick="disableField()">
+			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>" onclick="disableField()">
 			<label class="control-label" for="field-adType">Type:</label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"
@@ -180,7 +182,7 @@
 		<div class="layout-content-column">
 			<table id="fileTable">
 				<tr>
-					<td><form:input path="uploadedAdPictures" class="form-control"
+					<td><form:input path="uploadedAdPictures" 
 							type="file" /></td>
 				</tr>
 			</table>
@@ -196,7 +198,7 @@
 					//add more file components if Add is clicked
 					$('#addFile').click(function() {
 							$('#fileTable').append('<tr><td>' 
-												 + '<form:input path="uploadedAdPictures" class="form-control" type="file"/>'
+												 + '<form:input path="uploadedAdPictures" type="file"/>'
 												 + '</td></tr>');
 					});
 				});
@@ -220,7 +222,7 @@
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" tabindex="13">Create
 					Ad</button>
-				<input type="reset" value="Reset">
+<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page" tabindex="14" class="btn btn-default" onclick = "return showAlert()">Cancel</a>
 			</div>
 		</div>
