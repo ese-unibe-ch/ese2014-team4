@@ -4,10 +4,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<!--     <script src="js/jquery-2.1.1.min.js"></script> -->
+<!--     <script src="js/bootstrap.min.js"></script> -->
 <!-- special css for thumbnail view -->
-  <style>
+  <!-- <style>
       ul {         
           padding:0 0 0 0;
           margin:0 0 0 0;
@@ -56,7 +56,7 @@
               display:none;
           }
       }
-  </style>
+  </style> -->
 
 <c:import url="template/header.jsp" />
 

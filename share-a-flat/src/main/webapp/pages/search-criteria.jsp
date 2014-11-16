@@ -20,7 +20,7 @@
 	<form:form enctype="multipart/form-data" method="post" modelAttribute="searchForm" action="search" onSubmit="return checkSearchInput()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
 			
-	<div class="col-md-10" style="padding-left: 0px; padding-right: 3px">
+	<div class="col-md-12" style="padding-left: 0px; padding-right: 3px">
 						
 			<c:set var="adTypeErrors"><form:errors path="adType"/></c:set>
         		<div class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>" onclick="disableField()">
@@ -76,8 +76,7 @@
 					</div>
 				</div>
 			
-
-			
+					
 				<c:set var="nrOfFlatMatesErrors"><form:errors path="nrOfFlatMates" /></c:set>
 				<div class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
 					<label class="control-label" for="field-nrOfFlatMates">Number of Room Mates</label>
@@ -94,9 +93,9 @@
 
 				<div class="form-actions">
 					<br>
-					<button type="submit" tabindex="6" class="btn btn-primary">Search Ad</button>
+					<button type="submit" tabindex="8" class="btn btn-primary">Search Ad</button>
 <!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
-					<button type="reset" tabindex="7" class="btn btn-default">Reset</button>
+					<button type="reset" tabindex="9" class="btn btn-default">Reset</button>
 				</div>
 	
 	</div>

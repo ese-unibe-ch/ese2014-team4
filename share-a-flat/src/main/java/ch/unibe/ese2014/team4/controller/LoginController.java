@@ -62,7 +62,7 @@ public class LoginController {
 		if (!result.hasErrors()) {
 			try {
 				newAccountService.saveFrom(signupForm);
-				model = new ModelAndView("home");
+				model = new ModelAndView("search-list");
 				String username = signupForm.getUsername();
 				 User user = userService.getUser(signupForm.getId());
 				 newAccountService.loginManually(user);

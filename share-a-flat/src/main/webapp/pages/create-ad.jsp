@@ -7,7 +7,7 @@
 
 
 <c:import url="template/header.jsp" />
-<c:import url="functions/generalFunctions.jsp" /> 
+<c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
 <div id="masthead">
@@ -49,7 +49,8 @@
 			<form:errors path="adType" />
 		</c:set>
 		<div
-			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>" onclick="disableField()">
+			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"
+			onclick="disableField()">
 			<label class="control-label" for="field-adType">Type:</label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"
@@ -62,58 +63,69 @@
 			<c:if test="${adType eq 'ROOM'}">
 			asdfasdf
 			</c:if> -->
-		<c:set var="streetErrors">
-			<form:errors path="street" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
-			<label class="control-label" for="field-street">Street:</label>
-			<div class="controls">
-				<form:input path="street" id="field-street" class="form-control"
-					tabindex="4" maxlength="35" placeholder="Street" />
-				<form:errors path="street" cssClass="help-inline" element="span" />
-			</div>
-		</div>
-		<c:set var="streetNumberErrors">
-			<form:errors path="streetNumber" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
-			<label class="control-label" for="field-streetNumber">StreetNumber:</label>
-			<div class="controls">
-				<form:input path="streetNumber" id="field-streetNumber"
-					class="form-control" tabindex="5" maxlength="35"
-					placeholder="StreetNumber" />
-				<form:errors path="streetNumber" cssClass="help-inline"
-					element="span" />
+
+		<div class="col-md-9" style="padding-left: 0px; padding-right: 3px">
+			<c:set var="streetErrors">
+				<form:errors path="street" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
+				<label class="control-label" for="field-street">Street:</label>
+				<div class="controls">
+					<form:input path="street" id="field-street" class="form-control"
+						tabindex="4" maxlength="35" placeholder="Street" />
+					<form:errors path="street" cssClass="help-inline" element="span" />
+				</div>
 			</div>
 		</div>
 
-		<c:set var="cityErrors">
-			<form:errors path="city" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
-			<label class="control-label" for="field-city">City:</label>
-			<div class="controls">
-				<form:input path="city" id="field-city" class="form-control"
-					tabindex="6" maxlength="35" placeholder="City" />
-				<form:errors path="city" cssClass="help-inline" element="span" />
+		<div class="col-md-3" style="padding-left: 3px; padding-right: 0px">
+			<c:set var="streetNumberErrors">
+				<form:errors path="streetNumber" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
+				<label class="control-label" for="field-streetNumber">No:</label>
+				<div class="controls">
+					<form:input path="streetNumber" id="field-streetNumber"
+						class="form-control" tabindex="5" maxlength="35"
+						placeholder="StreetNumber" />
+					<form:errors path="streetNumber" cssClass="help-inline"
+						element="span" />
+				</div>
 			</div>
 		</div>
 
-		<c:set var="zipCodeErrors">
-			<form:errors path="zipCode" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty zipCodeErrors}"> error</c:if>">
-			<label class="control-label" for="field-zipCode">Zip-Code:</label>
-			<div class="controls">
-				<form:input path="zipCode" id="field-zipCode" class="form-control"
-					tabindex="7" maxlength="35" placeholder="Zip-Code" />
-				<form:errors path="zipCode" cssClass="help-inline" element="span" />
+		<div class="col-md-4" style="padding-left: 0px; padding-right: 3px">
+			<c:set var="zipCodeErrors">
+				<form:errors path="zipCode" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty zipCodeErrors}"> error</c:if>">
+				<label class="control-label" for="field-zipCode">Zip-Code:</label>
+				<div class="controls">
+					<form:input path="zipCode" id="field-zipCode" class="form-control"
+						tabindex="6" maxlength="35" placeholder="Zip-Code" />
+					<form:errors path="zipCode" cssClass="help-inline" element="span" />
+				</div>
 			</div>
 		</div>
+
+		<div class="col-md-8" style="padding-left: 3px; padding-right: 0px">
+			<c:set var="cityErrors">
+				<form:errors path="city" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
+				<label class="control-label" for="field-city">City:</label>
+				<div class="controls">
+					<form:input path="city" id="field-city" class="form-control"
+						tabindex="7" maxlength="35" placeholder="City" />
+					<form:errors path="city" cssClass="help-inline" element="span" />
+				</div>
+			</div>
+		</div>
+
 
 		<c:set var="sizeErrors">
 			<form:errors path="size" />
@@ -142,7 +154,7 @@
 			<div class="controls">
 				<form:input path="nrOfRooms" id="field-nrOfRooms"
 					class="form-control" tabindex="9" maxlength="45"
-					placeholder="nrOfRooms" disabled = "true" />
+					placeholder="nrOfRooms" disabled="true" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -165,15 +177,17 @@
 		</c:set>
 		<div
 			class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
-			<label class="control-label" for="field-nrOfFlatMates">Number of FlatMates:</label>
+			<label class="control-label" for="field-nrOfFlatMates">Number
+				of FlatMates:</label>
 			<div class="controls">
-				<form:input path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control" tabindex="11" maxlength="35" placeholder="Number of FlatMates" />
-				<form:errors path="nrOfFlatMates" cssClass="help-inline" element="span" />
-				<br>
-				<br>
+				<form:input path="nrOfFlatMates" id="field-nrOfFlatMates"
+					class="form-control" tabindex="11" maxlength="35"
+					placeholder="Number of FlatMates" />
+				<form:errors path="nrOfFlatMates" cssClass="help-inline"
+					element="span" />
+				<br> <br>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="col-md-6">
@@ -182,8 +196,7 @@
 		<div class="layout-content-column">
 			<table id="fileTable">
 				<tr>
-					<td><form:input path="uploadedAdPictures" 
-							type="file" /></td>
+					<td><form:input path="uploadedAdPictures" type="file" /></td>
 				</tr>
 			</table>
 			<button id="addFile" type="button" onclick="addMore">Add
@@ -194,14 +207,20 @@
 			<script
 				src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 			<script>
-				$(document).ready(function() {
-					//add more file components if Add is clicked
-					$('#addFile').click(function() {
-							$('#fileTable').append('<tr><td>' 
-												 + '<form:input path="uploadedAdPictures" type="file"/>'
-												 + '</td></tr>');
-					});
-				});
+				$(document)
+						.ready(
+								function() {
+									//add more file components if Add is clicked
+									$('#addFile')
+											.click(
+													function() {
+														$('#fileTable')
+																.append(
+																		'<tr><td>'
+																				+ '<form:input path="uploadedAdPictures" type="file"/>'
+																				+ '</td></tr>');
+													});
+								});
 			</script>
 
 			<c:set var="descriptionErrors">
@@ -212,7 +231,7 @@
 				<label class="control-label" for="field-description">Description:</label>
 				<div class="controls">
 					<form:textarea path="description" id="field-description"
-						style="width:483px; height:121px" tabindex="12"
+						style="width:100%; height:121px" tabindex="12"
 						placeholder="Description" />
 					<form:errors path="description" cssClass="help-inline"
 						element="span" />
@@ -222,8 +241,9 @@
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" tabindex="13">Create
 					Ad</button>
-<!-- 				<input type="reset" value="Reset"> -->
-				<a type="button" href="${pageContext.request.contextPath}/my-page" tabindex="14" class="btn btn-default" onclick = "return showAlert()">Cancel</a>
+				<!-- 				<input type="reset" value="Reset"> -->
+				<a type="button" href="${pageContext.request.contextPath}/my-page"
+					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
 			</div>
 		</div>
 	</div>

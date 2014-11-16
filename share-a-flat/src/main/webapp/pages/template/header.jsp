@@ -60,7 +60,7 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">          
-            <li <%= isActive("logout", request) %> float="right"><a href="logout">Logout</a></li>
+            <li <%= isActive("logout", request) %>><a href="logout">Logout</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
