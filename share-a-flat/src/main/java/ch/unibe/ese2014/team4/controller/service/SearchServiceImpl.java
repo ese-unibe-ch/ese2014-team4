@@ -3,6 +3,9 @@ package ch.unibe.ese2014.team4.controller.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
 
@@ -12,26 +15,27 @@ import ch.unibe.ese2014.team4.model.Ad;
  *         the search criteria
  *
  */
-public class DefaultSearcher implements ISearcher {
+@Service
+public class SearchServiceImpl implements SearchService {
 
 	private SearchForm searchForm;
+	
+	@Autowired
 	private AdService adService;
 
-	public DefaultSearcher(SearchForm _searchForm, AdService _adService) {
-		searchForm = _searchForm;
-		adService = _adService;
-
-	}
 
 	/**
 	 * checks if a city name or a zipcode or nothing has been put in the search
 	 * then gets the list of ads from data base and send it on to be checked
 	 * according to the other search parameters
 	 */
-	public ArrayList<Ad> getAdList() {
+	public ArrayList<Ad> getAdList(SearchForm sf) {
+		this.searchForm = sf;
+
 		int zip = 0;
 		ArrayList<Ad> adsToSort = new ArrayList<Ad>();
 		zip = parseCityZip(searchForm.getCityOrZip());
+		
 		if (zip > 0) {
 			adsToSort = adService.getAdByZip(zip);
 		} else {
@@ -114,5 +118,10 @@ public class DefaultSearcher implements ISearcher {
 			return 0;
 		}
 		return zip;
+	}
+
+	public void setAdService(AdService as) {
+		this.adService = as;
+		
 	}
 }

@@ -18,8 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.ISearcher;
-import ch.unibe.ese2014.team4.controller.service.DefaultSearcher;
+import ch.unibe.ese2014.team4.controller.service.SearchService;
+import ch.unibe.ese2014.team4.controller.service.SearchServiceImpl;
 import ch.unibe.ese2014.team4.model.Ad;
 
 /**
@@ -29,7 +29,8 @@ import ch.unibe.ese2014.team4.model.Ad;
 @Controller
 public class SearchController {
 	
-	ISearcher searcher;
+	@Autowired
+	SearchService searcher;
 
 	@Autowired
 	AdService adService;
@@ -39,8 +40,8 @@ public class SearchController {
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model = null;
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
-		searcher = new DefaultSearcher(searchForm, adService);
-		adsToAdd = searcher.getAdList();
+
+		adsToAdd = searcher.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()){
 		model = new ModelAndView("search-result");
 		model.addObject("addList", adsToAdd);

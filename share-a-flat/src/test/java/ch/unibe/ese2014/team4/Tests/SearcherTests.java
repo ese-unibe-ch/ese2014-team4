@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
-import ch.unibe.ese2014.team4.controller.service.DefaultSearcher;
+import ch.unibe.ese2014.team4.controller.service.SearchServiceImpl;
 import ch.unibe.ese2014.team4.model.*;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
@@ -18,8 +18,8 @@ public class SearcherTests {
 	private AdDao mockDao;
 	private SearchForm searchForm = new SearchForm();
 	private AdService adService = new AdServiceImpl();
-	private DefaultSearcher searcher = new DefaultSearcher(searchForm,
-			adService);
+	private SearchServiceImpl searcher = new SearchServiceImpl();
+	
 	private ArrayList<Ad> mockedSearchResult;
 	private Ad testAd1 = new Ad();
 	private Ad testAd2 = new Ad();
@@ -28,7 +28,7 @@ public class SearcherTests {
 	@Before
 	public void setUp() {
 		mockedSearchResult = new ArrayList<Ad>();
-
+		searcher.setAdService(adService);
 		mockDao = createStrictMock(AdDao.class);
 		adService.setAdDao(mockDao);
 
@@ -68,14 +68,14 @@ public class SearcherTests {
 
 		mockedSearchResult.add(testAd1);
 
-		String city = "City1";
+		String city = "city1";
 		searchForm.setCityOrZip(city);
 
 		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd1, adsFromSearcher.get(0));
 		verify(mockDao);
 	}
@@ -93,7 +93,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd1, adsFromSearcher.get(0));
 		verify(mockDao);
 	}
@@ -112,7 +112,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
@@ -132,7 +132,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(testAd3, adsFromSearcher.get(1));
 		assertEquals(2, adsFromSearcher.size());
@@ -153,7 +153,7 @@ public class SearcherTests {
 		expect(mockDao.findAll()).andReturn(mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd1, adsFromSearcher.get(0));
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
@@ -174,7 +174,7 @@ public class SearcherTests {
 		expect(mockDao.findAll()).andReturn(mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd1, adsFromSearcher.get(0));
 		assertEquals(testAd2, adsFromSearcher.get(1));
 		assertEquals(2, adsFromSearcher.size());
@@ -197,7 +197,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -219,7 +219,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(0, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -240,7 +240,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
@@ -262,7 +262,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(0, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -283,7 +283,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
@@ -305,7 +305,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(0, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -326,7 +326,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -347,7 +347,7 @@ public class SearcherTests {
 				mockedSearchResult);
 
 		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList();
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
 		assertEquals(0, adsFromSearcher.size());
 		verify(mockDao);
 	}
