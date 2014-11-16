@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
@@ -29,14 +30,15 @@ public class HomeController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home(Principal principal) {
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("search-list");
 		
 		String username = principal.getName();
 		model.addObject("username", username);
 		
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("addList", newestAdds);
-		
+		model.addObject("whatToDisplay", "Newest Ads");
+		model.addObject("searchForm", new SearchForm());
 		return model;
 	}
    

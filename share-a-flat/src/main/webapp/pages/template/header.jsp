@@ -57,7 +57,6 @@
             <li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
             <li <%= isActive("search-list", request) %>><a href="search-list">Search</a></li>
             <li <%= isActive("createAd", request) %>><a href="createAd">Create an ad</a></li>
-            <li <%= isActive("logout", request) %>><a href="logout">Logout</a></li> 
           </ul>
           
           <ul class="nav navbar-nav navbar-right">          

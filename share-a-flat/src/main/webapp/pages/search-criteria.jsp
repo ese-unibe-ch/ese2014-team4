@@ -17,7 +17,7 @@
 <body onload="FocusOnInput()">
 
 
-	<form:form enctype="multipart/form-data" method="post" modelAttribute="searchForm" action="search" onSubmit="return checkMaxPrice()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
+	<form:form enctype="multipart/form-data" method="post" modelAttribute="searchForm" action="search" onSubmit="return checkSearchInput()" id="searchForm" cssClass="form-horizontal"autocomplete="off">
 		<fieldset>
 			
 	<div class="col-md-10" style="padding-left: 0px; padding-right: 3px">
@@ -89,7 +89,8 @@
 				</div>
 				
 				
-				<span id = "SearchErrorMessage"></span>				
+				<span id = "SearchErrorMessage"></span>	
+				
 
 				<div class="form-actions">
 					<br>

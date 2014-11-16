@@ -13,19 +13,38 @@
 
 <script type="text/javascript">
 	
+	function checkSearchInput(){
+		return (checkZip() && checkMaxPrice());
+	}
 	function checkMaxPrice() {
 		var max = document.getElementById("field-maxPrice");
 		var min = document.getElementById("field-minPrice");
 		if (max.value < min.value) {
-			SearchErrorMessage = "Max price must be higher than min price (that's like basic math, dude..)";
+			SearchErrorMessage = "Max price must be higher than min price.";
 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
 			max.focus();
 			return false;
 		} else
 			return true;
 	}
-</script>
 
+	
+	function checkZip() {
+		var zip = document.getElementById("field-cityOrZip");
+
+		
+		if (isNumber(zip.value) && zip.value.length!=4) {
+			SearchErrorMessage = "Zip Code needs to be 4 digits.";
+			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
+			zip.focus();
+			return false;
+		} else
+			return true;
+	}
+	function isNumber(n) {
+		  return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+</script>
 <script>
 function disableField(){
 	if (document.getElementById("room").checked == true) {
