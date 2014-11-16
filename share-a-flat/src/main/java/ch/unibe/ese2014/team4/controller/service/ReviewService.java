@@ -71,7 +71,7 @@ public class ReviewService    {
 		a1.setTitle("Best Room ever!");
 		a1.setCity("Bern");
 		a1.setZipCode(3000);
-		a1.setNrOfRoomMates(1);
+		a1.setNrOfFlatMates(1);
 		
 		AdForm a2 = new AdForm();
 		a2.setAdType(AdType.FLAT);
