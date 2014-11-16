@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -45,6 +46,7 @@
 		  return !isNaN(parseFloat(n)) && isFinite(n);
 		}
 </script>
+
 <script>
 function disableField(){
 	if (document.getElementById("room").checked == true) {
@@ -75,5 +77,4 @@ function enableNrOfFlatMates() {
 }
 
 </script>
-
 

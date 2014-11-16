@@ -40,7 +40,7 @@ public class AdServiceImpl implements AdService {
 	ImageService imageService;
 
 	/**
-	 * creates an ad from form and saves it to data base
+	 * creates an ad form and saves it to data base
 	 */
 	@Transactional
 	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
@@ -59,10 +59,12 @@ public class AdServiceImpl implements AdService {
 			ad.setNrOfFlatMate(0);
 			
 		}
+		
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
+		ad.setAvailableDate(adForm.getAvailableDate());
 		ad.setAdAddedDate(new Date());
 		ArrayList<MultipartFile> fileList =adForm.getUploadedAdPictures();
 

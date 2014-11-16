@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
+import java.util.Date;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -26,7 +28,7 @@ public class SearchForm {
     private int nrOfRooms;
     private AdType adType;
     
-    
+    private Date availableDate;
    
 
 	private Long id;
@@ -122,6 +124,14 @@ public class SearchForm {
 
 	public void setAdType(AdType adType) {
 		this.adType = adType;
+	}
+
+	public Date getAvailableDate() {
+		return availableDate;
+	}
+
+	public void setAvailableDate(Date availableDate) {
+		this.availableDate = availableDate;
 	}
 
 	 

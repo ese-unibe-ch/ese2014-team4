@@ -185,6 +185,21 @@
 					placeholder="Number of FlatMates" />
 				<form:errors path="nrOfFlatMates" cssClass="help-inline"
 					element="span" />
+			</div>
+		</div>
+		
+		<c:set var="availableDateErrors">
+			<form:errors path="availableDate" />
+		</c:set>
+		<div
+			class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
+			<label class="control-label" for="field-availableDate">Available Date:</label>
+			<div class="controls">
+				<form:input path="availableDate" id="field-availableDate"
+					class="form-control" tabindex="12" maxlength="35"
+					placeholder="DD-MM-YYYY" />
+				<form:errors path="availableDate" cssClass="help-inline"
+					element="span" />
 				<br> <br>
 			</div>
 		</div>
@@ -239,7 +254,7 @@
 			</div>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" tabindex="13">Create
+				<button type="submit" class="btn btn-primary" tabindex="13" onclick="validatedate(document.adForm.field-availableDate)">Create
 					Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"

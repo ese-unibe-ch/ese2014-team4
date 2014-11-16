@@ -31,9 +31,8 @@ public class AdForm {
     private String description;   
     private int nrOfFlatMates;  
     
-//    private Date fromDate;
-//    private Date toDate;
-    
+    private Date availableDate;
+
 	private AdType adType;
 //	private List<User> FlatMates;
 	private int nrOfRooms;
@@ -70,6 +69,14 @@ public class AdForm {
 		this.price = price;
 	}
 
+	public Date getAvailableDate() {
+		return availableDate;
+	}
+
+	public void setAvailableDate(Date availableDate) {
+		this.availableDate = availableDate;
+	}
+	
 	public String getDescription() {
 		return description;
 	}

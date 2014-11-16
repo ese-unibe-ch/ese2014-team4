@@ -52,8 +52,7 @@ public class Ad {
 	private String title;
 	private int size;
 	private int price;
-	// private Date fromDate;
-	// private Date toDate;
+	private Date availableDate;
 	private String description;
 	private int nrOfFlatMate;
 
@@ -165,21 +164,27 @@ public class Ad {
 		this.size = size;
 	}
 
-	// public Date getFromDate() {
-	// return fromDate;
-	// }
-	//
-	// public void setFromDate(Date fromDate) {
-	// this.fromDate = fromDate;
-	// }
-	//
-	// public Date getToDate() {
-	// return toDate;
-	// }
-	//
-	// public void setToDate(Date toDate) {
-	// this.toDate = toDate;
-	// }
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Date getAvailableDate() {
+		return availableDate;
+	}
+
+	public void setAvailableDate(Date availableDate) {
+		this.availableDate = availableDate;
+	}
+
+	public int getNrOfFlatMate() {
+		return nrOfFlatMate;
+	}
+
+
 	
 	
 }
