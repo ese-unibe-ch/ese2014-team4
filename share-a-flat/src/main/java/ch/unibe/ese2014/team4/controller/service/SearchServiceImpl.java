@@ -3,6 +3,9 @@ package ch.unibe.ese2014.team4.controller.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -140,5 +143,17 @@ public class SearchServiceImpl implements SearchService {
 	public void setAdService(AdService as) {
 		this.adService = as;
 		
+	}
+	
+	@Autowired
+	EntityManagerFactory factory;
+	/**
+	 * next-generation search. 
+	 */
+	public ArrayList<Ad> getAdList2(SearchForm sf) {
+		String queryString = "";
+		Query query = factory.createEntityManager().createQuery(queryString);
+		
+		return null;
 	}
 }
