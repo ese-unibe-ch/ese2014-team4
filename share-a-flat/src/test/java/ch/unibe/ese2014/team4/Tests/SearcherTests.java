@@ -56,9 +56,9 @@ public class SearcherTests {
 		testAd2.setNetto(200);
 		testAd3.setNetto(300);
 		
-		testAd1.setCharges(100);
-		testAd2.setCharges(200);
-		testAd3.setCharges(300);
+		testAd1.setCharges(0);
+		testAd2.setCharges(0);
+		testAd3.setCharges(0);
 		
 		testAd1.setBrutto();
 		testAd2.setBrutto();
