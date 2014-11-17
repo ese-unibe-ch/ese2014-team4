@@ -159,18 +159,48 @@
 			</div>
 		</div>
 
-		<c:set var="priceErrors">
-			<form:errors path="price" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty priceErrors}"> error</c:if>">
-			<label class="control-label" for="field-price">Price:</label>
-			<div class="controls">
-				<form:input path="price" id="field-price" class="form-control"
-					tabindex="10" maxlength="35" placeholder="Price" />
-				<form:errors path="price" cssClass="help-inline" element="span" />
+<%-- 		<c:set var="priceErrors"> --%>
+<%-- 			<form:errors path="price" /> --%>
+<%-- 		</c:set> --%>
+<!-- 		<div -->
+<%-- 			class="control-group<c:if test="${not empty priceErrors}"> error</c:if>"> --%>
+<!-- 			<label class="control-label" for="field-price">Price:</label> -->
+<!-- 			<div class="controls"> -->
+<%-- 				<form:input path="price" id="field-price" class="form-control" --%>
+<%-- 					tabindex="10" maxlength="35" placeholder="Price" /> --%>
+<%-- 				<form:errors path="price" cssClass="help-inline" element="span" /> --%>
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+		<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
+			<c:set var="nettoErrors">
+				<form:errors path="netto" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty nettoErrors}"> error</c:if>">
+				<label class="control-label" for="field-netto">Netto Price:</label>
+				<div class="controls">
+					<form:input path="netto" id="field-netto" class="form-control"
+						tabindex="10" maxlength="35" placeholder="Netto Price" />
+					<form:errors path="netto" cssClass="help-inline" element="span" />
+				</div>
 			</div>
 		</div>
+		
+		<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
+			<c:set var="chargesErrors">
+				<form:errors path="charges" />
+			</c:set>
+			<div
+				class="control-group<c:if test="${not empty chargesErrors}"> error</c:if>">
+				<label class="control-label" for="field-charges">Charges:</label>
+				<div class="controls">
+					<form:input path="charges" id="field-charges" class="form-control"
+						tabindex="10" maxlength="35" placeholder="Charges" />
+					<form:errors path="charges" cssClass="help-inline" element="span" />
+				</div>
+			</div>
+		</div>	
 
 		<c:set var="nrOfFlatMatesErrors">
 			<form:errors path="nrOfFlatMates" />

@@ -51,7 +51,10 @@ public class Ad {
 
 	private String title;
 	private int size;
-	private int price;
+//	private int price;
+	private int netto;
+	private int charges;
+	private int brutto;
 	private Date availableDate;
 	private String description;
 	private int nrOfFlatMate;
@@ -120,13 +123,13 @@ public class Ad {
 		this.address = address;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
+//	public int getPrice() {
+//		return price;
+//	}
+//
+//	public void setPrice(int price) {
+//		this.price = price;
+//	}
 
 	public String getDescription() {
 		return description;
@@ -182,6 +185,30 @@ public class Ad {
 
 	public int getNrOfFlatMate() {
 		return nrOfFlatMate;
+	}
+
+	public int getNetto() {
+		return netto;
+	}
+
+	public void setNetto(int netto) {
+		this.netto = netto;
+	}
+
+	public int getCharges() {
+		return charges;
+	}
+
+	public void setCharges(int charges) {
+		this.charges = charges;
+	}
+
+	public int getBrutto() {
+		return brutto;
+	}
+
+	public void setBrutto() {
+		this.brutto = netto+charges;
 	}
 
 

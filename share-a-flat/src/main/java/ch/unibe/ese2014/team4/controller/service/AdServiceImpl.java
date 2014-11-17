@@ -47,7 +47,10 @@ public class AdServiceImpl implements AdService {
 
 		Ad ad = new Ad();
 
-		ad.setPrice(adForm.getPrice());
+//		ad.setPrice(adForm.getPrice());
+		ad.setNetto(adForm.getNetto());
+		ad.setCharges(adForm.getCharges());
+		ad.setBrutto();
 		ad.setNrOfRooms(adForm.getNrOfRooms());
 		
 		if(adForm.getAdType() == AdType.ROOM){
@@ -111,8 +114,14 @@ public class AdServiceImpl implements AdService {
 			return tmp;
 	}
 
-	public List<Ad> getAdByPrice(int price) {
-		List<Ad> ads = adDao.findAllByPrice(price);
+//	public List<Ad> getAdByPrice(int price) {
+//		List<Ad> ads = adDao.findAllByPrice(price);
+//		assert (ads.size() != 0);
+//		return ads;
+//	}
+	
+	public List<Ad> getAdByBrutto(int brutto) {
+		List<Ad> ads = adDao.findAllByBrutto(brutto);
 		assert (ads.size() != 0);
 		return ads;
 	}

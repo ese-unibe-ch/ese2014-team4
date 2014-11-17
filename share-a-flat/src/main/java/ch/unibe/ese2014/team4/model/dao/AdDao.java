@@ -14,7 +14,8 @@ public interface AdDao extends CrudRepository<Ad,Long> {
 
 	public User findByOwner(String owner);
 	public Ad findById(Long id);
-	public List<Ad> findAllByPrice(int price);
+//	public List<Ad> findAllByPrice(int price);
+	public List<Ad> findAllByBrutto(int brutto);
 	public List<Ad> findAllByTitle(String title);
 	public Ad findByAddressId(Long addressId);
 	public ArrayList<Ad> findAllByAddressCityIgnoreCase(String city);

@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -38,7 +39,7 @@ public class SearchController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView search(@Valid SearchForm searchForm,
 			BindingResult result, RedirectAttributes redirectAttributes) {
-		ModelAndView model = new ModelAndView("search-list");;
+		ModelAndView model = new ModelAndView("search-list");
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
 
 		adsToAdd = searcher.getAdList(searchForm);
@@ -48,8 +49,8 @@ public class SearchController {
 		}
 		else
 			model.addObject("whatToDisplay", "No Ads found");
+		
 		return model;
 	}
-
-
+	
 }

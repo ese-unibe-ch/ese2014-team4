@@ -48,9 +48,21 @@ public class SearcherTests {
 		testAd2.setAddress(testAddess2);
 		testAd3.setAddress(testAddess3);
 
-		testAd1.setPrice(100);
-		testAd2.setPrice(200);
-		testAd3.setPrice(300);
+//		testAd1.setPrice(100);
+//		testAd2.setPrice(200);
+//		testAd3.setPrice(300);
+		
+		testAd1.setNetto(100);
+		testAd2.setNetto(200);
+		testAd3.setNetto(300);
+		
+		testAd1.setCharges(100);
+		testAd2.setCharges(200);
+		testAd3.setCharges(300);
+		
+		testAd1.setBrutto();
+		testAd2.setBrutto();
+		testAd3.setBrutto();
 		
 		testAd1.setNrOfFlatMate(1);
 		testAd2.setNrOfFlatMate(2);

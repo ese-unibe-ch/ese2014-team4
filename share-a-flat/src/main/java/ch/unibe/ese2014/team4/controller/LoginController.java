@@ -16,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
-
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.User;
 
@@ -68,6 +68,7 @@ public class LoginController {
 				 newAccountService.loginManually(user);
 				model.addObject("username", username);
 				model.addObject("user", user);
+				model.addObject("searchForm", new SearchForm());
 			} catch (InvalidUserException e) {
 
 				model = new ModelAndView("register");

@@ -26,8 +26,12 @@ public class AdForm {
 	private String title;
 	private int size;
     @NotNull
-    private int price;
-    @NotNull
+//    private int price;
+    private int netto;
+    private int charges;
+    private int brutto;
+    
+	@NotNull
     private String description;   
     private int nrOfFlatMates;  
     
@@ -61,12 +65,36 @@ public class AdForm {
 		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
-	public int getPrice() {
-		return price;
+//	public int getPrice() {
+//		return price;
+//	}
+//
+//	public void setPrice(int price) {
+//		this.price = price;
+//	}
+	
+    public int getNetto() {
+		return netto;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setNetto(int netto) {
+		this.netto = netto;
+	}
+
+	public int getCharges() {
+		return charges;
+	}
+
+	public void setCharges(int charges) {
+		this.charges = charges;
+	}
+
+	public int getBrutto() {
+		return brutto;
+	}
+
+	public void setBrutto() {
+		this.brutto = netto+charges;
 	}
 
 	public Date getAvailableDate() {

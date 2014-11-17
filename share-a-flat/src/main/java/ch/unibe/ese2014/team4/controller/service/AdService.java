@@ -17,7 +17,8 @@ public interface AdService {
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
 	public Ad getAd(Long id);
 	public ArrayList<Ad> getNewestAds();
-	public List<Ad> getAdByPrice(int price);
+//	public List<Ad> getAdByPrice(int price);
+	public List<Ad> getAdByBrutto(int brutto);
 	public List<Ad> getAdByTitle(String title);
 	public ArrayList<Ad> getAdByCity(String city);
 	public void setAdDao(AdDao mockDao);

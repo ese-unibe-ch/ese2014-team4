@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
 
@@ -68,22 +69,45 @@ public class SearchServiceImpl implements SearchService {
 			checkNrRooms(adsToSort);
 		}
 		
-		if ((searchForm.getAdType()).equals("Room")) {
+		if (searchForm.getAdType() == AdType.ROOM) {
 			checkType(adsToSort);
+		}
+		
+		if(searchForm.getAvailableDate() != null) {
+			checkAvailableDate(adsToSort);
 		}
 		
 		return adsToSort;
 	}
 
 	
-	private void checkPrice(ArrayList<Ad> adsToSort) {
+	private void checkAvailableDate(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
 		for (Ad ad : adsToSort)
 			adsToSortCopy.add(ad);
 		
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getMinPrice() > ad.getPrice()
-					|| searchForm.getMaxPrice() < ad.getPrice())
+			if (searchForm.getMinPrice() > ad.getBrutto()
+					|| searchForm.getMaxPrice() < ad.getBrutto())
+				adsToSort.remove(ad);
+		}
+		
+	}
+
+	private void checkPrice(ArrayList<Ad> adsToSort) {
+		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
+		for (Ad ad : adsToSort)
+			adsToSortCopy.add(ad);
+		
+//		for (Ad ad : adsToSortCopy) {
+//			if (searchForm.getMinPrice() > ad.getPrice()
+//					|| searchForm.getMaxPrice() < ad.getPrice())
+//				adsToSort.remove(ad);
+//		}
+		
+		for (Ad ad : adsToSortCopy) {
+			if (searchForm.getMinPrice() > ad.getBrutto()
+					|| searchForm.getMaxPrice() < ad.getBrutto())
 				adsToSort.remove(ad);
 		}
 	}
@@ -116,7 +140,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 		
 		for (Ad ad : adsToSortCopy) {
-			if (!(searchForm.getAdType()).equals("Room"))
+			if (searchForm.getAdType() != AdType.ROOM)
 				adsToSort.remove(ad);
 		}
 	}
