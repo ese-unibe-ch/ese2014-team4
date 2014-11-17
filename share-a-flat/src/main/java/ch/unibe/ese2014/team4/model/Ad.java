@@ -43,7 +43,7 @@ public class Ad {
 	// private List<User> FlatMate;
 	private int nrOfRooms;
 	
-	@Lob
+	@Lob 
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
