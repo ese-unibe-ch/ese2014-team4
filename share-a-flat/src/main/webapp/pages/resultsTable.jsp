@@ -31,7 +31,7 @@
 			</td>
 			
 			<td width="100">
-				${ad.price} CHF<br>
+				${ad.brutto} CHF<br>
 				${ad.size} m&sup2<br>
 			</td>
 			</tr>
