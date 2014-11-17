@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
 
@@ -21,7 +22,7 @@ import ch.unibe.ese2014.team4.model.Ad;
 @Service
 public class SearchServiceImpl implements SearchService {
 
-	private SearchForm searchForm;
+	private SearchForm searchForm = new SearchForm();
 	
 	@Autowired
 	private AdService adService;
@@ -71,7 +72,7 @@ public class SearchServiceImpl implements SearchService {
 			checkNrRooms(adsToSort);
 		}
 		
-		if ((searchForm.getAdType()).equals("Room")) {
+		if (searchForm.getAdType()==AdType.ROOM) {
 			checkType(adsToSort);
 		}
 		
@@ -119,7 +120,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 		
 		for (Ad ad : adsToSortCopy) {
-			if (!(searchForm.getAdType()).equals("Room"))
+			if (searchForm.getAdType()!=AdType.ROOM)
 				adsToSort.remove(ad);
 		}
 	}
