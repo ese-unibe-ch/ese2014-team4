@@ -24,6 +24,7 @@ import ch.unibe.ese2014.team4.model.dao.AddressDao;
 
 /**
  * save ads to and get ads from data base
+ * 
  * @author team4
  *
  */
@@ -47,36 +48,36 @@ public class AdServiceImpl implements AdService {
 
 		Ad ad = new Ad();
 
-//		ad.setPrice(adForm.getPrice());
+		// ad.setPrice(adForm.getPrice());
 		ad.setNetto(adForm.getNetto());
 		ad.setCharges(adForm.getCharges());
 		ad.setBrutto();
 		ad.setNrOfRooms(adForm.getNrOfRooms());
-		
-		if(adForm.getAdType() == AdType.ROOM){
+
+		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setNrOfFlatMate(adForm.getNrOfFlatMates());
 			ad.setNrOfRooms(0);
-		}
-		else{
+		} else {
 			ad.setNrOfRooms(adForm.getNrOfRooms());
 			ad.setNrOfFlatMate(0);
-			
+
 		}
-		
+
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
 		ad.setAvailableDate(adForm.getAvailableDate());
 		ad.setAdAddedDate(new Date());
-		ArrayList<MultipartFile> fileList =adForm.getUploadedAdPictures();
+		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
-		
-		if (fileList.get(0).getSize()!=0){
-			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
-		}
-		else{
-			ad.setBytePictureList(imageService.getDefaultImage());
+		if (!fileList.isEmpty()) {
+			if (fileList.get(0).getSize() != 0) {
+				ad.setBytePictureList(imageService
+						.getByteArrayFromMultipart(fileList));
+			} else {
+				ad.setBytePictureList(imageService.getDefaultImage());
+			}
 		}
 
 		Address address = new Address();
@@ -114,12 +115,12 @@ public class AdServiceImpl implements AdService {
 			return tmp;
 	}
 
-//	public List<Ad> getAdByPrice(int price) {
-//		List<Ad> ads = adDao.findAllByPrice(price);
-//		assert (ads.size() != 0);
-//		return ads;
-//	}
-	
+	// public List<Ad> getAdByPrice(int price) {
+	// List<Ad> ads = adDao.findAllByPrice(price);
+	// assert (ads.size() != 0);
+	// return ads;
+	// }
+
 	public List<Ad> getAdByBrutto(int brutto) {
 		List<Ad> ads = adDao.findAllByBrutto(brutto);
 		assert (ads.size() != 0);
@@ -138,7 +139,6 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	
 	public List<String> getImageList(long adId) {
 		Ad ad = adDao.findById(adId);
 		List<String> list = new ArrayList<String>();
@@ -160,9 +160,9 @@ public class AdServiceImpl implements AdService {
 		ads = adDao.findAll();
 		return ads;
 	}
+
 	public void setAdDao(AdDao mockDao) {
 		adDao = mockDao;
 	}
-
 
 }

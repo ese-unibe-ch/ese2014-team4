@@ -17,8 +17,8 @@ import ch.unibe.ese2014.team4.model.User;
 
 public class DaoTests {
 	
-	@Autowired
-	AdService adSevice;
+	
+	AdService adSevice = new AdServiceImpl();
 	
 	private AdForm testAdForm1;
 	private User testUser1;
