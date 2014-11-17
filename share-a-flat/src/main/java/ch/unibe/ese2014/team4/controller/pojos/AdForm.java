@@ -40,7 +40,7 @@ public class AdForm {
 	private AdType adType;
 //	private List<User> FlatMates;
 	private int nrOfRooms;
-    private ArrayList<MultipartFile> uploadedAdPictures;
+    private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
     
   //Address-Info, same field as Ad itself.
     private String street;
