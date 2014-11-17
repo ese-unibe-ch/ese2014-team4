@@ -26,7 +26,7 @@
 <!--/masthead-->
 
 <form:form enctype="multipart/form-data" method="post"
-	modelAttribute="adForm" action="submitAd" id="adForm"
+	modelAttribute="adForm" action="submitAd" onSubmit="return validateDate()" id="adForm"
 	cssClass="form-horizontal" autocomplete="off">
 
 	<div class="col-md-3">
@@ -158,19 +158,6 @@
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
-
-<%-- 		<c:set var="priceErrors"> --%>
-<%-- 			<form:errors path="price" /> --%>
-<%-- 		</c:set> --%>
-<!-- 		<div -->
-<%-- 			class="control-group<c:if test="${not empty priceErrors}"> error</c:if>"> --%>
-<!-- 			<label class="control-label" for="field-price">Price:</label> -->
-<!-- 			<div class="controls"> -->
-<%-- 				<form:input path="price" id="field-price" class="form-control" --%>
-<%-- 					tabindex="10" maxlength="35" placeholder="Price" /> --%>
-<%-- 				<form:errors path="price" cssClass="help-inline" element="span" /> --%>
-<!-- 			</div> -->
-<!-- 		</div> -->
 		
 		<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
 			<c:set var="nettoErrors">

@@ -35,7 +35,7 @@ public class AdForm {
     private String description;   
     private int nrOfFlatMates;  
     
-    private Date availableDate;
+    private String availableDate;
 
 	private AdType adType;
 //	private List<User> FlatMates;
@@ -97,11 +97,11 @@ public class AdForm {
 		this.brutto = netto+charges;
 	}
 
-	public Date getAvailableDate() {
+	public String getAvailableDate() {
 		return availableDate;
 	}
 
-	public void setAvailableDate(Date availableDate) {
+	public void setAvailableDate(String availableDate) {
 		this.availableDate = availableDate;
 	}
 	

@@ -28,25 +28,29 @@ function showAlert(){
 </script>
 
 <script>
-function validatedate(inputText) {  
-	var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;  
+function validateDate() {  
+	var dateformat = new RegExp("/^(0?[1-9]|[12][0-9]|3[01])[\-](0?[1-9]|1[012])[\-]\d{4}$/");  
+// 	var dateformat = new RegExp("/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/");  
+	var inputText = document.forms["adForm"]["field-availableDate"].value;
 	
 	// Match the date format through regular expression  
-	if(inputText.value.match(dateformat)) {  
-		document.form1.text1.focus();  
+	if(!dateformat.text(inputText)) {  
+// 		document.form1.text1.focus();  
+		inputText.focus();
 		
 		//Test which seperator is used '/' or '-'  
-		var opera1 = inputText.value.split('/');  
+// 		var opera1 = inputText.value.split('/');  
 		var opera2 = inputText.value.split('-');  
 		
-		lopera1 = opera1.length;  
+// 		lopera1 = opera1.length;  
 		lopera2 = opera2.length; 
 		
 		// Extract the string into month, date and year  
-		if (lopera1>1) {  
-			var pdate = inputText.value.split('/');  
-		}  
-		else if (lopera2>1) {  
+// 		if (lopera1>1) {  
+// 			var pdate = inputText.value.split('/');  
+// 		}  
+// 		else 
+			if (lopera2>1) {  
 			var pdate = inputText.value.split('-');  
 		}  
 		
@@ -84,7 +88,7 @@ function validatedate(inputText) {
 	} 
 	else {  
 		alert("Invalid date format!");  
-		document.form1.text1.focus();  
+		inputText.focus();  
 		return false;  
 	}  
 }

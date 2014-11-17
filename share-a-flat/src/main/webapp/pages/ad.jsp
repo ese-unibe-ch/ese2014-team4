@@ -3,18 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
-<!--     <script src="js/jquery-2.1.1.min.js"></script> -->
-<!--     <script src="js/bootstrap.min.js"></script> -->
+<c:import url="template/header.jsp" />
 <!-- special css for thumbnail view -->
-  <!-- <style>
+<style>
       ul {         
           padding:0 0 0 0;
           margin:0 0 0 0;
       }
       ul li {     
           list-style:none;
-          margin-bottom:25px;           
+/*           margin-bottom:25px;            */
       }
       ul li img {
           cursor: pointer;
@@ -56,15 +54,16 @@
               display:none;
           }
       }
-  </style> -->
+  </style>
 
-<c:import url="template/header.jsp" />
+
 
 <h1>${adData.title} <span class="glyphicon glyphicon-star-empty"></span></h1>	
+
         <!-- sets current_profile sex -->
-        <c:set var="adTypeToShow" value="apartment" />
+        <c:set var="adTypeToShow" value="Apartment" />
 		<c:if test="${adData.type eq 'ROOM'}">
-   		<c:set var="adTypeToShow" value="room" />
+   		<c:set var="adTypeToShow" value="Room" />
 		</c:if>
 		
 <br>		

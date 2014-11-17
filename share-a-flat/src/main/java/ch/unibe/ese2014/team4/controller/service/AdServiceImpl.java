@@ -1,6 +1,8 @@
 package ch.unibe.ese2014.team4.controller.service;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -67,10 +69,12 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		ad.setAvailableDate(adForm.getAvailableDate());
+		ad.setAvailableDate(convertStringToDate(adForm));
 		ad.setAdAddedDate(new Date());
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
+		convertStringToDate(adForm);
+		
 		if (!fileList.isEmpty()) {
 			if (fileList.get(0).getSize() != 0) {
 				ad.setBytePictureList(imageService
@@ -94,6 +98,21 @@ public class AdServiceImpl implements AdService {
 
 		return adForm;
 	}
+
+
+	private Date convertStringToDate(AdForm adForm) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = null;
+		
+		try {	 
+			date = formatter.parse(adForm.getAvailableDate());	 
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return date;
+	}
+	
 
 	@Transactional
 	public Ad getAd(Long id) {
