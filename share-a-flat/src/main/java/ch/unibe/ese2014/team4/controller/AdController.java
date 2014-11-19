@@ -25,8 +25,10 @@ import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.LoginService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.controller.service.PlzParseService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.Zip;
 
 
 /**
@@ -44,10 +46,13 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
+	 private PlzParseService plzParserService = new PlzParseService();
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
     public ModelAndView createAd(){
     	ModelAndView model = new ModelAndView("create-ad");
+    	ArrayList<Zip> plzData = plzParserService.getPlzArray();
+    	model.addObject("plzData", plzData);
     	model.addObject("adForm", new AdForm());
         return model;
     }

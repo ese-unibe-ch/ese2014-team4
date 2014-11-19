@@ -10,15 +10,16 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
+
+
 <div id="masthead">
 	<div class="container">
 		<div class="row">
 			<div>
 				<h1>Ad-Creation</h1>
 				<hr>
-			</div>
-
-
+			</div>					
+		
 		</div>
 	</div>
 	<!--/container-->
@@ -26,8 +27,9 @@
 <!--/masthead-->
 
 <form:form enctype="multipart/form-data" method="post"
-	modelAttribute="adForm" action="submitAd" onSubmit="return validateDate()" id="adForm"
-	cssClass="form-horizontal" autocomplete="off">
+	modelAttribute="adForm" action="submitAd"
+	onSubmit="return validateDate()" id="adForm" cssClass="form-horizontal"
+	autocomplete="off">
 
 	<div class="col-md-3">
 
@@ -158,7 +160,7 @@
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
-		
+
 		<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
 			<c:set var="nettoErrors">
 				<form:errors path="netto" />
@@ -173,7 +175,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
 			<c:set var="chargesErrors">
 				<form:errors path="charges" />
@@ -187,7 +189,7 @@
 					<form:errors path="charges" cssClass="help-inline" element="span" />
 				</div>
 			</div>
-		</div>	
+		</div>
 
 		<c:set var="nrOfFlatMatesErrors">
 			<form:errors path="nrOfFlatMates" />
@@ -204,13 +206,14 @@
 					element="span" />
 			</div>
 		</div>
-		
+
 		<c:set var="availableDateErrors">
 			<form:errors path="availableDate" />
 		</c:set>
 		<div
 			class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
-			<label class="control-label" for="field-availableDate">Available Date:</label>
+			<label class="control-label" for="field-availableDate">Available
+				Date:</label>
 			<div class="controls">
 				<form:input path="availableDate" id="field-availableDate"
 					class="form-control" tabindex="12" maxlength="35"
@@ -271,7 +274,8 @@
 			</div>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" tabindex="13" onclick="validatedate(document.adForm.field-availableDate)">Create
+				<button type="submit" class="btn btn-primary" tabindex="13"
+					onclick="validatedate(document.adForm.field-availableDate)">Create
 					Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
