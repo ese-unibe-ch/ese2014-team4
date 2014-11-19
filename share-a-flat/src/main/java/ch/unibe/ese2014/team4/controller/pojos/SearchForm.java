@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.controller.pojos;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
@@ -28,7 +30,7 @@ public class SearchForm {
     private int nrOfRooms;
     private AdType adType;
     
-    private Date availableDate;
+    private String availableDate;
    
 
 	private Long id;
@@ -126,13 +128,14 @@ public class SearchForm {
 		this.adType = adType;
 	}
 
-	public Date getAvailableDate() {
+	public String getAvailableDate() {
 		return availableDate;
 	}
 
-	public void setAvailableDate(Date availableDate) {
+	public void setAvailableDate(String availableDate) {		
 		this.availableDate = availableDate;
 	}
 
+	
 	 
 }

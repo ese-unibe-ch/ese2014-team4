@@ -83,10 +83,18 @@
 					<div class="controls">
 						<form:input class="form-control" path="nrOfFlatMates" id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="Number of Flatmates" />
 						<form:errors path="nrOfFlatMates" cssClass="help-inline" element="span" />							
-						<br>
 					</div>
 				</div>
 				
+				<c:set var="availableDateErrors"><form:errors path="availableDate" /></c:set>
+				<div class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
+					<label class="control-label" for="field-availableDate">Available Date:</label>
+					<div class="controls">
+						<form:input class="form-control" path="availableDate" id="field-availableDate" placeholder="DD-MM-YYYY" />
+						<form:errors path="availableDate" cssClass="help-inline" element="span" />
+						<br>
+					</div>
+				</div>
 				
 				<span id = "SearchErrorMessage"></span>	
 				

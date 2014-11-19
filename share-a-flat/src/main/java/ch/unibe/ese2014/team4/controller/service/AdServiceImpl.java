@@ -73,8 +73,6 @@ public class AdServiceImpl implements AdService {
 		ad.setAvailableDate(convertStringToDate(adForm));
 		ad.setAdAddedDate(new Date());
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-
-		convertStringToDate(adForm);
 		
 		if (!fileList.isEmpty()) {
 			if (fileList.get(0).getSize() != 0) {
