@@ -99,7 +99,7 @@ public class SearchServiceImpl implements SearchService {
 			try {
 				{
 					if ((convertStringToDate(searchForm.getAvailableDate()))
-							.compareTo(ad.getAvailableDate()) < 0)
+							.compareTo(ad.getAvailableDate()) > 0)
 						adsToSort.remove(ad);
 				}
 			} catch (ParseException e) {
