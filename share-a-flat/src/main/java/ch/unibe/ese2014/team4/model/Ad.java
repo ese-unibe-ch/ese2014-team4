@@ -108,7 +108,7 @@ public class Ad {
 		this.id = id;
 	}
 
-	public int getNrOfFlatMates() {
+	public int getNrOfFlatMate() {
 		return nrOfFlatMate;
 	}
 
@@ -182,10 +182,6 @@ public class Ad {
 
 	public void setAvailableDate(Date availableDate) {
 		this.availableDate = availableDate;
-	}
-
-	public int getNrOfFlatMate() {
-		return nrOfFlatMate;
 	}
 
 	public int getNetto() {
