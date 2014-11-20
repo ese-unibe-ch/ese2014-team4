@@ -3,13 +3,20 @@ package ch.unibe.ese2014.team4.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.IndexColumn;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +26,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class User implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
+
 
 	@Id
     @GeneratedValue
@@ -37,8 +44,19 @@ public class User implements UserDetails {
     @OneToOne(cascade = {CascadeType.ALL})
     private Profile profile;
     
+	@Lob 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "bookmarks", joinColumns = @JoinColumn(name = "user_id"))
+    private List<Long> bookmarks = new ArrayList<Long>();
     
-    public User(){
+    public List<Long> getBookmarks() {
+		return bookmarks;
+	}
+	public void setBookmarks(List<Long> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+	public User(){
     	this.profile = new Profile();
     	this.profile.setOwner(this);
     	this.role = "ROLE_USER";

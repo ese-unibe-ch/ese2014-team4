@@ -58,9 +58,9 @@
 
 
 
-<h1>${adData.title} <span class="glyphicon glyphicon-star-empty"></span></h1>	
+<h1>${adData.title} <a href="/addToBookmarks?adId=${adData.type}" class="glyphicon glyphicon-star-empty"></a></h1>	
 
-        <!-- sets current_profile sex -->
+        <!-- label ad correctly either as room or apartment -->
         <c:set var="adTypeToShow" value="Apartment" />
 		<c:if test="${adData.type eq 'ROOM'}">
    		<c:set var="adTypeToShow" value="Room" />

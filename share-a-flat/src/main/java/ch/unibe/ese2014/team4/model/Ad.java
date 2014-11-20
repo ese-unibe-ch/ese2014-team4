@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.IndexColumn;
 import org.hibernate.mapping.Map;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
@@ -45,6 +46,7 @@ public class Ad {
 	
 	@Lob 
 	@ElementCollection(fetch = FetchType.EAGER)
+	@IndexColumn(name="LIST_INDEX")
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
