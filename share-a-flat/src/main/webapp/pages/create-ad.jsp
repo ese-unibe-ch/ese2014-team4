@@ -91,7 +91,7 @@
 				<div class="controls">
 					<form:input path="streetNumber" id="field-streetNumber"
 						class="form-control" tabindex="5" maxlength="35"
-						placeholder="StreetNumber" />
+						placeholder="No" />
 					<form:errors path="streetNumber" cssClass="help-inline"
 						element="span" />
 				</div>
@@ -107,7 +107,7 @@
 				<label class="control-label" for="field-zipCode">Zip-Code:</label>
 				<div class="controls">
 					<form:input path="zipCode" id="field-zipCode" class="form-control"
-						tabindex="6" maxlength="35" placeholder="Zip-Code" />
+						tabindex="6" maxlength="35" placeholder="Zip" />
 					<form:errors path="zipCode" cssClass="help-inline" element="span" />
 				</div>
 			</div>
