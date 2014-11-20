@@ -10,7 +10,22 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
+<script> 
+var tt = document.getElementById("field-zipCode");
 
+function checkIt() {
+  if (tt.value != "z") {
+    alert("wrong! You should have typed z.");
+    return false;
+  } else {
+    alert('good');
+    return true;
+  }
+}
+
+tt.addEventListener("blur", checkIt , false);
+
+</script>
 
 <div id="masthead">
 	<div class="container">
@@ -19,7 +34,7 @@
 				<h1>Ad-Creation</h1>
 				<hr>
 			</div>					
-		
+		<h2>${city}</h2>
 		</div>
 	</div>
 	<!--/container-->
