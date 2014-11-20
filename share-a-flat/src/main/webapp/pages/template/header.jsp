@@ -4,12 +4,12 @@
 <head>
 	<meta name="viewport" content="width=1024"  charset="utf-8" />
 
-	<!-- <link rel="stylesheet" type="text/css" href="/share-a-flat/css/main.css" media="all" /> -->
-	<link rel="stylesheet" type="text/css" href="/share-a-flat/css/bootstrap.min.css" media="all" />
 
-	<script src="js/jquery-2.1.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/test.js"></script>
+	<link rel="stylesheet" type="text/css" href="/share-a-flat/css/bootstrap.css" media="all" />
+
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/customFunctions.js"></script>
 	
 	<style>
 		body {

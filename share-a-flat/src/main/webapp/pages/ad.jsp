@@ -56,7 +56,16 @@
       }
   </style>
 
+<script>
 
+    document.getElementById('change').onclick = changeColor;   
+
+    function changeColor() {
+        document.body.style.color = "purple";
+        return false;
+    }   
+
+</script>
 
 <h1>${adData.title} <a href="/addToBookmarks?adId=${adData.type}" class="glyphicon glyphicon-star-empty"></a></h1>	
 
