@@ -25,10 +25,10 @@ import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.LoginService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.PlzCityList;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
-import ch.unibe.ese2014.team4.model.Zip;
+import ch.unibe.ese2014.team4.model.ZipCityList;
+import ch.unibe.ese2014.team4.model.ZipCity;
 
 
 /**
@@ -46,12 +46,15 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
-	 private PlzCityList plzParserService = new PlzCityList();
+	 private ZipCityList zipCityListCh = new ZipCityList("src/main/webapp/files/plz.csv");
+	 private ArrayList<ZipCity> zipCityAsArray = zipCityListCh.getZipCityAsArrayList();
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
     public ModelAndView createAd(){
-    	ModelAndView model = new ModelAndView("create-ad");    	
+    	ModelAndView model = new ModelAndView("create-ad");  
+    	model.addObject("zipCityAsArray",zipCityAsArray );
     	model.addObject("adForm", new AdForm());
+
         return model;
     }
 	

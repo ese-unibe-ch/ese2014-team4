@@ -10,22 +10,7 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
-<script> 
-var tt = document.getElementById("field-zipCode");
 
-function checkIt() {
-  if (tt.value != "z") {
-    alert("wrong! You should have typed z.");
-    return false;
-  } else {
-    alert('good');
-    return true;
-  }
-}
-
-tt.addEventListener("blur", checkIt , false);
-
-</script>
 
 <div id="masthead">
 	<div class="container">
@@ -34,14 +19,14 @@ tt.addEventListener("blur", checkIt , false);
 				<h1>Ad-Creation</h1>
 				<hr>
 			</div>					
-		<h2>${city}</h2>
 			</div>
-
 		</div>
 	</div>
 	<!--/container-->
 </div>
 <!--/masthead-->
+
+
 
 <form:form enctype="multipart/form-data" method="post"
 	modelAttribute="adForm" action="submitAd"
