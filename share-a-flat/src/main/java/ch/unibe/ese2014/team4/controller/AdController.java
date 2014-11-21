@@ -4,30 +4,22 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
-import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.LoginService;
-import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.PlzParseService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Zip;
 
 
@@ -71,7 +63,7 @@ public class AdController {
 
     	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
 
-        return submitAd(adForm.getId());
+        return showAd(adForm.getId());
     }	
 	
 	/**
@@ -81,7 +73,7 @@ public class AdController {
 	 * @return ad-page containing ad with adId x.
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
-    public ModelAndView submitAd(@RequestParam(value = "adId", required  = true) long adId){
+    public ModelAndView showAd(@RequestParam(value = "adId", required  = true) long adId){
     	ModelAndView model = new ModelAndView("ad");   
     	
     	Ad ad = newAdService.getAd(adId);
@@ -90,6 +82,31 @@ public class AdController {
     	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;
+    }
+	
+	/**
+	 * @RequestParam /addToBookmarks?adId=x.
+	 * 
+	 * @param adId
+	 * @return ad-page containing ad with adId x.
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/addToBookmarks", method = RequestMethod.GET)
+    public ModelAndView addToBookmars(@RequestParam(value = "adId", required  = true) long adId, Principal principal){
+		User user = userService.getUserByUsername(principal.getName());
+		
+		ModelAndView model = showAd(adId);
+		try {
+			adService.bookMarkAdforUser(adId, user);
+			model.addObject("bookmarkResponse", "Bookmarked successfully!");
+			
+		}
+		catch (BookmarkException e){
+			model.addObject("bookmarkResponse", "Already bookmarked!");
+		}
+			
+		
+		return model;
     }
 
 }

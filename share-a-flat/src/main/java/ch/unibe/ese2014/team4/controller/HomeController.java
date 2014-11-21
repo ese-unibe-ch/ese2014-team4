@@ -30,7 +30,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home(Principal principal) {
-		ModelAndView model = new ModelAndView("search-list");
+		ModelAndView model = new ModelAndView("search");
+		model.addObject("resultType", "list");
 		
 		String username = principal.getName();
 		model.addObject("username", username);
@@ -42,32 +43,7 @@ public class HomeController {
 		return model;
 	}
    
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView login(){
-    	ModelAndView model;
-    	model = new ModelAndView("template/test");
 
-    	return model;
-    } /*
-    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public ModelAndView signIn(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
-    	ModelAndView model;    	
-    	if (!result.hasErrors()) {
-            try {
-            	sampleService.saveFrom(signupForm);
-            	model = new ModelAndView("home");
-            	User user = sampleService.getUser(signupForm.getId());
-				model.addObject("user", user);
-            } catch (InvalidUserException e) {
-            	model = new ModelAndView("index");
-            	model.addObject("page_error", e.getMessage());
-            }
-        } else {
-        	model = new ModelAndView("index");
-        }   	
-    	return model;
-    }
-    */
    
 }
 

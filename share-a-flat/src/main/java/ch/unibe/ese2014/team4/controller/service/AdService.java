@@ -25,4 +25,6 @@ public interface AdService {
 	public List<String> getImageList(long adId);
 	public ArrayList<Ad> getAdByZip(int zipCode);
 	public ArrayList<Ad> getAllAds();
+	public void bookMarkAdforUser(long adId, User user);
+	public List<Ad> getBookmarkList(User user);
 }

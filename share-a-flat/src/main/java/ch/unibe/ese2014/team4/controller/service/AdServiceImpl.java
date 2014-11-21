@@ -1,28 +1,25 @@
 package ch.unibe.ese2014.team4.controller.service;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import ch.unibe.ese2014.team4.controller.exceptions.InvalidAdException;
+import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
-import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 import ch.unibe.ese2014.team4.model.dao.AddressDao;
+import ch.unibe.ese2014.team4.model.dao.UserDao;
 
 /**
  * save ads to and get ads from data base
@@ -41,6 +38,8 @@ public class AdServiceImpl implements AdService {
 
 	@Autowired
 	ImageService imageService;
+	@Autowired
+	UserDao userDao;
 
 	/**
 	 * creates an ad form and saves it to data base
@@ -181,6 +180,28 @@ public class AdServiceImpl implements AdService {
 
 	public void setAdDao(AdDao mockDao) {
 		adDao = mockDao;
+	}
+
+
+	
+	
+	public List<Ad> getBookmarkList(User user){
+		return null;
+	}
+	public void bookMarkAdforUser(long adId, User user) {
+		List<Long> list = user.getBookmarks();
+		if(!list.contains(adId)){
+			System.out.println("added");
+			list.add(adId);
+			userDao.save(user);
+			user.setBookmarks(list);}
+
+		else{
+			throw new BookmarkException("Already bookmarked!");
+			
+		}
+		
+		
 	}
 
 }

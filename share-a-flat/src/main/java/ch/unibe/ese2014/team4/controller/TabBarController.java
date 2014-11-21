@@ -35,21 +35,7 @@ public class TabBarController {
 		return model;
 	}
 
-	@RequestMapping(value = "/search-list", method = RequestMethod.GET)
-	public ModelAndView searchList() {
-		ModelAndView model = new ModelAndView("search-list");
-		model.addObject("searchForm", new SearchForm());
-		ArrayList<Ad> newestAdds = adService.getNewestAds();
-		model.addObject("addList", newestAdds);
-		return model;
-	}
 
-	@RequestMapping(value = "/search-map", method = RequestMethod.GET)
-	public ModelAndView searchMap() {
-		ModelAndView model = new ModelAndView("search-map");
-		return model;
-	}
-		
 	@RequestMapping(value = "/security-error", method = RequestMethod.GET)
 	public String securityError(RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("page_error",

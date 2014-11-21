@@ -17,14 +17,15 @@
 
 <!-- Auswahlreiter -->
 
+
+
 <ul>
-	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
+	<li class="map"><a href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise>
+			</c:choose>" class="inactive"><span>Search Map</span></a></li>
 </ul>
 
 
-<!-- <div class="col-md-3"> -->
-<%-- 	<c:import url="search-criteria.jsp" /> --%>
-<!-- </div> -->
+
 
 <div class="row">
 	<div class="col-md-4">
@@ -49,7 +50,12 @@
     		</div>
     		
     		<div class="panel-body">
-				<c:import url="resultsTable.jsp" />
+    			<c:if test="${resultType eq 'list'}">
+				<c:import url="searchResultsList.jsp" />
+				</c:if>
+				<c:if test=" ${resultType eq 'map'}">
+				<c:import url="searchResultsMap.jsp" />
+				</c:if>
     		</div>
     		
   		</div>

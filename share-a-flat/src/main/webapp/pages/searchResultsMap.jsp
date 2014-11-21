@@ -4,7 +4,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<c:import url="template/header.jsp" />
 
 <head>
     <style>
@@ -52,4 +51,3 @@
   </body>
 
 
-<c:import url="template/footer.jsp" />
