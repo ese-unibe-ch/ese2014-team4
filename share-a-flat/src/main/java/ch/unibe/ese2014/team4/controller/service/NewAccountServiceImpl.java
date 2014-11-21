@@ -88,7 +88,7 @@ public class NewAccountServiceImpl implements NewAccountService {
 
 		File file=null;
 		try {
-			file = appContext.getResource("classpath:defaultProfileImage.png").getFile();
+			file = appContext.getResource("classpath:img/defaultProfileImage.png").getFile();
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}

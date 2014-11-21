@@ -41,7 +41,7 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
-	 private ZipCityList zipCityListCh = new ZipCityList("src/main/webapp/files/plz.csv");
+	 private ZipCityList zipCityListCh = new ZipCityList("src/main/resources/files/plz.csv");
 	 private ArrayList<ZipCity> zipCityAsArray = zipCityListCh.getZipCityAsArrayList();
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)

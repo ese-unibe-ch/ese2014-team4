@@ -27,7 +27,7 @@
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading"><h3>My Profile</h3></div>
-              <div class="panel-body"><c:import  url="profile.jsp" />
+              <div class="panel-body"><c:import  url="embedded/profile.jsp" />
               <br><br>
 
 			<div class="form-actions">

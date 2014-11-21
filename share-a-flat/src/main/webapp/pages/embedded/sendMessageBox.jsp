@@ -8,12 +8,6 @@
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 
 
-<!-- <h2>My Profile</h2> -->
+ <h2>sendmessagebox</h2>
 <br>
-<img src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}" class="img-responsive" alt="profileImage" >
-<p><b>Username: </b>${user.username}</p> 
-<p><b>Email: </b>${user.email}</p>  
-<p><b>Age: </b>${user.profile.age}</p>  
-<p><b>Sex: </b>${user.profile.sex}</p>
-
 

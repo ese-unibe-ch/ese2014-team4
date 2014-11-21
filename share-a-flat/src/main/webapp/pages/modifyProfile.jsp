@@ -49,6 +49,16 @@
             </div>
           </div>
 
+        <c:set var="phoneNumberErrors"><form:errors path="phoneNumber"/></c:set>
+        <div class="form-group<c:if test="${not empty phoneNumberErrors}"> error</c:if>">
+            <label class="col-lg-3 control-label" for="field-phoneNumber">phoneNumber:</label>
+
+            <div class="col-lg-8">
+                <form:input class="form-control" path="phoneNumber" id="field-phoneNumber" tabindex="3" maxlength="45" value="${user.profile.phoneNumber}"/>
+                <form:errors path="phoneNumber" cssClass="help-inline" element="span" />
+            </div>
+        </div>
+
         <c:set var="ageErrors"><form:errors path="age"/></c:set>
         <div class="form-group<c:if test="${not empty ageErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-age">Age:</label>

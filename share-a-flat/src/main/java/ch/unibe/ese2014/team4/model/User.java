@@ -34,12 +34,11 @@ public class User implements UserDetails {
     
     private String username;
     private String email;
-    
     /**
      * password is saved as a sha-digested hex-string.
      */
     private String password;
-    private String role;
+
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Profile profile;
@@ -100,14 +99,7 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-	public String getRole() {
 
-		return role;
-	}
-	
-	public void setRole(String role){
-		this.role = role;
-	}
 
 	public Profile getProfile() {
 		return profile;
@@ -149,5 +141,6 @@ public class User implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 
 }

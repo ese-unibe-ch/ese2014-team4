@@ -2,14 +2,11 @@ package ch.unibe.ese2014.team4.Tests;
 
 
 
-import javassist.bytecode.annotation.NoSuchClassError;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,7 +21,7 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:springMVC.xml","classpath*:springData.xml", "classpath*:springSecurity.xml"})
+@ContextConfiguration(locations = {"classpath*:config/springMVC.xml","classpath*:config/springData.xml", "classpath*:config/springSecurity.xml"})
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
 public class LoginTest {
