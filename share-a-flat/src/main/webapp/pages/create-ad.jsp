@@ -10,7 +10,11 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
-
+<c:forEach items="${zipCityAsArray}" var="zipCity">
+<c:if test="${zipCity.zip==2504}">
+<c:out value="${zipCity.city}"></c:out>
+</c:if>
+</c:forEach>
 
 <div id="masthead">
 	<div class="container">
