@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;nrOfFlatMate&apos; in &apos;ch.unibe.ese2014.team4.model.Ad&apos; to &apos;nrOfFlatMates&apos;&#x0D;&#x0A;- Original project: &apos;share-a-flat&apos;&#x0D;&#x0A;- Original element: &apos;ch.unibe.ese2014.team4.model.Ad.nrOfFlatMate&apos;&#x0D;&#x0A;- Renamed element: &apos;ch.unibe.ese2014.team4.model.Ad.nrOfFlatMates&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;nrOfFlatMate&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;ch.unibe.ese2014.team4.model{Ad.java[Ad^nrOfFlatMate" name="nrOfFlatMates" references="true" setter="false" stamp="1416600440158" textual="false" version="1.0"/>
+</session>
