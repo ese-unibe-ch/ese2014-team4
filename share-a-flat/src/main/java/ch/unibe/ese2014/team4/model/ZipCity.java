@@ -1,6 +1,6 @@
 package ch.unibe.ese2014.team4.model;
 
-public class Zip {	
+public class ZipCity {	
 
 	private String zip;
 	private String city;

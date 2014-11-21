@@ -19,12 +19,14 @@
 				<h1>Ad-Creation</h1>
 				<hr>
 			</div>					
-		
+			</div>
 		</div>
 	</div>
 	<!--/container-->
 </div>
 <!--/masthead-->
+
+
 
 <form:form enctype="multipart/form-data" method="post"
 	modelAttribute="adForm" action="submitAd"
@@ -42,7 +44,9 @@
 
 			<div class="controls">
 				<form:input path="title" id="field-title" class="form-control"
-					tabindex="1" maxlength="45" placeholder="Title" />
+					tabindex="1" maxlength="45" placeholder="Title"
+					onfocus="(this.placeholder == 'Title') && (this.placeholder = '')"
+					onblur="(this.placeholder == '') && (this.placeholder = 'Title')" />
 				<form:errors path="title" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -75,7 +79,9 @@
 				<label class="control-label" for="field-street">Street:</label>
 				<div class="controls">
 					<form:input path="street" id="field-street" class="form-control"
-						tabindex="4" maxlength="35" placeholder="Street" />
+						tabindex="4" maxlength="35" placeholder="Street"
+						onfocus="(this.placeholder == 'Street') && (this.placeholder = '')"
+						onblur="(this.placeholder == '') && (this.placeholder = 'Street')" />
 					<form:errors path="street" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -90,8 +96,9 @@
 				<label class="control-label" for="field-streetNumber">No:</label>
 				<div class="controls">
 					<form:input path="streetNumber" id="field-streetNumber"
-						class="form-control" tabindex="5" maxlength="35"
-						placeholder="No" />
+						class="form-control" tabindex="5" maxlength="35" value="0"
+						onfocus="(this.value == '0') && (this.value = '')"
+						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="streetNumber" cssClass="help-inline"
 						element="span" />
 				</div>
@@ -107,7 +114,9 @@
 				<label class="control-label" for="field-zipCode">Zip-Code:</label>
 				<div class="controls">
 					<form:input path="zipCode" id="field-zipCode" class="form-control"
-						tabindex="6" maxlength="35" placeholder="Zip" />
+						tabindex="6" maxlength="35" value="0"
+						onfocus="(this.value == '0') && (this.value = '')"
+						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="zipCode" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -122,7 +131,9 @@
 				<label class="control-label" for="field-city">City:</label>
 				<div class="controls">
 					<form:input path="city" id="field-city" class="form-control"
-						tabindex="7" maxlength="35" placeholder="City" />
+						tabindex="7" maxlength="35" placeholder="City"
+						onfocus="(this.placeholder == 'City') && (this.placeholder = '')"
+						onblur="(this.placeholder == '') && (this.placeholder = 'City')" />
 					<form:errors path="city" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -140,7 +151,9 @@
 
 			<div class="controls">
 				<form:input path="size" id="field-size" class="form-control"
-					tabindex="8" maxlength="45" placeholder="Size" />
+					tabindex="8" maxlength="45" value="0"
+					onfocus="(this.value == '0') && (this.value = '')"
+					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="size" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -156,7 +169,10 @@
 			<div class="controls">
 				<form:input path="nrOfRooms" id="field-nrOfRooms"
 					class="form-control" tabindex="9" maxlength="45"
-					placeholder="nrOfRooms" disabled="true" />
+					value="0"
+					onfocus="(this.value == '0') && (this.value = '')"
+					onblur="(this.value == '') && (this.value = '0')"
+					disabled="true" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -170,7 +186,9 @@
 				<label class="control-label" for="field-netto">Netto Price:</label>
 				<div class="controls">
 					<form:input path="netto" id="field-netto" class="form-control"
-						tabindex="10" maxlength="35" placeholder="Netto Price" />
+						tabindex="10" maxlength="35" value="0"
+						onfocus="(this.value == '0') && (this.value = '')"
+						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="netto" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -185,7 +203,9 @@
 				<label class="control-label" for="field-charges">Charges:</label>
 				<div class="controls">
 					<form:input path="charges" id="field-charges" class="form-control"
-						tabindex="10" maxlength="35" placeholder="Charges" />
+						tabindex="10" maxlength="35" value="0"
+						onfocus="(this.value == '0') && (this.value = '')"
+						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="charges" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -197,11 +217,13 @@
 		<div
 			class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
 			<label class="control-label" for="field-nrOfFlatMates">Number
-				of FlatMates:</label>
+				of Flatmates:</label>
 			<div class="controls">
 				<form:input path="nrOfFlatMates" id="field-nrOfFlatMates"
 					class="form-control" tabindex="11" maxlength="35"
-					placeholder="Number of FlatMates" />
+					value="0"
+					onfocus="(this.value == '0') && (this.value = '')"
+					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfFlatMates" cssClass="help-inline"
 					element="span" />
 			</div>
@@ -217,7 +239,9 @@
 			<div class="controls">
 				<form:input path="availableDate" id="field-availableDate"
 					class="form-control" tabindex="12" maxlength="35"
-					placeholder="DD-MM-YYYY" />
+					placeholder="DD-MM-YYYY"
+					onfocus="(this.placeholder == 'DD-MM-YYYY') && (this.placeholder = '')"
+					onblur="(this.placeholder == '') && (this.placeholder = 'DD-MM-YYYY')" />
 				<form:errors path="availableDate" cssClass="help-inline"
 					element="span" />
 				<br> <br>
@@ -265,11 +289,13 @@
 				class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 				<label class="control-label" for="field-description">Description:</label>
 				<div class="controls">
-					<form:textarea path="description" id="field-description"
+					<form:textarea class="form-control" path="description" id="field-description"
 						style="width:100%; height:121px" tabindex="12"
-						placeholder="Description" />
+						placeholder="Description" onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
+					onblur="(this.placeholder == '') && (this.placeholder = 'Description')"/>
 					<form:errors path="description" cssClass="help-inline"
 						element="span" />
+						<br><br>
 				</div>
 			</div>
 

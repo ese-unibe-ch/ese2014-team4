@@ -16,11 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.PlzParseService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
+
 import ch.unibe.ese2014.team4.model.User;
-import ch.unibe.ese2014.team4.model.Zip;
+
+import ch.unibe.ese2014.team4.model.ZipCityList;
+import ch.unibe.ese2014.team4.model.ZipCity;
+
 
 
 /**
@@ -38,14 +41,15 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
-	 private PlzParseService plzParserService = new PlzParseService();
+	 private ZipCityList zipCityListCh = new ZipCityList("src/main/webapp/files/plz.csv");
+	 private ArrayList<ZipCity> zipCityAsArray = zipCityListCh.getZipCityAsArrayList();
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
     public ModelAndView createAd(){
-    	ModelAndView model = new ModelAndView("create-ad");
-    	ArrayList<Zip> plzData = plzParserService.getPlzArray();
-    	model.addObject("plzData", plzData);
+    	ModelAndView model = new ModelAndView("create-ad");  
+    	model.addObject("zipCityAsArray",zipCityAsArray );
     	model.addObject("adForm", new AdForm());
+
         return model;
     }
 	
