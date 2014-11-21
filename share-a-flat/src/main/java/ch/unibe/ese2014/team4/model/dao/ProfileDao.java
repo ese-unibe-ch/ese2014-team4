@@ -9,7 +9,7 @@ import ch.unibe.ese2014.team4.model.User;
 
 public interface ProfileDao extends CrudRepository<Profile,Long> {
 
-	Profile findByOwner(User username);
+
 	Profile findById(long id);
 
 }

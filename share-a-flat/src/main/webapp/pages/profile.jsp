@@ -10,11 +10,10 @@
 
 <!-- <h2>My Profile</h2> -->
 <br>
-<img src="${pageContext.request.contextPath}/imageController/profile/${profile.id}" class="img-responsive" alt="profileImage" >
-<p><b>Username: </b>${profile.owner.username}</p> 
-<p><b>Email: </b>${profile.owner.email}</p>  
-<p><b>Age: </b>${profile.age}</p>  
-<p><b>Sex: </b>${profile.sex}</p>
-...
-<%-- <p><b>Further Information: </b>${profile.description}</p> --%>
+<img src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}" class="img-responsive" alt="profileImage" >
+<p><b>Username: </b>${user.username}</p> 
+<p><b>Email: </b>${user.email}</p>  
+<p><b>Age: </b>${user.profile.age}</p>  
+<p><b>Sex: </b>${user.profile.sex}</p>
+
 

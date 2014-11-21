@@ -1,13 +1,6 @@
-package ch.unibe.ese2014.team4.controller.service;
-
-import java.util.ArrayList;
+package ch.unibe.ese2014.team4.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +8,9 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 

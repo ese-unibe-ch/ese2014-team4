@@ -16,9 +16,9 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	
-	public Profile getMyProfile() {
-		// TODO Auto-generated method stub
-		return null;
+	public Profile getProfileByUsername(String username) {
+		
+		return userDao.findByUsername(username).getProfile();
 	}
 
 	public User getUserByUsername(String username) {

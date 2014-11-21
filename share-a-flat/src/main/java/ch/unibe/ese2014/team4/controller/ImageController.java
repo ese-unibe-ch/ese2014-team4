@@ -25,9 +25,9 @@ public class ImageController {
 	@ResponseBody
 	@RequestMapping(value = "/imageController/profile/{id}", method = RequestMethod.GET)
     public byte[] provideProfileImage(@PathVariable("id") long profileImageID){
-		byte[] im = imageService.getProfileImage(profileImageID);
+		return imageService.getProfileImage(profileImageID);
 
-		return im;
+	
     }
 	
 	@ResponseBody

@@ -36,7 +36,7 @@
 			</div>
 			
 			<div class="panel-body">
-				<c:import url="search-criteria.jsp" />
+				<c:import url="searchCriteria.jsp" />
 			</div>
 			
  		</div>

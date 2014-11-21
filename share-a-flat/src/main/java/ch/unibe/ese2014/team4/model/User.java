@@ -49,7 +49,12 @@ public class User implements UserDetails {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "bookmarks", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> bookmarks = new ArrayList<Long>();
-    
+
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
+	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+	
     public List<Long> getBookmarks() {
 		return bookmarks;
 	}
@@ -58,9 +63,9 @@ public class User implements UserDetails {
 	}
 	public User(){
     	this.profile = new Profile();
-    	this.profile.setOwner(this);
-    	this.role = "ROLE_USER";
+    	this.authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
     }
+	
     public String getPassword() {
 		return password;
 	}
@@ -113,27 +118,18 @@ public class User implements UserDetails {
 	}
 //UserDetails methods
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		ArrayList<GrantedAuthority> list = translateRole(role);
-		return list;
+
+		return authorities;
+	}
+	
+	public void setAuthorities(Collection<GrantedAuthority> authorities){
+		this.authorities = authorities;
 	}
 
-	private ArrayList<GrantedAuthority> translateRole(String roleString){
-		ArrayList<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
-		/*
-		switch(roleString){											//change, if java < 1.7 
-		case "ROLE_ADMIN":
-			list.add(new SimpleGrantedAuthority("ROLE_ADMIN"));		//no break on purpose!
-		case "ROLE_USER":
-			list.add(new SimpleGrantedAuthority("ROLE_USER"));
-		default:
-			list.add(new SimpleGrantedAuthority("ROLE_USER"));		//to support old users with role = null.
-		}*/
-		list.add(new SimpleGrantedAuthority("ROLE_USER"));
-		return list;
-	}
+
 
 	
-	//all set to "user has access"
+	//all set to return true, otherwise user cannot login.
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;

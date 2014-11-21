@@ -7,7 +7,7 @@
 
 
 <br><hr>
-<c:forEach items="${addList}" var="ad">
+<c:forEach items="${adList}" var="ad">
 	<a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a>
 	<table>
 	

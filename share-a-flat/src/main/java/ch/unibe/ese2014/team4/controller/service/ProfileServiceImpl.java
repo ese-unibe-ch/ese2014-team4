@@ -1,17 +1,11 @@
 package ch.unibe.ese2014.team4.controller.service;
 
-import java.security.Principal;
-
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
-import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
-import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.model.Profile;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.ProfileDao;
@@ -30,21 +24,20 @@ public class ProfileServiceImpl implements ProfileService {
 	@Autowired
 	ImageService imageService;
 
-	@Transactional
-	public Profile getMyProfile(Principal principal) throws ProfileException{
-		
-		Profile profile = profileDao.findByOwner(userDao.findByUsername(principal.getName()));
-	//	if (profile == null) throw new ProfileException("Profile not found");
-		return profile;
-	}
+
 	
 	@Transactional
-	public void updateProfileFrom(ProfileForm profileForm, Profile profile){
+	public void updateProfileFrom(ProfileForm profileForm, User user){
+		Profile profile = user.getProfile();
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
 		profile.setDescription(profileForm.getDescription());
+		
 		try {
-			profile.setProfileImage(imageService.getByteArrayFromMultipart(profileForm.getUploadedProfileImage()));
+			MultipartFile imageFile = profileForm.getUploadedProfileImage();
+			if(imageFile.getSize()!=0){	
+				profile.setProfileImage(imageService.getByteArrayFromMultipart(imageFile));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

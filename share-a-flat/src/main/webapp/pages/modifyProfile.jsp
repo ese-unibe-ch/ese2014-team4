@@ -16,7 +16,7 @@
     <fieldset>
       <div class="col-md-3">
         <div class="text-center">
-          <img src="${pageContext.request.contextPath}/imageController/profile/${profile.id}" class="img-responsive" alt="profileImage" >
+          <img src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}" class="img-responsive" alt="profileImage" >
           <h6>Upload a different photo...</h6>
           
           <form:input path="uploadedProfileImage" type="file"/>
@@ -38,14 +38,14 @@
 	 	  <div class="form-group">
             <label class="col-lg-3 control-label">Username:</label>
             <div class="col-lg-8">
-              <input class="form-control" value="${profile.owner.username}" type="text" tabindex="1">
+              <input class="form-control" value="${user.username}" type="text" tabindex="1">
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" value="${profile.owner.email}" type="text" tabindex="2">
+              <input class="form-control" value="${user.email}" type="text" tabindex="2">
             </div>
           </div>
 
@@ -54,19 +54,19 @@
             <label class="col-lg-3 control-label" for="field-age">Age:</label>
 
             <div class="col-lg-8">
-                <form:input class="form-control" path="age" id="field-age" tabindex="3" maxlength="45" value="${profile.age}"/>
+                <form:input class="form-control" path="age" id="field-age" tabindex="3" maxlength="45" value="${user.profile.age}"/>
                 <form:errors path="age" cssClass="help-inline" element="span" />
             </div>
         </div>      
 
         <!-- sets current_profile sex -->
         <c:set var="checkedM" value="" />
-		<c:if test="${profile.sex eq 'M'}">
+		<c:if test="${user.profile.sex eq 'M'}">
    		<c:set var="checkedM" value="checked" />
 		</c:if>
 		
 		<c:set var="checkedF" value="" />
-		<c:if test="${profile.sex eq 'F'}">
+		<c:if test="${user.profile.sex eq 'F'}">
    		<c:set var="checkedF" value="checked" />
 		</c:if>
 		
@@ -84,7 +84,7 @@
             <div class="col-md-8">
             <button type="submit" tabindex="6" class="btn btn-primary">Save Profile</button>
 <!--             <input type="reset" value="Reset"> -->
-            <a type="button" href="${pageContext.request.contextPath}/my-page" onclick = "return showAlert()" tabindex="7" class="btn btn-default">Cancel</a>
+            <a type="button" href="${pageContext.request.contextPath}/myPage" onclick = "return showAlert()" tabindex="7" class="btn btn-default">Cancel</a>
             </div>
         </div>
 

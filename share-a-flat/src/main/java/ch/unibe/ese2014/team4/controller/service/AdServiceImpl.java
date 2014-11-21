@@ -204,4 +204,14 @@ public class AdServiceImpl implements AdService {
 		
 	}
 
+
+	public List<Ad> getBookmarkedAds(List<Long> bookmarks) {
+		List<Ad> list = new ArrayList<Ad>();
+		for(Long id : bookmarks){
+			Ad ad = adDao.findById(id);
+			list.add(ad);
+			System.out.println(ad.getTitle());}
+		return list;
+	}
+
 }

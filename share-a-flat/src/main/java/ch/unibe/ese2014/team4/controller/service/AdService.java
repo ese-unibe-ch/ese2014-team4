@@ -27,4 +27,5 @@ public interface AdService {
 	public ArrayList<Ad> getAllAds();
 	public void bookMarkAdforUser(long adId, User user);
 	public List<Ad> getBookmarkList(User user);
+	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 }

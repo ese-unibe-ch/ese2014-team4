@@ -21,6 +21,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
+import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.controller.service.ProfileService;
@@ -37,19 +38,26 @@ public class MyPageController {
 	UserService myPageService;
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	AdService adService;
 
 
-	@RequestMapping(value = "/my-page", method = RequestMethod.GET)
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
-		ModelAndView model = new ModelAndView("my-page");
-		model.addObject("profile", profileService.getMyProfile(principal));
+		ModelAndView model = new ModelAndView("myPage");
+		User user=userService.getUserByUsername(principal.getName());
+		model.addObject("user", user);
+		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
 		return model;
 	}
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ModelAndView profile(Principal principal)throws ProfileException {
 		ModelAndView model = new ModelAndView("profile");
-		model.addObject("profile", profileService.getMyProfile(principal));
+
+
 		return model;
 	}
 	
@@ -58,7 +66,7 @@ public class MyPageController {
 		ModelAndView model = new ModelAndView("modifyProfile");
 		ProfileForm profileForm = new ProfileForm();
 		model.addObject("profileForm", profileForm);
-		model.addObject("profile", profileService.getMyProfile(principal));
+		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		return model;
 	}
 
@@ -67,13 +75,11 @@ public class MyPageController {
 	public ModelAndView saveProfile(ProfileForm profileForm, BindingResult result, Principal principal) throws Exception {
 		ModelAndView model;
 		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, profileService.getMyProfile(principal)); 
-				model = new ModelAndView("my-page");
-				model.addObject("profile", profileService.getMyProfile(principal));
-				return model;
+				profileService.updateProfileFrom(profileForm, userService.getUserByUsername(principal.getName())); 
+				return myPage(principal);
 
 		}
-		else {model = new ModelAndView("my-page");}
+		else {model = new ModelAndView("myPage");}
 		return model;
 		
 	}	

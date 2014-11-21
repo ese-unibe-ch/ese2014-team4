@@ -53,9 +53,9 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 
-          	<li <%= isActive("my-page", request) %>><a href="my-page">My Page</a></li>
+          	<li <%= isActive("myPage", request) %>><a href="myPage">My Page</a></li>
             <li <%= isActive("favorites", request) %>><a href="favorites">My Favorites</a></li>
-            <li <%= isActive("search-list", request) %>><a href="search?resultType=list">Search</a></li>
+            <li <%= isActive("search", request) %>><a href="search?resultType=list">Search</a></li>
             <li <%= isActive("createAd", request) %>><a href="createAd">Create an ad</a></li>
           </ul>
           

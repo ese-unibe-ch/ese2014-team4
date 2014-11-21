@@ -1,17 +1,15 @@
 package ch.unibe.ese2014.team4.controller;
 
-//TODO: login after registering
+
 import java.security.Principal;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -62,7 +60,7 @@ public class LoginController {
 		if (!result.hasErrors()) {
 			try {
 				newAccountService.saveFrom(signupForm);
-				model = new ModelAndView("search-list");
+				model = new ModelAndView("myPage");
 				String username = signupForm.getUsername();
 				 User user = userService.getUser(signupForm.getId());
 				 newAccountService.loginManually(user);

@@ -5,7 +5,6 @@
 
 
 <c:import url="template/header.jsp" />
-<img src="${pageContext.request.contextPath}/imageController/profile?${profile.id}" alt="profileImage" >
 <div id="masthead">  
   <div class="container">
       <div class="row">
@@ -42,8 +41,9 @@
           </div> 
           <div class="col-md-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><h3>Subscriptions</h3></div>
-              <div class="panel-body">b.
+              <div class="panel-heading"><h3>My Bookmarks</h3></div>
+              <div class="panel-body">
+              	<c:import url="searchResultsList.jsp" />
               </div>
             </div>
           </div>  

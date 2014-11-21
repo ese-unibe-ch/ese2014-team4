@@ -34,13 +34,13 @@ public class SearchController {
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("searchForm", new SearchForm());
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
-		model.addObject("addList", newestAdds);
+		model.addObject("adList", newestAdds);
 		model.addObject("resultType", resultType);
 		return model;
 	}
 
 
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@RequestMapping(value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView search(@Valid SearchForm searchForm,
 			BindingResult result,  @RequestParam(value = "resultType", required=true) String resultType) {
 		ModelAndView model = new ModelAndView("search");
@@ -48,7 +48,7 @@ public class SearchController {
 
 		adsToAdd = searcher.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()){
-			model.addObject("addList", adsToAdd);
+			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
 			model.addObject("resultType", resultType);
 		}

@@ -18,8 +18,7 @@ public class Profile {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
-    private User owner;
+
     private int age;
     private String description;
     private Sex sex; 
@@ -30,14 +29,6 @@ public class Profile {
     private byte[] profileImage;
     
     
-    public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-
 	public int getAge() {
 		return age;
 	}
@@ -73,7 +64,7 @@ public class Profile {
 	}
 	
 	public String toString(){
-		return "Profile of " + owner.getUsername();
+		return "Profile Id " + this.id;
 	}
 
 	public byte[] getProfileImage() {
