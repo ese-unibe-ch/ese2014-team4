@@ -50,7 +50,7 @@ public class ImageServiceImpl implements ImageService {
 
 		File file=null;
 		try {
-			file = appContext.getResource("classpath:defaultAdImage.png").getFile();
+			file = appContext.getResource("classpath:img/defaultAdImage.png").getFile();
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}

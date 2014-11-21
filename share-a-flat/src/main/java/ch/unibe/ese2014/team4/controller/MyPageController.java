@@ -47,22 +47,41 @@ public class MyPageController {
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public ModelAndView myPage(Principal principal)throws ProfileException {
 		ModelAndView model = new ModelAndView("myPage");
-		User user=userService.getUserByUsername(principal.getName());
-		model.addObject("user", user);
-		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		try{
+			User user=userService.getUserByUsername(principal.getName());
+			model.addObject("user", user);
+			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		}
+		catch(InvalidUserException e){
+			
+		}
+			
+		
 		return model;
 	}
 
+	
+	/**
+	 * Used to display others profile.
+	 * @param profileId
+	 * @param principal
+	 * @return
+	 * @throws ProfileException
+	 */
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public ModelAndView profile(Principal principal)throws ProfileException {
-		ModelAndView model = new ModelAndView("profile");
-
-
-		return model;
+	public ModelAndView showMyProfile(@RequestParam(value="userId") Long userId) throws InvalidUserException{
+		ModelAndView model = new ModelAndView("showProfile");
+		try{
+			model.addObject("user", userService.getUser(userId));
+		}
+		catch(InvalidUserException e){
+			model.addObject("errorMessage", e.getMessage());
+		}
+			return model;
 	}
 	
 	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
-	public ModelAndView modifyProfile(Principal principal) throws ProfileException {
+	public ModelAndView modifyProfile(Principal principal) throws InvalidUserException {
 		ModelAndView model = new ModelAndView("modifyProfile");
 		ProfileForm profileForm = new ProfileForm();
 		model.addObject("profileForm", profileForm);
