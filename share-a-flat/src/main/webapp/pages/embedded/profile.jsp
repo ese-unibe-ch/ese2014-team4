@@ -19,6 +19,7 @@
 <p><b>Phone: </b>${user.profile.phoneNumber}</p>    
 <p><b>Age: </b>${user.profile.age}</p>  
 <p><b>Sex: </b>${user.profile.sex}</p>
+<p><b>Description: </b>${user.profile.userDescription}</p>
 
 
 

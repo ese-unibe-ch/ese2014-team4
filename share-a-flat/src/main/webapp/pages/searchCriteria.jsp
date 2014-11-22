@@ -104,7 +104,7 @@
 					<label class="control-label" for="field-nrOfRooms">Number
 						of Rooms </label>
 					<div class="controls">
-						<form:input type="number" min="1" max="100" step="0.5" class="form-control" path="nrOfRooms"
+						<form:input type="number" min="1" max="100" step="1" class="form-control" path="nrOfRooms"
 							id="field-nrOfRooms" tabindex="6" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
 							onblur="(this.value == '') && (this.value = '0')" disabled="true" />

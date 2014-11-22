@@ -25,6 +25,10 @@ public class Profile {
     private String phoneNumber;
 	private String username;
 	private String email;
+    /**
+     * password is saved as a sha-digested hex-string.
+     */
+	private String password;
     
     @Lob //big data format
     @Column(name="profileImage",  columnDefinition="mediumblob")
@@ -99,5 +103,11 @@ public class Profile {
 	
 	public String getEmail(){
 		return email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

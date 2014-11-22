@@ -21,6 +21,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import ch.unibe.ese2014.team4.controller.pojos.Sex;
+
 
 
 @Entity
@@ -38,6 +40,9 @@ public class User implements UserDetails {
      * password is saved as a sha-digested hex-string.
      */
     private String password;
+    private Sex sex;
+    private int age;
+    private String phoneNumber;
     private String userDescription;
 
     
@@ -145,6 +150,24 @@ public class User implements UserDetails {
 	}
 	public void setUserDescription(String userDescription) {
 		this.userDescription = userDescription;
+	}
+	public Sex getSex() {
+		return sex;
+	}
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 

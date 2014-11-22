@@ -6,13 +6,49 @@
 <c:import url="functions/generalFunctions.jsp" /> 
 <c:import url="template/header.jsp" />
 
+
+
+<script type="text/javascript">                
+	function isValid() {
+		var email = document.forms["signupForm"]["field-email"].value;
+	    var userName = document.forms["signupForm"]["field-username"].value;
+	    var pwd = document.forms["signupForm"]["field-password"].value;
+	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
+	    
+	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
+	    	alert("Please fill all required fields!");
+	        return false;
+	    }
+	    
+	    var regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+	    if (!regex.test(email)) {
+	    	alert("Please enter a valid Email (E.g. example@example.example)");
+	    	return false;
+	    }
+	    
+	    if (pwd!=pwdRepeated) {
+	    	alert("Reentered Password doesn't match!")
+	    	return false;
+	    }
+	}                
+</script>
+
+
+
+
+
+
+
+
 <div class="container">
     <h1>Edit Profile</h1>
   	<hr>
 	<div class="row">
       <!-- left column -->
       <!-- enctyp="multipart/form-data": enables MultipartFile-upload -->
-    <form:form enctype="multipart/form-data" method="post" modelAttribute="profileForm" action="saveProfile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
+      
+   
+    <form:form enctype="multipart/form-data" method="post" modelAttribute="profileForm" action="saveProfile" onsubmit="return isValid()" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
     <fieldset>
       <div class="col-md-3">
         <div class="text-center">
@@ -35,7 +71,8 @@
 
         <legend>Personal info</legend>
           
-          <div class="form-group">
+         <c:set var="usernameErrors"><form:errors path="username"/></c:set> 
+         <div class="form-group<c:if test="${not empty usernameErrors}"> error</c:if>">
             <label class="col-lg-3 control-label">Username:</label>
             <div class="col-lg-8">
               <form:input path="username" class="form-control" value="${user.username}" type="text" tabindex="1"/>
@@ -44,6 +81,31 @@
           </div>
           
           
+     
+        
+            <c:set var="passwordErrors"><form:errors path="password"/></c:set>
+	        <div class="form-group<c:if test="${not empty passwordErrors}">error</c:if>">
+	            <label class="col-lg-3 control-label" for="field-password">Password</label>
+	            <div class="col-lg-8">
+	                <form:password path="password" class="form-control" value="${user.password}" id="field-password" tabindex="3" maxlength="35" placeholder="Password"/>
+	                <form:errors path="password" cssClass="help-inline" element="span"/>
+	            </div>
+	        </div>
+	        
+	
+	         <div class="form-group<c:if test="${not empty passwordRepeatedErrors}"> error</c:if>">
+	            <label class="col-lg-3 control-label" for="field-passwordRepeated">Repeat password</label>
+	            <div class="col-lg-8">
+	                <form:password path="passwordRepeated" class="form-control"  id="field-passwordRepeated" tabindex="4" maxlength="35" placeholder="Repeat password"/>
+	                <form:errors path="passwordRepeated" cssClass="help-inline" element="span"/>
+	            </div>
+	        </div>
+          
+          
+       
+          
+          
+          <c:set var="emailErrors"><form:errors path="email"/></c:set>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">

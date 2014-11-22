@@ -11,7 +11,7 @@ public class SignupForm {
     private Long id;
     
     @NotNull
-    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a User Name")
+   // @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please enter a User Name")
     private String username;
     
     @NotNull
