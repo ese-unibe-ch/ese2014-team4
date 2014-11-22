@@ -8,15 +8,15 @@
 
 <br><hr>
 <c:forEach items="${adList}" var="ad">
-	<a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue">${ad.title}</a>
+	<a href="showAd?adId=${ad.id}" style="font-size:14pt; color:blue"><b>${ad.title}</b></a>
 	<table>
 	
 		<tr>
-			<td width="100">
+			<td width="110">
 				<a href="showAd?adId=${ad.id}"><img src="${pageContext.request.contextPath}/imageController/ad/${ad.id}/0" class="img-responsive" width="100"></a>
 
 			</td>
-		
+					
 			<td width="80"> 
 				<b>Address:</b><br> <b></b>
 				<b>Place:</b><br> 

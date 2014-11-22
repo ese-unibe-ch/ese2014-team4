@@ -146,7 +146,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getNrOfFlatMates() != ad.getNrOfFlatMate())
+			if (searchForm.getNrOfFlatMates() != ad.getNrOfFlateMate())
 				adsToSort.remove(ad);
 		}
 	}

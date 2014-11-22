@@ -15,20 +15,20 @@
 <script type="text/javascript">
 	
 	function checkSearchInput() {
-		return (checkZip() && checkMaxPrice() && checkCityZipField());
+		return (checkMaxPrice() && checkCityZipField());
 	}
 	
-	function checkCityZipField() {
-		var input = document.getElementById("field-cityOrZip");
+// 	function checkCityZipField() {
+// 		var input = document.getElementById("field-cityOrZip");
 		
-		if (input.value.length == 0) {
-			SearchErrorMessage = "Please enter at least a City or a Zip.";
-			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
-			input.focus();
-			return false;
-		} else
-			return true;
-	}
+// 		if (input.value.length == 0) {
+// 			SearchErrorMessage = "Please enter at least a City or a Zip.";
+// 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
+// 			input.focus();
+// 			return false;
+// 		} else
+// 			return true;
+// 	}
 	
 	function checkMaxPrice() {
 		var max = document.getElementById("field-maxPrice");

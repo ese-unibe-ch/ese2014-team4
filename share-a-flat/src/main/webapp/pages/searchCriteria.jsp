@@ -47,7 +47,7 @@
 					<label class="control-label" for="field-cityOrZip">City or
 						Zip</label>
 					<div class="controls">
-						<form:input class="form-control" path="cityOrZip"
+						<form:input class="form-control" path="cityOrZip" required="true"
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
@@ -66,7 +66,7 @@
 						class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
 						<label class="control-label" for="field-minPrice">Min-Price</label>
 						<div class="controls">
-							<form:input type="number" min="1" max="10000" step="1" class="form-control" path="minPrice"
+							<form:input type="number" min="0" max="10000" step="1" class="form-control" path="minPrice"
 								id="field-minPrice" tabindex="4" maxlength="35" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
@@ -85,7 +85,7 @@
 						class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
 						<label class="control-label" for="field-maxPrice">Max-Price</label>
 						<div class="controls">
-							<form:input type="number" min="1" max="10000" step="1" class="form-control" path="maxPrice"
+							<form:input type="number" min="0" max="10000" step="1" class="form-control" path="maxPrice"
 								id="field-maxPrice" tabindex="5" maxlength="35" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
@@ -104,7 +104,7 @@
 					<label class="control-label" for="field-nrOfRooms">Number
 						of Rooms </label>
 					<div class="controls">
-						<form:input type="number" min="1" max="100" step="0.5" class="form-control" path="nrOfRooms"
+						<form:input type="number" min="0" max="100" step="0.5" class="form-control" path="nrOfRooms"
 							id="field-nrOfRooms" tabindex="6" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
 							onblur="(this.value == '') && (this.value = '0')" disabled="true" />
@@ -122,7 +122,7 @@
 					<label class="control-label" for="field-nrOfFlatMates">Number
 						of Room Mates</label>
 					<div class="controls">
-						<form:input type="number" min="1" max="100" step="1" class="form-control" path="nrOfFlatMates"
+						<form:input type="number" min="0" max="100" step="1" class="form-control" path="nrOfFlatMates"
 							id="field-nrOfFlatMates" tabindex="7" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
 							onblur="(this.value == '') && (this.value = '0')" />
