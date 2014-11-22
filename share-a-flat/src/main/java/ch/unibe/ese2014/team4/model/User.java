@@ -38,6 +38,7 @@ public class User implements UserDetails {
      * password is saved as a sha-digested hex-string.
      */
     private String password;
+    private String userDescription;
 
     
     @OneToOne(cascade = {CascadeType.ALL})
@@ -90,7 +91,6 @@ public class User implements UserDetails {
     }
 
 
-
     public String getEmail() {
         return email;
     }
@@ -98,7 +98,6 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 
 	public Profile getProfile() {
@@ -140,6 +139,12 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	public String getUserDescription() {
+		return userDescription;
+	}
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
 	}
 
 

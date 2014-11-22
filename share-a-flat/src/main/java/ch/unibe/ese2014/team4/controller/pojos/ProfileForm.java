@@ -8,11 +8,12 @@ public class ProfileForm {
 //TODO: add profile stuff.
 
 
-    
+	private String username;
+	private String email;
+	private String phoneNumber;
     private int age;
-    private String description;
     private Sex sex;
-    private String phoneNumber;
+    private String userDescription;
     private MultipartFile uploadedProfileImage;
     
  
@@ -47,17 +48,17 @@ public class ProfileForm {
 
 
 	/**
-	 * @return String description
+	 * @return String userDescription
 	 */
-	public String getDescription() {
-		return description;
+	public String getUserDescription() {
+		return userDescription;
 	}
 
 	/**
-	 * @param String description
+	 * @param String userDescription
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
 	}
 
 
@@ -82,4 +83,21 @@ public class ProfileForm {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

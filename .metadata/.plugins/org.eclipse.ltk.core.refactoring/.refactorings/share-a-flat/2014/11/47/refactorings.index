@@ -1,1 +1,5 @@
 1416600440158	Rename field 'nrOfFlatMate'
+1416663091131	Encapsulate field 'username'
+1416663095917	Encapsulate field 'email'
+1416664083835	Rename field 'description'
+1416664817146	Encapsulate field 'userDescription'
