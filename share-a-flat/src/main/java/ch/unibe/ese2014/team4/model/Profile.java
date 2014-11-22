@@ -20,16 +20,24 @@ public class Profile {
 
 
     private int age;
-    private String description;
+    private String userDescription;
     private Sex sex; 
-    
+    private String phoneNumber;
+	private String username;
+	private String email;
+    /**
+     * password is saved as a sha-digested hex-string.
+     */
+	private String password;
     
     @Lob //big data format
     @Column(name="profileImage",  columnDefinition="mediumblob")
     private byte[] profileImage;
 
 
-	private String phoneNumber;
+	
+	
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -52,8 +60,6 @@ public class Profile {
 	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
-
-
     
     public Long getId() {
         return id;
@@ -63,12 +69,12 @@ public class Profile {
         this.id = id;
     }
 
-	public String getDescription() {
-		return description;
+	public String getUserDescription() {
+		return userDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
 	}
 	
 	public String toString(){
@@ -81,5 +87,27 @@ public class Profile {
 
 	public void setProfileImage(byte[] profileImage) {
 		this.profileImage = profileImage;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getUsername(){
+		return username;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+		
+	}
+	
+	public String getEmail(){
+		return email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

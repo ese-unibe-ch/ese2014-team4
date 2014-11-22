@@ -62,7 +62,7 @@
 
 					<tr>
 						<td width="140"><b>Size:</b></td>
-						<td>${adData.size}m<sup>2</sup></td>
+						<td>${adData.size} m<sup>2</sup></td>
 					</tr>
 
 					<tr>
@@ -165,11 +165,11 @@
 	<div class="col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3>Contact</h3>
+				<h3><b>Contact</b></h3>
 			</div>
 			<div class="panel-body">
-				<b>Ad placed by <a
-					href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b><br>
+				<h4><b>Ad placed by <a
+					href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b></h4>
 				<a href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
 				${adData.owner.profile.phoneNumber}<br>
 				<c:import url="embedded/sendMessageBox.jsp" />

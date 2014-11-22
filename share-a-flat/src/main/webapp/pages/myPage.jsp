@@ -49,7 +49,7 @@
               </div>
             </div>
           </div>  
-        </div> 
+</div> 
 
 
 <c:import url="template/footer.jsp" />

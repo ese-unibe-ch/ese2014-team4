@@ -29,9 +29,12 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public void updateProfileFrom(ProfileForm profileForm, User user){
 		Profile profile = user.getProfile();
+		profile.setUsername(profileForm.getUsername());
+		profile.setEmail(profileForm.getEmail());
+		profile.setPhoneNumber(profileForm.getPhoneNumber());
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
-		profile.setDescription(profileForm.getDescription());
+		profile.setUserDescription(profileForm.getUserDescription());
 		
 		try {
 			MultipartFile imageFile = profileForm.getUploadedProfileImage();

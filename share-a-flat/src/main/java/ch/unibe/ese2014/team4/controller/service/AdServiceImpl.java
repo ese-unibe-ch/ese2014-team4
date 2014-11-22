@@ -57,12 +57,12 @@ public class AdServiceImpl implements AdService {
 
 		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setType(AdType.ROOM);
-			ad.setNrOfFlatMate(adForm.getNrOfFlatMates());
+			ad.setNrOfFlateMate(adForm.getNrOfFlatMates());
 			ad.setNrOfRooms(0);
 		} else {
 			ad.setType(AdType.FLAT);
 			ad.setNrOfRooms(adForm.getNrOfRooms());
-			ad.setNrOfFlatMate(0);
+			ad.setNrOfFlateMate(0);
 		}
 
 		ad.setDescription(adForm.getDescription());
@@ -99,7 +99,7 @@ public class AdServiceImpl implements AdService {
 
 
 	private Date convertStringToDate(AdForm adForm) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
 		Date date = null;
 		
 		try {	 

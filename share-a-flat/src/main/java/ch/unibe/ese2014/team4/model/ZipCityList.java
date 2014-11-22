@@ -30,7 +30,7 @@ public class ZipCityList {
 				tmpZipCity = new ZipCity();
 			//	tmpString = br.readLine();
 				tmpArray = tmpString.split(cvsSplitBy);
-				tmpZipCity.setZip(tmpArray[0]);
+				tmpZipCity.setZip(tmpArray[0].trim());
 				tmpZipCity.setCity(tmpArray[1]);
 				zipCityArray.add(tmpZipCity);
 			}
