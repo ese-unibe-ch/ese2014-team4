@@ -24,6 +24,7 @@
               </div>
             </div>
           </div>
+          
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading"><h3>My Profile</h3></div>
@@ -39,6 +40,7 @@
               </div>
             </div>
           </div> 
+          
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading"><h3>My Bookmarks</h3></div>
