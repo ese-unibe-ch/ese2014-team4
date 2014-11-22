@@ -10,6 +10,35 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
 
+
+<script type="text/javascript">
+function zipToCity() {
+	
+	<c:forEach items="${zipCityAsArray}" var="zipCity">
+	<c:if test="${zipCity.zip==3000}">
+// 	<c:out value="${zipCity.city}"></c:out>
+	var city = <c:out value="${zipCity.city}"></c:out>
+	</c:if>
+	
+	</c:forEach>
+    var field = document.getElementById("field-city").value = city;  
+    field[0].value = city;
+}
+</script>
+
+<script type="text/javascript">
+
+	var zip = document.getElementById("field-zip");
+	
+	zip.addEventListener("blur", getZip, true);
+</script>
+
+<%-- <c:forEach items="${zipCityAsArray}" var="zipCity"> --%>
+<%-- <c:if test="${zipCity.zip==2504}"> --%>
+<%-- <c:out value="${zipCity.city}"></c:out> --%>
+<%-- </c:if> --%>
+<%-- </c:forEach> --%>
+
 <c:forEach items="${zipCityAsArray}" var="zipCity">
 <c:if test="${zipCity.zip==2504}">
 <c:out value="${zipCity.city}"></c:out>
