@@ -12,27 +12,6 @@
 <c:import url="functions/createAdFunctions.jsp"/>
 
 
-<script type="text/javascript">
-function zipToCity() {
-	
-	<c:forEach items="${zipCityAsArray}" var="zipCity">
-	<c:if test="${zipCity.zip==3000}">
-// 	<c:out value="${zipCity.city}"></c:out>
-	var city = <c:out value="${zipCity.city}"></c:out>
-	</c:if>
-	
-	</c:forEach>
-    var field = document.getElementById("field-city").value = city;  
-    field[0].value = city;
-}
-</script>
-
-<script type="text/javascript">
-
-	var zip = document.getElementById("field-zip");
-	
-	zip.addEventListener("blur", getZip, true);
-</script>
 
 <%-- <c:forEach items="${zipCityAsArray}" var="zipCity"> --%>
 <%-- <c:if test="${zipCity.zip==2504}"> --%>
@@ -40,11 +19,6 @@ function zipToCity() {
 <%-- </c:if> --%>
 <%-- </c:forEach> --%>
 
-<c:forEach items="${zipCityAsArray}" var="zipCity">
-<c:if test="${zipCity.zip==2504}">
-<c:out value="${zipCity.city}"></c:out>
-</c:if>
-</c:forEach>
 
 <div id="masthead">
 	<div class="container">
@@ -358,7 +332,39 @@ function zipToCity() {
 			<a href="createAd" class="inactive"><span>Create Ad</span></a>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+	 var title = document.getElementById("field-title");
+	 title.value = "something";
+	 </script>
+		
+	 <script type="text/javascript">	
+	 var zip = document.getElementById("field-zipCode");
+		
+	 zip.addEventListener("blur", zipToCity, false);
 
+function zipToCity() {
+    var field = document.getElementById("field-city");  
+
+	var title = document.getElementById("field-title");
+	title.value = zip.value;	
+	
+ 	for (i=0; i<50; i++){
+		if ("${zipCityAsArray[i].zip==zip.value}"){
+			var num = i;
+		}
+ 	}
+	field.value = "${zipCityAsArray[num].city}";	
+
+     zip.value = num;
+     var rooms = document.getElementById( "field-nrOfRooms");
+     rooms.value = "${zipCityAsArray[1].zip}"
+
+    return true;
+}
+
+</script>
+	
 
 </div>
 <c:if test="${page_error != null }">
