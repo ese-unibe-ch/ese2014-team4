@@ -127,7 +127,7 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
 				<label class="control-label" for="field-streetNumber">No:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="1000" step="1" required="true" path="streetNumber" id="field-streetNumber"
+					<form:input type="number" min="1" max="1000"  required="true" path="streetNumber" id="field-streetNumber"
 						class="form-control" tabindex="5" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
