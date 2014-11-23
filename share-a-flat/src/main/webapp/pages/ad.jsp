@@ -126,7 +126,9 @@ function codeAddress() {
 
 						<c:set var="adNrOfRoomOrRoommatesValue" value="${adData.nrOfRooms}" />
 						<c:if test="${adData.type eq 'ROOM'}">
+
 							<c:set var="adNrOfRoomOrRoommatesValue"
+
 								value="${adData.nrOfFlatMates}" />
 						</c:if>
 

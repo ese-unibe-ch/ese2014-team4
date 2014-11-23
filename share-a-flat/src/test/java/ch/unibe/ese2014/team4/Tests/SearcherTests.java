@@ -64,9 +64,9 @@ public class SearcherTests {
 		testAd2.setBrutto();
 		testAd3.setBrutto();
 		
-		testAd1.setNrOfFlateMate(1);
-		testAd2.setNrOfFlateMate(2);
-		testAd3.setNrOfFlateMate(3);
+		testAd1.setNrOfFlatMates(1);
+		testAd2.setNrOfFlatMates(2);
+		testAd3.setNrOfFlatMates(3);
 		
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);

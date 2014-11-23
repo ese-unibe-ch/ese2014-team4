@@ -212,5 +212,5 @@ public class SearchServiceImpl implements SearchService {
 		Query query = factory.createEntityManager().createQuery(queryString);
 
 		return null;
-	}
+	}	
 }

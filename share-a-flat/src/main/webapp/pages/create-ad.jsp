@@ -313,8 +313,7 @@
 						onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />
 					<form:errors path="description" cssClass="help-inline"
 						element="span" />
-					<br>
-					<br>
+					<br> <br>
 				</div>
 			</div>
 
@@ -337,7 +336,7 @@
 			<h3>Visiting Dates</h3>
 		</div>
 		<div class="panel-body">
-<%-- 						<c:import url="embedded/createVisits.jsp" /> --%>
+			<%-- 						<c:import url="embedded/createVisits.jsp" /> --%>
 		</div>
 	</div>
 </div>
@@ -351,21 +350,34 @@
 	var zip = document.getElementById("field-zipCode");
 
 	zip.addEventListener("blur", zipToCity, false);
+	
 
+	
 	function zipToCity() {
 		var field = document.getElementById("field-city");
+		
+		<c:forEach items="${zipCityAsArray}" var="item">
+		var zipFromObj = parseInt("${item.zip}");
+		
+		var rooms = document.getElementById("field-nrOfRooms");
+		rooms.value = zipFromObj;
+		
+		if(zipFromObj==zip.value){
+			field.value = "${item.city}";		
+		}		
+		</c:forEach>
 
 // 		VAR TITLE = DOCUMENT.GETELEMENTBYID("FIELD-TITLE");
 // 		TITLE.VALUE = ZIP.VALUE;
 
-		for (var i = 0; i < 5; i++) {
-// 			document.write("${zipCityAsArray[i].city}");
+// 		for (var i = 0; i < 5; i++) {
+// // 			document.write("${zipCityAsArray[i].city}");
 
-			if ("${zipCityAsArray[i].zip==zip.value}") {
-				field.value = "${zipCityAsArray[i].city}";
-				var num = i;
-			}
-		}
+// 			if ("${zipCityAsArray[i].zip==zip.value}") {
+// 				field.value = "${zipCityAsArray[20].city}";
+// 				var num = i;
+// 			}
+		
 
 // 		zip.value = num;
 // 		var rooms = document.getElementById("field-nrOfRooms");
