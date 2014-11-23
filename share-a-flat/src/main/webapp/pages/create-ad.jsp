@@ -326,12 +326,13 @@
 	<!-- right column -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>Options</h3>
+			<h3>Visiting Dates</h3>
 		</div>
 		<div class="panel-body">
-			<a href="createAd" class="inactive"><span>Create Ad</span></a>
+			<c:import url="embedded/createVisits.jsp" />
 		</div>
 	</div>
+</div>
 	
 <script type="text/javascript">
 	 var title = document.getElementById("field-title");
@@ -364,9 +365,25 @@ function zipToCity() {
 }
 
 </script>
-	
 
-</div>
+    <div class="form-group" id="sandbox-container">
+        <div id="cal" data-date="12/03/2012"></div>
+    </div>
+
+
+        <!-- Load jQuery and bootstrap datepicker scripts -->
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+            	$('#cal').datepicker({
+            		
+            	});
+            });
+        </script>
+
+
 <c:if test="${page_error != null }">
 	<div class="alert alert-error">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
