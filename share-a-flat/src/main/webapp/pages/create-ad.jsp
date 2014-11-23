@@ -337,7 +337,7 @@
 			<h3>Visiting Dates</h3>
 		</div>
 		<div class="panel-body">
-						<c:import url="embedded/createVisits.jsp" />
+<%-- 						<c:import url="embedded/createVisits.jsp" /> --%>
 		</div>
 	</div>
 </div>
@@ -362,12 +362,12 @@
 // 			document.write("${zipCityAsArray[i].city}");
 
 			if ("${zipCityAsArray[i].zip==zip.value}") {
-				field.value = "${zipCityAsArray[20].city}";
+				field.value = "${zipCityAsArray[i].city}";
 				var num = i;
 			}
 		}
 
-		zip.value = num;
+// 		zip.value = num;
 		var rooms = document.getElementById("field-nrOfRooms");
 		rooms.value = "${zipCityAsArray[1].zip}"
 
