@@ -19,7 +19,7 @@ public class Profile {
     private Long id;
 
 
-    private int age;
+    private String age;
     private String userDescription;
     private Sex sex; 
     private String phoneNumber;
@@ -45,11 +45,11 @@ public class Profile {
 		this.phoneNumber = phoneNumber;
 	}
     
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

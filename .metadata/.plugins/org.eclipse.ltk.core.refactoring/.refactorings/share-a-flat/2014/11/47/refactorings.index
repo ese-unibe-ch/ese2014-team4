@@ -14,3 +14,6 @@
 1416683624732	Encapsulate field 'age'
 1416683630475	Encapsulate field 'phoneNumber'
 1416683693238	Encapsulate field 'password'
+1416761325747	Rename method 'getNrOfFlatMate'
+1416761376905	Rename field 'nrOfFlatMate'
+1416761500927	Rename method 'setNrOfFlatMate'

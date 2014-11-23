@@ -320,7 +320,7 @@
 
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary" tabindex="13"
-					onclick="validatedate(document.adForm.field-availableDate)">Create
+					>Create
 					Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"

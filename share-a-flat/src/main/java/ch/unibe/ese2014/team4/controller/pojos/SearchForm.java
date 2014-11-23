@@ -26,7 +26,7 @@ public class SearchForm {
 	@NotNull
     private String description;
     private String title;
-    private int nrOfFlatMates;
+    private String nrOfFlatMates;
     private int nrOfRooms;
     private AdType adType;
     
@@ -48,11 +48,11 @@ public class SearchForm {
 		this.nrOfRooms = nrOfRooms;
 	}
     
-    public int getNrOfFlatMates() {
+    public String getNrOfFlatMates() {
 		return nrOfFlatMates;
 	}
 
-	public void setNrOfFlatMates(int nrOfFlatMates) {
+	public void setNrOfFlatMates(String nrOfFlatMates) {
 		this.nrOfFlatMates = nrOfFlatMates;
 	}
 

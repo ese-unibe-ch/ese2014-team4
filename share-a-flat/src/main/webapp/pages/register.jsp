@@ -28,6 +28,7 @@
 	    var pwd = document.forms["signupForm"]["field-password"].value;
 	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
 	    
+	    
 	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
 	    	alert("Please fill all required fields!");
 	        return false;

@@ -27,6 +27,10 @@ public class ProfileForm {
     @NotNull
     @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please renter the Password")
     private String passwordRepeated;
+    
+    @NotNull
+    @Pattern(regexp = "[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please renter the Password")
+    private String oldPassword;
 
 
     @NotNull
@@ -130,6 +134,14 @@ public class ProfileForm {
 	
 	public void setPasswordRepeated(String passwordRepeated){
 		this.passwordRepeated = passwordRepeated;
+	}
+	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
 	}
 	
 

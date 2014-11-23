@@ -103,12 +103,10 @@
 				</c:set>
 				<div
 					class="control-group<c:if test="${not empty nrOfRoomsErrors}">error</c:if>">
-					<label class="control-label" for="field-nrOfRooms">Number
-						of Rooms </label>
+					<label class="control-label" for="field-nrOfRooms">Number of Rooms </label>
 					<div class="controls">
 
 						<form:input type="number" min="0" max="100" step="0.5" class="form-control" path="nrOfRooms"
-
 							id="field-nrOfRooms" tabindex="6" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
 							onblur="(this.value == '') && (this.value = '0')" disabled="true" />
@@ -123,13 +121,11 @@
 				</c:set>
 				<div
 					class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
-					<label class="control-label" for="field-nrOfFlatMates">Number
-						of Room Mates</label>
+					<label class="control-label" for="field-nrOfFlatMates">Number of Room Mates</label>
 					<div class="controls">
 						<form:input type="number" min="0" max="100" step="1" class="form-control" path="nrOfFlatMates"
-							id="field-nrOfFlatMates" tabindex="7" maxlength="35" value="0"
-							onfocus="(this.value == '0') && (this.value = '')"
-							onblur="(this.value == '') && (this.value = '0')" />
+							id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="number of room mates"
+							 />
 						<form:errors path="nrOfFlatMates" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -144,9 +140,8 @@
 						Date:</label>
 					<div class="controls">
 						<form:input type="date" class="form-control" path="availableDate"
-							id="field-availableDate" tabindex="8" placeholder="DD-MM-YYYY"
-							onfocus="(this.placeholder == 'DD-MM-YYYY') && (this.placeholder = '')"
-							onblur="(this.placeholder == '') && (this.placeholder = 'DD-MM-YYYY')" />
+							id="field-availableDate" tabindex="8"
+							/>
 						<form:errors path="availableDate" cssClass="help-inline"
 							element="span" />
 						<br>

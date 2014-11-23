@@ -41,7 +41,7 @@ public class User implements UserDetails {
      */
     private String password;
     private Sex sex;
-    private int age;
+    private String age;
     private String phoneNumber;
     private String userDescription;
 
@@ -157,10 +157,10 @@ public class User implements UserDetails {
 	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public String getPhoneNumber() {

@@ -117,20 +117,20 @@ function codeAddress() {
 					</tr>
 
 					<tr>
-						<c:set var="adNrOfRoomOrRoommateText" value="Nr of Rooms:" />
+						<c:set var="adNrOfRoomOrRoommatesText" value="Nr of Rooms:" />
 						<c:if test="${adData.type eq 'ROOM'}">
-							<c:set var="adNrOfRoomOrRoommateText" value="Nr of Roommates:" />
+							<c:set var="adNrOfRoomOrRoommatesText" value="Nr of Roommates:" />
 						</c:if>
 
-						<td width="140"><b>${adNrOfRoomOrRoommateText}</b></td>
+						<td width="140"><b>${adNrOfRoomOrRoommatesText}</b></td>
 
-						<c:set var="adNrOfRoomOrRoommateValue" value="${adData.nrOfRooms}" />
+						<c:set var="adNrOfRoomOrRoommatesValue" value="${adData.nrOfRooms}" />
 						<c:if test="${adData.type eq 'ROOM'}">
-							<c:set var="adNrOfRoomOrRoommateValue"
-								value="${adData.nrOfFlatMate}" />
+							<c:set var="adNrOfRoomOrRoommatesValue"
+								value="${adData.nrOfFlatMates}" />
 						</c:if>
 
-						<td>${adNrOfRoomOrRoommateValue}</td>
+						<td>${adNrOfRoomOrRoommatesValue}</td>
 					</tr>
 
 					<tr>
