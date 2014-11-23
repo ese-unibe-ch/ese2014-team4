@@ -14,7 +14,7 @@
 
 
 <textarea required="true" class="form-control" path="mefssage" id="field-message"
-						style="width:100%; height:121px" tabindex="12"
+						style="width:100%; height:121px; resize:none" tabindex="12"
 						placeholder="Message"></textarea>
 <br>
 
