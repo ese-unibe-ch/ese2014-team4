@@ -4228,6 +4228,3 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jdt.core 4 0 2014-11-23 23:33:59.483
 !MESSAGE Invalid ZIP archive: src/main/webapp/pages/ad.jsp [in share-a-flat]
-
-!ENTRY org.eclipse.jdt.core 4 0 2014-11-23 23:47:30.067
-!MESSAGE Invalid ZIP archive: src/main/webapp/pages/ad.jsp [in share-a-flat]
