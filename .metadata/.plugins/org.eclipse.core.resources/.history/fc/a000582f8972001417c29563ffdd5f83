@@ -10,10 +10,10 @@
 
 <script type="text/javascript">                
 	function isValid() {
-		var email = document.forms["profileForm"]["field-email"].value;
-	    var userName = document.forms["profileForm"]["field-username"].value;
-	    var pwd = document.forms["profileForm"]["field-password"].value;
-	    var pwdRepeated = document.forms["profileForm"]["field-passwordRepeated"].value;
+		var email = document.forms["signupForm"]["field-email"].value;
+	    var userName = document.forms["signupForm"]["field-username"].value;
+	    var pwd = document.forms["signupForm"]["field-password"].value;
+	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
 	    
 	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
 	    	alert("Please fill all required fields!");
@@ -80,16 +80,7 @@
             </div>
           </div>
           
-         
-         
-          <c:set var="emailErrors"><form:errors path="email"/></c:set>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <form:input path="email" class="form-control" value="${user.email}" type="text" tabindex="2"/>
-              <form:errors path="email" cssClass="help-inline" element="span"/>
-            </div>
-          </div> 
+          
      
         
             <c:set var="passwordErrors"><form:errors path="password"/></c:set>
@@ -114,13 +105,20 @@
        
           
           
-         
+          <c:set var="emailErrors"><form:errors path="email"/></c:set>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <form:input path="email" class="form-control" value="${user.email}" type="text" tabindex="2"/>
+              <form:errors path="email" cssClass="help-inline" element="span"/>
+            </div>
+          </div>
 
         <c:set var="phoneNumberErrors"><form:errors path="phoneNumber"/></c:set>
         <div class="form-group<c:if test="${not empty phoneNumberErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-phoneNumber">phoneNumber:</label>
             <div class="col-lg-8">
-                <form:input class="form-control" path="phoneNumber" id="field-phoneNumber" type="number" min="1" max="9999999999999" step="1" pattern="[0-9]{10,12}"  tabindex="5" maxlength="45" value="${user.profile.phoneNumber}" placeholder="phone number"/>
+                <form:input class="form-control" path="phoneNumber" id="field-phoneNumber" type="number" min="1" max="9999999999999" step="1" pattern="[0-9]{10,12}"  tabindex="3" maxlength="45" value="${user.profile.phoneNumber}" placeholder="phone number"/>
                 <form:errors path="phoneNumber" cssClass="help-inline" element="span" />
             </div>
         </div>
@@ -129,7 +127,7 @@
         <div class="form-group<c:if test="${not empty ageErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-age">Age:</label>
             <div class="col-lg-8">
-                <form:input type="number" min="10" max="120" step="1" class="form-control" path="age" id="field-age" tabindex="6" maxlength="45" value="${user.profile.age}"/>
+                <form:input type="number" min="10" max="120" step="1" class="form-control" path="age" id="field-age" tabindex="3" maxlength="45" value="${user.profile.age}"/>
                 <form:errors path="age" cssClass="help-inline" element="span" />
             </div>
         </div>      
@@ -149,8 +147,8 @@
         <div class="form-group<c:if test="${not empty sexErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-sex">Sex:</label>
             <div class="radio">
-                <label><input type="radio" name="sex" id="male" tabindex="7" value="M" ${checkedM}>Male</label>
-                <label><input type="radio" name="sex" id="female" tabindex="8" value="F" ${checkedF}>Female</label><br><br>
+                <label><input type="radio" name="sex" id="male" tabindex="4" value="M" ${checkedM}>Male</label>
+                <label><input type="radio" name="sex" id="female" tabindex="5" value="F" ${checkedF}>Female</label><br><br>
             </div>
         </div>
         
@@ -158,7 +156,7 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">Description:</label>
             <div class="col-lg-8">
-              <input class="form-control" value="${user.userDescription}" type="textarea"  style="width:100%; height:121px" tabindex="8">
+              <input class="form-control" value="${user.userDescription}" type="textarea"  style="width:100%; height:121px" tabindex="6">
             </div>
         </div>
         
