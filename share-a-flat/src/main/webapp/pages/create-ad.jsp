@@ -344,7 +344,7 @@
 
 <script type="text/javascript">
 	var title = document.getElementById("field-title");
-	title.value = "something";
+// 	title.value = "something";
 </script>
 
 <script type="text/javascript">
@@ -355,8 +355,8 @@
 	function zipToCity() {
 		var field = document.getElementById("field-city");
 
-		var title = document.getElementById("field-title");
-		title.value = zip.value;
+// 		VAR TITLE = DOCUMENT.GETELEMENTBYID("FIELD-TITLE");
+// 		TITLE.VALUE = ZIP.VALUE;
 
 		for (var i = 0; i < 5; i++) {
 // 			document.write("${zipCityAsArray[i].city}");
@@ -368,8 +368,8 @@
 		}
 
 // 		zip.value = num;
-		var rooms = document.getElementById("field-nrOfRooms");
-		rooms.value = "${zipCityAsArray[1].zip}"
+// 		var rooms = document.getElementById("field-nrOfRooms");
+// 		rooms.value = "${zipCityAsArray[1].zip}"
 
 		return true;
 	}
