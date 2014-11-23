@@ -42,3 +42,31 @@
 <c:out value="${zipCity.city}"></c:out>
 </c:if>
 </c:forEach>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	var zip = document.getElementById("field-zipCode");
+	zip.addEventListener("blur", zipToCity, false);
+
+	function zipToCity() {
+		var field = document.getElementById("field-city");
+	
+		for (var i = 0; i < 5; i++) {
+			if ("${zipCityAsArray[1].zip==zip.value}") {
+				field.value = "${zipCityAsArray[1].city}";
+			}
+		}
+		return true;
+	}
+</script>
+

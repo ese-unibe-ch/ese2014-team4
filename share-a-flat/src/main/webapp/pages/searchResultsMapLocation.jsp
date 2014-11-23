@@ -6,7 +6,7 @@
 
 <h1>Search Map</h1>
         <!-- Auswahlreiter -->
-        <c:out value="${addresses[0]}"></c:out>
+<%--         <c:out value="${addresses[0]}"></c:out> --%>
         <ul>
               <div class="panel-body"><a href="search" class="inactive"><span>back to list</span></a>
 
@@ -48,10 +48,11 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
 </script>
+
+
 <script>
 function codeAddress() {
 	for (var i=0; i<2; i++){
- // var address = document.getElementById('address').value;
   geocoder.geocode( {'address':"${addresses[0]}"}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
@@ -59,24 +60,19 @@ function codeAddress() {
           map: map,
           position: results[0].geometry.location
       });
+      
+      var contentString = "" + "${addresses[0]}" + "";	
+  	var infowindow = new google.maps.InfoWindow( { content:'<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">${addresses[0]}</div>'} );  	
+  	google.maps.event.addListener( marker, 'click', function() { infowindow.open( map, marker ); });
+
+      
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 	}
-  
-//   geocoder.geocode( {'address':address[1]}, function(results, status) {
-// 	    if (status == google.maps.GeocoderStatus.OK) {
-// 	      map.setCenter(results[0].geometry.location);
-// 	      var marker = new google.maps.Marker({
-// 	          map: map,
-// 	          position: results[0].geometry.location
-// 	      });
-// 	    } else {
-// 	      alert('Geocode was not successful for the following reason: ' + status);
-// 	    }
-// 	  });
-  
+	
+	
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -84,16 +80,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
   <body>
-  <body onload="codeAddress()">
   
 <!--     <div id="panel"> -->
 <!--       <input id="address" type="textbox" value="Sydney, NSW"> -->
 <%--       <input type="button" value="show me locations!" onclick="codeAddress('${addresses[0]}')"> --%>
 
-      <c:forEach  items="${addresses}" var="address">
-      <script type="text/javascript">codeAddress('${address}')</script>
+<%--       <c:forEach  items="${addresses}" var="address"> --%>
+
+   <body onload="codeAddress()">
       
-      </c:forEach>
+      
+<%--       </c:forEach> --%>
       
 <!--     </div> -->
     <div id="map-canvas"></div>
