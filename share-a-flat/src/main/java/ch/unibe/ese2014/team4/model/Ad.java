@@ -211,9 +211,11 @@ public class Ad {
 		this.brutto = netto+charges;
 	}
 
-	public String getAddressForMap() {
+	public MapAddress getAddressForMap() {
+		MapAddress tmpMapAddress = new MapAddress();
 		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity() + " Switzerland";
-		return addressForMAp;
-	}	
-	
+		tmpMapAddress.setAddressAsString(addressForMAp);
+		tmpMapAddress.setId(id);
+		return tmpMapAddress;
+	}		
 }
