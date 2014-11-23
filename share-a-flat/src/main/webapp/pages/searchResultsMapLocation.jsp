@@ -49,35 +49,40 @@ function initialize() {
 }
 </script>
 
-
+<%-- <c:forEach items="${addresses}" var="address"> --%>
 <script>
-function codeAddress() {
-	for (var i=0; i<2; i++){
-  geocoder.geocode( {'address':"${addresses[0]}"}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-      
-      var contentString = "" + "${addresses[0]}" + "";	
-  	var infowindow = new google.maps.InfoWindow( { content:'<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">${addresses[0]}</div>'} );  	
-  	google.maps.event.addListener( marker, 'click', function() { infowindow.open( map, marker ); });
 
-      
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-	}
-	
-	
+function placeAddresses(value){
+	 geocoder.geocode( {'address':value}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		      map.setCenter(results[0].geometry.location);
+		      var marker = new google.maps.Marker({
+		          map: map,
+		          position: results[0].geometry.location
+		      });
+		      
+		      var contentString = "" + value + "";	
+		  	var infowindow = new google.maps.InfoWindow( { content:'<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">${addresses[0]}</div>'} );  	
+		  	google.maps.event.addListener( marker, 'click', function() { infowindow.open( map, marker ); });
+
+		      
+		    } else {
+		      alert('Geocode was not successful for the following reason: ' + status);
+		    }
+		  });
 }
+
+	function codeAddress() {	
+		<c:forEach items="${addresses}" var="item">
+		placeAddresses("${item}");
+		</c:forEach>
+	}
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
     </script>
+<%--     </c:forEach> --%>
   </head>
   <body>
   

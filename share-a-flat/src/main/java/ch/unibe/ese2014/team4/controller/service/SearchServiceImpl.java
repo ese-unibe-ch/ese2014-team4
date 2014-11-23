@@ -146,7 +146,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getNrOfFlatMates() != ad.getNrOfFlateMate())
+			if (searchForm.getNrOfFlatMates() != ad.getNrOfFlatMate())
 				adsToSort.remove(ad);
 		}
 	}
@@ -212,5 +212,5 @@ public class SearchServiceImpl implements SearchService {
 		Query query = factory.createEntityManager().createQuery(queryString);
 
 		return null;
-	}
+	}	
 }
