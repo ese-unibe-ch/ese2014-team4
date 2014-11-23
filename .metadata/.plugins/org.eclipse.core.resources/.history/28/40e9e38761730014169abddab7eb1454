@@ -118,12 +118,12 @@ public class Ad {
 	}
 
 
-	public int getNrOfFlatMates() {
+	public String getNrOfFlatMates() {
 		return nrOfFlatMates;
 	}
 
-	public void setNrOfFlatMates(int i) {
-		this.nrOfFlatMates = i;
+	public void setNrOfFlatMates(String nrOfFlateMates) {
+		this.nrOfFlatMates = nrOfFlateMates;
 
 	}
 
