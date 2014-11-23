@@ -83,8 +83,9 @@ public class AdController {
     	ModelAndView model = new ModelAndView("ad");   
     	
     	Ad ad = newAdService.getAd(adId);
-    	
-    	List<String> list =adService.getImageList(adId);	
+    	String addressForMap = ad.getAddressForMap();
+    	List<String> list =adService.getImageList(adId);
+    	model.addObject("addressForMap", addressForMap);
     	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
         return model;

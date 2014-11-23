@@ -202,7 +202,9 @@ public class Ad {
 		this.brutto = netto+charges;
 	}
 
-
-	
+	public String getAddressForMap() {
+		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity() + " Switzerland";
+		return addressForMAp;
+	}	
 	
 }
