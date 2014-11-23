@@ -17,6 +17,7 @@ import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
+import ch.unibe.ese2014.team4.model.MapAddress;
 
 /**
  * Controls all pages / commands concerning ads.
@@ -67,17 +68,17 @@ public class SearchController {
 	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
 	public ModelAndView getMap() {
 		ModelAndView model = new ModelAndView("searchResultsMapLocation");		
-		ArrayList<String> addresses = getAddressesForMap();	
+		ArrayList<MapAddress> addresses = getAddressesForMap();	
 		model.addObject("addresses", addresses);
 		return model;
 	}
 
-	private ArrayList<String> getAddressesForMap() {
-		ArrayList<String> addresses = new ArrayList<String>();
+	private ArrayList<MapAddress> getAddressesForMap() {
+		ArrayList<MapAddress> addresses = new ArrayList<MapAddress>();
 		ArrayList<Ad> ads = adService.getNewestAds();
 		for (Ad ad : ads) {
-			String tmpString = ad.getAddressForMap();
-			addresses.add(tmpString);
+			MapAddress tmpMapAddress = ad.getAddressForMap();
+			addresses.add(tmpMapAddress);
 		}
 		return addresses;
 	}
