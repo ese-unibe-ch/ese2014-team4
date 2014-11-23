@@ -76,7 +76,7 @@
 						<c:set var="adNrOfRoomOrRoommateValue" value="${adData.nrOfRooms}" />
 						<c:if test="${adData.type eq 'ROOM'}">
 							<c:set var="adNrOfRoomOrRoommateValue"
-								value="${adData.nrOfFlateMate}" />
+								value="${adData.nrOfFlatMate}" />
 						</c:if>
 
 						<td>${adNrOfRoomOrRoommateValue}</td>

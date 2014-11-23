@@ -9,30 +9,9 @@
 <c:import url="template/header.jsp" />
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="functions/searchFunctions.jsp" />
-<c:import url="functions/createAdFunctions.jsp"/>
+<c:import url="functions/createAdFunctions.jsp" />
 
 
-<script type="text/javascript">
-function zipToCity() {
-	
-	<c:forEach items="${zipCityAsArray}" var="zipCity">
-	<c:if test="${zipCity.zip==3000}">
-// 	<c:out value="${zipCity.city}"></c:out>
-	var city = <c:out value="${zipCity.city}"></c:out>
-	</c:if>
-	
-	</c:forEach>
-    var field = document.getElementById("field-city").value = city;  
-    field[0].value = city;
-}
-</script>
-
-<script type="text/javascript">
-
-	var zip = document.getElementById("field-zip");
-	
-	zip.addEventListener("blur", getZip, true);
-</script>
 
 <%-- <c:forEach items="${zipCityAsArray}" var="zipCity"> --%>
 <%-- <c:if test="${zipCity.zip==2504}"> --%>
@@ -40,11 +19,6 @@ function zipToCity() {
 <%-- </c:if> --%>
 <%-- </c:forEach> --%>
 
-<c:forEach items="${zipCityAsArray}" var="zipCity">
-<c:if test="${zipCity.zip==2504}">
-<c:out value="${zipCity.city}"></c:out>
-</c:if>
-</c:forEach>
 
 <div id="masthead">
 	<div class="container">
@@ -52,11 +26,11 @@ function zipToCity() {
 			<div>
 				<h1>Ad-Creation</h1>
 				<hr>
-			</div>					
 			</div>
 		</div>
 	</div>
-	<!--/container-->
+</div>
+<!--/container-->
 </div>
 <!--/masthead-->
 
@@ -64,8 +38,8 @@ function zipToCity() {
 
 <form:form enctype="multipart/form-data" method="post"
 	modelAttribute="adForm" action="submitAd"
-	onSubmit="return createFormIsValid()" id="adForm" cssClass="form-horizontal"
-	autocomplete="off">
+	onSubmit="return createFormIsValid()" id="adForm"
+	cssClass="form-horizontal" autocomplete="off">
 
 	<div class="col-md-3">
 
@@ -77,8 +51,9 @@ function zipToCity() {
 			<label class="control-label" for="field-title">Title*</label>
 
 			<div class="controls">
-				<form:input type="text" required="true" path="title" id="field-title" class="form-control"
-					tabindex="1" maxlength="45" placeholder="Title"
+				<form:input type="text" required="true" path="title"
+					id="field-title" class="form-control" tabindex="1" maxlength="45"
+					placeholder="Title"
 					onfocus="(this.placeholder == 'Title') && (this.placeholder = '')"
 					onblur="(this.placeholder == '') && (this.placeholder = 'Title')" />
 				<form:errors path="title" cssClass="help-inline" element="span" />
@@ -93,8 +68,9 @@ function zipToCity() {
 			onclick="disableField()">
 			<label class="control-label" for="field-adType">Type</label>
 			<div class="radio">
-				<label><form:radiobutton path="adType" id="room" tabindex="2" value="ROOM" checked="true" />Room</label> 
-				<label><form:radiobutton path="adType" id="flat" tabindex="3" value="FLAT" />Flat</label>
+				<label><form:radiobutton path="adType" id="room"
+						tabindex="2" value="ROOM" checked="true" />Room</label> <label><form:radiobutton
+						path="adType" id="flat" tabindex="3" value="FLAT" />Flat</label>
 			</div>
 		</div>
 
@@ -111,8 +87,9 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
 				<label class="control-label" for="field-street">Street*</label>
 				<div class="controls">
-					<form:input type="text" required="true" path="street" id="field-street" class="form-control"
-						tabindex="4" maxlength="35" placeholder="Street"
+					<form:input type="text" required="true" path="street"
+						id="field-street" class="form-control" tabindex="4" maxlength="35"
+						placeholder="Street"
 						onfocus="(this.placeholder == 'Street') && (this.placeholder = '')"
 						onblur="(this.placeholder == '') && (this.placeholder = 'Street')" />
 					<form:errors path="street" cssClass="help-inline" element="span" />
@@ -128,7 +105,8 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
 				<label class="control-label" for="field-streetNumber">No*</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="1000" step="1" required="true" path="streetNumber" id="field-streetNumber"
+					<form:input type="number" min="1" max="1000" step="1"
+						required="true" path="streetNumber" id="field-streetNumber"
 						class="form-control" tabindex="5" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
@@ -146,8 +124,9 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty zipCodeErrors}"> error</c:if>">
 				<label class="control-label" for="field-zipCode">Zip-Code*</label>
 				<div class="controls">
-					<form:input type="number" min="1000" max="9658" step="1" required="true" path="zipCode" id="field-zipCode" class="form-control"
-						tabindex="6" maxlength="35" value="0"
+					<form:input type="number" min="1000" max="9658" step="1"
+						required="true" path="zipCode" id="field-zipCode"
+						class="form-control" tabindex="6" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="zipCode" cssClass="help-inline" element="span" />
@@ -163,8 +142,9 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
 				<label class="control-label" for="field-city">City*</label>
 				<div class="controls">
-					<form:input type="text"required="true" path="city" id="field-city" class="form-control"
-						tabindex="7" maxlength="35" placeholder="City"
+					<form:input type="text" required="true" path="city" id="field-city"
+						class="form-control" tabindex="7" maxlength="35"
+						placeholder="City"
 						onfocus="(this.placeholder == 'City') && (this.placeholder = '')"
 						onblur="(this.placeholder == '') && (this.placeholder = 'City')" />
 					<form:errors path="city" cssClass="help-inline" element="span" />
@@ -183,9 +163,9 @@ function zipToCity() {
 			</label>
 
 			<div class="controls">
-				<form:input type="number" min="1" max="1000" step="1" path="size" id="field-size" class="form-control"
-					tabindex="8" maxlength="45" value="0"
-					onfocus="(this.value == '0') && (this.value = '')"
+				<form:input type="number" min="1" max="1000" step="1" path="size"
+					id="field-size" class="form-control" tabindex="8" maxlength="45"
+					value="0" onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="size" cssClass="help-inline" element="span" />
 			</div>
@@ -200,12 +180,11 @@ function zipToCity() {
 				Rooms (whole flat)</label>
 
 			<div class="controls">
-				<form:input type="number" min="1" max="100" step="1" path="nrOfRooms" id="field-nrOfRooms"
-					class="form-control" tabindex="9" maxlength="45"
-					value="0"
+				<form:input type="number" min="1" max="100" step="1"
+					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
+					tabindex="9" maxlength="45" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"
-					onblur="(this.value == '') && (this.value = '0')"
-					disabled="true" />
+					onblur="(this.value == '') && (this.value = '0')" disabled="true" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -218,8 +197,9 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty nettoErrors}"> error</c:if>">
 				<label class="control-label" for="field-netto">Netto-Price:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="100000" step="1" path="netto" id="field-netto" class="form-control"
-						tabindex="10" maxlength="35" value="0"
+					<form:input type="number" min="1" max="100000" step="1"
+						path="netto" id="field-netto" class="form-control" tabindex="10"
+						maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="netto" cssClass="help-inline" element="span" />
@@ -235,7 +215,8 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty chargesErrors}"> error</c:if>">
 				<label class="control-label" for="field-charges">Charges:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="100000" step="1" path="charges" id="field-charges" class="form-control"
+					<form:input type="number" min="1" max="100000" step="1"
+						path="charges" id="field-charges" class="form-control"
 						tabindex="10" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
@@ -252,9 +233,9 @@ function zipToCity() {
 			<label class="control-label" for="field-nrOfFlatMates">Number
 				of Flatmates</label>
 			<div class="controls">
-				<form:input type="number" min="1" max="10" step="1" path="nrOfFlatMates" id="field-nrOfFlatMates"
-					class="form-control" tabindex="11" maxlength="35"
-					value="0"
+				<form:input type="number" min="1" max="10" step="1"
+					path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control"
+					tabindex="11" maxlength="35" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfFlatMates" cssClass="help-inline"
@@ -270,9 +251,9 @@ function zipToCity() {
 			<label class="control-label" for="field-availableDate">Available
 				Date</label>
 			<div class="controls">
-				<form:input type="date" path="availableDate" id="field-availableDate"
-					class="form-control" tabindex="12" maxlength="35"
-					placeholder="DD-MM-YYYY"
+				<form:input type="date" path="availableDate"
+					id="field-availableDate" class="form-control" tabindex="12"
+					maxlength="35" placeholder="DD-MM-YYYY"
 					onfocus="(this.placeholder == 'DD-MM-YYYY') && (this.placeholder = '')"
 					onblur="(this.placeholder == '') && (this.placeholder = 'DD-MM-YYYY')" />
 				<form:errors path="availableDate" cssClass="help-inline"
@@ -280,10 +261,8 @@ function zipToCity() {
 				<br>
 			</div>
 		</div>
-		
-		<div style="color:red">
-			(* are mandatory fields!)
-		</div>
+
+		<div style="color: red">(* are mandatory fields!)</div>
 	</div>
 
 	<div class="col-md-6">
@@ -326,13 +305,16 @@ function zipToCity() {
 				class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
 				<label class="control-label" for="field-description">Description*</label>
 				<div class="controls">
-					<form:textarea required="true" class="form-control" path="description" id="field-description"
+					<form:textarea required="true" class="form-control"
+						path="description" id="field-description"
 						style="width:100%; height:121px" tabindex="12"
-						placeholder="Description" onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
-					onblur="(this.placeholder == '') && (this.placeholder = 'Description')"/>
+						placeholder="Description"
+						onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
+						onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />
 					<form:errors path="description" cssClass="help-inline"
 						element="span" />
-						<br><br>
+					<br>
+					<br>
 				</div>
 			</div>
 
@@ -343,7 +325,7 @@ function zipToCity() {
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
-			</div>		
+			</div>
 		</div>
 	</div>
 </form:form>
@@ -352,15 +334,65 @@ function zipToCity() {
 	<!-- right column -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>Options</h3>
+			<h3>Visiting Dates</h3>
 		</div>
 		<div class="panel-body">
-			<a href="createAd" class="inactive"><span>Create Ad</span></a>
+<%-- 						<c:import url="embedded/createVisits.jsp" /> --%>
 		</div>
 	</div>
-
-
 </div>
+
+<script type="text/javascript">
+	var title = document.getElementById("field-title");
+	title.value = "something";
+</script>
+
+<script type="text/javascript">
+	var zip = document.getElementById("field-zipCode");
+
+	zip.addEventListener("blur", zipToCity, false);
+
+	function zipToCity() {
+		var field = document.getElementById("field-city");
+
+		var title = document.getElementById("field-title");
+		title.value = zip.value;
+
+		for (var i = 0; i < 5; i++) {
+// 			document.write("${zipCityAsArray[i].city}");
+
+			if ("${zipCityAsArray[i].zip==zip.value}") {
+				field.value = "${zipCityAsArray[i].city}";
+				var num = i;
+			}
+		}
+
+// 		zip.value = num;
+		var rooms = document.getElementById("field-nrOfRooms");
+		rooms.value = "${zipCityAsArray[1].zip}"
+
+		return true;
+	}
+</script>
+
+<div class="form-group" id="sandbox-container">
+	<div id="cal" data-date="12/03/2012"></div>
+</div>
+
+
+<!-- Load jQuery and bootstrap datepicker scripts -->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+	// When the document is ready
+	$(document).ready(function() {
+		$('#cal').datepicker({
+
+		});
+	});
+</script>
+
+
 <c:if test="${page_error != null }">
 	<div class="alert alert-error">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>

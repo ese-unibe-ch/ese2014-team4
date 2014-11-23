@@ -59,4 +59,18 @@ public class SearchController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
+    public ModelAndView getMap(){
+    	ModelAndView model = new ModelAndView("searchResultsMapLocation");  
+    	String address1 = "spiez, 3700";
+    	String address2 = "bern, 3000";
+    	ArrayList<String> addresses = new ArrayList<String>();
+    	addresses.add(address1);
+    	addresses.add(address2);
+    	model.addObject("addresses", addresses);
+
+    	
+        return model;
+    }
+	
 }

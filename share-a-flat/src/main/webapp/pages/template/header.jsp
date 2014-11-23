@@ -6,11 +6,19 @@
 
 
 	<link rel="stylesheet" type="text/css" href="/share-a-flat/css/bootstrap.css" media="all" />
+	<style type="text/css"> 
+     @font-face {   font-family: 'Glyphicons Halflings';   
+     src: url('../fonts/glyphicons-halflings-regular.eot');   
+     src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+     url('../fonts/glyphicons-halflings-regular.woff') format('woff'),  
+     url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), 
+     url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg'); } 
+</style>
 
 	<script src="js/jquery-2.1.1.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/customFunctions.js"></script>
-	
+	<script src="js/bootstrap-datepicker.js"></script>
 	<style>
 		body {
 		  padding-top: 50px;

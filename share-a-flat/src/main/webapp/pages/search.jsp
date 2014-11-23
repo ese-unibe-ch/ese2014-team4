@@ -13,8 +13,9 @@
 
 
 <h1>Search List</h1>
+              <div class="panel-body"><a href="getMap" class="inactive"><span>see on map</span></a>
 
-
+</div>
 <!-- Auswahlreiter -->
 
 

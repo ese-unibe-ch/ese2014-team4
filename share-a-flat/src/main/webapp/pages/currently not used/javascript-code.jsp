@@ -36,3 +36,9 @@
 
 	tt.addEventListener("blur", checkIt, false);
 </script>
+
+<c:forEach items="${zipCityAsArray}" var="zipCity">
+<c:if test="${zipCity.zip==2504}">
+<c:out value="${zipCity.city}"></c:out>
+</c:if>
+</c:forEach>

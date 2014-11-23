@@ -8,19 +8,13 @@
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 
 
- <h2>sendmessagebox</h2>
+ <h4>Send a message to ${adData.owner.username}</h4>
  
- <h2>Send e-mail to someone@example.com:</h2>
 
-<form action="MAILTO:someone@example.com" method="post" enctype="text/plain">
-Name:<br>
-<input type="text" name="name" value="your name"><br>
-E-mail:<br>
-<input type="text" name="mail" value="your email"><br>
-Comment:<br>
-<input type="text" name="comment" value="your comment" size="50"><br><br>
-<input type="submit" value="Send">
-<input type="reset" value="Reset">
-</form>
+
+
+<textarea required="true" class="form-control" path="mefssage" id="field-message"
+						style="width:100%; height:121px" tabindex="12"
+						placeholder="Message"></textarea>
 <br>
 

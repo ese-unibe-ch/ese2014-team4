@@ -60,7 +60,7 @@ public class Ad {
 	private int brutto;
 	private Date availableDate;
 	private String description;
-	private int nrOfFlateMate;
+	private int nrOfFlatMate;
 
 	public void setBytePictureList(List<byte[]> bytePictureList) {
 		this.bytePictureList = bytePictureList;
@@ -110,12 +110,12 @@ public class Ad {
 		this.id = id;
 	}
 
-	public int getNrOfFlateMate() {
-		return nrOfFlateMate;
+	public int getNrOfFlatMate() {
+		return nrOfFlatMate;
 	}
 
-	public void setNrOfFlateMate(int nrOfFlateMate) {
-		this.nrOfFlateMate = nrOfFlateMate;
+	public void setNrOfFlatMate(int nrOfFlateMate) {
+		this.nrOfFlatMate = nrOfFlateMate;
 	}
 
 	public Address getAddress() {
@@ -125,14 +125,6 @@ public class Ad {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-//	public int getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(int price) {
-//		this.price = price;
-//	}
 
 	public String getDescription() {
 		return description;

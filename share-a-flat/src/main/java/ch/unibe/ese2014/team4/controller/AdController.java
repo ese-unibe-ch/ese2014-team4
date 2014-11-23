@@ -53,6 +53,8 @@ public class AdController {
         return model;
     }
 	
+	
+	
 	/**
 	 * Controls submission of newly created ad.
 	 * 
