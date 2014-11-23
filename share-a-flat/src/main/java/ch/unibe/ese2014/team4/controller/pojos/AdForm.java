@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.Visit;
 
 /**
  * Used to transfer ad-information from form to controller.
@@ -41,8 +42,43 @@ public class AdForm {
 //	private List<User> FlatMates;
 	private int nrOfRooms;
     private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
+	private List<String> visitDate;
+    private List<String> startTime;
+    private List<String> endTime;
     
-  //Address-Info, same field as Ad itself.
+    
+    public List<String> getVisitDate() {
+		return visitDate;
+	}
+
+
+	public void setVisitDate(List<String> visitDate) {
+		this.visitDate = visitDate;
+	}
+
+
+	public List<String> getStartTime() {
+		return startTime;
+	}
+
+
+	public void setStartTime(List<String> startTime) {
+		this.startTime = startTime;
+	}
+
+
+	public List<String> getEndTime() {
+		return endTime;
+	}
+
+
+	public void setEndTime(List<String> endTime) {
+		this.endTime = endTime;
+	}
+
+
+ 
+	//Address-Info, same field as Ad itself.
     private String street;
     private int streetNumber;
     private String city;

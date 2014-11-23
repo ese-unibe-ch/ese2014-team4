@@ -50,7 +50,20 @@ public class Ad {
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "visitList", joinColumns = @JoinColumn(name = "visit_id"))
+	private List<Visit> visitList = new ArrayList<Visit>();
+	
 	private Date creationDate = new Date();
+
+	public List<Visit> getVisitList() {
+		return visitList;
+	}
+
+	public void setVisitList(List<Visit> visitList) {
+		this.visitList = visitList;
+	}
 
 	private String title;
 	private int size;

@@ -249,7 +249,7 @@
 		<div
 			class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
 			<label class="control-label" for="field-availableDate">Available
-				Date</label>
+				from</label>
 			<div class="controls">
 				<form:input type="date" path="availableDate"
 					id="field-availableDate" class="form-control" tabindex="12"
@@ -260,6 +260,14 @@
 					element="span" />
 				<br>
 			</div>
+							<script type="text/javascript">
+					// When the document is ready
+					$(document).ready(function() {
+						$('#field-availableDate').datepicker({
+							format: "dd-mm-yyyy"
+						});
+					});
+				</script>
 		</div>
 
 		<div style="color: red">(* are mandatory fields!)</div>
@@ -279,8 +287,7 @@
 
 			<!--  script for adding another file upload possibility -->
 			<!--  needs to be placed within <form:form></form:form> -->
-			<script
-				src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
 			<script>
 				$(document)
 						.ready(
@@ -327,61 +334,118 @@
 			</div>
 		</div>
 	</div>
-</form:form>
+	<div class="col-md-3">
+		<!-- right column -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Visiting Dates</h3>
+				<br>
+				<h4>Leave empty for appointments only</h4>
+			</div>
+			<div class="panel-body">
 
-<div class="col-md-3">
-	<!-- right column -->
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3>Visiting Dates</h3>
-		</div>
-		<div class="panel-body">
-			<%-- 						<c:import url="embedded/createVisits.jsp" /> --%>
+				<c:set var="tableRow" value="0" />
+				<table id="visitTable">
+					<tr>
+						<th>Date</th>
+						<th>from</th>
+						<th>to</th>
+
+					</tr>
+
+					<tr>
+
+						<td><input name="visitDate[0]" id="dateInput0" size="4"
+							tabindex="15" /></td>
+						<td><input name="startTime[0]" size="4" tabindex="15" /></td>
+						<td><input name="endTime[0]" size="4" tabindex="15" /></td>
+					</tr>
+
+
+
+				</table>
+				<button id="addVisit" type="button" onclick="addMore">Add
+					another visit</button>
+
+				<script>
+					$(document)
+							.ready(
+									function() {
+										//add more file components if Add is clicked
+										$('#addVisit')
+												.click(
+														function() {
+															var index = $(
+																	'#fileTable tr')
+																	.children().length - 1;
+															$('#visitTable')
+																	.append( 
+																			'<tr><td><input name= "visitDate['+index+']" id="dateInput0" size="4" tabindex="15"/></td>'
+																					+ '<td><input name= "startTime['+index+']" size="4" tabindex="15"/></td>'
+																					+ '<td><input name="endTime['+index+']" size="4" tabindex="15"/></td></tr>');
+														});
+									});
+				</script>
+				<script type="text/javascript">
+					// When the document is ready
+					$(document).ready(function() {
+						$('#dateInput0').datepicker({
+							format: "dd-mm-yyyy"
+
+						});
+					});
+				</script>
+
+
+
+
+			</div>
 		</div>
 	</div>
-</div>
+
+
+</form:form>
+
+
 
 <script type="text/javascript">
 	var title = document.getElementById("field-title");
-// 	title.value = "something";
+	// 	title.value = "something";
 </script>
 
 <script type="text/javascript">
 	var zip = document.getElementById("field-zipCode");
 
 	zip.addEventListener("blur", zipToCity, false);
-	
 
-	
 	function zipToCity() {
 		var field = document.getElementById("field-city");
-		
+
 		<c:forEach items="${zipCityAsArray}" var="item">
 		var zipFromObj = parseInt("${item.zip}");
-		
+
 		var rooms = document.getElementById("field-nrOfRooms");
 		rooms.value = zipFromObj;
-		
-		if(zipFromObj==zip.value){
-			field.value = "${item.city}";		
-		}		
+
+		if (zipFromObj == zip.value) {
+			field.value = "${item.city}";
+		}
 		</c:forEach>
 
-// 		VAR TITLE = DOCUMENT.GETELEMENTBYID("FIELD-TITLE");
-// 		TITLE.VALUE = ZIP.VALUE;
+		// 		VAR TITLE = DOCUMENT.GETELEMENTBYID("FIELD-TITLE");
+		// 		TITLE.VALUE = ZIP.VALUE;
 
-// 		for (var i = 0; i < 5; i++) {
-// // 			document.write("${zipCityAsArray[i].city}");
+		// 		for (var i = 0; i < 5; i++) {
+		// // 			document.write("${zipCityAsArray[i].city}");
 
-// 			if ("${zipCityAsArray[i].zip==zip.value}") {
-// 				field.value = "${zipCityAsArray[20].city}";
-// 				var num = i;
-// 			}
-		
+		// 			if ("${zipCityAsArray[i].zip==zip.value}") {
+		// 				field.value = "${zipCityAsArray[20].city}";
+		// 				var num = i;
+		// 			}
 
-// 		zip.value = num;
-// 		var rooms = document.getElementById("field-nrOfRooms");
-// 		rooms.value = "${zipCityAsArray[1].zip}"
+		// 		zip.value = num;
+		// 		var rooms = document.getElementById("field-nrOfRooms");
+		// 		rooms.value = "${zipCityAsArray[1].zip}"
 
 		return true;
 	}

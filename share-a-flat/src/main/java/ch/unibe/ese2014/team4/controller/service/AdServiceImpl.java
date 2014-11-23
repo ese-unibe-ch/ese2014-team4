@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +18,11 @@ import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.Visit;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 import ch.unibe.ese2014.team4.model.dao.AddressDao;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
+import ch.unibe.ese2014.team4.model.dao.VisitDao;
 
 /**
  * save ads to and get ads from data base
@@ -40,6 +43,9 @@ public class AdServiceImpl implements AdService {
 	ImageService imageService;
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	VisitDao visitDao;
 
 	/**
 	 * creates an ad form and saves it to data base
@@ -88,7 +94,17 @@ public class AdServiceImpl implements AdService {
 		address.setStreet(adForm.getStreet());
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
-
+		
+		List<Visit> visitList = new ArrayList<Visit>();
+		for (int i = 0; i < adForm.getVisitDate().size();i++){
+			Visit visit = new Visit();
+			visit.setDate( adForm.getVisitDate().get(i));
+			visit.setStartTime( adForm.getStartTime().get(i));
+			visit.setEndTime( adForm.getEndTime().get(i));
+			visitDao.save(visit);
+			visitList.add(visit);
+		}
+		ad.setVisitList(visitList);
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
