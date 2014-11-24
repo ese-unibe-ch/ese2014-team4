@@ -18,9 +18,8 @@ import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
-
+import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
-
 import ch.unibe.ese2014.team4.model.ZipCityList;
 import ch.unibe.ese2014.team4.model.ZipCity;
 
@@ -83,7 +82,7 @@ public class AdController {
     	ModelAndView model = new ModelAndView("ad");   
     	
     	Ad ad = newAdService.getAd(adId);
-    	String addressForMap = ad.getAddressForMap();
+    	MapAddress addressForMap = ad.getAddressForMap();
     	List<String> list =adService.getImageList(adId);
     	model.addObject("addressForMap", addressForMap);
     	model.addObject("imageList", list);
