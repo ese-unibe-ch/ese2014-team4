@@ -108,7 +108,7 @@
 						<form:input type="number" min="0" max="100" step="0.5" class="form-control" path="nrOfRooms"
 							id="field-nrOfRooms" tabindex="6" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
-							onblur="(this.value == '') && (this.value = '0')" disabled="true" />
+							onblur="(this.value == '') && (this.value = '0')" />
 						<form:errors path="nrOfRooms" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -145,6 +145,14 @@
 							element="span" />
 						<br>
 					</div>
+					<script type="text/javascript">
+					// When the document is ready
+					$(document).ready(function() {
+						$('#field-availableDate').datepicker({
+							format: "dd-mm-yyyy"
+						});
+					});
+				</script>
 				</div>
 
 				<span id="SearchErrorMessage"></span>

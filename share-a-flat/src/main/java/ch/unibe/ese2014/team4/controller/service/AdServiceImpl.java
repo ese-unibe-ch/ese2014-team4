@@ -68,8 +68,7 @@ public class AdServiceImpl implements AdService {
 		} else {
 			ad.setType(AdType.FLAT);
 			ad.setNrOfRooms(adForm.getNrOfRooms());
-
-			ad.setNrOfFlatMates(0);
+			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 
 		}
 

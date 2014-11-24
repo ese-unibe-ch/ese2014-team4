@@ -66,13 +66,13 @@
 <script>
 function disableField(){
 	if (document.getElementById("room").checked == true) {
-		disableNrOfRooms();
+// 		disableNrOfRooms();
 		enableNrOfFlatMates();
 	}
 	
 	if (document.getElementById("flat").checked == true){
 		disableNrOfFlatMates();
-		enableNrOfRooms();
+// 		enableNrOfRooms();
 	}
 }
 

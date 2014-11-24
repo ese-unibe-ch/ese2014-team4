@@ -184,7 +184,7 @@
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
 					tabindex="9" maxlength="45" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"
-					onblur="(this.value == '') && (this.value = '0')" disabled="true" />
+					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
