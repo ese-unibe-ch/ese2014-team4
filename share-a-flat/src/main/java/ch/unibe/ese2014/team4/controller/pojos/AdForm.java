@@ -34,7 +34,7 @@ public class AdForm {
     
 	@NotNull
     private String description;   
-    private String nrOfFlatMates;  
+    private int nrOfFlatMates;  
     
     private String availableDate;
 
@@ -93,11 +93,11 @@ public class AdForm {
 		this.size = size;
 	}
 
-	public String getNrOfFlatMates() {
+	public int getNrOfFlatMates() {
 		return nrOfFlatMates;
 	}
 
-	public void setNrOfFlatMates(String nrOfFlatMates) {
+	public void setNrOfFlatMates(int nrOfFlatMates) {
 		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
