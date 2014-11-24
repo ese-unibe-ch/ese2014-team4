@@ -215,7 +215,7 @@
 				class="control-group<c:if test="${not empty chargesErrors}"> error</c:if>">
 				<label class="control-label" for="field-charges">Charges:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="100000" step="1"
+					<form:input type="number" min="0" max="100000" step="1"
 						path="charges" id="field-charges" class="form-control"
 						tabindex="10" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
