@@ -1,32 +1,27 @@
-<%@ page language="java" import="javax.servlet.jsp.PageContext"
-	pageEncoding="UTF-8" contentType="text/html;charset=utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:import url="functions/searchFunctions.jsp" />
-
-<h1>Search Map</h1>
-      
-        <ul>
-        <div class="panel-body"><a href="search" class="inactive"><span>back to list</span></a>
-		</ul>
-  <!DOCTYPE html>
+<!-- special css for thumbnail view -->
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+   <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Geocoding service</title>
     <style>
-      html, body, #map-canvas {
-        height: 90%;
-        margin: 0px;
-        padding: 0px
-      }     
+      #map-canvas {
+        width: 350px;
+        height: 250px;
+      }
     </style>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    
+  </head> 
+</html>
+
+    				
+	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
 var geocoder;
 var map;
@@ -71,12 +66,7 @@ function placeAddresses(value, id){
 
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-  </head>
-  <body>
    <body onload="codeAddress()">
-    <div id="map-canvas"></div>
-  </body>
-</html>
-<c:import url="template/footer.jsp" />
+
+ 
 

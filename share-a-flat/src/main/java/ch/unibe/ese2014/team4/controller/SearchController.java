@@ -42,6 +42,8 @@ public class SearchController {
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		model.addObject("resultType", resultType);
+		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		model.addObject("addresses", addresses);
 		return model;
 	}
 
@@ -58,24 +60,27 @@ public class SearchController {
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
 			model.addObject("resultType", resultType);
+			ArrayList<MapAddress> addresses = getAddressesForMap(adsToAdd);	
+			model.addObject("addresses", addresses);
 		} else
 			model.addObject("whatToDisplay", "No Ads found");
 		model.addObject("resultType", resultType);
-
+		
 		return model;
 	}
 
 	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
 	public ModelAndView getMap() {
-		ModelAndView model = new ModelAndView("searchResultsMapLocation");		
-		ArrayList<MapAddress> addresses = getAddressesForMap();	
+		ModelAndView model = new ModelAndView("searchResultsMapLocation");	
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
 		model.addObject("addresses", addresses);
+		
 		return model;
 	}
 
-	private ArrayList<MapAddress> getAddressesForMap() {
+	private ArrayList<MapAddress> getAddressesForMap(ArrayList<Ad> ads) {
 		ArrayList<MapAddress> addresses = new ArrayList<MapAddress>();
-		ArrayList<Ad> ads = adService.getNewestAds();
 		for (Ad ad : ads) {
 			MapAddress tmpMapAddress = ad.getAddressForMap();
 			addresses.add(tmpMapAddress);
