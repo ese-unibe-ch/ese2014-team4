@@ -71,7 +71,6 @@ public class SearcherTests {
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
-
 	}
 
 	@Test
