@@ -17,6 +17,7 @@
 // 		var streetNr = document.forms["adForm"]["field-streetNumber"].value;
 // 		var zip = document.forms["adForm"]["field-zipCode"].value;
 // 		var city = document.forms["adForm"]["field-city"].value;
+		var nrOfRooms = document.getElementById("field-nrOfRooms").value;
 		var availableDate = document.forms["adForm"]["field-availableDate"].value;
 		var visitDate = document.getElementById("dateInput0").value;
 // 		var description = document.forms["adForm"]["field-description"].value;
@@ -26,7 +27,7 @@
 // // 			alert("Please fill all mandatory fields!");
 // // 			return false;
 // // 		}
-		
+				
 		if (availableDate!=""){
 		if (!availableDate.match(/^(0?[1-9]|[12][0-9]|3[01])[\-](0?[1-9]|1[012])[\-]\d{4}$/)) {
 			alert("Please enter a valid available Date (E.g. 01-01-2000)");
