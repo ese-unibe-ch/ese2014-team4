@@ -11,7 +11,7 @@ public class ProfileForm {
 //TODO: add profile stuff.
 
 	private String phoneNumber;
-    private int age;
+    private String age;
     private Sex sex;
     private String userDescription;
     private MultipartFile uploadedProfileImage;
@@ -41,14 +41,14 @@ public class ProfileForm {
 	/**
 	 * @return int age.
 	 */
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
 	/**
 	 * @param int age
 	 */
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

@@ -71,7 +71,7 @@ public class SearchServiceImpl implements SearchService {
 			checkPrice(adsToSort);
 		}
 
-		if (searchForm.getNrOfFlatMates() != "") {
+		if (searchForm.getNrOfFlatMates() != 0) {
 			checkNrFlatMates(adsToSort);
 		}
 
