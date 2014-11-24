@@ -143,7 +143,7 @@
         <div class="form-group<c:if test="${not empty ageErrors}"> error</c:if>">
             <label class="col-lg-3 control-label" for="field-age">Age:</label>
             <div class="col-lg-8">
-                <form:input type="number" min="18" max="120" step="1" class="form-control" path="age" id="field-age" tabindex="6" maxlength="45" value="${user.profile.age}"/>
+                <form:input type="number" min="10" max="120" step="1" class="form-control" path="age" id="field-age" tabindex="6" maxlength="45" value="${user.profile.age}"/>
                 <form:errors path="age" cssClass="help-inline" element="span" />
             </div>
         </div>      

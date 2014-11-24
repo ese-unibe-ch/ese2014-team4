@@ -39,14 +39,14 @@ public class ProfileForm {
     private String email;
 
 	/**
-	 * @return String age.
+	 * @return int age.
 	 */
 	public String getAge() {
 		return age;
 	}
 
 	/**
-	 * @param String age
+	 * @param int age
 	 */
 	public void setAge(String age) {
 		this.age = age;
