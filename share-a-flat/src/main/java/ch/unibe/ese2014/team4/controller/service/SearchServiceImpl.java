@@ -71,7 +71,7 @@ public class SearchServiceImpl implements SearchService {
 			checkPrice(adsToSort);
 		}
 
-		if (searchForm.getNrOfFlatMates() != "") {
+		if (searchForm.getNrOfFlatMates() > 0) {
 			checkNrFlatMates(adsToSort);
 		}
 
@@ -83,7 +83,7 @@ public class SearchServiceImpl implements SearchService {
 			checkType(adsToSort);
 		}
 
-		if (!(searchForm.getAvailableDate()).equals("")) {
+		if ((searchForm.getAvailableDate())!=null) {
 			checkAvailableDate(adsToSort);
 		}
 
