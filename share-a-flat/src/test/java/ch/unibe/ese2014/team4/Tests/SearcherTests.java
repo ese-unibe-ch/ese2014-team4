@@ -31,7 +31,7 @@ public class SearcherTests {
 		searcher.setAdService(adService);
 		mockDao = createStrictMock(AdDao.class);
 		adService.setAdDao(mockDao);
-
+		
 		Address testAddess1 = new Address();
 		Address testAddess2 = new Address();
 		Address testAddess3 = new Address();
@@ -71,7 +71,6 @@ public class SearcherTests {
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
-
 	}
 
 	@Test
@@ -369,5 +368,7 @@ public class SearcherTests {
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
 		searchForm.setNrOfFlatMates(0);
+		searchForm.setAvailableDate("");
+
 	}
 }

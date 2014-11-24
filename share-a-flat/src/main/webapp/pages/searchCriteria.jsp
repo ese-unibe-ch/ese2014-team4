@@ -97,7 +97,6 @@
 					</div>
 				</div>
 
-
 				<c:set var="nrOfRoomsErrors">
 					<form:errors path="nrOfRooms" />
 				</c:set>

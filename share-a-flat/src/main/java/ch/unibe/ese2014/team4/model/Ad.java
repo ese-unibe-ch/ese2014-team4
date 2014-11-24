@@ -74,7 +74,7 @@ public class Ad {
 	private Date availableDate;
 	private String description;
 
-	private String nrOfFlatMates;
+	private int nrOfFlatMates;
 
 
 	public void setBytePictureList(List<byte[]> bytePictureList) {
@@ -118,11 +118,11 @@ public class Ad {
 	}
 
 
-	public String getNrOfFlatMates() {
+	public int getNrOfFlatMates() {
 		return nrOfFlatMates;
 	}
 
-	public void setNrOfFlatMates(String nrOfFlateMates) {
+	public void setNrOfFlatMates(int nrOfFlateMates) {
 		this.nrOfFlatMates = nrOfFlateMates;
 
 	}
