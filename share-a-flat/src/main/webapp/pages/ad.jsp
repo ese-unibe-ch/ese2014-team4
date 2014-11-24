@@ -41,7 +41,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <script>
 function codeAddress() {
-  geocoder.geocode( {'address':"${addressForMap}"}, function(results, status) {
+  geocoder.geocode( {'address':"${addressForMap.addressAsString}"}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({

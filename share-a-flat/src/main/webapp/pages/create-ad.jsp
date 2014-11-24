@@ -215,7 +215,7 @@
 				class="control-group<c:if test="${not empty chargesErrors}"> error</c:if>">
 				<label class="control-label" for="field-charges">Charges:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="100000" step="1"
+					<form:input type="number" min="0" max="100000" step="1"
 						path="charges" id="field-charges" class="form-control"
 						tabindex="10" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
@@ -406,49 +406,9 @@
 
 </form:form>
 
-
-
-<script type="text/javascript">
-	var title = document.getElementById("field-title");
-	// 	title.value = "something";
-</script>
-
 <script type="text/javascript">
 	var zip = document.getElementById("field-zipCode");
-
 	zip.addEventListener("blur", zipToCity, false);
-
-	function zipToCity() {
-		var field = document.getElementById("field-city");
-
-		<c:forEach items="${zipCityAsArray}" var="item">
-		var zipFromObj = parseInt("${item.zip}");
-
-		var rooms = document.getElementById("field-nrOfRooms");
-		rooms.value = zipFromObj;
-
-		if (zipFromObj == zip.value) {
-			field.value = "${item.city}";
-		}
-		</c:forEach>
-
-		// 		VAR TITLE = DOCUMENT.GETELEMENTBYID("FIELD-TITLE");
-		// 		TITLE.VALUE = ZIP.VALUE;
-
-		// 		for (var i = 0; i < 5; i++) {
-		// // 			document.write("${zipCityAsArray[i].city}");
-
-		// 			if ("${zipCityAsArray[i].zip==zip.value}") {
-		// 				field.value = "${zipCityAsArray[20].city}";
-		// 				var num = i;
-		// 			}
-
-		// 		zip.value = num;
-		// 		var rooms = document.getElementById("field-nrOfRooms");
-		// 		rooms.value = "${zipCityAsArray[1].zip}"
-
-		return true;
-	}
 </script>
 
 <div class="form-group" id="sandbox-container">
