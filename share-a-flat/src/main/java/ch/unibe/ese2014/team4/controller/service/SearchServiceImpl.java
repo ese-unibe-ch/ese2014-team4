@@ -85,7 +85,7 @@ public class SearchServiceImpl implements SearchService {
 			checkType(adsToSort);
 		}
 
-		if ((searchForm.getAvailableDate())!="") {
+		if (!(searchForm.getAvailableDate()).equals("")) {
 			checkAvailableDate(adsToSort);
 		}
 
