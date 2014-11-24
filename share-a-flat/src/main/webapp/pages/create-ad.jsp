@@ -163,7 +163,7 @@
 			</label>
 
 			<div class="controls">
-				<form:input type="number" min="1" max="1000" step="1" path="size"
+				<form:input type="number" min="0" max="1000" step="1" path="size"
 					id="field-size" class="form-control" tabindex="8" maxlength="45"
 					value="0" onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
@@ -180,7 +180,7 @@
 				Rooms (whole flat)</label>
 
 			<div class="controls">
-				<form:input type="number" min="1" max="100" step="1"
+				<form:input type="number" min="0" max="100" step="1"
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
 					tabindex="9" maxlength="45" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"
@@ -197,7 +197,7 @@
 				class="control-group<c:if test="${not empty nettoErrors}"> error</c:if>">
 				<label class="control-label" for="field-netto">Netto-Price:</label>
 				<div class="controls">
-					<form:input type="number" min="1" max="100000" step="1"
+					<form:input type="number" min="0" max="100000" step="1"
 						path="netto" id="field-netto" class="form-control" tabindex="10"
 						maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
@@ -233,7 +233,7 @@
 			<label class="control-label" for="field-nrOfFlatMates">Number
 				of Flatmates</label>
 			<div class="controls">
-				<form:input type="number" min="1" max="10" step="1"
+				<form:input type="number" min="0" max="10" step="1"
 					path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control"
 					tabindex="11" maxlength="35" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"

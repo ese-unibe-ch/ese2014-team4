@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
+import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
@@ -71,6 +72,12 @@ public class AdController {
         return showAd(adForm.getId());
     }	
 	
+	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
+    public ModelAndView sendMessage(MessageForm messageForm, BindingResult result,  Principal principal) throws Exception{
+    	ModelAndView model = new ModelAndView("ad");  
+        return null;
+    }	
+	
 	/**
 	 * Requires /showAd?adId=x.
 	 * 
@@ -87,6 +94,7 @@ public class AdController {
     	model.addObject("addressForMap", addressForMap);
     	model.addObject("imageList", list);
     	model.addObject("adData", ad);		//called adData, otherwise gets confused with "ad" page
+    	model.addObject("messageForm", new MessageForm());
         return model;
     }
 	
