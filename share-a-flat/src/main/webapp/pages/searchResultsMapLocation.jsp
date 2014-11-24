@@ -54,7 +54,7 @@ function placeAddresses(value, id){
 	 geocoder.geocode( {'address':value}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      map.setCenter(results[0].geometry.location);
-		      var marker = new google.maps.Marker({url:'showAd?adId=id',
+		      var marker = new google.maps.Marker({url:'showAd?adId='+id,
 		          map: map,
 		          position: results[0].geometry.location
 		      });

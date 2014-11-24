@@ -12,7 +12,9 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
+    <script>	$(document).ready(function() {
+
+	
       function initialize() {
         var mapCanvas = document.getElementById('map_canvas');
         var mapOptions = {
@@ -33,6 +35,7 @@
         map: map
       };
       var kmlLayer = new google.maps.KmlLayer(kmlUrl, kmlOptions);
+    });
 
     </script>
   </head>

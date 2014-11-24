@@ -12,9 +12,9 @@
 <h4>Send a message to ${adData.owner.username}</h4>
 
 
-<form:form enctype="multipart/form-data" method="post"
-	modelAttribute="messageForm" action="sendMessage" id="messageForm"
-	cssClass="form-horizontal" autocomplete="off">
+<form:form method="post" modelAttribute="messageForm"
+	action="sendMessage" id="messageForm" cssClass="form-horizontal"
+	autocomplete="off">
 
 	<textarea required="true" class="form-control" path="message"
 		id="field-message" style="width: 100%; height: 121px; resize: none"
