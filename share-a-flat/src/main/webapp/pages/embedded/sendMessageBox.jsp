@@ -4,6 +4,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<<script type="text/javascript">
+function addId(){
+	var field = document.getElementById("field-receiverId");
+	
+		field.value = "${adData.owner.id}";
+}
+</script>
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
@@ -18,11 +25,23 @@
 
 	<textarea required="true" class="form-control" path="message"
 		id="field-message" style="width: 100%; height: 121px; resize: none"
-		tabindex="12" placeholder="Message"></textarea>
+		tabindex="1" placeholder="Message"></textarea>
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>
 	</div>
 	<br>
+	
+<!-- 	<div -->
+<!-- 			class="control-group"> -->
+<!-- 			<label class="control-label" for="receiverId">Id of receiver</label> -->
+<!-- 			<div class="controls"> -->
+<%-- 				<form:input type="text"  --%>
+<%-- 					path="receiverId" id="field-receiverId" class="form-control" --%>
+<%-- 					tabindex="2" maxlength="35" value="0"	/> --%>
+				
+<!-- 			</div> -->
+<!-- 		</div> -->
+	
 </form:form>
 
 <script type="text/javascript">

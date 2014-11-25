@@ -19,6 +19,16 @@ import ch.unibe.ese2014.team4.model.Visit;
 public class MessageForm {
 	
 	private String message;
+	
+	private String receiverId;
+
+	public String getReceiverId() {
+		return receiverId;
+	}
+
+	public void setReceiverId(String receiverId) {
+		this.receiverId = receiverId;
+	}
 
 	public String getMessage() {
 		return message;
