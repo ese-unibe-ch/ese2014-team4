@@ -43,7 +43,8 @@ public class Ad {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@IndexColumn(name="LIST_INDEX")
 	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
-	private List<String> flatmateList;
+	@Column(name="user_id", length=50)
+	private List<User> flatmateList = new ArrayList<User>();
 	
 
 	private float nrOfRooms;
@@ -56,7 +57,7 @@ public class Ad {
 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "visitList", joinColumns = @JoinColumn(name = "visit_id"))
+	@CollectionTable(name = "visitList", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<Visit> visitList = new ArrayList<Visit>();
 	
 	private Date creationDate = new Date();
@@ -67,6 +68,7 @@ public class Ad {
 	private int netto;
 	private int charges;
 	private int brutto;
+	@Column(columnDefinition="date")
 	private Date availableDate;
 	private String description;
 
@@ -75,11 +77,11 @@ public class Ad {
 	 * 
 	 * @return list of unvalidated usernames which will be the future roommates.
 	 */
-	public List<String> getFlatmateIdList() {
+	public List<User> getFlatmateList() {
 		return flatmateList;
 	}
 
-	public void setFlatmateList(List<String> flatmateList) {
+	public void setFlatmateList(List<User> flatmateList) {
 		this.flatmateList = flatmateList;
 	}
 

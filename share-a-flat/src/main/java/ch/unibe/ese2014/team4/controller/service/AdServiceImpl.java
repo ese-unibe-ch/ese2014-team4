@@ -65,7 +65,7 @@ public class AdServiceImpl implements AdService {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 			
-			ad.setFlatmateList(adForm.getFlatmateList());
+			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
 			ad.setNrOfRooms(0);
 
 		} else {
@@ -81,6 +81,8 @@ public class AdServiceImpl implements AdService {
 		ad.setOwner(owner);
 		ad.setAvailableDate(convertStringToDate(adForm));
 		ad.setAdAddedDate(new Date());
+		
+		
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 		
 		if (!fileList.isEmpty()) {
@@ -99,14 +101,17 @@ public class AdServiceImpl implements AdService {
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
 		
+		
 		List<Visit> visitList = new ArrayList<Visit>();
 		for (int i = 0; i < adForm.getVisitDate().size();i++){
-			Visit visit = new Visit();
-			visit.setDate( adForm.getVisitDate().get(i));
-			visit.setStartTime( adForm.getStartTime().get(i));
-			visit.setEndTime( adForm.getEndTime().get(i));
-			visitDao.save(visit);
-			visitList.add(visit);
+			if (adForm.getVisitDate().get(i)!=null){
+				Visit visit = new Visit();
+				visit.setDate( adForm.getVisitDate().get(i));
+				visit.setStartTime( adForm.getStartTime().get(i));
+				visit.setEndTime( adForm.getEndTime().get(i));
+				visitDao.save(visit);
+				visitList.add(visit);
+			}
 
 		}
 
@@ -119,7 +124,13 @@ public class AdServiceImpl implements AdService {
 		return adForm;
 	}
 
-
+	private List<User> getUserListFromUsernameList(List<String> nameList){
+		ArrayList<User> list = new ArrayList<User>();
+		for (String username : nameList){
+			list.add(userDao.findByUsername(username));
+		}
+		return list;
+	}
 	private Date convertStringToDate(AdForm adForm) throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = null;

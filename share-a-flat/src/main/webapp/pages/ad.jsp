@@ -54,7 +54,7 @@
 					<h1 style="color: blue" align="center">
 						<b>${adData.title}</b><a id="bookmarkStar"
 							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							class="glyphicon glyphicon-star-empty"></a>
+							><h6>bookmark me</h6></a>
 					</h1>
 					<h6 align="center">
 						<span>${bookmarkResponse}</span>
@@ -133,14 +133,14 @@
 							<td width="140"><b>Nr of Flatmates:</b></td>
 							<td>${adData.nrOfFlatMates}</td>							
 						</tr>
+						<tr><td>
+						<c:forEach items="${adData.flatmateList}" var="flatmate">
 						
-						<c:forEach items="${flatmateList}" var="flatmate">
-						<tr>
-							<td><a href="${pageContext.request.contextPath}/profile?userId=${flatmateList.flatmate.id}">${flatmateList.flatmate.username}</a></td>
+							<a href="${pageContext.request.contextPath}/profile?userId=${flatmate.id}">${flatmate.username} </a>
 
-						</tr>
-						</c:forEach>
 						
+						</c:forEach>
+						</td></tr>
 
 
 					</table><hr>
@@ -210,7 +210,7 @@
 					<h4>
 						<b>Description:</b>
 					</h4>
-					${adData.description}
+					<pre>${adData.description}</pre>
 					</p>
 
 				</div>

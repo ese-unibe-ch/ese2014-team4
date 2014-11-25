@@ -35,7 +35,7 @@
 <!--/masthead-->
 
 
-
+<span class="error">${errorMessage}</span>
 <form:form enctype="multipart/form-data" method="post"
 	modelAttribute="adForm" action="submitAd"
 	onSubmit="return createFormIsValid()" id="adForm"
@@ -384,9 +384,7 @@
 			</div>
 			
 			<div class="panel-body">
-
-				<c:set var="tableRow" value="0" />
-				<table id="visitTable">
+				<table id="flatmateTable">
 					<tr>
 						<th>Name</th>
 

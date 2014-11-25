@@ -69,11 +69,24 @@ public class AdController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
-    public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal) throws Exception{
-
-    	newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
-
-        return showAd(adForm.getId());
+    public ModelAndView submitAd(AdForm adForm, BindingResult result,  Principal principal, ModelAndView oldModel) throws Exception{
+		try{
+			newAdService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
+			return showAd(adForm.getId());
+		}
+		//many possible exceptions, therefore juxt catch Exception
+		catch (Exception e){
+			ModelAndView model = new ModelAndView("create-ad");  
+	    	model.addObject("zipCityAsArray",zipCityAsArray );
+	    	model.addObject("adForm", adForm);
+	    	model.addObject("errorMessage", e.getMessage());
+	    	
+	        return model;
+	    }
+		
+			
+		
+        
     }	
 	
 	
