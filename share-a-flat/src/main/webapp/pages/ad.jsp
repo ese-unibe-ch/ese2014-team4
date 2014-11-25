@@ -238,7 +238,8 @@
 								href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 						</h4>
 						<b>Send ${adData.owner.username} an email: </b><a href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
-						${adData.owner.profile.phoneNumber}<br>
+<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
+						<br>
 						<c:import url="embedded/sendMessageBox.jsp" />
 					</div>
 				</div>

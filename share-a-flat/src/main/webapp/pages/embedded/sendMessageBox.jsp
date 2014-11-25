@@ -4,15 +4,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<<<<<<< HEAD
-<<script type="text/javascript">
+
+<script type="text/javascript">
 function addReceiverId(){
 	var receicerId = document.getElementById("field-receiverId");
-=======
-<script type="text/javascript">
-function addId(){
-	var field = document.getElementById("field-receiverId");
->>>>>>> 3b448d0a9fa8424aeef957e9a6289c15ac538bfc
+
 	
 		receiverId.value = "${adData.owner.id}";
 }
