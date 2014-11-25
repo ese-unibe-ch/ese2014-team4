@@ -103,7 +103,7 @@
 
 						<tr>
 							<td width="140"><b>Size:</b></td>
-							<td>${adData.size} m<sup>2</sup></td>
+							<td>${adData.size}m<sup>2</sup></td>
 						</tr>
 
 						<tr>
@@ -122,28 +122,32 @@
 					<hr>
 
 					<c:if test="${adData.nrOfFlatMates != '0'}">
-					<table>
-						<tr><td>
-							<h4>
-								<b>Flatmates</b>
-							</h4>
-						</td></tr>
+						<table>
+							<tr>
+								<td>
+									<h4>
+										<b>Flatmates</b>
+									</h4>
+								</td>
+							</tr>
 
-						<tr>
-							<td width="140"><b>Nr of Flatmates:</b></td>
-							<td>${adData.nrOfFlatMates}</td>							
-						</tr>
-						
-						<c:forEach items="${flatmateList}" var="flatmate">
-						<tr>
-							<td><a href="${pageContext.request.contextPath}/profile?userId=${flatmateList.flatmate.id}">${flatmateList.flatmate.username}</a></td>
+							<tr>
+								<td width="140"><b>Nr of Flatmates:</b></td>
+								<td>${adData.nrOfFlatMates}</td>
+							</tr>
 
-						</tr>
-						</c:forEach>
-						
+							<c:forEach items="${flatmateList}" var="flatmate">
+								<tr>
+									<td><a
+										href="${pageContext.request.contextPath}/profile?userId=${flatmateList.flatmate.id}">${flatmateList.flatmate.username}</a></td>
+
+								</tr>
+							</c:forEach>
 
 
-					</table><hr>
+
+						</table>
+						<hr>
 					</c:if>
 					<table>
 						<tr>
@@ -166,7 +170,7 @@
 							<td width="140"><b>Brutto-Price:</b></td>
 							<td>CHF ${adData.brutto}.--</td>
 						</tr>
-					</table>				
+					</table>
 				</div>
 			</div>
 		</div>
@@ -244,8 +248,9 @@
 							<b>Ad placed by <a
 								href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 						</h4>
-						<b>Send ${adData.owner.username} an email: </b><a href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
-<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
+						<b>Send ${adData.owner.username} an email: </b><a
+							href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
+						<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
 						<br>
 						<c:import url="embedded/sendMessageBox.jsp" />
 					</div>

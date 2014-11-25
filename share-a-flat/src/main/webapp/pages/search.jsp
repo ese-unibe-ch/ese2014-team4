@@ -85,16 +85,16 @@
 
 
 	<h1>Search List</h1>
-<!-- 	<div class="panel-body"> -->
-<!-- 		<a href="getMap" class="inactive"><span>see on map</span></a> -->
+	<!-- 	<div class="panel-body"> -->
+	<!-- 		<a href="getMap" class="inactive"><span>see on map</span></a> -->
 	</div>
 	<!-- Auswahlreiter -->
-<!-- 	<ul> -->
-<!-- 		<li class="map"><a -->
-<%-- 			href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise> --%>
-<%-- 			</c:choose>" --%>
-<!-- 			class="inactive"><span>Search Map</span></a></li> -->
-<!-- 	</ul> -->
+	<!-- 	<ul> -->
+	<!-- 		<li class="map"><a -->
+	<%-- 			href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise> --%>
+	<%-- 			</c:choose>" --%>
+	<!-- 			class="inactive"><span>Search Map</span></a></li> -->
+	<!-- 	</ul> -->
 
 	<div class="row">
 		<div class="col-md-4">

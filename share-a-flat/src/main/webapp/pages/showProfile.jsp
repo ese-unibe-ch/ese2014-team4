@@ -67,37 +67,36 @@
 						<br>
 					</div></td>
 
-				<td width="400">
-					<c:import url="embedded/sendMessageBox.jsp" />
+				<td width="400"><c:import url="embedded/sendMessageBox.jsp" />
 			</tr>
 		</table>
 	</div>
 
 </fieldset>
 <hr>
-	
-	<!-- <div class="row"> -->
-	<div class="col-md-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3>${user.username}'s ads</h3>
-			</div>
-			<div class="panel-body">
-				sfsdf</a>
-			</div>
+
+<!-- <div class="row"> -->
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>${user.username}'sads</h3>
+		</div>
+		<div class="panel-body">
+			sfsdf</a>
 		</div>
 	</div>
-	
-	<div class="col-md-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3>${user.username}'s ads</h3>
-			</div>
-			<div class="panel-body">
-				sfsdf</a>
-			</div>
+</div>
+
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>${user.username}'sads</h3>
+		</div>
+		<div class="panel-body">
+			sfsdf</a>
 		</div>
 	</div>
+</div>
 
 
 <!-- <div id="masthead"> -->

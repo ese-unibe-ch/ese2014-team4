@@ -248,7 +248,7 @@
 			<label class="control-label" for="field-availableDate">Available
 				from</label>
 			<div class="controls">
-				<form:input type="date" path="availableDate"
+				<form:input type="text" path="availableDate"
 					id="field-availableDate" class="form-control" tabindex="12"
 					maxlength="35" placeholder="DD-MM-YYYY"
 					onfocus="(this.placeholder == 'DD-MM-YYYY') && (this.placeholder = '')"
@@ -256,8 +256,12 @@
 				<form:errors path="availableDate" cssClass="help-inline"
 					element="span" />
 				<br>
+				<!--if using type="date" it doesn't work in chrome because it wants to use the date-input type of html5
+				that includes a date picker	wich doesn't work in firefox with the format mm/dd/yyyy, wich does not match 
+				MM-DD-YYYY, wich is the format we specified. Result: unusable date, like 1009-07-06 or so-->
 			</div>
-							<script type="text/javascript">
+
+			<script type="text/javascript">
 					// When the document is ready
 					$(document).ready(function() {
 						$('#field-availableDate').datepicker({
@@ -316,14 +320,15 @@
 			</div>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" tabindex="13">Create	Ad</button>
+				<button type="submit" class="btn btn-primary" tabindex="13">Create
+					Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-md-3">
 		<!-- right column -->
 		<div class="panel panel-default">
@@ -332,7 +337,7 @@
 				<br>
 				<h4>Leave empty for appointments only</h4>
 			</div>
-			
+
 			<div class="panel-body">
 
 				<table id="visitTable">
@@ -343,12 +348,19 @@
 					</tr>
 
 					<tr>
-						<td><input type="date" name="visitDate[0]" id="dateInput0" size="10" tabindex="15" /></td>
+						<td><input type="text" name="visitDate[0]" id="dateInput0"
+							size="10" tabindex="15" /></td>
 						<td><input name="startTime[0]" size="4" tabindex="15" /></td>
 						<td><input name="endTime[0]" size="4" tabindex="15" /></td>
+
+						<!--if using type="date" it doesn't work in chrome because it wants to use the date-input type of html5
+				that includes a date picker	wich doesn't work in firefox with the format mm/dd/yyyy, wich does not match 
+				MM-DD-YYYY, wich is the format we specified. Result: unusable date, like 1009-07-06 or so-->
+
+
 					</tr>
 				</table>
-				
+
 				<button id="addVisit" type="button" onclick="addMore">Add
 					another visit</button>
 
@@ -357,20 +369,22 @@
 						//add more file components if Add is clicked
 						$('#addVisit').click(function() {
 							var index = document.getElementById('visitTable').rows.length-1;
-							$('#visitTable').append( '<tr><td><input type="date" name="visitDate['+index+']" id="dateInput'+index+'" size="10" tabindex="15"/></td>'
+							$('#visitTable').append( '<tr><td><input type="text" name="visitDate['+index+']" id="dateInput'+index+'" size="10" tabindex="15"/></td>'
 													+ '<td><input name="startTime['+index+']" size="4" tabindex="15"/></td>'
 													+ '<td><input name="endTime['+index+']" size="4" tabindex="15"/></td></tr>');
 						});
 					});
+					
+					
 				</script>
-				
+
 				<script type="text/javascript">
 					// When the document is ready
 					$(document).ready(function() {
 						$('#dateInput0').datepicker({ format: "dd-mm-yyyy" });
 					});
 				</script>
-				
+
 
 			</div>
 		</div>
@@ -382,7 +396,7 @@
 				<h3>Flatmates</h3>
 				<br>
 			</div>
-			
+
 			<div class="panel-body">
 
 				<c:set var="tableRow" value="0" />
@@ -395,7 +409,7 @@
 						<td><input name="flatmateList[0]" size="4" tabindex="16" /></td>
 					</tr>
 				</table>
-				
+
 				<button id="addFlatmate" type="button" onclick="addMore">Add
 					another flatmate</button>
 

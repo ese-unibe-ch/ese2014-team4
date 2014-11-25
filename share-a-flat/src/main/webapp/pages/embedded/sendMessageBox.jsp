@@ -6,41 +6,35 @@
 
 
 <script type="text/javascript">
-function addReceiverId(){
-	var receicerId = document.getElementById("field-receiverId");
 
-	
-		receiverId.value = "${adData.owner.id}";
+function addReceiverIdToMessageForm(){
+	messageForm.setReceiverId(document.getElementById("${adData.owner}"));
 }
 
 </script>
+
+
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 <h4>Send a message to ${adData.owner.username}</h4>
 
 
 <form:form method="post" modelAttribute="messageForm"
-	action="sendMessage" id="messageForm" cssClass="form-horizontal" autocomplete="off" onsubmit="addReceiverId()">
+	action="sendMessage" id="messageForm" cssClass="form-horizontal"
+	autocomplete="off" onsubmit="addReceiverIdToMessageForm()">
 
 
 	<textarea required="true" class="form-control" path="message"
 		id="field-message" style="width: 100%; height: 80px; resize: none"
-		tabindex="1" placeholder="Sorry, this feature is not yet active" disabled></textarea>
-<!-- 	<div class="form-actions"> -->
-<!-- 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button> -->
-<!-- 	</div> -->
+		tabindex="1" placeholder="sorry this feature is not in use yet"
+		disabled></textarea>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" tabindex="13"disabled>Send</button>
+
+
+	</div>
 	<br>
-	
-<!-- 	<div -->
-<!-- 			class="control-group"> -->
-<!-- 			<label class="control-label" for="receiverId">Id of receiver</label> -->
-<!-- 			<div class="controls"> -->
-<%-- 				<form:input type="text"  --%>
-<%-- 					path="receiverId" id="field-receiverId" class="form-control" --%>
-<%-- 					tabindex="2" maxlength="35" value="0"	/> --%>
-				
-<!-- 			</div> -->
-<!-- 		</div> -->
-	
+
+
 </form:form>
 
 <script type="text/javascript">
