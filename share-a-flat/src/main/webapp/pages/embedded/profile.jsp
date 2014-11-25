@@ -38,7 +38,7 @@
 		<td width="30"><p><b>Age: </b></p></td>
 		<td><p>${user.profile.age}</p></td>
 		
-		<td width="30"><p><b>Gender: </b></p></td>
+		<td width="120"><p><b>Gender: </b></p></td>
 		<td><p>${user.profile.sex}</p></td>
 	</tr>
 	
@@ -54,7 +54,7 @@
 <%-- <p><b>Phone: </b>${user.profile.phoneNumber}</p>     --%>
 <%-- <p><b>Age: </b>${user.profile.age}</p>   --%>
 <%-- <p><b>Gender: </b>${user.profile.sex}</p> --%>
-<p><b>Description: </b>${user.profile.userDescription}</p>
+<p><b>Description: </b><br>${user.profile.userDescription}</p>
 
 
 

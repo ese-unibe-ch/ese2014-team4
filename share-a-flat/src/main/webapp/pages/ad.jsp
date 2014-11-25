@@ -116,7 +116,7 @@
 
 						<tr>
 							<td width="140"><b>Size:</b></td>
-							<td>${adData.size}m<sup>2</sup></td>
+							<td>${adData.size} m<sup>2</sup></td>
 						</tr>
 
 						<tr>

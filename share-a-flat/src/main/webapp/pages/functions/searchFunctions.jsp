@@ -64,6 +64,10 @@
 </script>
 
 <script>
+$(document).ready(function() {
+	disableField();	
+});
+
 function disableField(){
 	if (document.getElementById("room").checked == true) {
 // 		disableNrOfRooms();
