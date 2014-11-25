@@ -23,7 +23,9 @@ function addId(){
 
 
 <form:form method="post" modelAttribute="messageForm"
-	action="sendMessage" id="messageForm" cssClass="form-horizontal" autocomplete="off" onsubmit="addReceiverId()">
+	action="sendMessage" id="messageForm" cssClass="form-horizontal"
+
+	autocomplete="off" onsubmit="addReceiverId()">
 
 
 	<textarea required="true" class="form-control" path="message"
