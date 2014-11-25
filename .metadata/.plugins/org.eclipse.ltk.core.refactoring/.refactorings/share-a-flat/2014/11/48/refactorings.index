@@ -9,3 +9,7 @@
 1416911148844	Encapsulate field 'messageId'
 1416912263035	Rename local variable 'messages'
 1416912274675	Rename local variable 'messages'
+1416915701402	Encapsulate field 'senderId'
+1416916565146	Copy file
+1416916605347	Delete element
+1416916611527	Copy file

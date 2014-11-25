@@ -42,7 +42,7 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
-	@Autowired
+	//@Autowired
 	MessageService messageService;
 	
 	 private ZipCityList zipCityListCh = new ZipCityList("src/main/resources/files/plz2.csv");
@@ -85,7 +85,7 @@ public class AdController {
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
     public ModelAndView sendMessage(MessageForm messageForm, BindingResult result,  Principal principal) throws Exception{
     	
-		messageService.sendMessage(messageForm, userService.getUserByUsername(principal.getName()), null);
+		messageService.sendMessage(messageForm.getMessage(), userService.getUserByUsername(principal.getName()), userService.getUser(messageForm.getReceiverId()));
 		
 		ModelAndView model = new ModelAndView("ad");  
         return null;

@@ -21,15 +21,17 @@ public class MessageForm {
 	
 
 	private Message message;
-
 	
-	private String receiverId;
+	
+	//should be added by submitting in sendMessageBox (?)
+	private long receiverId;
+	
 
-	public String getReceiverId() {
+	public long getReceiverId() {
 		return receiverId;
 	}
 
-	public void setReceiverId(String receiverId) {
+	public void setReceiverId(long receiverId) {
 		this.receiverId = receiverId;
 	}
 
@@ -41,5 +43,6 @@ public class MessageForm {
 	public void setMessage(Message aMessage) {
 		this.message = aMessage;
 	}
+
 	
 }

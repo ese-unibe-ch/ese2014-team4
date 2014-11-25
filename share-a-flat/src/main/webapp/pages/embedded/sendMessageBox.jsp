@@ -5,11 +5,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <<script type="text/javascript">
-function addId(){
-	var field = document.getElementById("field-receiverId");
+function addReceiverId(){
+	var receicerId = document.getElementById("field-receiverId");
 	
-		field.value = "${adData.owner.id}";
+		receiverId.value = "${adData.owner.id}";
 }
+
 </script>
 
 
@@ -21,7 +22,7 @@ function addId(){
 
 <form:form method="post" modelAttribute="messageForm"
 	action="sendMessage" id="messageForm" cssClass="form-horizontal"
-	autocomplete="off">
+	autocomplete="off" onsubmit="addReceiverId()">
 
 	<textarea required="true" class="form-control" path="message"
 		id="field-message" style="width: 100%; height: 121px; resize: none"
