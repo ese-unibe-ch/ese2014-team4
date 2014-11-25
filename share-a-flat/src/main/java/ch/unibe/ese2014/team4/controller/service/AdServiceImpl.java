@@ -116,7 +116,7 @@ public class AdServiceImpl implements AdService {
 
 
 	private Date convertStringToDate(AdForm adForm) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = null;
 		
 		try {	 
