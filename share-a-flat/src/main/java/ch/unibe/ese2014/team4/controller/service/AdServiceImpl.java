@@ -64,8 +64,10 @@ public class AdServiceImpl implements AdService {
 		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
+			
 			ad.setFlatmateList(adForm.getFlatmateList());
 			ad.setNrOfRooms(0);
+
 		} else {
 			ad.setType(AdType.FLAT);
 			ad.setNrOfRooms(adForm.getNrOfRooms());
@@ -105,10 +107,9 @@ public class AdServiceImpl implements AdService {
 			visit.setEndTime( adForm.getEndTime().get(i));
 			visitDao.save(visit);
 			visitList.add(visit);
-			System.out.println(visit.getDate());
+
 		}
-		System.out.println(adForm.getVisitDate().size());
-		System.out.println(visitList.size());
+
 		ad.setVisitList(visitList);
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB

@@ -43,7 +43,7 @@ public class Ad {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@IndexColumn(name="LIST_INDEX")
 	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
-	private List<User> flatmateList;
+	private List<String> flatmateList;
 	
 
 	private float nrOfRooms;
@@ -71,12 +71,15 @@ public class Ad {
 	private String description;
 
 	private int nrOfFlatMates;
-
-	public List<User> getFlatmateList() {
+	/**
+	 * 
+	 * @return list of unvalidated usernames which will be the future roommates.
+	 */
+	public List<String> getFlatmateIdList() {
 		return flatmateList;
 	}
 
-	public void setFlatmateList(List<User> flatmateList) {
+	public void setFlatmateList(List<String> flatmateList) {
 		this.flatmateList = flatmateList;
 	}
 

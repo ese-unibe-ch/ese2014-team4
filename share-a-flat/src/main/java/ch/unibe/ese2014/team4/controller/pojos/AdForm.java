@@ -38,7 +38,7 @@ public class AdForm {
     private String availableDate;
 
 	private AdType adType;
-	private List<User> flatmateList;
+	private List<String> flatmateList;
 	private float nrOfRooms;
     private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
 	private List<String> visitDate;
@@ -224,12 +224,12 @@ public class AdForm {
 	}
 
 
-	public List<User> getFlatmateList() {
+	public List<String> getFlatmateList() {
 		return flatmateList;
 	}
 
 
-	public void setFlatmateList(List<User> flatmateList) {
+	public void setFlatmateList(List<String> flatmateList) {
 		this.flatmateList = flatmateList;
 	}
 
