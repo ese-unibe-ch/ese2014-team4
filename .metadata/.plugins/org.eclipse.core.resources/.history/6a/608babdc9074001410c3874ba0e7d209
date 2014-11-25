@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+package ch.unibe.ese2014.team4.controller.service;
+
+import java.util.List;
+
+import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
+import ch.unibe.ese2014.team4.model.Message;
+import ch.unibe.ese2014.team4.model.User;
+
+/**
+ * @author Zoyela
+ *
+ */
+public class MessageServiceImpl implements MessageService{
+	
+	public void sendMessage(Message message, User sender, User receiver){
+		
+		message.setSender(sender);
+		message.setReceiver(receiver);
+		
+		List<Long> receiversInbox = receiver.getInbox();
+		receiversInbox.add(message.getMessageId());
+		receiver.setInbox(receiversInbox);
+		
+		List<Long> sendersSent = sender.getSent();
+		sendersSent.add(message.getMessageId());
+		sender.setSent(sendersSent);
+		
+	}
+
+	public void giveMessageToUser(Message message, User receiver) {
+		
+	}
+	
+
+}

@@ -20,7 +20,7 @@
 <table>
 	<tr>
 		<td width="110">
-			<p><b>Username: </b></p</td>
+			<p><b>Username: </b></p></td>
 		<td><p>${user.username}</p></td>
 	</tr>
 	

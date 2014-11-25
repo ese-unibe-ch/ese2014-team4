@@ -21,7 +21,7 @@ public class SearchForm {
     @NotNull
     private int minPrice;
     @NotNull
-    private int maxPrice = 0;
+    private int maxPrice;
     
 	@NotNull
     private String description;

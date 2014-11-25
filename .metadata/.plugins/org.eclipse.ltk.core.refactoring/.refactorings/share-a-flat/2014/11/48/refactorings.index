@@ -1,0 +1,11 @@
+1416857087290	Encapsulate field 'receiver'
+1416857091608	Encapsulate field 'sender'
+1416857095617	Encapsulate field 'aMessage'
+1416857466358	Encapsulate field 'date'
+1416858471992	Delete element
+1416858697872	Rename type 'MessageServiceImplementation'
+1416859634239	Encapsulate field 'aMessage'
+1416862279312	Rename field 'aMessage'
+1416911148844	Encapsulate field 'messageId'
+1416912263035	Rename local variable 'messages'
+1416912274675	Rename local variable 'messages'

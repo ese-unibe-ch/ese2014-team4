@@ -1,0 +1,26 @@
+package ch.unibe.ese2014.team4.model;
+
+public class Message {
+	private String aMessage;
+	private User sender;
+	private User receiver;
+	public User getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
+	}
+	public User getSender() {
+		return sender;
+	}
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+	public String getaMessage() {
+		return aMessage;
+	}
+	public void setaMessage(String aMessage) {
+		this.aMessage = aMessage;
+	}
+
+}

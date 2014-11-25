@@ -1,0 +1,6 @@
+package ch.unibe.ese2014.team4.controller.service;
+
+public interface MessageService {
+	
+
+}

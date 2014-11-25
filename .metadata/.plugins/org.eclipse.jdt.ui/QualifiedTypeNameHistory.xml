@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="ch.unibe.ese2014.team4.model.Message"/>
+<fullyQualifiedTypeName name="ch.unibe.ese2014.team4.controller.service.MessageService"/>
+<fullyQualifiedTypeName name="ch.unibe.ese2014.team4.controller.pojos.MessageForm"/>
+</qualifiedTypeNameHistroy>
