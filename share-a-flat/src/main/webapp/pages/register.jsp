@@ -20,7 +20,14 @@ div.transbox {
 	color: red
 }
 </style>
-
+<!-- focuses email field on load -->
+<script type="text/javascript">
+window.onload = function(){
+  var text_input = document.getElementById ('field-email');
+  text_input.focus ();
+  text_input.select ();
+}
+</script>
 <script type="text/javascript">                
 	function isValid() {
 		var email = document.forms["signupForm"]["field-email"].value;

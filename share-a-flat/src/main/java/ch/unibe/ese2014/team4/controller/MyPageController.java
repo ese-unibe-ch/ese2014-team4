@@ -51,6 +51,7 @@ public class MyPageController {
 			User user=userService.getUserByUsername(principal.getName());
 			model.addObject("user", user);
 			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+			model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
 		}
 		catch(InvalidUserException e){
 			

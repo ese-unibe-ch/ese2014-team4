@@ -26,11 +26,6 @@ public class TabBarController {
 	}
 
 
-	@RequestMapping(value = "/security-error", method = RequestMethod.GET)
-	public String securityError(RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("page_error",
-				"You do have have permission to do that!");
-		return "redirect:/";
-	}
+
 
 }

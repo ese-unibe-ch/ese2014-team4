@@ -247,4 +247,8 @@ public class AdServiceImpl implements AdService {
 		return list;
 	}
 
+	public List<Ad> getAdsOfUserByUser(User user) {
+		return adDao.findAllByOwner(user);
+	}
+
 }

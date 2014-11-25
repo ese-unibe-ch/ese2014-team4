@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,27 +23,28 @@ import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
-public class HomeController {
+public class AdminController {
 
 	@Autowired
 	AdService adService;
 
-
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView home(Principal principal) {
-		ModelAndView model = new ModelAndView("search");
-		model.addObject("resultType", "list");
+		ModelAndView model = new ModelAndView("admin");
+
 		
 		String username = principal.getName();
 		model.addObject("username", username);
-		
-		ArrayList<Ad> newestAdds = adService.getNewestAds();
-		model.addObject("adList", newestAdds);
 
-		model.addObject("searchForm", new SearchForm());
 		return model;
 	}
-   
+	@RequestMapping(value = "/noAccess", method = RequestMethod.GET)
+	public String securityError(RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("page_error",
+				"You do have have permission to do that!");
+		return "redirect:/";
+	}  
 
    
 }

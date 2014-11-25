@@ -1,10 +1,7 @@
 package ch.unibe.ese2014.team4.controller.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
@@ -17,7 +14,6 @@ public interface AdService {
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
 	public Ad getAd(Long id);
 	public ArrayList<Ad> getNewestAds();
-//	public List<Ad> getAdByPrice(int price);
 	public List<Ad> getAdByBrutto(int brutto);
 	public List<Ad> getAdByTitle(String title);
 	public ArrayList<Ad> getAdByCity(String city);
@@ -28,4 +24,5 @@ public interface AdService {
 	public void bookMarkAdforUser(long adId, User user);
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
+	public List<Ad> getAdsOfUserByUser(User user);
 }
