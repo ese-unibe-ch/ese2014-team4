@@ -29,7 +29,7 @@
             <div class="panel panel-default">
               <div class="panel-heading"><h3>My Profile</h3></div>
               <div class="panel-body"><c:import  url="embedded/profile.jsp" />
-              <br><br>
+              <br>
 
 			<div class="form-actions">
 	        	<a type="button" href = "${pageContext.request.contextPath}/modifyProfile" class="btn btn-primary">Modify Profile</a>
