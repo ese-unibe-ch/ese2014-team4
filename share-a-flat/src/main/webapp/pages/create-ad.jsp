@@ -74,10 +74,6 @@
 			</div>
 		</div>
 
-		<!-- 
-			<c:if test="${adType eq 'ROOM'}">
-			asdfasdf
-			</c:if> -->
 
 		<div class="col-md-9" style="padding-left: 0px; padding-right: 3px">
 			<c:set var="streetErrors">
@@ -339,7 +335,6 @@
 			
 			<div class="panel-body">
 
-				<c:set var="tableRow" value="0" />
 				<table id="visitTable">
 					<tr>
 						<th>Date</th>
@@ -361,8 +356,8 @@
 					$(document).ready(function() {
 						//add more file components if Add is clicked
 						$('#addVisit').click(function() {
-							var index = $('#fileTable tr').children().length - 1;
-							$('#visitTable').append( '<tr><td><input type="date" name="visitDate['+index+']" id="dateInput0" size="10" tabindex="15"/></td>'
+							var index = document.getElementById('visitTable').rows.length-1;
+							$('#visitTable').append( '<tr><td><input type="date" name="visitDate['+index+']" id="dateInput'+index+'" size="10" tabindex="15"/></td>'
 													+ '<td><input name="startTime['+index+']" size="4" tabindex="15"/></td>'
 													+ '<td><input name="endTime['+index+']" size="4" tabindex="15"/></td></tr>');
 						});
@@ -375,11 +370,47 @@
 						$('#dateInput0').datepicker({ format: "dd-mm-yyyy" });
 					});
 				</script>
+				
 
 			</div>
 		</div>
 	</div>
+	<div class="col-md-3">
+		<!-- right column -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Flatmates</h3>
+				<br>
+			</div>
+			
+			<div class="panel-body">
 
+				<c:set var="tableRow" value="0" />
+				<table id="visitTable">
+					<tr>
+						<th>Name</th>
+
+					</tr>
+					<tr>
+						<td><input name="flatmateList[0]" size="4" tabindex="16" /></td>
+					</tr>
+				</table>
+				
+				<button id="addFlatmate" type="button" onclick="addMore">Add
+					another flatmate</button>
+
+				<script>
+					$(document).ready(function() {
+						//add more file components if Add is clicked
+						$('#addFlatmate').click(function() {
+							var index = document.getElementById('flatmateTable').rows.length-1;
+							$('#flatmateTable').append( '<tr><td><input name="flatmateList['+index+']" size="4" tabindex="16" /></td></tr>');
+						});
+					});
+				</script>
+			</div>
+		</div>
+	</div>
 </form:form>
 
 <script type="text/javascript">

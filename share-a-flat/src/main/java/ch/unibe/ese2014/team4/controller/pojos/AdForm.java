@@ -27,7 +27,6 @@ public class AdForm {
 	private String title;
 	private int size;
     @NotNull
-//    private int price;
     private int netto;
     private int charges;
     private int brutto;
@@ -39,7 +38,7 @@ public class AdForm {
     private String availableDate;
 
 	private AdType adType;
-//	private List<User> FlatMates;
+	private List<User> flatmateList;
 	private float nrOfRooms;
     private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
 	private List<String> visitDate;
@@ -101,13 +100,7 @@ public class AdForm {
 		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
-//	public int getPrice() {
-//		return price;
-//	}
-//
-//	public void setPrice(int price) {
-//		this.price = price;
-//	}
+
 	
     public int getNetto() {
 		return netto;
@@ -205,13 +198,6 @@ public class AdForm {
 		this.adType = type;
 	}
 
-//	public List<User> getFlatMates() {
-//		return FlatMates;
-//	}
-//
-//	public void setFlatMates(List<User> FlatMates) {
-//		this.FlatMates = FlatMates;
-//	}
 
 	public float getNrOfRooms() {
 		return nrOfRooms;
@@ -235,6 +221,16 @@ public class AdForm {
 		String rest = tmp.substring(1, tmp.length()).toLowerCase();
 		tmp = firstChar.concat(rest);
 		return tmp;
+	}
+
+
+	public List<User> getFlatmateList() {
+		return flatmateList;
+	}
+
+
+	public void setFlatmateList(List<User> flatmateList) {
+		this.flatmateList = flatmateList;
 	}
 
     
