@@ -40,8 +40,12 @@ public class Ad {
 
 	private AdType type;
 
-	// @OneToMany(targetEntity=User.class)
-	// private List<User> FlatMate;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@IndexColumn(name="LIST_INDEX")
+	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
+	private List<User> flatmateList;
+	
+
 	private float nrOfRooms;
 	
 	@Lob 
@@ -57,17 +61,9 @@ public class Ad {
 	
 	private Date creationDate = new Date();
 
-	public List<Visit> getVisitList() {
-		return visitList;
-	}
-
-	public void setVisitList(List<Visit> visitList) {
-		this.visitList = visitList;
-	}
 
 	private String title;
 	private int size;
-//	private int price;
 	private int netto;
 	private int charges;
 	private int brutto;
@@ -76,7 +72,21 @@ public class Ad {
 
 	private int nrOfFlatMates;
 
+	public List<User> getFlatmateList() {
+		return flatmateList;
+	}
 
+	public void setFlatmateList(List<User> flatmateList) {
+		this.flatmateList = flatmateList;
+	}
+
+	public List<Visit> getVisitList() {
+		return visitList;
+	}
+
+	public void setVisitList(List<Visit> visitList) {
+		this.visitList = visitList;
+	}
 	public void setBytePictureList(List<byte[]> bytePictureList) {
 		this.bytePictureList = bytePictureList;
 	}

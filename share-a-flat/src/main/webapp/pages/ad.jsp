@@ -5,21 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
-<!-- special css for thumbnail view -->
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-#map-canvas {
-	width: 350px;
-	height: 230px;
-}
-</style>
-</head>
-</html>
+
 
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -124,10 +111,7 @@
 							<td>${adData.nrOfRooms}</td>
 						</tr>
 
-						<tr>
-							<td width="140"><b>Nr of Roommates:</b></td>
-							<td>${adData.nrOfFlatMates}</td>							
-						</tr>
+
 
 						<tr>
 							<td width="140"><b>Available from:</b></td>
@@ -137,7 +121,30 @@
 					</table>
 					<hr>
 
+					<c:if test="${adData.nrOfFlatMates != '0'}">
+					<table>
+						<tr><td>
+							<h4>
+								<b>Flatmates</b>
+							</h4>
+						</td></tr>
 
+						<tr>
+							<td width="140"><b>Nr of Flatmates:</b></td>
+							<td>${adData.nrOfFlatMates}</td>							
+						</tr>
+						
+						<c:forEach items="${flatmateList}" var="flatmate">
+						<tr>
+							<td><a href="${pageContext.request.contextPath}/profile?userId=${flatmateList.flatmate.id}">${flatmateList.flatmate.username}</a></td>
+
+						</tr>
+						</c:forEach>
+						
+
+
+					</table><hr>
+					</c:if>
 					<table>
 						<tr>
 							<h4>
@@ -159,7 +166,7 @@
 							<td width="140"><b>Brutto-Price:</b></td>
 							<td>CHF ${adData.brutto}.--</td>
 						</tr>
-					</table>
+					</table>				
 				</div>
 			</div>
 		</div>
