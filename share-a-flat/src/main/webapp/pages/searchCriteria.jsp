@@ -18,7 +18,8 @@
 
 
 	<form:form enctype="multipart/form-data" method="post"
-		modelAttribute="searchForm" action="submitSearch?resultType=${resultType}"
+		modelAttribute="searchForm"
+		action="submitSearch?resultType=${resultType}"
 		onSubmit="return checkSearchInput()" id="searchForm"
 		cssClass="form-horizontal" autocomplete="off">
 		<fieldset>
@@ -33,8 +34,9 @@
 					onclick="disableField()">
 					<label class="control-label" for="field-adType">Type</label>
 					<div class="radio">
-						<label><form:radiobutton path="adType" id="room" tabindex="1" value="ROOM" checked="true" />Room</label> 
-						<label><form:radiobutton path="adType" id="flat" tabindex="2" value="FLAT" />Flat</label>
+						<label><form:radiobutton path="adType" id="room"
+								tabindex="1" value="ROOM" checked="true" />Room</label> <label><form:radiobutton
+								path="adType" id="flat" tabindex="2" value="FLAT" />Flat</label>
 					</div>
 				</div>
 
@@ -67,8 +69,9 @@
 						class="control-group<c:if test="${not empty minPriceErrors}"> error</c:if>">
 						<label class="control-label" for="field-minPrice">Min-Price</label>
 						<div class="controls">
-							<form:input type="number" min="0" max="10000" step="1" class="form-control" path="minPrice"
-								id="field-minPrice" tabindex="4" maxlength="35" value="0"
+							<form:input type="number" min="0" max="10000" step="1"
+								class="form-control" path="minPrice" id="field-minPrice"
+								tabindex="4" maxlength="35" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="minPrice" cssClass="help-inline"
@@ -87,8 +90,9 @@
 						class="control-group<c:if test="${not empty maxPriceErrors}"> error</c:if>">
 						<label class="control-label" for="field-maxPrice">Max-Price</label>
 						<div class="controls">
-							<form:input type="number" min="0" max="10000" step="1" class="form-control" path="maxPrice"
-								id="field-maxPrice" tabindex="5" maxlength="35" value="0"
+							<form:input type="number" min="0" max="10000" step="1"
+								class="form-control" path="maxPrice" id="field-maxPrice"
+								tabindex="5" maxlength="35" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="maxPrice" cssClass="help-inline"
@@ -102,11 +106,13 @@
 				</c:set>
 				<div
 					class="control-group<c:if test="${not empty nrOfRoomsErrors}">error</c:if>">
-					<label class="control-label" for="field-nrOfRooms">Number of Rooms </label>
+					<label class="control-label" for="field-nrOfRooms">Number
+						of Rooms </label>
 					<div class="controls">
 
-						<form:input type="number" min="0" max="100" step="0.5" class="form-control" path="nrOfRooms"
-							id="field-nrOfRooms" tabindex="6" maxlength="35" value="0"
+						<form:input type="number" min="0" max="100" step="0.5"
+							class="form-control" path="nrOfRooms" id="field-nrOfRooms"
+							tabindex="6" maxlength="35" value="0"
 							onfocus="(this.value == '0') && (this.value = '')"
 							onblur="(this.value == '') && (this.value = '0')" />
 						<form:errors path="nrOfRooms" cssClass="help-inline"
@@ -120,11 +126,13 @@
 				</c:set>
 				<div
 					class="control-group<c:if test="${not empty nrOfFlatMatesErrors}"> error</c:if>">
-					<label class="control-label" for="field-nrOfFlatMates">Number of Room Mates</label>
+					<label class="control-label" for="field-nrOfFlatMates">Number
+						of Room Mates</label>
 					<div class="controls">
-						<form:input type="number" min="0" max="100" step="1" class="form-control" path="nrOfFlatMates"
-							id="field-nrOfFlatMates" tabindex="7" maxlength="35" placeholder="number of room mates"
-							 />
+						<form:input type="number" min="0" max="100" step="1"
+							class="form-control" path="nrOfFlatMates"
+							id="field-nrOfFlatMates" tabindex="7" maxlength="35"
+							placeholder="number of room mates" />
 						<form:errors path="nrOfFlatMates" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -139,8 +147,7 @@
 						Date:</label>
 					<div class="controls">
 						<form:input type="date" class="form-control" path="availableDate"
-							id="field-availableDate" tabindex="8"
-							/>
+							id="field-availableDate" tabindex="8" />
 						<form:errors path="availableDate" cssClass="help-inline"
 							element="span" />
 						<br>

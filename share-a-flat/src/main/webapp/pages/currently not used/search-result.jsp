@@ -12,38 +12,39 @@
 
 
 <ul>
-	<li class="map"><a href="search-map" class="inactive"><span>Search Map</span></a></li>
+	<li class="map"><a href="search-map" class="inactive"><span>Search
+				Map</span></a></li>
 </ul>
 
 <div class="row">
 	<div class="col-md-4">
- 		<div class="panel panel-default">
- 		
+		<div class="panel panel-default">
+
 			<div class="panel-heading">
 				<h3>Search-Criteria</h3>
 			</div>
-			
+
 			<div class="panel-body">
 				<c:import url="search-criteria.jsp" />
 			</div>
-			
- 		</div>
+
+		</div>
 	</div>
 
 	<div class="col-md-8">
-  		<div class="panel panel-default">
-    		
-    		<div class="panel-heading">
-    			<h3>Results</h3>
-    		</div>
-    		
-    		<div class="panel-body">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h3>Results</h3>
+			</div>
+
+			<div class="panel-body">
 				<c:import url="resultsTable.jsp" />
-    		</div>
-    		
-  		</div>
-	</div>  
-</div> 
+			</div>
+
+		</div>
+	</div>
+</div>
 
 
 

@@ -1,18 +1,19 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
 <head>
-    <style>
-      #map_canvas {
-        width: 500px;
-        height: 400px;
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>	$(document).ready(function() {
+<style>
+#map_canvas {
+	width: 500px;
+	height: 400px;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>	$(document).ready(function() {
 
 	
       function initialize() {
@@ -38,18 +39,20 @@
     });
 
     </script>
-  </head>
+</head>
 
 <h1>Search Map</h1>
 
-        <!-- Auswahlreiter -->
-        <ul>
-  		<li class="buton"><a href="search-list" class="inactive">
-                <span><!--  <img src="/neutral/images/homegate/icon_tab_list_active.gif" />-->Search List</span></a></li>
-		</ul>
+<!-- Auswahlreiter -->
+<ul>
+	<li class="buton"><a href="search-list" class="inactive"> <span>
+				<!--  <img src="/neutral/images/homegate/icon_tab_list_active.gif" />-->Search
+				List
+		</span></a></li>
+</ul>
 
-  <body>
-    <div id="map_canvas"></div>
-  </body>
+<body>
+	<div id="map_canvas"></div>
+</body>
 
 

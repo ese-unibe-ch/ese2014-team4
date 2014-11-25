@@ -5,24 +5,24 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!-- special css for thumbnail view -->
- <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    
-   <!DOCTYPE html>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      #map-canvas {
-        width: 350px;
-        height: 250px;
-      }
-    </style>
-  </head> 
+<head>
+<style>
+#map-canvas {
+	width: 350px;
+	height: 250px;
+}
+</style>
+</head>
 </html>
 
-    				
-	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
 var geocoder;
 var map;
 function initialize() {
@@ -66,7 +66,4 @@ function placeAddresses(value, id){
 
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-   <body onload="codeAddress()">
-
- 
-
+<body onload="codeAddress()">

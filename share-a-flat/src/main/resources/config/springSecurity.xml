@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:security="http://www.springframework.org/schema/security"
 	xmlns:oauth="http://www.springframework.org/schema/security/oauth"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -10,44 +9,58 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 
-	<security:global-method-security pre-post-annotations="enabled" />
-	
+	<security:global-method-security
+		pre-post-annotations="enabled" />
 
-	<security:http pattern="/css/**" security="none" /> 
-	<security:http pattern="/img/**" security="none" />  
 
-	<security:http auto-config="false" use-expressions="true" access-denied-page="/?access-denied">
-		<security:session-management invalid-session-url="/?time=1">
-            <security:concurrency-control max-sessions="1" expired-url="/?time=1" />
-        </security:session-management>
-		
-		
-		<!-- css and img folder not protected, / and /register can be accessed when not logged in -->	
-   
+	<security:http pattern="/css/**" security="none" />
+	<security:http pattern="/img/**" security="none" />
+
+	<security:http auto-config="false" use-expressions="true"
+		access-denied-page="/?access-denied">
+		<security:session-management
+			invalid-session-url="/?time=1">
+			<security:concurrency-control
+				max-sessions="1" expired-url="/?time=1" />
+		</security:session-management>
+
+
+		<!-- css and img folder not protected, / and /register can be accessed 
+			when not logged in -->
+
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/register" access="permitAll" />	
-		<security:intercept-url pattern="/createAccount" access="permitAll" />	
-	   	<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-	   	
-	   		
-		<!-- login-page: the page spring sec hijacks, leading you to login-processing-url -->
-		<security:form-login login-page="/" login-processing-url="/letMeIn!" default-target-url="/home" always-use-default-target="true" authentication-failure-url="/?err=1" username-parameter="j_username" password-parameter="j_password" />
- 
-        <security:logout logout-url="/logout" logout-success-url="/login?out=1" delete-cookies="JSESSIONID" invalidate-session="true" />
+		<security:intercept-url pattern="/register"
+			access="permitAll" />
+		<security:intercept-url pattern="/createAccount"
+			access="permitAll" />
+		<security:intercept-url pattern="/**"
+			access="hasRole('ROLE_USER')" />
 
-	    
-	
+
+		<!-- login-page: the page spring sec hijacks, leading you to login-processing-url -->
+		<security:form-login login-page="/"
+			login-processing-url="/letMeIn!" default-target-url="/home"
+			always-use-default-target="true" authentication-failure-url="/?err=1"
+			username-parameter="j_username" password-parameter="j_password" />
+
+		<security:logout logout-url="/logout"
+			logout-success-url="/login?out=1" delete-cookies="JSESSIONID"
+			invalidate-session="true" />
+
+
+
 	</security:http>
 
 
 
-	<bean id="LoginService" class="ch.unibe.ese2014.team4.controller.service.LoginService"/>
+	<bean id="LoginService" class="ch.unibe.ese2014.team4.controller.service.LoginService" />
 	<security:authentication-manager>
-		<security:authentication-provider user-service-ref="LoginService">
-    		<security:password-encoder hash="sha" />
+		<security:authentication-provider
+			user-service-ref="LoginService">
+			<security:password-encoder hash="sha" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
-	
+
 
 </beans>

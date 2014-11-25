@@ -17,13 +17,14 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Visit;
 
 
+
 public class MessageForm {
 	
 
 	private Message message;
 	
 	
-	//should be added by submitting in sendMessageBox (?)
+	//should be added by submitting in sendMessageBox
 	private long receiverId;
 	
 

@@ -20,33 +20,44 @@
 <table>
 	<tr>
 		<td width="110">
-			<p><b>Username: </b></p></td>
+			<p>
+				<b>Username: </b>
+			</p>
+		</td>
 		<td><p>${user.username}</p></td>
 	</tr>
-	
+
 	<tr>
-		<td><p><b>Email: </b></p></td>
+		<td><p>
+				<b>Email: </b>
+			</p></td>
 		<td><p>${user.email}</p></td>
 	</tr>
-	
+
 	<tr>
-		<td><p><b>Phone: </b></p></td>
+		<td><p>
+				<b>Phone: </b>
+			</p></td>
 		<td><p>${user.profile.phoneNumber}</p></td>
 	</tr>
-	
+
 	<tr>
-		<td width="30"><p><b>Age: </b></p></td>
+		<td width="30"><p>
+				<b>Age: </b>
+			</p></td>
 		<td><p>${user.profile.age}</p></td>
-		
-		<td width="120"><p><b>Gender: </b></p></td>
+
+		<td width="120"><p>
+				<b>Gender: </b>
+			</p></td>
 		<td><p>${user.profile.sex}</p></td>
 	</tr>
-	
-<!-- 	<tr> -->
-<!-- 	<p><b>Description: </b></p> -->
-<%-- 	<p>${user.profile.userDescription}</p> --%>
-<!-- 	</tr> -->
-	
+
+	<!-- 	<tr> -->
+	<!-- 	<p><b>Description: </b></p> -->
+	<%-- 	<p>${user.profile.userDescription}</p> --%>
+	<!-- 	</tr> -->
+
 </table>
 
 <%-- <p><b>Username: </b>${user.username}</p>  --%>
@@ -54,7 +65,8 @@
 <%-- <p><b>Phone: </b>${user.profile.phoneNumber}</p>     --%>
 <%-- <p><b>Age: </b>${user.profile.age}</p>   --%>
 <%-- <p><b>Gender: </b>${user.profile.sex}</p> --%>
-<p><b>Description: </b><br>${user.profile.userDescription}</p>
+<p>
+	<b>Description: </b><br>${user.profile.userDescription}</p>
 
 
 

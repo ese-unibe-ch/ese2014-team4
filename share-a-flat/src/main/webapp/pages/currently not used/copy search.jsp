@@ -13,7 +13,8 @@
 
 
 <h1>Search List</h1>
-              <div class="panel-body"><a href="getMap" class="inactive"><span>see on map</span></a>
+<div class="panel-body">
+	<a href="getMap" class="inactive"><span>see on map</span></a>
 
 </div>
 <!-- Auswahlreiter -->
@@ -21,8 +22,10 @@
 
 
 <ul>
-	<li class="map"><a href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise>
-			</c:choose>" class="inactive"><span>Search Map</span></a></li>
+	<li class="map"><a
+		href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise>
+			</c:choose>"
+		class="inactive"><span>Search Map</span></a></li>
 </ul>
 
 
@@ -30,38 +33,38 @@
 
 <div class="row">
 	<div class="col-md-4">
- 		<div class="panel panel-default">
- 		
+		<div class="panel panel-default">
+
 			<div class="panel-heading">
 				<h3>Search-Criteria</h3>
 			</div>
-			
+
 			<div class="panel-body">
 				<c:import url="searchCriteria.jsp" />
 			</div>
-			
- 		</div>
+
+		</div>
 	</div>
 
 	<div class="col-md-8">
-  		<div class="panel panel-default">
-    		
-    		<div class="panel-heading">
-    			<h3>${whatToDisplay}</h3>
-    		</div>
-    		
-    		<div class="panel-body">
-    			<c:if test="${resultType eq 'list'}">
-				<c:import url="searchResultsList.jsp" />
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h3>${whatToDisplay}</h3>
+			</div>
+
+			<div class="panel-body">
+				<c:if test="${resultType eq 'list'}">
+					<c:import url="searchResultsList.jsp" />
 				</c:if>
 				<c:if test=" ${resultType eq 'map'}">
-				<c:import url="searchResultsMapLocation.jsp" />
+					<c:import url="searchResultsMapLocation.jsp" />
 				</c:if>
-    		</div>
-    		
-  		</div>
-	</div>  
-</div> 
+			</div>
+
+		</div>
+	</div>
+</div>
 
 
 <c:import url="template/footer.jsp" />

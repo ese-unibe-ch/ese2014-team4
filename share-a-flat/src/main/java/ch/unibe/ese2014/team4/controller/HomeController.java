@@ -38,7 +38,7 @@ public class HomeController {
 		
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
-		model.addObject("whatToDisplay", "Newest Ads");
+
 		model.addObject("searchForm", new SearchForm());
 		return model;
 	}

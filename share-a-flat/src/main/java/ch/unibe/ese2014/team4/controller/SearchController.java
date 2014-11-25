@@ -42,6 +42,7 @@ public class SearchController {
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		model.addObject("resultType", resultType);
+		model.addObject("whatToDisplay", "Newest Ads");
 		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
 		model.addObject("addresses", addresses);
 		return model;
