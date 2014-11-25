@@ -180,11 +180,11 @@
 				Rooms (whole flat)</label>
 
 			<div class="controls">
-				<form:input type="number" min="0" max="100" step="1"
+				<form:input type="number" min="0" max="100" step="0.5"
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
 					tabindex="9" maxlength="45" value="0"
 					onfocus="(this.value == '0') && (this.value = '')"
-					onblur="(this.value == '') && (this.value = '0')" disabled="true" />
+					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>
@@ -243,6 +243,7 @@
 			</div>
 		</div>
 
+
 		<c:set var="availableDateErrors">
 			<form:errors path="availableDate" />
 		</c:set>
@@ -289,20 +290,14 @@
 			<!--  needs to be placed within <form:form></form:form> -->
 
 			<script>
-				$(document)
-						.ready(
-								function() {
-									//add more file components if Add is clicked
-									$('#addFile')
-											.click(
-													function() {
-														$('#fileTable')
-																.append(
-																		'<tr><td>'
-																				+ '<form:input path="uploadedAdPictures" type="file"/>'
-																				+ '</td></tr>');
-													});
-								});
+				$(document).ready(function() {
+					//add more file components if Add is clicked
+					$('#addFile').click(function() {
+						$('#fileTable').append('<tr><td>'
+												+ '<form:input path="uploadedAdPictures" type="file"/>'
+												+ '</td></tr>');
+					});
+				});
 			</script>
 
 			<c:set var="descriptionErrors">
@@ -325,15 +320,14 @@
 			</div>
 
 			<div class="form-actions">
-				<button type="submit" class="btn btn-primary" tabindex="13"
-					>Create
-					Ad</button>
+				<button type="submit" class="btn btn-primary" tabindex="13">Create	Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-md-3">
 		<!-- right column -->
 		<div class="panel panel-default">
@@ -342,6 +336,7 @@
 				<br>
 				<h4>Leave empty for appointments only</h4>
 			</div>
+			
 			<div class="panel-body">
 
 				<c:set var="tableRow" value="0" />
@@ -350,59 +345,40 @@
 						<th>Date</th>
 						<th>from</th>
 						<th>to</th>
-
 					</tr>
 
 					<tr>
-
-						<td><input name="visitDate[0]" id="dateInput0" size="4"
-							tabindex="15" /></td>
+						<td><input type="date" name="visitDate[0]" id="dateInput0" size="10" tabindex="15" /></td>
 						<td><input name="startTime[0]" size="4" tabindex="15" /></td>
 						<td><input name="endTime[0]" size="4" tabindex="15" /></td>
 					</tr>
-
-
-
 				</table>
+				
 				<button id="addVisit" type="button" onclick="addMore">Add
 					another visit</button>
 
 				<script>
-					$(document)
-							.ready(
-									function() {
-										//add more file components if Add is clicked
-										$('#addVisit')
-												.click(
-														function() {
-															var index = $(
-																	'#fileTable tr')
-																	.children().length - 1;
-															$('#visitTable')
-																	.append( 
-																			'<tr><td><input name= "visitDate['+index+']" id="dateInput0" size="4" tabindex="15"/></td>'
-																					+ '<td><input name= "startTime['+index+']" size="4" tabindex="15"/></td>'
-																					+ '<td><input name="endTime['+index+']" size="4" tabindex="15"/></td></tr>');
-														});
-									});
-				</script>
-				<script type="text/javascript">
-					// When the document is ready
 					$(document).ready(function() {
-						$('#dateInput0').datepicker({
-							format: "dd-mm-yyyy"
-
+						//add more file components if Add is clicked
+						$('#addVisit').click(function() {
+							var index = $('#fileTable tr').children().length - 1;
+							$('#visitTable').append( '<tr><td><input type="date" name="visitDate['+index+']" id="dateInput0" size="10" tabindex="15"/></td>'
+													+ '<td><input name="startTime['+index+']" size="4" tabindex="15"/></td>'
+													+ '<td><input name="endTime['+index+']" size="4" tabindex="15"/></td></tr>');
 						});
 					});
 				</script>
-
-
-
+				
+				<script type="text/javascript">
+					// When the document is ready
+					$(document).ready(function() {
+						$('#dateInput0').datepicker({ format: "dd-mm-yyyy" });
+					});
+				</script>
 
 			</div>
 		</div>
 	</div>
-
 
 </form:form>
 
@@ -410,6 +386,7 @@
 	var zip = document.getElementById("field-zipCode");
 	zip.addEventListener("blur", zipToCity, false);
 </script>
+
 
 <div class="form-group" id="sandbox-container">
 	<div id="cal" data-date="12/03/2012"></div>
@@ -423,7 +400,6 @@
 	// When the document is ready
 	$(document).ready(function() {
 		$('#cal').datepicker({
-
 		});
 	});
 </script>

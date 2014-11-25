@@ -42,7 +42,7 @@ public class Ad {
 
 	// @OneToMany(targetEntity=User.class)
 	// private List<User> FlatMate;
-	private int nrOfRooms;
+	private float nrOfRooms;
 	
 	@Lob 
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -93,11 +93,11 @@ public class Ad {
 		this.type = type;
 	}
 
-	public int getNrOfRooms() {
+	public float getNrOfRooms() {
 		return nrOfRooms;
 	}
 
-	public void setNrOfRooms(int nrOfRooms) {
+	public void setNrOfRooms(float nrOfRooms) {
 		this.nrOfRooms = nrOfRooms;
 	}
 

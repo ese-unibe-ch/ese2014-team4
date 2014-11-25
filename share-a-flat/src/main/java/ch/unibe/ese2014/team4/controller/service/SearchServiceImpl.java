@@ -77,7 +77,7 @@ public class SearchServiceImpl implements SearchService {
 			checkNrFlatMates(adsToSort);
 		}
 
-		if (searchForm.getNrOfRooms() != 0) {
+		if (searchForm.getNrOfRooms() > 0) {
 			checkNrRooms(adsToSort);
 		}
 
@@ -159,7 +159,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getNrOfRooms() != ad.getNrOfRooms())
+			if (searchForm.getNrOfRooms() > ad.getNrOfRooms())
 				adsToSort.remove(ad);
 		}
 	}

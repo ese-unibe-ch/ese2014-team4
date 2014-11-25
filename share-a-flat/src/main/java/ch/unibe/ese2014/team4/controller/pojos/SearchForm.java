@@ -27,7 +27,7 @@ public class SearchForm {
     private String description;
     private String title;
     private int nrOfFlatMates;
-    private int nrOfRooms;
+    private float nrOfRooms;
     private AdType adType;
     
     private String availableDate;
@@ -40,11 +40,11 @@ public class SearchForm {
     private String cityOrZip;
     private String street;
     
-    public int getNrOfRooms() {
+    public float getNrOfRooms() {
 		return nrOfRooms;
 	}
 
-	public void setNrOfRooms(int nrOfRooms) {
+	public void setNrOfRooms(float nrOfRooms) {
 		this.nrOfRooms = nrOfRooms;
 	}
     

@@ -19,9 +19,10 @@ import ch.unibe.ese2014.team4.model.Visit;
 
 public class MessageForm {
 	
-
+<<<<<<< HEAD
 	private Message message;
-
+=======
+	private String message;
 	
 	private String receiverId;
 
@@ -32,7 +33,7 @@ public class MessageForm {
 	public void setReceiverId(String receiverId) {
 		this.receiverId = receiverId;
 	}
-
+>>>>>>> 6589e1ff95fc980e42bf7547a939f74c95babe6a
 
 	public Message getMessage() {
 		return message;

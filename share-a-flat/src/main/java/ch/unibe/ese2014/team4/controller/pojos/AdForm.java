@@ -40,7 +40,7 @@ public class AdForm {
 
 	private AdType adType;
 //	private List<User> FlatMates;
-	private int nrOfRooms;
+	private float nrOfRooms;
     private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
 	private List<String> visitDate;
     private List<String> startTime;
@@ -213,11 +213,11 @@ public class AdForm {
 //		this.FlatMates = FlatMates;
 //	}
 
-	public int getNrOfRooms() {
+	public float getNrOfRooms() {
 		return nrOfRooms;
 	}
 
-	public void setNrOfRooms(int nrOfRooms) {
+	public void setNrOfRooms(float nrOfRooms) {
 		this.nrOfRooms = nrOfRooms;
 	}
 
