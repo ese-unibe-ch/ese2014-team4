@@ -12,32 +12,37 @@ import javax.validation.constraints.Pattern;
 import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.model.Address;
+import ch.unibe.ese2014.team4.model.Message;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Visit;
 
 
 public class MessageForm {
 	
-	private String message;
-	
-	private String receiverId;
 
-	public String getReceiverId() {
+	private Message message;
+	
+	
+	//should be added by submitting in sendMessageBox (?)
+	private long receiverId;
+	
+
+	public long getReceiverId() {
 		return receiverId;
 	}
 
-	public void setReceiverId(String receiverId) {
+	public void setReceiverId(long receiverId) {
 		this.receiverId = receiverId;
 	}
 
-	public String getMessage() {
+
+	public Message getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMessage(Message aMessage) {
+		this.message = aMessage;
 	}
-	
-	
 
+	
 }

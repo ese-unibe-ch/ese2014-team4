@@ -40,6 +40,7 @@ public class User implements UserDetails {
      * password is saved as a sha-digested hex-string.
      */
     private String password;
+    
     private Sex sex;
     private String age;
     private String phoneNumber;
@@ -60,12 +61,28 @@ public class User implements UserDetails {
 	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
 	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 	
-    public List<Long> getBookmarks() {
-		return bookmarks;
+	 public List<Long> getBookmarks() {
+			return bookmarks;
 	}
+	 
 	public void setBookmarks(List<Long> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
+	
+	
+	@Lob 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "inbox", joinColumns = @JoinColumn(name = "user_id"))
+	public List<Long> inbox = new ArrayList<Long>();
+	
+	@Lob 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "sent", joinColumns = @JoinColumn(name = "user_id"))
+	public List<Long> sent = new ArrayList<Long>();
+	
+    
 	public User(){
     	this.profile = new Profile();
     	this.authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
@@ -169,6 +186,25 @@ public class User implements UserDetails {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public List<Long> getInbox() {
+		return inbox;
+	}
+
+	public void setInbox(List<Long> inbox) {
+		this.inbox = inbox;
+	}
+
+	public List<Long> getSent() {
+		return sent;
+	}
+
+	public void setSent(List<Long> sent) {
+		this.sent = sent;
+	}
+
+
+
 
 
 }

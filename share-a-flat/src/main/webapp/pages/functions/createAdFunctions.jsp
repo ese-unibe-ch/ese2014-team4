@@ -139,10 +139,15 @@
 		var zipFromObj = parseInt("${item.zip}");	
 		if (zipFromObj == zip.value) {
 			field.value = "${item.city}";
-		}
+			field.disabled =true;
+		}		
 		</c:forEach>
-
-		return true;
-	}
+		
+		if (field.value == ""){					
+			field.value = "no city found";
+			zip.value = "";
+			zip.focus();
+		}
+		return true;	}
 </script>
 

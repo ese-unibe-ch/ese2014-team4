@@ -17,6 +17,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.controller.service.MessageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.MapAddress;
@@ -40,6 +41,9 @@ public class AdController {
 	
 	@Autowired
 	AdService adService;
+	
+	//@Autowired
+	MessageService messageService;
 	
 	 private ZipCityList zipCityListCh = new ZipCityList("src/main/resources/files/plz2.csv");
 	 private ArrayList<ZipCity> zipCityAsArray = zipCityListCh.getZipCityAsArrayList();
@@ -72,9 +76,18 @@ public class AdController {
         return showAd(adForm.getId());
     }	
 	
+	
+	/**
+	 * Controls submission of the message.
+	 * 
+	 * 
+	 */
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
     public ModelAndView sendMessage(MessageForm messageForm, BindingResult result,  Principal principal) throws Exception{
-    	ModelAndView model = new ModelAndView("ad");  
+    	
+		messageService.sendMessage(messageForm.getMessage(), userService.getUserByUsername(principal.getName()), userService.getUser(messageForm.getReceiverId()));
+		
+		ModelAndView model = new ModelAndView("ad");  
         return null;
     }	
 	

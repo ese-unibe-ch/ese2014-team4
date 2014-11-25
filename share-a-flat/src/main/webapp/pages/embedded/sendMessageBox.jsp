@@ -4,31 +4,34 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<<<<<<< HEAD
 <<script type="text/javascript">
+function addReceiverId(){
+	var receicerId = document.getElementById("field-receiverId");
+=======
+<script type="text/javascript">
 function addId(){
 	var field = document.getElementById("field-receiverId");
+>>>>>>> 3b448d0a9fa8424aeef957e9a6289c15ac538bfc
 	
-		field.value = "${adData.owner.id}";
+		receiverId.value = "${adData.owner.id}";
 }
+
 </script>
-
-
 <!-- only used as imported part of other pages, therefore no header / footer. -->
-
-
 <h4>Send a message to ${adData.owner.username}</h4>
 
 
 <form:form method="post" modelAttribute="messageForm"
-	action="sendMessage" id="messageForm" cssClass="form-horizontal"
-	autocomplete="off">
+	action="sendMessage" id="messageForm" cssClass="form-horizontal" autocomplete="off" onsubmit="addReceiverId()">
+
 
 	<textarea required="true" class="form-control" path="message"
-		id="field-message" style="width: 100%; height: 121px; resize: none"
-		tabindex="1" placeholder="Message"></textarea>
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>
-	</div>
+		id="field-message" style="width: 100%; height: 80px; resize: none"
+		tabindex="1" placeholder="Sorry, this feature is not yet active" disabled></textarea>
+<!-- 	<div class="form-actions"> -->
+<!-- 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button> -->
+<!-- 	</div> -->
 	<br>
 	
 <!-- 	<div -->

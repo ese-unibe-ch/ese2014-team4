@@ -17,10 +17,10 @@
 </div><!--/masthead-->
 
 <div class="row">
-          <div class="col-md-2">
+           <div class="col-md-2">
             <div class="panel panel-default">
-              <div class="panel-heading"><h3>Options</h3></div>
-              <div class="panel-body"><a href="createAd" class="inactive"><span>Create Ad</span></a>
+              <div class="panel-heading"><h3>My Messages</h3></div>
+              <div class="panel-body"><c:import  url="embedded/messages.jsp" />
               </div>
             </div>
           </div>
@@ -49,6 +49,8 @@
               </div>
             </div>
           </div>  
+          
+         
 </div> 
 
 

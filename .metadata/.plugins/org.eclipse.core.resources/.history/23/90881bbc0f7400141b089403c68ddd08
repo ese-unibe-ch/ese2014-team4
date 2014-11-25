@@ -1,0 +1,5 @@
+package ch.unibe.ese2014.team4.model;
+
+public class Message {
+
+}
