@@ -8,7 +8,7 @@
 
 <c:import url="template/header.jsp" />
 <c:import url="functions/generalFunctions.jsp" />
-<c:import url="functions/searchFunctions.jsp" />
+<%-- <c:import url="functions/searchFunctions.jsp" /> --%>
 <c:import url="functions/createAdFunctions.jsp" />
 
 
@@ -65,7 +65,7 @@
 		</c:set>
 		<div
 			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"
-			onclick="disableField()">
+			onclick="disableFieldInCreateAd()">
 			<label class="control-label" for="field-adType">Type</label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"

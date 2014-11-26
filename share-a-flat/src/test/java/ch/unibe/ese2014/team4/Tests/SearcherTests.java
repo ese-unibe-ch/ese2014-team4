@@ -9,7 +9,6 @@ import org.junit.*;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
-import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
@@ -142,7 +141,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfFlatMates(2);
+		searchForm.setMinNrOfFlatMates(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -162,7 +161,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfRooms(2);
+		searchForm.setMinNrOfRooms(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -268,7 +267,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 
-		searchForm.setNrOfRooms(2);
+		searchForm.setMinNrOfRooms(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(200);
 
@@ -290,7 +289,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 
-		searchForm.setNrOfRooms(2);
+		searchForm.setMinNrOfRooms(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(150);
 
@@ -311,7 +310,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfFlatMates(2);
+		searchForm.setMinNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -333,7 +332,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd2);
 		mockedSearchResult.add(testAd3);
 		
-		searchForm.setNrOfFlatMates(2);
+		searchForm.setMinNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(100);
 
@@ -354,7 +353,7 @@ public class SearcherTests {
 		
 		String city = "City3";
 		searchForm.setCityOrZip(city);
-		searchForm.setNrOfFlatMates(3);
+		searchForm.setMinNrOfFlatMates(3);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -375,7 +374,7 @@ public class SearcherTests {
 		
 		String city = "City3";
 		searchForm.setCityOrZip(city);
-		searchForm.setNrOfFlatMates(2);
+		searchForm.setMinNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -436,7 +435,7 @@ public class SearcherTests {
 		searchForm.setCityOrZip("");
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
-		searchForm.setNrOfFlatMates(0);
+		searchForm.setMinNrOfFlatMates(0);
 		searchForm.setAvailableDate("");
 
 	}

@@ -131,6 +131,23 @@
 
 <script type="text/javascript">
 
+
+function disableFieldInCreateAd() {
+	if (document.getElementById("room").checked == true) {
+		$('#field-nrOfFlatMates').prop('disabled', false);
+	}
+	
+	if (document.getElementById("flat").checked == true){
+		$('#field-nrOfFlatMates').prop('disabled', true);
+
+	}
+
+}
+</script>
+
+
+<script type="text/javascript">
+
 	function zipToCity() {
 		var field = document.getElementById("field-city");
 
@@ -148,6 +165,7 @@
 			zip.value = "";
 			zip.focus();
 		}
-		return true;	}
+		return true;	
+	}
 </script>
 
