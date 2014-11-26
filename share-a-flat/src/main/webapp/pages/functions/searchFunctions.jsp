@@ -68,33 +68,39 @@ $(document).ready(function() {
 	disableField();	
 });
 
-function disableField(){
+function disableField() {
 	if (document.getElementById("room").checked == true) {
-// 		disableNrOfRooms();
-		enableNrOfFlatMates();
+		$('#field-nrOfFlatMates').prop('disabled', false);
+		
+// 		disableNrOfRooms();										auskommentiert, da mit jquery einfacher...
+// 		enableNrOfFlatMates();
+		
 	}
 	
 	if (document.getElementById("flat").checked == true){
-		disableNrOfFlatMates();
-// 		enableNrOfRooms();
+		$('#field-nrOfFlatMates').prop('disabled', true);
+		
+// 		disableNrOfFlatMates();		
+// 		enableNrOfRooms();		
 	}
+	
 }
 
-function disableNrOfRooms() {
-    document.getElementById("field-nrOfRooms").disabled = true;
-}
+// function disableNrOfRooms() {
+//     document.getElementById("field-nrOfRooms").disabled = true;
+// }
 
-function disableNrOfFlatMates() {
-    document.getElementById("field-nrOfFlatMates").disabled = true;
-}
+// function disableNrOfFlatMates() {
+//     document.getElementById("field-nrOfFlatMates").disabled = true;
+// }
 
-function enableNrOfRooms() {
-    document.getElementById("field-nrOfRooms").disabled = false;
-}
+// function enableNrOfRooms() {
+//     document.getElementById("field-nrOfRooms").disabled = false;
+// }
 
-function enableNrOfFlatMates() {
-    document.getElementById("field-nrOfFlatMates").disabled = false;
-}
+// function enableNrOfFlatMates() {
+//     document.getElementById("field-nrOfFlatMates").disabled = false;
+// }
 
 </script>
 

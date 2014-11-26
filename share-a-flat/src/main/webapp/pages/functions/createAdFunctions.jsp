@@ -139,6 +139,7 @@
 		var zipFromObj = parseInt("${item.zip}");	
 		if (zipFromObj == zip.value) {
 			field.value = "${item.city}";			//do not disable cityfield! otherwise city does not get saved!
+			$('#field-city').prop('readonly', true);
 		}		
 		</c:forEach>
 		

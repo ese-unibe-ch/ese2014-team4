@@ -309,7 +309,7 @@
 				<div class="controls">
 					<form:textarea required="true" class="form-control"
 						path="description" id="field-description"
-						style="width:100%; height:121px" tabindex="12"
+						style="width:100%; height:160px; resize:none" tabindex="12"
 						placeholder="Description"
 						onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
 						onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />

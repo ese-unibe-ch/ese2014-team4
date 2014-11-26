@@ -1572,7 +1572,8 @@ pre {
 	color: #333;
 	word-break: break-all;
 	word-wrap: break-word;
-	background-color: #f5f5f5;
+/* 	background-color: #f5f5f5; */
+	background-color: white;		/* damit description in showAd weiss ist*/
 	border: 1px solid #ccc;
 	border-radius: 4px;
 }

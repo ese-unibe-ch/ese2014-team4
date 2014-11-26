@@ -19,6 +19,7 @@ import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
@@ -40,10 +41,24 @@ public class HomeController {
 		model.addObject("adList", newestAdds);
 
 		model.addObject("searchForm", new SearchForm());
+		
+		//provisorisch...
+		model.addObject("whatToDisplay", "Newest Ads");
+		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		model.addObject("addresses", addresses);
+		
 		return model;
 	}
    
-
+	//provisorisch...
+	private ArrayList<MapAddress> getAddressesForMap(ArrayList<Ad> ads) {
+		ArrayList<MapAddress> addresses = new ArrayList<MapAddress>();
+		for (Ad ad : ads) {
+			MapAddress tmpMapAddress = ad.getAddressForMap();
+			addresses.add(tmpMapAddress);
+		}
+		return addresses;
+	}
    
 }
 

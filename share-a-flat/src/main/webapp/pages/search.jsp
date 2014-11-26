@@ -84,7 +84,7 @@
 
 
 
-	<h1>Search List</h1>
+	<h1>Search</h1><hr>
 	<!-- 	<div class="panel-body"> -->
 	<!-- 		<a href="getMap" class="inactive"><span>see on map</span></a> -->
 	</div>

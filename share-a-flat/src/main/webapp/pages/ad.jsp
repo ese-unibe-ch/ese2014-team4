@@ -91,7 +91,7 @@
 					<table>
 						<tr>
 							<!-- label ad correctly either as room or apartment -->
-							<c:set var="adTypeToShow" value="Apartment" />
+							<c:set var="adTypeToShow" value="Flat" />
 							<c:if test="${adData.type eq 'ROOM'}">
 								<c:set var="adTypeToShow" value="Room" />
 							</c:if>
