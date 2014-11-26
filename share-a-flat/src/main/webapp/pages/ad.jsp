@@ -38,7 +38,7 @@
 					position : results[0].geometry.location
 				});
 			} else {
-				alert('Geocode was not successful for the following reason: '
+				alert('the address "'+ "${addressForMap.addressAsString}" + '" could not be found on the map for the following reason: '
 						+ status);
 			}
 		});

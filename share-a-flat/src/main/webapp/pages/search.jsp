@@ -66,7 +66,7 @@
 				});
 
 			} else {
-				alert('Geocode was not successful for the following reason: '
+				alert('the address "'+ value + '" could not be found on the map for the following reason: '
 						+ status);
 			}
 		});

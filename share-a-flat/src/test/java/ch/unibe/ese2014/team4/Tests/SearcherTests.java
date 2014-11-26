@@ -1,11 +1,15 @@
 package ch.unibe.ese2014.team4.Tests;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.*;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
+import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
@@ -71,6 +75,27 @@ public class SearcherTests {
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
+		
+		
+	
+		
+		testAd1.setAvailableDate(convertStringToDate("01-01-2011"));
+		testAd2.setAvailableDate(convertStringToDate("01-01-2012"));
+		testAd3.setAvailableDate(convertStringToDate("01-01-2013"));
+
+	}
+	
+	private Date convertStringToDate(String dateAsString) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = null;
+		
+		try {	 
+			date = formatter.parse(dateAsString);	 
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return date;
 	}
 
 	@Test
@@ -362,6 +387,50 @@ public class SearcherTests {
 		assertEquals(0, adsFromSearcher.size());
 		verify(mockDao);
 	}
+	
+	@Test
+	public void testByAvialableDateRangeOneAds() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+		
+		searchForm.setAvailableDate("01-02-2012");
+
+		expect(mockDao.findAll()).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(testAd3, adsFromSearcher.get(0));
+
+		assertEquals(1, adsFromSearcher.size());
+		verify(mockDao);
+	}
+	
+	@Test
+	public void testByAvialableDateRangeThreeAds() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+		
+		searchForm.setAvailableDate("01-01-2011");
+
+		expect(mockDao.findAll()).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(3, adsFromSearcher.size());
+		verify(mockDao);
+	}
+	
+
+	
+
 
 	private void resetSearchForm() {
 		searchForm.setCityOrZip("");
