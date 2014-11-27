@@ -66,7 +66,7 @@
 				});
 
 			} else {
-				alert('Geocode was not successful for the following reason: '
+				alert('the address "'+ value + '" could not be found on the map for the following reason: '
 						+ status);
 			}
 		});
@@ -84,7 +84,7 @@
 
 
 
-	<h1>Search List</h1>
+	<h1>Search</h1><hr>
 	<!-- 	<div class="panel-body"> -->
 	<!-- 		<a href="getMap" class="inactive"><span>see on map</span></a> -->
 	</div>

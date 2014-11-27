@@ -38,7 +38,7 @@
 					position : results[0].geometry.location
 				});
 			} else {
-				alert('Geocode was not successful for the following reason: '
+				alert('the address "'+ "${addressForMap.addressAsString}" + '" could not be found on the map for the following reason: '
 						+ status);
 			}
 		});
@@ -91,7 +91,7 @@
 					<table>
 						<tr>
 							<!-- label ad correctly either as room or apartment -->
-							<c:set var="adTypeToShow" value="Apartment" />
+							<c:set var="adTypeToShow" value="Flat" />
 							<c:if test="${adData.type eq 'ROOM'}">
 								<c:set var="adTypeToShow" value="Room" />
 							</c:if>

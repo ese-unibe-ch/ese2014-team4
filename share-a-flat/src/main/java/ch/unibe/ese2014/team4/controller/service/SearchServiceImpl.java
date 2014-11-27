@@ -72,15 +72,15 @@ public class SearchServiceImpl implements SearchService {
 		}
 
 
-		if (searchForm.getNrOfFlatMates() > 0) {
+		if (searchForm.getMinNrOfFlatMates() > 0) {
 
 			checkNrFlatMates(adsToSort);
 		}
 
-		if (searchForm.getNrOfRooms() > 0) {
+		if (searchForm.getMinNrOfRooms() > 0) {
 			checkNrRooms(adsToSort);
 		}
-
+		
 		if (searchForm.getAdType() != null) {
 			checkType(adsToSort);
 		}
@@ -148,7 +148,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getNrOfFlatMates() != ad.getNrOfFlatMates())
+			if (searchForm.getMinNrOfFlatMates() > ad.getNrOfFlatMates() || searchForm.getMaxNrOfFlatMates() < ad.getNrOfFlatMates())
 				adsToSort.remove(ad);
 		}
 	}
@@ -159,7 +159,7 @@ public class SearchServiceImpl implements SearchService {
 			adsToSortCopy.add(ad);
 
 		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getNrOfRooms() > ad.getNrOfRooms())
+			if (searchForm.getMinNrOfRooms() > ad.getNrOfRooms() || searchForm.getMaxNrOfRooms() < ad.getNrOfRooms())
 				adsToSort.remove(ad);
 		}
 	}

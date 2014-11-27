@@ -10,7 +10,7 @@
 <br>
 <hr>
 <c:forEach items="${adList}" var="ad">
-	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
+	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a> <font size="1">(${ad.type})</font>
 	<table>
 
 		<tr>

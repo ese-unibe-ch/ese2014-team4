@@ -26,8 +26,10 @@ public class SearchForm {
 	@NotNull
     private String description;
     private String title;
-    private int nrOfFlatMates;
-    private float nrOfRooms;
+    private int minNrOfFlatMates;
+    private int maxNrOfFlatMates;
+    private float minNrOfRooms;
+    private float maxNrOfRooms;
     private AdType adType;
     
     private String availableDate;
@@ -40,20 +42,37 @@ public class SearchForm {
     private String cityOrZip;
     private String street;
     
-    public float getNrOfRooms() {
-		return nrOfRooms;
+    public float getMinNrOfRooms() {
+		return minNrOfRooms;
 	}
 
-	public void setNrOfRooms(float nrOfRooms) {
-		this.nrOfRooms = nrOfRooms;
+	public void setMinNrOfRooms(float minNrOfRooms) {
+		this.minNrOfRooms = minNrOfRooms;
 	}
+	
+	public float getMaxNrOfRooms() {
+		return maxNrOfRooms;
+	}
+
+	public void setMaxNrOfRooms(float maxNrOfRooms) {
+		this.maxNrOfRooms = maxNrOfRooms;
+	}
+	
     
-    public int getNrOfFlatMates() {
-		return nrOfFlatMates;
+    public int getMinNrOfFlatMates() {
+		return minNrOfFlatMates;
 	}
 
-	public void setNrOfFlatMates(int nrOfFlatMates) {
-		this.nrOfFlatMates = nrOfFlatMates;
+	public void setMinNrOfFlatMates(int minNrOfFlatMates) {
+		this.minNrOfFlatMates = minNrOfFlatMates;
+	}
+
+	public int getMaxNrOfFlatMates() {
+		return maxNrOfFlatMates;
+	}
+
+	public void setMaxNrOfFlatMates(int maxNrOfFlatMates) {
+		this.maxNrOfFlatMates = maxNrOfFlatMates;
 	}
 
 	public int getMinPrice() {

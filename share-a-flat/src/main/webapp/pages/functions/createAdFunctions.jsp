@@ -131,6 +131,23 @@
 
 <script type="text/javascript">
 
+
+function disableFieldInCreateAd() {
+	if (document.getElementById("room").checked == true) {
+		$('#field-nrOfFlatMates').prop('disabled', false);
+	}
+	
+	if (document.getElementById("flat").checked == true){
+		$('#field-nrOfFlatMates').prop('disabled', true);
+
+	}
+
+}
+</script>
+
+
+<script type="text/javascript">
+
 	function zipToCity() {
 		var field = document.getElementById("field-city");
 
@@ -139,6 +156,7 @@
 		var zipFromObj = parseInt("${item.zip}");	
 		if (zipFromObj == zip.value) {
 			field.value = "${item.city}";			//do not disable cityfield! otherwise city does not get saved!
+			$('#field-city').prop('readonly', true);
 		}		
 		</c:forEach>
 		
@@ -147,6 +165,7 @@
 			zip.value = "";
 			zip.focus();
 		}
-		return true;	}
+		return true;	
+	}
 </script>
 

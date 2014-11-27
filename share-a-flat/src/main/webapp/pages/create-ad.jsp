@@ -8,7 +8,7 @@
 
 <c:import url="template/header.jsp" />
 <c:import url="functions/generalFunctions.jsp" />
-<c:import url="functions/searchFunctions.jsp" />
+<%-- <c:import url="functions/searchFunctions.jsp" /> --%>
 <c:import url="functions/createAdFunctions.jsp" />
 
 
@@ -65,7 +65,7 @@
 		</c:set>
 		<div
 			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"
-			onclick="disableField()">
+			onclick="disableFieldInCreateAd()">
 			<label class="control-label" for="field-adType">Type</label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"
@@ -309,7 +309,7 @@
 				<div class="controls">
 					<form:textarea required="true" class="form-control"
 						path="description" id="field-description"
-						style="width:100%; height:121px" tabindex="12"
+						style="width:100%; height:160px; resize:none" tabindex="12"
 						placeholder="Description"
 						onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
 						onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />
@@ -431,8 +431,75 @@
 	zip.addEventListener("blur", zipToCity, false);
 </script>
 
+    <SCRIPT type="text/javascript">
+        function addRow(tableID) {
+ 
+            var table = document.getElementById(tableID);
+ 
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+ 
+            var cell1 = row.insertCell(0);
+            var element1 = document.createElement("input");
+            element1.type = "checkbox";
+            element1.name="chkbox[]";
+            cell1.appendChild(element1);
+ 
+            var cell2 = row.insertCell(1);
+            var element2 = document.createElement("input");
+            element2.type = "text";
+            element2.name = "txtbox[]";
+            cell3.appendChild(element2);
+ 
+            var cell3 = row.insertCell(2);
+            var element2 = document.createElement("input");
+            element2.type = "text";
+            element2.name = "txtbox[]";
+            cell3.appendChild(element2);
+ 
+ 
+        }
+ 
+        function deleteRow(tableID) {
+            try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+ 
+            for(var i=0; i<rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[0].childNodes[0];
+                if(null != chkbox && true == chkbox.checked) {
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+ 
+ 
+            }
+            }catch(e) {
+                alert(e);
+            }
+        }
+ 
+    </SCRIPT>
 
+ 
 
+ 
+    <TABLE id="dataTable" >
+        
+        <tr><th><th>Date</th><th>from</th><th>to<th><th></th></tr>
+        <TR>
+            <TD><INPUT type="checkbox" name="chk"/></TD>
+
+            <TD> <INPUT type="date" /> </TD>
+            <TD> <INPUT type="time" /> </TD>
+            <TD> <INPUT type="time" /> </TD>
+        </TR>
+    </TABLE>
+    <INPUT type="button" value="Add visit" onclick="addRow('dataTable')" />
+ 
+    <INPUT type="button" value="Delete selected visit" onclick="deleteRow('dataTable')" />
 
 
 <c:if test="${page_error != null }">

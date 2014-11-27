@@ -20,13 +20,11 @@ import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.NewAccountService;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
 
 @Controller
 public class AdminController {
-
-	@Autowired
-	AdService adService;
 
 	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -36,7 +34,6 @@ public class AdminController {
 		
 		String username = principal.getName();
 		model.addObject("username", username);
-
 		return model;
 	}
 	@RequestMapping(value = "/noAccess", method = RequestMethod.GET)
@@ -44,8 +41,7 @@ public class AdminController {
 		redirectAttributes.addFlashAttribute("page_error",
 				"You do have have permission to do that!");
 		return "redirect:/";
-	}  
-
+	} 
    
 }
 
