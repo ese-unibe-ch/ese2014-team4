@@ -152,7 +152,7 @@ function disableFieldInCreateAd() {
 		var field = document.getElementById("field-city");
 
 		<c:forEach items="${zipCityAsArray}" var="item">
-		
+		 
 		var zipFromObj = parseInt("${item.zip}");	
 		if (zipFromObj == zip.value) {
 			field.value = "${item.city}";			//do not disable cityfield! otherwise city does not get saved!
