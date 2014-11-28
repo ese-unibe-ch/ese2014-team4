@@ -41,8 +41,7 @@
 		} else
 			return true;
 	}
-
-	
+		
 	function checkZip() {
 		var zip = document.getElementById("field-cityOrZip");
 
@@ -70,13 +69,13 @@ $(document).ready(function() {
 
 function disableFieldInSearch() {
 	if (document.getElementById("room").checked == true) {
-		$('#field-minNrOfFlatMates').prop('disabled', false);
-		$('#field-maxNrOfFlatMates').prop('disabled', false);
+		$('#field-minNrOfFlatMates').prop('readonly', false);
+		$('#field-maxNrOfFlatMates').prop('readonly', false);
 	}
 	
 	if (document.getElementById("flat").checked == true){
-		$('#field-minNrOfFlatMates').prop('disabled', true);
-		$('#field-maxNrOfFlatMates').prop('disabled', true);
+		$('#field-minNrOfFlatMates').prop('readonly', true);
+		$('#field-maxNrOfFlatMates').prop('readonly', true);
 	}
 }
 
@@ -87,7 +86,8 @@ function autofillMaxPrice() {
 	var minPrice = parseInt(document.getElementById("field-minPrice").value);
 	var maxPrice = document.getElementById("field-maxPrice");
 	
-	if (minPrice > 0) {		
+	if (minPrice > 0) {
+		maxPrice.min = minPrice;
 		maxPrice.value = minPrice;
 	}
 	
@@ -114,6 +114,7 @@ function autofillMaxNrOfRooms() {
 	var maxNrOfRooms = document.getElementById("field-maxNrOfRooms");
 	
 	if (minNrOfRooms > 0) {	
+		maxNrOfRooms.min = minNrOfRooms;
 		maxNrOfRooms.value = minNrOfRooms;
 	}
 	
@@ -140,6 +141,7 @@ function autofillMaxNrOfFlatMates() {
 	var maxNrOfFlatMates = document.getElementById("field-maxNrOfFlatMates");
 	
 	if (minNrOfFlatMates > 0) {	
+		maxNrOfFlatMates.min = minNrOfFlatMates;
 		maxNrOfFlatMates.value = minNrOfFlatMates;
 	}
 	

@@ -8,11 +8,16 @@
 <c:import url="template/header.jsp" />
 
 <div class="container">
-	<h1>Profile of ${user.username}</h1>
+	<h1 align="center">Profile of ${user.username}</h1>
 	<hr>
 </div>
 
 <fieldset>
+
+<div class="col-md-2">
+		
+	</div>
+
 	<div class="col-md-3">
 		<div class="text-center">
 			<img
@@ -22,16 +27,18 @@
 	</div>
 
 	<!-- edit form column -->
-	<div class="col-md-9 personal-info">
+	<div class="col-md-5 personal-info">
+	<br><br>
 		<div class="alert alert-info alert-dismissable">Let's know
 			${user.username} better!</div>
 
 		<table>
 			<tr>
-				<td width="400"><legend>Personal info</legend>
+				<td width="450">
+<!-- 				<legend style="font-size:2em"><br>Personal info</legend> -->
 
 					<div class="form-group">
-						<label class="col-lg-5 control-label">Username:</label>
+						<label class="col-md-5 control-label">Username:</label>
 						<div class="col-lg-5">${user.username}</div>
 						<br>
 					</div>
@@ -67,37 +74,33 @@
 						<br>
 					</div></td>
 
-				<td width="400"><c:import url="embedded/sendMessageBox.jsp" />
+				<%-- 				<td width="400"><c:import url="embedded/sendMessageBox.jsp" /> --%>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td width="450">
+					<div class="form-group">
+						<label class="col-lg-5 control-label"></label>
+						<div class="col-lg-5">
+							<button type="button" onclick="history.go(-1);return true"
+								class=" btn btn-primary" tabindex="7">Go Back</button>
+						</div>
+						<br>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</div>
-
 </fieldset>
 <hr>
 
-<!-- <div class="row"> -->
-<div class="col-md-6">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3>${user.username}'sads</h3>
-		</div>
-		<div class="panel-body">
-			sfsdf</a>
-		</div>
-	</div>
-</div>
-
-<div class="col-md-6">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3>${user.username}'sads</h3>
-		</div>
-		<div class="panel-body">
-			sfsdf</a>
-		</div>
-	</div>
-</div>
-
+<script>
+	function goBack() {
+		window.history.back()
+	}
+</script>
 
 <!-- <div id="masthead"> -->
 <!-- 	<div class="container"> -->
