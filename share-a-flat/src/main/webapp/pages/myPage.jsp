@@ -39,13 +39,6 @@
 					<a type="button"
 						href="${pageContext.request.contextPath}/modifyProfile"
 						class="btn btn-primary">Modify Profile</a>
-
-					<!--  link to delete profile -->
-					<h6>
-						<small><a
-							href="${pageContext.request.contextPath}/deleteProfile">Delete
-								Profile</a></small>
-					</h6>
 				</div>
 			</div>
 		</div>

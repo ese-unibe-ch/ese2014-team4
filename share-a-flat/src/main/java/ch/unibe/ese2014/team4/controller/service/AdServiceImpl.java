@@ -103,6 +103,8 @@ public class AdServiceImpl implements AdService {
 		
 		
 		List<Visit> visitList = new ArrayList<Visit>();
+
+
 		for (int i = 0; i < adForm.getVisitDate().size();i++){
 			if (adForm.getVisitDate().get(i)!=null){
 				Visit visit = new Visit();

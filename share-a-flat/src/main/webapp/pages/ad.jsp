@@ -215,7 +215,7 @@
 					</h4>
 
 					<pre>${adData.description}</pre>
-					</p>
+
 
 				</div>
 			</div>
@@ -258,35 +258,7 @@
 
 	</div>
 
-	<!-- <div class="row"> -->
-	<!-- 	<div class="col-md-12"> -->
-	<!-- 		<!-- image address will get mapped by ImageController -->
-	<!-- 		<div class="container"> -->
-	<!-- 			<ul class="row"> -->
 
-	<%-- 				<c:forEach items="${imageList}" var="imgId"> --%>
-	<!-- 					<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 gallery"><img -->
-	<%-- 						src="${pageContext.request.contextPath}/imageController/ad/${adData.id}/${imgId}" --%>
-	<%-- 						class="img-responsive" alt="${adData.id}/${imgId}" width="100px" --%>
-	<%-- 						height="100px" id="img${imgId}"></li> --%>
-	<%-- 				</c:forEach> --%>
-	<!-- 			</ul> -->
-	<!-- 		</div> -->
-
-	<!-- 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" -->
-	<!-- 			aria-labelledby="myModalLabel" aria-hidden="true"> -->
-	<!-- 			<div class="modal-dialog"> -->
-	<!-- 				<div class="modal-content"> -->
-	<!-- 					<div class="modal-body"></div> -->
-	<!-- 				</div> -->
-	<!-- 				/.modal-content -->
-	<!-- 			</div> -->
-	<!-- 			<!-- /.modal-dialog -->
-	<!-- 		</div> -->
-	<!-- 		<!-- /.modal -->
-	<!-- 	</div> -->
-
-	<!-- </div> -->
 
 
 	<script>
@@ -307,12 +279,13 @@
 												var html = '';
 												html += img;
 												html += '<div style="height:25px;clear:both;display:block;">';
-												html += '<a class="controls next" href="'
-														+ (index + 2)
-														+ '">next &raquo;</a>';
-												html += '<a class="controls previous" href="'
+												html += '<a class="controls previous text-left" href="'
 														+ (index)
 														+ '">&laquo; prev</a>';
+													
+												html += '<a class="controls next pull-right" href="'
+													+ (index + 2)
+													+ '">next &raquo;</a>';
 												html += '</div>';
 
 												$('#myModal').modal();
