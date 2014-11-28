@@ -7,6 +7,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.Visit;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
 public interface AdService {
@@ -25,4 +26,6 @@ public interface AdService {
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 	public List<Ad> getAdsOfUserByUser(User user);
+	public List<Visit> getVisitList(long adId);
+	public void registerUserForVisit(String userName, Long visitId);
 }

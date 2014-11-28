@@ -101,23 +101,23 @@ public class AdServiceImpl implements AdService {
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
 		
-		
-		List<Visit> visitList = new ArrayList<Visit>();
-
-
-		for (int i = 0; i < adForm.getVisitDate().size();i++){
-			if (adForm.getVisitDate().get(i)!=null){
-				Visit visit = new Visit();
-				visit.setDate( adForm.getVisitDate().get(i));
-				visit.setStartTime( adForm.getStartTime().get(i));
-				visit.setEndTime( adForm.getEndTime().get(i));
-				visitDao.save(visit);
-				visitList.add(visit);
+		if (adForm.getVisitDate() != null){
+			List<Visit> visitList = new ArrayList<Visit>();
+			for (int i = 0; i < adForm.getVisitDate().size();i++){
+				if (adForm.getVisitDate().get(i)!=null){
+					Visit visit = new Visit();
+					visit.setDate( adForm.getVisitDate().get(i));
+					visit.setStartTime( adForm.getStartTime().get(i));
+					visit.setEndTime( adForm.getEndTime().get(i));
+					visitDao.save(visit);
+					visitList.add(visit);
+					ad.setVisitList(visitList);
+				}
+	
 			}
-
 		}
 
-		ad.setVisitList(visitList);
+		
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
@@ -251,6 +251,16 @@ public class AdServiceImpl implements AdService {
 
 	public List<Ad> getAdsOfUserByUser(User user) {
 		return adDao.findAllByOwner(user);
+	}
+
+	public List<Visit> getVisitList(long adId) {
+
+		return adDao.findById(adId).getVisitList();
+	}
+
+	public void registerUserForVisit(String userName,  Long visitId) {
+		Visit visit = visitDao.findById(visitId);
+		visit.getVisitorList().add(userDao.findByUsername(userName));	
 	}
 
 }

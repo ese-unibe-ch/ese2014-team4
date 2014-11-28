@@ -178,7 +178,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3>
-						<b>Have a Feeling</b>
+						<b>Additional Information</b>
 					</h3>
 				</div>
 
@@ -238,6 +238,22 @@
 					<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
 					<br>
 					<c:import url="embedded/sendMessageBox.jsp" />
+				</div>
+				<div class="panel-heading">
+					<h3>
+						<b>Visit this place</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<form action="registerForVisit?adId=${adData.id}" method="post">
+					<fieldset>
+						<c:forEach items="${visitList}" var="visit">
+							<input type="radio" name="chosenVisit" value="${visit.id}"/>${visit}
+							<br>
+						</c:forEach>
+						<input type="submit" value = "Register"/>
+					</fieldset>
+					</form> 
 				</div>
 			</div>
 		</div>

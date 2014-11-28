@@ -48,5 +48,9 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
+	public boolean isEmailValidated(Long userId) {
+		
+		return userDao.findById(userId).getIsEmailValidated();
+	}
 
 }

@@ -122,6 +122,7 @@ public class AdController {
 		model.addObject("imageList", list);
 		model.addObject("adData", ad); // called adData, otherwise gets confused
 										// with "ad" page
+		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
@@ -150,5 +151,14 @@ public class AdController {
 
 		return model;
 	}
+	@ResponseBody
+	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
+	public ModelAndView registerForVisit(@RequestParam(value="chosenVisit") Long visitId, Principal principal ) {
+
+
+		adService.registerUserForVisit(principal.getName(), visitId);
+		return new ModelAndView("myPage");
+	}	
+	
 
 }
