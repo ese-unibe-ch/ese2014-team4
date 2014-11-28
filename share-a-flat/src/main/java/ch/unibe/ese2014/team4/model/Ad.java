@@ -228,7 +228,7 @@ public class Ad {
 
 	public MapAddress getAddressForMap() {
 		MapAddress tmpMapAddress = new MapAddress();
-		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity() + " Switzerland";
+		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity();
 		tmpMapAddress.setAddressAsString(addressForMAp);
 		tmpMapAddress.setId(id);
 		return tmpMapAddress;
