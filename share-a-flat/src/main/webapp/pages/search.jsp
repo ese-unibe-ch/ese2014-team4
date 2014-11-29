@@ -10,19 +10,12 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-
-<!DOCTYPE html>
-<html>
-<head>
 <style>
 #map-canvas {
 	width: 700px;
-	height: 280px;
-}
+	height: 395px;
+	}
 </style>
-</head>
-</html>
-
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
@@ -41,40 +34,47 @@
 				mapOptions);
 	}
 
-	function placeAddresses(value, id) {
-		geocoder.geocode({
-			'address' : value
-		}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				map.setCenter(results[0].geometry.location);
-				var marker = new google.maps.Marker({
-					url : 'showAd?adId=' + id,
-					map : map,
-					position : results[0].geometry.location
-				});
+	function placeAddresses(value, id, src) {
+		geocoder
+				.geocode(
+						{
+							'address' : value
+						},
+						function(results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								map.setCenter(results[0].geometry.location);
+								var marker = new google.maps.Marker({
+									url : 'showAd?adId=' + id,
+									map : map,
+									position : results[0].geometry.location
+								});
 
-				var contentString = "" + value + "";
-				var infowindow = new google.maps.InfoWindow({
-					content : value
-				});
-				google.maps.event.addListener(marker, 'mouseover', function() {
-					infowindow.open(map, marker);
-				});
+								var infowindow = new google.maps.InfoWindow({
+									content : value
+								});
+								google.maps.event.addListener(marker,
+										'mouseover', function() {
+											infowindow.open(map, marker);
+										});
 
-				google.maps.event.addListener(marker, 'click', function() {
-					window.location.href = marker.url;
-				});
+								google.maps.event.addListener(marker, 'click',
+										function() {
+											window.location.href = marker.url;
+										});
 
-			} else {
-				alert('the address "'+ value + '" could not be found on the map for the following reason: '
-						+ status);
-			}
-		});
+							} else {
+								alert('the address "'
+										+ value
+										+ '" could not be found on the map for the following reason: '
+										+ status);
+							}
+						});
 	}
 
 	function codeAddress() {
 		<c:forEach items="${addresses}" var="item">
-		placeAddresses("${item.addressAsString}", "${item.id}");
+		var src = "${pageContext.request.contextPath}/imageController/ad/${item.id}/${imgId}";
+		placeAddresses("${item.addressAsString}", "${item.id}", src);
 		</c:forEach>
 	}
 
@@ -82,47 +82,50 @@
 </script>
 <body onload="codeAddress()">
 
+	<h1>Search</h1>
+	<hr>
+</body>
 
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
 
-	<h1>Search</h1><hr>
-	<!-- 	<div class="panel-body"> -->
-	<!-- 		<a href="getMap" class="inactive"><span>see on map</span></a> -->
-	</div>
-	<!-- Auswahlreiter -->
-	<!-- 	<ul> -->
-	<!-- 		<li class="map"><a -->
-	<%-- 			href="search?searchType=<c:choose><c:when test="${resultType eq 'list'}">map</c:when><c:otherwise>list</c:otherwise> --%>
-	<%-- 			</c:choose>" --%>
-	<!-- 			class="inactive"><span>Search Map</span></a></li> -->
-	<!-- 	</ul> -->
-
-	<div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-default">
-
-				<div class="panel-heading">
-					<h3>Search-Criteria</h3>
-				</div>
-
-				<div class="panel-body">
-					<c:import url="searchCriteria.jsp" />
-				</div>
-
+			<div class="panel-heading">
+				<h3>Search-Criteria</h3>
 			</div>
-		</div>
 
-		<div class="col-md-8">
-			<div class="panel panel-default">
-
-				<div class="panel-heading">
-					<h3>${whatToDisplay}</h3>
-				</div>
-				<div class="panel-body">
-					<c:import url="searchResultsList.jsp" />
-					<div id="map-canvas"></div>
-				</div>
+			<div class="panel-body">
+				<c:import url="searchCriteria.jsp" />
 			</div>
 		</div>
 	</div>
 
-	<c:import url="template/footer.jsp" />
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>${whatToDisplay}</h3>
+			</div>
+			<br>
+			<button id="listButton" onClick="swap('two','one','mapButton', 'listButton')"> Switch to List View</button>
+			<button style="display: none" id="mapButton" onClick="swap('one','two','listButton', 'mapButton' )">Switch to Map View</button>
+			<div>
+				<br> <span style="display: none" id="two"><c:import url="searchResultsList.jsp" /></span> 
+				<span  id="one"><body><div id="map-canvas"></div>
+					</body></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- swap between list and map displays as well as changes the button  -->
+
+<script type="text/javascript">
+	function swap(one, two, mapButton, listButton) {
+		document.getElementById(one).style.display = 'block';
+		document.getElementById(two).style.display = 'none';
+		document.getElementById(mapButton).style.display = 'block';
+		document.getElementById(listButton).style.display = 'none';
+	}
+</script>
+
+<c:import url="template/footer.jsp" />
