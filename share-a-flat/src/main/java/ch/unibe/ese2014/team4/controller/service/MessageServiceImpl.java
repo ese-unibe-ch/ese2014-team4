@@ -29,7 +29,7 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
  */
 public class MessageServiceImpl implements MessageService{
 	
-	@Autowired
+	//@Autowired
 	MessageDao messageDao;
 	
 	@Autowired
