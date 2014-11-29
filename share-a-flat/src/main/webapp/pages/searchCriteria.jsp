@@ -188,8 +188,8 @@
 						<label class="control-label" for="field-availableDate">Available
 							Date:</label>
 						<div class="controls">
-							<form:input type="date" class="form-control" path="availableDate"
-								id="field-availableDate" tabindex="8" />
+							<form:input type="text" class="form-control" path="availableDate"
+								id="field-availableDate" tabindex="8" placeholder="DD-MM-YYYY" />
 							<form:errors path="availableDate" cssClass="help-inline"
 								element="span" />
 							<br>

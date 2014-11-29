@@ -230,8 +230,7 @@
 				</div>
 				<div class="panel-body">
 					<h4>
-						<b>Ad placed by <a
-							href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
+						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 					</h4>
 					<b>Send ${adData.owner.username} an email: </b><a
 						href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>

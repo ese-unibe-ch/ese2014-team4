@@ -44,7 +44,6 @@ public class NewAccountServiceImpl implements NewAccountService {
 	@Autowired
 	ProfileDao profileDao;
 	
-    
     @Autowired
     ApplicationContext appContext;
 

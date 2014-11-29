@@ -218,7 +218,7 @@ public class AdServiceImpl implements AdService {
 	}
 
 
-	
+
 	
 	public List<Ad> getBookmarkList(User user){
 		return null;
