@@ -167,8 +167,3 @@ function autofillMaxNrOfFlatMates() {
 	return true;
 }
 </script>
-
-
-
-
-

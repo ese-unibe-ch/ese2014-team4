@@ -28,31 +28,43 @@ window.onload = function(){
   text_input.select ();
 }
 </script>
-<script type="text/javascript">                
-	function isValid() {
-		var email = document.forms["signupForm"]["field-email"].value;
-	    var userName = document.forms["signupForm"]["field-username"].value;
-	    var pwd = document.forms["signupForm"]["field-password"].value;
-	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
-	    
-	    
-	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
-	    	alert("Please fill all required fields!");
-	        return false;
-	    }
-	    
-	    var regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-	    if (!regex.test(email)) {
-	    	alert("Please enter a valid Email (E.g. example@example.example)");
-	    	return false;
-	    }
-	    
-	    if (pwd!=pwdRepeated) {
-	    	alert("Reentered Password doesn't match!")
-	    	return false;
-	    }
-	}                
+
+<script>
+  function checkPassword(password, passwordRepeated)
+  {
+    if (password.value != passwordRepeated.value) {
+    	passwordRepeated.setCustomValidity('Passwords do not match!');
+    } else {
+    	passwordRepeated.setCustomValidity('');
+    }
+  }
 </script>
+
+<!-- <script type="text/javascript">                 -->
+// 	function isValid() {
+// 		var email = document.forms["signupForm"]["field-email"].value;
+// 	    var userName = document.forms["signupForm"]["field-username"].value;
+// 	    var pwd = document.forms["signupForm"]["field-password"].value;
+// 	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
+	    
+	    
+// 	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
+// 	    	alert("Please fill all required fields!");
+// 	        return false;
+// 	    }
+	    
+// 	    var regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+// 	    if (!regex.test(email)) {
+// 	    	alert("Please enter a valid Email (E.g. example@example.example)");
+// 	    	return false;
+// 	    }
+	    
+// 	    if (pwd!=pwdRepeated) {
+// 	    	alert("Reentered Password doesn't match!")
+// 	    	return false;
+// 	    }
+// 	}                
+<!-- </script> -->
 
 <c:import url="template/headerLogin.jsp" />
 
@@ -89,8 +101,8 @@ window.onload = function(){
 				class="control-group<c:if test="${not empty emailErrors}"> error</c:if>">
 				<label class="control-label" for="field-email"><b>Email*</b></label>
 				<div class="controls">
-					<form:input path="email" id="field-email" tabindex="1"
-						maxlength="45" placeholder="Email" />
+					<form:input required="true" path="email" id="field-email" tabindex="1"
+						maxlength="45" placeholder="example@hotmail.com" type='email' pattern=".*@.*\..*" title="e.g. 'example@hotmail.com"/>
 					<form:errors path="email" cssClass="help-inline" element="span" />
 					<br>
 					<br>
@@ -105,7 +117,7 @@ window.onload = function(){
 				<label class="control-label" for="field-userName"><b>User
 						Name*</b></label>
 				<div class="controls">
-					<form:input path="username" id="field-username" tabindex="2"
+					<form:input required="true" path="username" id="field-username" tabindex="2"
 						maxlength="35" placeholder="User Name" />
 					<form:errors path="username" cssClass="help-inline" element="span" />
 					<br>
@@ -120,7 +132,7 @@ window.onload = function(){
 				class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
 				<label class="control-label" for="field-password"><b>Password*</b></label>
 				<div class="controls">
-					<form:password path="password" id="field-password" tabindex="3"
+					<form:password required="true" path="password" id="field-password" tabindex="3"
 						maxlength="35" placeholder="Password" />
 					<form:errors path="password" cssClass="help-inline" element="span" />
 					<br>
@@ -133,8 +145,8 @@ window.onload = function(){
 				<label class="control-label" for="field-passwordRepeated"><b>Repeat
 						password*</b></label>
 				<div class="controls">
-					<form:password path="passwordRepeated" id="field-passwordRepeated"
-						tabindex="4" maxlength="35" placeholder="Repeat password" />
+					<form:password required="true" path="passwordRepeated" id="field-passwordRepeated"
+						tabindex="4" maxlength="35" placeholder="Repeat password" oninput="checkPassword(document.getElementById('field-password'), this);"/>
 					<form:errors path="passwordRepeated" cssClass="help-inline"
 						element="span" />
 					<br>
