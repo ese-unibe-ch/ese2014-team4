@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.ZipCityList;
 import ch.unibe.ese2014.team4.model.ZipCity;
 
+
 /**
  * Controls all pages / commands concerning ads, including the creation,
  * submission and showing ads.
@@ -41,8 +43,6 @@ public class AdController {
 	@Autowired
 	AdService adService;
 
-	// @Autowired
-	MessageService messageService;
 
 	private final String SWISS_ZIP_FILE = "src/main/resources/files/plzSwiss.csv";
 	private ZipCityList zipCityListCh = new ZipCityList(SWISS_ZIP_FILE);
@@ -85,23 +85,6 @@ public class AdController {
 //			return model;
 //		}
 
-	}
-
-	/**
-	 * Controls submission of the message.
-	 * 
-	 * 
-	 */
-	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(MessageForm messageForm,
-			BindingResult result, Principal principal) throws Exception {
-
-		messageService.sendMessage(messageForm.getMessage(),
-				userService.getUserByUsername(principal.getName()),
-				userService.getUser(messageForm.getReceiverId()));
-
-		ModelAndView model = new ModelAndView("ad");
-		return null;
 	}
 
 	/**

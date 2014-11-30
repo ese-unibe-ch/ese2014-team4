@@ -51,16 +51,17 @@ public class User implements UserDetails {
     @OneToOne(cascade = {CascadeType.ALL})
     private Profile profile;
     
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
+	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+    
 	@Lob 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "bookmarks", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> bookmarks = new ArrayList<Long>();
 
-	@IndexColumn(name="LIST_INDEX")
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
-	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 	
 	 public List<Long> getBookmarks() {
 			return bookmarks;

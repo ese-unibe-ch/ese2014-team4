@@ -13,7 +13,7 @@ public class Message {
 	private Long messageId;
 	
 	
-	private String aMessage;
+	private String messageText;
 	private User sender;
 	private User receiver;
 	private Date date;
@@ -32,11 +32,11 @@ public class Message {
 	public void setSender(User sender) {
 		this.sender = sender;
 	}
-	public String getaMessage() {
-		return aMessage;
+	public String getMessageText() {
+		return messageText;
 	}
-	public void setaMessage(String aMessage) {
-		this.aMessage = aMessage;
+	public void setMessageText(String messageText) {
+		this.messageText = messageText;
 	}
 	public Date getDate() {
 		return date;

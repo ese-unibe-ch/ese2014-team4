@@ -40,7 +40,6 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	ProfileDao profileDao;
 	
-    
     @Autowired
     ApplicationContext appContext;
     
