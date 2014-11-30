@@ -39,7 +39,9 @@ public class MessageController {
 //	@Autowired
 	MessageService messageService;
 	
-
+	@Autowired
+	UserService userService;
+	
 
 	/**
 	 * Controls submission of the message.
@@ -50,12 +52,24 @@ public class MessageController {
 	public ModelAndView sendMessage(MessageForm messageForm,
 			BindingResult result, Principal principal) throws Exception {
 
-		messageService.sendMessage(messageForm.getMessage());
+		messageService.sendMessage(messageForm.getMessage(),userService.getUserByUsername(principal.getName()));
 
 		ModelAndView model = new ModelAndView("ad");
 		return null;
 	}
 	
+	
+//	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
+//	public ModelAndView sendMessageTwo(MessageForm messageForm,
+//			BindingResult result, Principal principal) throws Exception {
+//
+//		messageService.sendMessage(messageForm.getMessage(),
+//				userService.getUserByUsername(principal.getName()),
+//				userService.getUser(messageForm.getReceiverId()));
+//
+//		ModelAndView model = new ModelAndView("ad");
+//		return null;
+//	}
 }
 
 	

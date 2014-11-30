@@ -7,23 +7,23 @@
 
 <script type="text/javascript">
 
-sendTheMessage(){
+function sendTheMessage(){
 	setReceiver();
-	setSender();
 	setMessageText();
 	sendMessage(messageForm.getMessage());
 }
 
 //contactField in ad page: adData.owner, contactField in profile page: user
-function setReceiver(){
-	if(document.getElementById("${adData.owner}")!=0 )
-		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
-	else(messageForm.message.setReceiver(document.getElementById("${user}")));
-}
+//function setReceiver(){
+//	if(document.getElementById("${adData.owner}")!=0 )
+//		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
+//	else(messageForm.message.setReceiver(document.getElementById("${user}")));
+//}
 
-function setSender(){
-	messageForm.message.setSender(document.getElementById("${principal}"));
-}
+function setReceiver(){
+		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
+
+
 
 function setMessageText(){
 	messageForm.message.setMessageText(document.getElementById("field-message").value);
