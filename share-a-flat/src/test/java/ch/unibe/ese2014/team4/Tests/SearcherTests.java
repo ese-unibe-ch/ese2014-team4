@@ -74,28 +74,14 @@ public class SearcherTests {
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
-		
-		
-	
-		
-		testAd1.setAvailableDate(convertStringToDate("01-01-2011"));
-		testAd2.setAvailableDate(convertStringToDate("01-01-2012"));
-		testAd3.setAvailableDate(convertStringToDate("01-01-2013"));
+
+		testAd1.setAvailableDate("01-01-2011");
+		testAd2.setAvailableDate("01-01-2012");
+		testAd3.setAvailableDate("01-01-2013");
 
 	}
 	
-	private Date convertStringToDate(String dateAsString) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		Date date = null;
-		
-		try {	 
-			date = formatter.parse(dateAsString);	 
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return date;
-	}
+	
 
 	@Test
 	public void testByCity() {
@@ -142,6 +128,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfFlatMates(2);
+		searchForm.setMaxNrOfFlatMates(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -162,6 +149,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfRooms(2);
+		searchForm.setMaxNrOfRooms(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -268,6 +256,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 
 		searchForm.setMinNrOfRooms(2);
+		searchForm.setMaxNrOfRooms(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(200);
 
@@ -311,6 +300,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfFlatMates(2);
+		searchForm.setMaxNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -354,6 +344,7 @@ public class SearcherTests {
 		String city = "City3";
 		searchForm.setCityOrZip(city);
 		searchForm.setMinNrOfFlatMates(3);
+		searchForm.setMaxNrOfFlatMates(3);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -427,7 +418,18 @@ public class SearcherTests {
 		verify(mockDao);
 	}
 	
-
+	private Date convertStringToDate(String dateAsString) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = null;
+		
+		try {	 
+			date = formatter.parse(dateAsString);	 
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return date;
+	}
 	
 
 

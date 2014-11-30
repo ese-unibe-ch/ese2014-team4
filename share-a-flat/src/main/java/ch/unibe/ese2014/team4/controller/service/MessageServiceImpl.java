@@ -42,8 +42,8 @@ public class MessageServiceImpl implements MessageService{
 		
 		message.setSender(sender);
 	
-		adMessageToInbox(message.getMessageId(), message.getReceiver());
-		adMessageToSent(message.getMessageId(), sender);
+		adMessageToInbox(message.getId(), message.getReceiver());
+		adMessageToSent(message.getId(), sender);
 		
 	}
 	
