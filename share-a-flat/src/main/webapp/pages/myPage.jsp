@@ -21,11 +21,6 @@
 
 <div class="row">
 
-
-
-
-
-
 	<div class="col-md-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -33,9 +28,8 @@
 			</div>
 			<div class="panel-body">
 				<c:import url="embedded/profile.jsp" />
-				<br>
-
-				<div class="form-actions">
+				
+				<div class="form-actions col-md-3">
 					<a type="button"
 						href="${pageContext.request.contextPath}/modifyProfile"
 						class="btn btn-primary">Modify Profile</a>
@@ -44,7 +38,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>My Bookmarks</h3>
@@ -54,14 +48,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-8">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 				<h3>My Ads</h3>
 		</div>
 		<div class="panel-body">
 <c:forEach items="${myAdsList}" var="ad">
-	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
+	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a><font size="1"> (${ad.type})</font>
 	<table>
 
 		<tr>
@@ -81,6 +75,10 @@
 
 			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
 			</td>
+			
+			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
+	
+			
 		</tr>
 	</table>
 	<hr>

@@ -113,6 +113,7 @@ public class AccountController {
 	
 	private ModelAndView getSearchView(User user){
 		ModelAndView model = new ModelAndView("search");
+		model.addObject("whatToDisplay", "Newest Ads");
 
 		model.addObject("user", user);
 		model.addObject("searchForm", new SearchForm());

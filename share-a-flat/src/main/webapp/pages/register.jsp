@@ -9,7 +9,7 @@ div.transbox {
 	position: relative;
 	left: 135px;
 	width: 300px;
-	height: 400px;
+	height: 420px;
 	margin: 60px 40px;
 	background-color: #fff;
 	border: 1px solid black;

@@ -68,8 +68,8 @@ public class Ad {
 	private int netto;
 	private int charges;
 	private int brutto;
-	@Column(columnDefinition="date")
-	private Date availableDate;
+//	@Column(columnDefinition="date")
+	private String availableDate;
 	private String description;
 
 	private int nrOfFlatMates;
@@ -194,11 +194,11 @@ public class Ad {
 		this.creationDate = creationDate;
 	}
 
-	public Date getAvailableDate() {
+	public String getAvailableDate() {
 		return availableDate;
 	}
 
-	public void setAvailableDate(Date availableDate) {
+	public void setAvailableDate(String availableDate) {
 		this.availableDate = availableDate;
 	}
 

@@ -214,8 +214,8 @@
 						<b>Description:</b>
 					</h4>
 
-					<pre>${adData.description}</pre>
-
+<%-- 					<pre>${adData.description}</pre> --%>
+					${adData.description}
 
 				</div>
 			</div>
