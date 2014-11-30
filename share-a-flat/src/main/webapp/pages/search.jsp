@@ -14,7 +14,7 @@
 #map-canvas {
 	width: 700px;
 	height: 395px;
-	}
+}
 </style>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -103,18 +103,27 @@
 	<div class="col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-			<div class="row"></div>
+				<div class="row"></div>
 				<h3>${whatToDisplay}</h3>
-				<button id="listButton" onClick="swap('two','one','mapButton', 'listButton')" class="btn btn-info btn-xs"> Switch to List View</button>
-				<button style="display: none" id="mapButton" onClick="swap('one','two','listButton', 'mapButton' )" class="btn btn-info btn-xs">Switch to Map View</button>
+				<button id="listButton"
+					onClick="swap('two','one','mapButton', 'listButton')"
+					class="btn btn-info btn-xs">Switch to List View</button>
+				<button style="display: none" id="mapButton"
+					onClick="swap('one','two','listButton', 'mapButton' )"
+					class="btn btn-info btn-xs">Switch to Map View</button>
+				 <p> Sort by: <select name="aa" onchange="sort(this.value)">
+					<option value="date">Date</option>
+					<option value="price">Price</option>
+				</select>
+				<p>
+
 			</div>
+
 			<div class="panel-body">
-				<span style="display: none" id="two">
-					<c:import url="searchResultsList.jsp" />
-				</span> 
-				<span id="one">
-					<div id="map-canvas"></div>
-				</span>
+				<span style="display: none" id="two"><c:import
+						url="searchResultsList.jsp" /></span> <span id="one"><div
+						id="map-canvas"></div> </span>
+
 			</div>
 		</div>
 	</div>
@@ -128,6 +137,18 @@
 		document.getElementById(two).style.display = 'none';
 		document.getElementById(mapButton).style.display = 'block';
 		document.getElementById(listButton).style.display = 'none';
+	}
+
+	function sort(sortBy) {
+		if (sortBy == "")
+			return; // please select - possibly you want something else here
+		if (sortBy == "date") {
+
+		}
+
+		if (sortBy == "price") {
+
+		}
 	}
 </script>
 
