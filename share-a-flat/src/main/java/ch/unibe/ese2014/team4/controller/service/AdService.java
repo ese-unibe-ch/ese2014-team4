@@ -25,4 +25,6 @@ public interface AdService {
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 	public List<Ad> getAdsOfUserByUser(User user);
+	
+	public void addUserToVisitorsList(Long visitId, User user);
 }

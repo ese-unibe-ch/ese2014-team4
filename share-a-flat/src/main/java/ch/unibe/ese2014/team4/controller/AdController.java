@@ -134,4 +134,12 @@ public class AdController {
 		return model;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/registerForVisit", method = RequestMethod.GET)
+	public void registerForVisit(
+			@RequestParam(value = "selectedVisit", required = true) long visitId,
+			Principal principal) {
+		System.out.println(visitId);
+		adService.addUserToVisitorsList(visitId, userService.getUserByUsername(principal.getName()));
+	}
 }

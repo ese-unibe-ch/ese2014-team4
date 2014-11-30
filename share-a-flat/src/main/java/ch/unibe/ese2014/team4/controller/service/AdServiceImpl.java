@@ -258,4 +258,10 @@ public class AdServiceImpl implements AdService {
 		return adDao.findAllByOwner(user);
 	}
 
+	public void addUserToVisitorsList(Long visitId, User user) {
+		Visit visit = visitDao.findById(visitId);
+		visit.getVisitorList().add(user);
+		visitDao.save(visit);
+	}
+
 }
