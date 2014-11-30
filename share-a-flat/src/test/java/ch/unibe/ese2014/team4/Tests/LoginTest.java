@@ -14,7 +14,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.controller.service.AccountService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
@@ -30,7 +30,7 @@ public class LoginTest {
     UserDao userDao;
 
     @Autowired
-    NewAccountService nacS;
+    AccountService nacS;
     
     @Autowired
     UserService userService;

@@ -1,28 +1,24 @@
 package ch.unibe.ese2014.team4.controller.service;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
@@ -31,9 +27,9 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.ProfileDao;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 
-//TODO: set newly created user as logged in: http://stackoverflow.com/questions/7900994/programmatically-login-in-a-user-using-spring-security
+
 @Service
-public class NewAccountServiceImpl implements NewAccountService {
+public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	UserDao userDao;
@@ -47,6 +43,9 @@ public class NewAccountServiceImpl implements NewAccountService {
     
     @Autowired
     ApplicationContext appContext;
+    
+    @Autowired
+    JavaMailSender mailSender;
 
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException {
@@ -80,7 +79,10 @@ public class NewAccountServiceImpl implements NewAccountService {
 		} else {
 			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");
 		}
-
+		
+		
+		
+		
 		return signupForm;		
 	}
 
@@ -112,5 +114,28 @@ public class NewAccountServiceImpl implements NewAccountService {
 	public void loginManually(User user) {
 		Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+	}
+
+	public void sendValidationMail(User user, String baseURL){
+		String validationString = generateValidationString(user);
+		String validationLink ="localhost:8080"+ appContext.getApplicationName() + "/submitValidationString?validationString="+validationString+"&userName="+user.getUsername();
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(user.getEmail());
+		message.setText(validationLink);
+		mailSender.send(message);
+		System.out.println(validationLink);
+	}
+	public void activateAccount(User user, String validationString){
+		if (validationString.equals(generateValidationString(user))){
+			System.out.println(user.getAuthorities().size());
+			user.getAuthorities().add(new SimpleGrantedAuthority("ROLE_USER"));
+			System.out.println(user.getAuthorities().size());
+			userDao.save(user);
+		}
+		else{throw new InvalidUserException("email-validation failed");}
+	}
+	private String generateValidationString(User user){
+		return DigestUtils.shaHex(user.getEmail());
 	}
 }

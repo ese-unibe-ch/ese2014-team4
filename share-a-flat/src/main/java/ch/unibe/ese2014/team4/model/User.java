@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -85,7 +86,7 @@ public class User implements UserDetails {
     
 	public User(){
     	this.profile = new Profile();
-    	this.authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+    	this.authorities.add(new SimpleGrantedAuthority("ROLE_REGISTERED"));
     }
 	
     public String getPassword() {
@@ -130,7 +131,7 @@ public class User implements UserDetails {
 		this.profile = profile;
 	}
 //UserDetails methods
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<GrantedAuthority> getAuthorities() {
 
 		return authorities;
 	}
@@ -159,8 +160,8 @@ public class User implements UserDetails {
 	}
 
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		
+		return this.authorities.contains(new SimpleGrantedAuthority("ROLE_USER"));
 	}
 	public String getUserDescription() {
 		return userDescription;

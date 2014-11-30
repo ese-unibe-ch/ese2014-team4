@@ -9,7 +9,7 @@ import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.controller.service.AccountService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 import ch.unibe.ese2014.team4.model.dao.AdDao;
@@ -29,7 +29,7 @@ public class DemoService    {
 	UserService userService;
 	
 	@Autowired
-	NewAccountService nas;
+	AccountService nas;
 	
 	@Autowired
 	AdDao adDao;

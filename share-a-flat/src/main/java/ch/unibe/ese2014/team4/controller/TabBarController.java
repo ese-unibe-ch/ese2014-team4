@@ -8,13 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.NewAccountService;
+import ch.unibe.ese2014.team4.controller.service.AccountService;
 
 @Controller
 public class TabBarController {
 
-	@Autowired
-	NewAccountService sampleService;
 	
 	@Autowired
 	AdService adService;

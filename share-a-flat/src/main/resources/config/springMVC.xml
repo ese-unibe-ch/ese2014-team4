@@ -54,6 +54,20 @@
 		<property name="prefix" value="/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<!--  configuration of email sending bean -->    
+	<bean id="JavaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="team4.ese2014@gmail.com" />
+        <property name="password" value="ese2014Email" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
 
 	<!-- resources -->
 	<mvc:resources mapping="/assets/**"
