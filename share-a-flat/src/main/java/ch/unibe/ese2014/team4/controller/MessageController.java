@@ -49,10 +49,11 @@ public class MessageController {
 	 * 
 	 */
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(MessageForm messageForm,
+	public ModelAndView sendMessage(@RequestParam(value="receiver")User receiver, MessageForm messageForm,
 			BindingResult result, Principal principal) throws Exception {
 
-		messageService.sendMessage(messageForm.getMessage(),userService.getUserByUsername(principal.getName()));
+		messageService.sendMessage(messageForm.getMessage(),userService.getUserByUsername(principal.getName()) 
+				);
 
 		ModelAndView model = new ModelAndView("ad");
 		return null;

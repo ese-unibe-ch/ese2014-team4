@@ -24,15 +24,6 @@ public class MessageForm {
 	private Message message;
 		
 
-//	public User getReceiver() {
-//		return message.getReceiver();
-//	}
-//
-//	public void setReceiver(User receiver) {
-//		message.setReceiver(receiver);
-//	}
-
-
 	public Message getMessage() {
 		return message;
 	}
