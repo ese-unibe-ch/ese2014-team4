@@ -36,7 +36,7 @@ import ch.unibe.ese2014.team4.model.ZipCity;
 @Controller
 public class MessageController {
 	
-//	@Autowired
+	@Autowired
 	MessageService messageService;
 	
 	@Autowired
