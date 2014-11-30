@@ -54,11 +54,11 @@
 					<h1 style="color: blue" align="center">
 						<b>${adData.title}</b><a id="bookmarkStar"
 							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							><h6>bookmark me</h6></a>
+							><h5>bookmark me</h5></a>
 					</h1>
-					<h6 align="center">
+					<h5 align="center">
 						<span>${bookmarkResponse}</span>
-					</h6>
+					</h5>
 					<hr>
 				</div>
 			</div>

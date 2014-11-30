@@ -79,7 +79,12 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		ad.setAvailableDate(adForm.getAvailableDate());
+		
+		if(adForm.getAvailableDate().equals(""))
+			ad.setAvailableDate("--");
+		else
+			ad.setAvailableDate(adForm.getAvailableDate());
+		
 		ad.setAdAddedDate(new Date());
 		
 		

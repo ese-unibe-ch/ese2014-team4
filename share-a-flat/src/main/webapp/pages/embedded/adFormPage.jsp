@@ -42,7 +42,7 @@
 		</div>
 
 
-		<div class="col-md-9" style="padding-left: 0px; padding-right: 3px">
+		<div class="col-md-8" style="padding-left: 0px; padding-right: 3px">
 			<c:set var="streetErrors">
 				<form:errors path="street" />
 			</c:set>
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-3" style="padding-left: 3px; padding-right: 0px">
+		<div class="col-md-4" style="padding-left: 3px; padding-right: 0px">
 			<c:set var="streetNumberErrors">
 				<form:errors path="streetNumber" />
 			</c:set>
@@ -72,7 +72,8 @@
 						required="true" path="streetNumber" id="field-streetNumber"
 						class="form-control" tabindex="5" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
-						onblur="(this.value == '') && (this.value = '0')" />
+						onblur="(this.value == '') && (this.value = '0')" 
+						pattern="\d{1,3}[A-Za-z]?" title="e.g. 60a"/>
 					<form:errors path="streetNumber" cssClass="help-inline"
 						element="span" />
 				</div>
@@ -91,7 +92,8 @@
 						required="true" path="zipCode" id="field-zipCode"
 						class="form-control" tabindex="6" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
-						onblur="(this.value == '') && (this.value = '0')" />
+						onblur="(this.value == '') && (this.value = '0')" 
+						pattern="\d{4}" title="e.g. 3000"/>
 					<form:errors path="zipCode" cssClass="help-inline" element="span" />
 				</div>
 			</div>

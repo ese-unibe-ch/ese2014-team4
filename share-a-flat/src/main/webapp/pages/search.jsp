@@ -119,7 +119,7 @@
 
 			</div>
 
-			<div class="panel-body">
+			<div class="panel-body" style="max-height: 563px ;overflow-y: scroll;">
 				<span style="display: none" id="two"><c:import
 						url="searchResultsList.jsp" /></span> <span id="one"><div
 						id="map-canvas"></div> </span>
