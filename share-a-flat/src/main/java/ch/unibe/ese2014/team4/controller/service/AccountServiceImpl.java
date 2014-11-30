@@ -121,6 +121,7 @@ public class AccountServiceImpl implements AccountService {
 		
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(user.getEmail());
+		message.setFrom(user.getEmail());
 		message.setText(validationLink);
 		mailSender.send(message);
 		System.out.println(validationLink);

@@ -103,15 +103,18 @@
 	<div class="col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
+			<div class="row"></div>
 				<h3>${whatToDisplay}</h3>
+				<button id="listButton" onClick="swap('two','one','mapButton', 'listButton')" class="btn btn-info btn-xs"> Switch to List View</button>
+				<button style="display: none" id="mapButton" onClick="swap('one','two','listButton', 'mapButton' )" class="btn btn-info btn-xs">Switch to Map View</button>
 			</div>
-			<br>
-			<button id="listButton" onClick="swap('two','one','mapButton', 'listButton')"> Switch to List View</button>
-			<button style="display: none" id="mapButton" onClick="swap('one','two','listButton', 'mapButton' )">Switch to Map View</button>
-			<div>
-				<br> <span style="display: none" id="two"><c:import url="searchResultsList.jsp" /></span> 
-				<span  id="one"><body><div id="map-canvas"></div>
-					</body></span>
+			<div class="panel-body">
+				<span style="display: none" id="two">
+					<c:import url="searchResultsList.jsp" />
+				</span> 
+				<span id="one">
+					<div id="map-canvas"></div>
+				</span>
 			</div>
 		</div>
 	</div>

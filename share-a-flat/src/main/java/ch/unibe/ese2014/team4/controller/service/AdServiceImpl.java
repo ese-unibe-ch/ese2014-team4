@@ -66,7 +66,7 @@ public class AdServiceImpl implements AdService {
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 			
 			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
-			ad.setNrOfRooms(0);
+//			ad.setNrOfRooms(0);			isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmante??
 
 		} else {
 			ad.setType(AdType.FLAT);
@@ -79,7 +79,7 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		ad.setAvailableDate(convertStringToDate(adForm));
+		ad.setAvailableDate(adForm.getAvailableDate());
 		ad.setAdAddedDate(new Date());
 		
 		

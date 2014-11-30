@@ -26,6 +26,8 @@
 
 			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
 			</td>
+			
+			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
 		</tr>
 	</table>
 	<hr>
