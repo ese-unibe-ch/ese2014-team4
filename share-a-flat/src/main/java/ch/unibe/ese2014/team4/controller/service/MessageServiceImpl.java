@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
@@ -27,6 +28,8 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
  * @author Zoyela
  *
  */
+
+@Service
 public class MessageServiceImpl implements MessageService{
 	
 	@Autowired
