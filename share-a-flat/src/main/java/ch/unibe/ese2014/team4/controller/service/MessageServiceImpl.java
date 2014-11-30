@@ -29,36 +29,38 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
  */
 public class MessageServiceImpl implements MessageService{
 	
-	//@Autowired
+	@Autowired
 	MessageDao messageDao;
 	
 	@Autowired
 	UserDao userDao;
 	
-	public void sendMessage(Message message){
+	public void sendMessage(Message message, User sender){
+		
+		message.setSender(sender);
 	
 		adMessageToInbox(message.getMessageId(), message.getReceiver());
-		adMessageToSent(message.getMessageId(), message.getSender());
+		adMessageToSent(message.getMessageId(), sender);
 		
 	}
 	
-	public void adMessageToInbox(long messageId, User user) {
-		List<Long> list = user.getInbox();
+	public void adMessageToInbox(long messageId, User _receiver) {
+		List<Long> list = _receiver.getInbox();
 		if(!list.contains(messageId)){
 			list.add(messageId);
-			userDao.save(user);
-			user.setInbox(list);
+			userDao.save(_receiver);
+			_receiver.setInbox(list);
 		}
 //		else throw new MessageExeption("already added to inbox");
 	}
 	
 	
-	public void adMessageToSent(long messageId, User user) {
-		List<Long> list = user.getSent();
+	public void adMessageToSent(long messageId, User _sender) {
+		List<Long> list = _sender.getSent();
 		if(!list.contains(messageId)){
 			list.add(messageId);
-			userDao.save(user);
-			user.setSent(list);
+			userDao.save(_sender);
+			_sender.setSent(list);
 		}
 
 //		else throw new MessageException("already added to sent!");
