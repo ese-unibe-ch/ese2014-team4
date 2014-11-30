@@ -9,8 +9,9 @@
 
 function sendTheMessage(){
 	setReceiver();
+	setSender();
 	setMessageText();
-	sendMessage(messageForm.getMessage());
+	//sendMessage(messageForm.getMessage());
 }
 
 //contactField in ad page: adData.owner, contactField in profile page: user
@@ -22,8 +23,11 @@ function sendTheMessage(){
 
 function setReceiver(){
 		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
+}
 
-
+function setSender(){
+		messageForm.message.setSender(document.getElementById("${principal}"));
+}
 
 function setMessageText(){
 	messageForm.message.setMessageText(document.getElementById("field-message").value);
@@ -39,7 +43,7 @@ function setMessageText(){
 
 <form:form method="post" modelAttribute="messageForm"
 	action="sendMessage" id="messageForm" cssClass="form-horizontal"
-	autocomplete="off" onsubmit="addReceiverIdToMessageForm()">
+	autocomplete="off" onsubmit="sendTheMessage()">
 
 
 	<textarea required="true" class="form-control" path="message"

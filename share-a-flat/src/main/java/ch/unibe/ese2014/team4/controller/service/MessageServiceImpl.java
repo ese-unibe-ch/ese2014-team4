@@ -40,7 +40,7 @@ public class MessageServiceImpl implements MessageService{
 	
 	public void sendMessage(Message message, User sender){
 		
-		message.setSender(sender);
+		//message.setSender(sender);
 	
 		adMessageToInbox(message.getId(), message.getReceiver());
 		adMessageToSent(message.getId(), sender);
@@ -75,7 +75,7 @@ public class MessageServiceImpl implements MessageService{
 	public List<Message> getInboxMessages(List<Long> messages, User user) {
 		List<Message> list = new ArrayList<Message>();
 		for(Long id : messages){
-			Message message = messageDao.findAllById(id);
+			Message message = messageDao.findById(id);
 			if (message.getReceiver() == user ) list.add(message);
 		}
 		return list;
@@ -84,7 +84,7 @@ public class MessageServiceImpl implements MessageService{
 	public List<Message> getSentMessages(List<Long> messages, User user) {
 		List<Message> list = new ArrayList<Message>();
 		for(Long id : messages){
-			Message message = messageDao.findAllById(id);
+			Message message = messageDao.findById(id);
 			if (message.getSender() == user ) list.add(message);
 		}
 		return list;

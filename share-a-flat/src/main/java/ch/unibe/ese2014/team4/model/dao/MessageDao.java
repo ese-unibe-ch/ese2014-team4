@@ -12,6 +12,6 @@ import ch.unibe.ese2014.team4.model.User;
 
 public interface MessageDao extends CrudRepository<Message,Long>  {
 	
-	Message findAllById(Long messageId);
+	Message findById(Long messageId);
 
 }
