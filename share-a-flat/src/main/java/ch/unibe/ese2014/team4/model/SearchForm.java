@@ -1,31 +1,33 @@
-package ch.unibe.ese2014.team4.controller.pojos;
+package ch.unibe.ese2014.team4.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
-import ch.unibe.ese2014.team4.model.Address;
+import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
 /**
  * Used to transfer ad-information from form to controller.
  * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
  */
 
+@Entity
 public class SearchForm {
-
-    @NotNull
-    private int minPrice;
-    @NotNull
-    private int maxPrice;
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private User owner;
+	
     
-	@NotNull
-    private String description;
-    private String title;
+    private int minPrice; 
+    private int maxPrice;
+
     private int minNrOfFlatMates;
     private int maxNrOfFlatMates;
     private float minNrOfRooms;
@@ -45,7 +47,6 @@ public class SearchForm {
 		this.orderBy = orderBy;
 	}
 
-	private Long id;
     
   //Address-Info, same field as Ad itself.
   	private int streetNumber;
@@ -54,6 +55,14 @@ public class SearchForm {
     
     public float getMinNrOfRooms() {
 		return minNrOfRooms;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 	public void setMinNrOfRooms(float minNrOfRooms) {
@@ -100,22 +109,6 @@ public class SearchForm {
 	public void setMaxPrice(int maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}    
 
     public int getStreetNumber() {
 		return streetNumber;

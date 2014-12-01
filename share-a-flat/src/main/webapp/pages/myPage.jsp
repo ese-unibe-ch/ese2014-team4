@@ -59,18 +59,26 @@
 	</div>
 	</div>
 <!-- shows all visit dates of all my ads, including visitors -->
+
+
+
+
+
 	<div class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-				<h3>My Visits</h3>
+				<h3>My Searches</h3>
 		</div>
 		<div class="panel-body">
+		<c:forEach items="${mySearchList}" var="search">
+			<form:form modelAttribute="${search}" action="submitSearch" method="POST">
+			${search.city}
+			<button type="submit" name="search">Search</button>
+			</form:form> 
+		</c:forEach>
 		</div>
 
 	<hr>
-
-
-		
 
 		
 	</div>

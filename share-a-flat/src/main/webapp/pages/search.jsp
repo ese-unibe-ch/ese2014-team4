@@ -95,7 +95,7 @@
 			</div>
 
 			<div class="panel-body">
-				<c:import url="searchCriteria.jsp" />
+				<c:import url="embedded/searchCriteria.jsp" />
 			</div>
 		</div>
 	</div>
