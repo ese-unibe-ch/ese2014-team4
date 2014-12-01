@@ -198,7 +198,7 @@ public class AdServiceImpl implements AdService {
 			return ads;	
 		}
 		if (orderBy.equals("price")){
-			ads = adDao.findAllByAddressCityOrderByBruttoDesc(city);
+			ads = adDao.findAllByAddressCityOrderByBruttoAsc(city);
 			return ads;	
 		}
 		ads = adDao.findAllByAddressCityIgnoreCase(city);
