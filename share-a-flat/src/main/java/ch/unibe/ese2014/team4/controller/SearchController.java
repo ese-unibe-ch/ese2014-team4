@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.validation.Valid;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
+import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.MapAddress;
+import ch.unibe.ese2014.team4.model.SearchForm;
+import ch.unibe.ese2014.team4.model.User;
 
 /**
  * Controls all pages / commands concerning ads.
@@ -27,10 +30,13 @@ import ch.unibe.ese2014.team4.model.MapAddress;
 public class SearchController {
 
 	@Autowired
-	SearchService searcher;
+	SearchService searchService;
 
 	@Autowired
 	AdService adService;
+	
+	@Autowired
+	UserService userService;
 
 	// simplify both search-methods, remove common stuff
 
@@ -47,8 +53,22 @@ public class SearchController {
 		model.addObject("addresses", addresses);
 		return model;
 	}
-
-	@RequestMapping(value = "/submitSearch", method = RequestMethod.POST)
+	@RequestMapping(params = "save", value = "/submitSearch", method = RequestMethod.POST)
+	public ModelAndView saveSearch(@Valid SearchForm searchForm,BindingResult result, Principal principal) {
+		ModelAndView model = new ModelAndView("myPage");
+		User user = userService.getUserByUsername(principal.getName());
+		searchForm.setOwner(user);
+		searchService.saveSearchForm(searchForm);
+		return model;
+	}
+	/**
+	 * 
+	 * @param searchForm
+	 * @param result
+	 * @param resultType
+	 * @return
+	 */
+	@RequestMapping(params = "search", value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView search(
 			@Valid SearchForm searchForm,
 			BindingResult result,
@@ -56,7 +76,7 @@ public class SearchController {
 		ModelAndView model = new ModelAndView("search");
 		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
 
-		adsToAdd = searcher.getAdList(searchForm);
+		adsToAdd = searchService.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()) {
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
@@ -79,6 +99,7 @@ public class SearchController {
 		
 		return model;
 	}
+
 
 	private ArrayList<MapAddress> getAddressesForMap(ArrayList<Ad> ads) {
 		ArrayList<MapAddress> addresses = new ArrayList<MapAddress>();

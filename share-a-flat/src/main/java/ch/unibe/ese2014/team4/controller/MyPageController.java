@@ -22,6 +22,7 @@ import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
+import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.AccountService;
 import ch.unibe.ese2014.team4.controller.service.ProfileService;
@@ -42,6 +43,8 @@ public class MyPageController {
 	UserService userService;
 	@Autowired
 	AdService adService;
+	@Autowired
+	SearchService searchService;
 
 
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
@@ -50,6 +53,7 @@ public class MyPageController {
 		try{
 			User user=userService.getUserByUsername(principal.getName());
 			model.addObject("user", user);
+			model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
 			model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
 			System.out.println(adService.getAdsOfUserByUser(user).size());

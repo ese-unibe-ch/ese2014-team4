@@ -48,13 +48,20 @@
 <body onload="codeAddress()">
 
 	<div id="masthead">
+
 		<div class="container">
 			<div class="row">
 				<div>
 					<h1 style="color: blue" align="center">
-						<b>${adData.title}</b><a id="bookmarkStar"
+						<b>${adData.title}</b>
+							<c:if test=""></c:if>
+							<c:choose><c:when test="${isBookmarked eq false}"><a id="bookmarkStar"
 							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							><h5>bookmark me</h5></a>
+							><h5>bookmark me</h5></a></c:when>
+							<c:otherwise><a id="bookmarkStar"
+							href="${pageContext.request.contextPath}/removeFromBookmarks?adId=${adData.id}"
+							><h5>remove from bookmark</h5></a></c:otherwise>
+							</c:choose>
 					</h1>
 					<h5 align="center">
 						<span>${bookmarkResponse}</span>

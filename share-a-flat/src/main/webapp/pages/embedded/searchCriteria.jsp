@@ -220,8 +220,9 @@
 
 					<div class="form-actions">
 						<br>
-						<button type="submit" tabindex="9" class="btn btn-primary">Search
+						<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search
 							Ad</button>
+							<button type="submit" name="save" tabindex="9" class="btn btn-primary"> Save search</button>
 						<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
 						<button type="reset" tabindex="10" class="btn btn-default">Reset</button>
 					</div>

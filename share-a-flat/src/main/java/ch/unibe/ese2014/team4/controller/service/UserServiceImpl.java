@@ -48,9 +48,10 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
-	public boolean isEmailValidated(Long userId) {
+
+	public boolean isBookmarked(User user, long adId) {
 		
-		return userDao.findById(userId).getIsEmailValidated();
+		return user.getBookmarks().contains(adId);
 	}
 
 }

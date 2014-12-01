@@ -29,5 +29,6 @@ public interface AdService {
 
 	public List<Visit> getVisitList(long adId);		
 	public void registerUserForVisit(Long visitId, User user);
+	public void unBookMarkAdForUser(long adId, User user);
 
 }

@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
-import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.SearchForm;
+import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.dao.SearchFormDao;
 
 /**
  * 
@@ -31,6 +33,9 @@ public class SearchServiceImpl implements SearchService {
 
 	@Autowired
 	private AdService adService;
+	
+	@Autowired
+	private SearchFormDao searchFormDao;
 	
 	/**
 	 * checks if a city name or a zipcode or nothing has been put in the search
@@ -217,5 +222,15 @@ public class SearchServiceImpl implements SearchService {
 		Query query = factory.createEntityManager().createQuery(queryString);
 
 		return null;
+	}
+
+	public void saveSearchForm(SearchForm searchForm) {
+		searchFormDao.save(searchForm);
+		
+	}
+
+	public List<SearchForm> getMySavedSearchForms(User user) {
+		return searchFormDao.findAllByOwner(user);
+		
 	}	
 }
