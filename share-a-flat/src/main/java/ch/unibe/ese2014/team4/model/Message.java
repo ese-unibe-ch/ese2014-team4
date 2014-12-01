@@ -6,6 +6,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Message implements Serializable {
@@ -13,12 +16,19 @@ public class Message implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long id;  
 	
 	
 	private String messageText;
+	
+	@ManyToOne
+	@JoinColumn(name = "sender_id")
 	private User sender;
+	
+	@ManyToOne
+	@JoinColumn(name = "receiver_id")
 	private User receiver;
+	
 	private Date date;
 
 	
