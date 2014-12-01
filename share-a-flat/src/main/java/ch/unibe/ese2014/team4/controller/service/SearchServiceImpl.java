@@ -26,10 +26,12 @@ import ch.unibe.ese2014.team4.model.Ad;
 public class SearchServiceImpl implements SearchService {
 
 	private SearchForm searchForm = new SearchForm();
+	private String orderBy;
+
 
 	@Autowired
 	private AdService adService;
-
+	
 	/**
 	 * checks if a city name or a zipcode or nothing has been put in the search
 	 * then gets the list of ads from data base and send it on to be checked
@@ -39,18 +41,19 @@ public class SearchServiceImpl implements SearchService {
 	 */
 	public ArrayList<Ad> getAdList(SearchForm sf) {
 		this.searchForm = sf;
+		orderBy = searchForm.getOrderBy();
 
 		int zip = 0;
 		ArrayList<Ad> adsToSort = new ArrayList<Ad>();
 		zip = parseCityZip(searchForm.getCityOrZip());
 
 		if (zip > 0) {
-			adsToSort = adService.getAdByZip(zip);
+			adsToSort = adService.getAdByZip(zip, orderBy);
 		} else {
 			if (searchForm.getCityOrZip() != "") {
-				adsToSort = adService.getAdByCity(searchForm.getCityOrZip());
+				adsToSort = adService.getAdByCity(searchForm.getCityOrZip(), orderBy);
 			} else {
-				adsToSort = adService.getAllAds();
+				adsToSort = adService.getAllAds(orderBy);
 			}
 		}
 		return getRelevantAds(adsToSort);

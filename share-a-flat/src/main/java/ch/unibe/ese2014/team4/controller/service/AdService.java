@@ -17,11 +17,11 @@ public interface AdService {
 	public ArrayList<Ad> getNewestAds();
 	public List<Ad> getAdByBrutto(int brutto);
 	public List<Ad> getAdByTitle(String title);
-	public ArrayList<Ad> getAdByCity(String city);
+	public ArrayList<Ad> getAdByCity(String city, String orderBy);
 	public void setAdDao(AdDao mockDao);
 	public List<String> getImageList(long adId);
-	public ArrayList<Ad> getAdByZip(int zipCode);
-	public ArrayList<Ad> getAllAds();
+	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy);
+	public ArrayList<Ad> getAllAds(String orderBy);
 	public void bookMarkAdforUser(long adId, User user);
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
