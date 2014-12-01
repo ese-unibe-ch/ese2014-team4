@@ -57,6 +57,8 @@ body {
 
 					<li <%= isActive("myPage", request) %>><a href="myPage">My
 							Page</a></li>
+					<li <%= isActive("myMessages", request) %>><a href="myMessages">My
+							Messages</a></li>
 					<!-- <li <%= isActive("favorites", request) %>><a href="favorites">My
 							Favorites</a></li> -->
 					<li <%= isActive("search", request) %>><a

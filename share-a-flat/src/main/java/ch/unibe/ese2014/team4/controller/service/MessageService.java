@@ -22,5 +22,7 @@ import ch.unibe.ese2014.team4.model.dao.AdDao;
 public interface MessageService {
 
 	public void sendMessage(String messageText, User sender, User receiver);
+	public List<Message> getSentList(User user);
+	public List<Message> getInboxList(User user);
 
 }

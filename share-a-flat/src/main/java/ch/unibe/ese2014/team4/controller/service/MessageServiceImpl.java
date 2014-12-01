@@ -53,47 +53,56 @@ public class MessageServiceImpl implements MessageService{
 		
 	}
 	
-	public void adMessageToInbox(long messageId, User _receiver) {
-		List<Long> list = _receiver.getInbox();
-		if(!list.contains(messageId)){
-			list.add(messageId);
-			_receiver.setInbox(list);
-			userDao.save(_receiver);
-		}
-//		else throw new MessageExeption("already added to inbox");
+	public List<Message> getSentList(User user){
+		return messageDao.findAllBySender(user);
 	}
 	
+	public List<Message> getInboxList(User user){
+		return messageDao.findAllByReceiver(user);
+	}
 	
-	public void adMessageToSent(long messageId, User _sender) {
-		List<Long> list = _sender.getSent();
-		if(!list.contains(messageId)){
-			list.add(messageId);
-			_sender.setSent(list);
-			userDao.save(_sender);
-		
-		}
 
-//		else throw new MessageException("already added to sent!");
-					
-	}
-
-	
-	public List<Message> getInboxMessages(List<Long> messages, User user) {
-		List<Message> list = new ArrayList<Message>();
-		for(Long id : messages){
-			Message message = messageDao.findById(id);
-			if (message.getReceiver() == user ) list.add(message);
-		}
-		return list;
-	}
-	
-	public List<Message> getSentMessages(List<Long> messages, User user) {
-		List<Message> list = new ArrayList<Message>();
-		for(Long id : messages){
-			Message message = messageDao.findById(id);
-			if (message.getSender() == user ) list.add(message);
-		}
-		return list;
-	}
+//	public void adMessageToInbox(long messageId, User _receiver) {
+//		List<Long> list = _receiver.getInbox();
+//		if(!list.contains(messageId)){
+//			list.add(messageId);
+//			_receiver.setInbox(list);
+//			userDao.save(_receiver);
+//		}
+////		else throw new MessageExeption("already added to inbox");
+//	}
+//	
+//	
+//	public void adMessageToSent(long messageId, User _sender) {
+//		List<Long> list = _sender.getSent();
+//		if(!list.contains(messageId)){
+//			list.add(messageId);
+//			_sender.setSent(list);
+//			userDao.save(_sender);
+//		
+//		}
+//
+////		else throw new MessageException("already added to sent!");
+//					
+//	}
+//
+//	
+//	public List<Message> getInboxMessages(List<Long> messages, User user) {
+//		List<Message> list = new ArrayList<Message>();
+//		for(Long id : messages){
+//			Message message = messageDao.findById(id);
+//			if (message.getReceiver() == user ) list.add(message);
+//		}
+//		return list;
+//	}
+//	
+//	public List<Message> getSentMessages(List<Long> messages, User user) {
+//		List<Message> list = new ArrayList<Message>();
+//		for(Long id : messages){
+//			Message message = messageDao.findById(id);
+//			if (message.getSender() == user ) list.add(message);
+//		}
+//		return list;
+//	}
 	
 }

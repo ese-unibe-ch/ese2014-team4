@@ -10,56 +10,37 @@
 	<div class="container">
 		<div class="row">
 			<div>
-				<h1>My Page</h1>
+				<h1>My Messages</h1>
 				<hr>
 			</div>
 		</div>
-	</div>
-	<!--/container-->
-</div>
-<!--/masthead-->
+	</div><!--/container-->
+</div><!--/masthead-->
 
 <div class="row">
 
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3>My Profile</h3>
-			</div>
-			<div class="panel-body">
-				<c:import url="embedded/profile.jsp" />
-				
-				<div class="form-actions col-md-3">
-					<a type="button"
-						href="${pageContext.request.contextPath}/modifyProfile"
-						class="btn btn-primary">Modify Profile</a>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3>My Bookmarks</h3>
+				<h3>Inbox</h3>
 			</div>
 			<div class="panel-body">
-				<c:import url="searchResultsList.jsp" />
+				<c:import url="embedded/inbox.jsp" />
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-md-6">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-				<h3>My Ads</h3>
-		</div>
-		<div class="panel-body">
-			<c:import url="embedded/myAdsList.jsp" />
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Sent Messages</h3>
+			</div>
+			<div class="panel-body">
+				<c:import url="embedded/sent.jsp" />
+			</div>
 		</div>
 	</div>
-	</div>
-
-
 
 		
 	</div>

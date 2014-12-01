@@ -14,9 +14,9 @@
 
 <br>
 <!-- to insert space: &#160. will be improved -->
-<c:forEach items="${inboxList}" var="message">
-	<b>From:</b> &#160&#160&#160&#160&#160&#160&#160&#160${message.sender.username} 
-	<br><b>Received:</b> &#160 ${message.date}<br>
+<c:forEach items="${sentList}" var="message">
+	<b>To:</b> &#160&#160&#160&#160&#160 ${message.sender.username} 
+	<br> <b>Sent:</b> &#160&#160 ${message.date}<br>
 	<pre>${message.messageText}</pre>
 	
 <hr>

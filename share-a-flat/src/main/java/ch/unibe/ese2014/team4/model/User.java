@@ -30,7 +30,6 @@ import ch.unibe.ese2014.team4.controller.pojos.Sex;
 public class User implements UserDetails {
 
 
-
 	@Id
     @GeneratedValue
     private Long id;
@@ -63,7 +62,19 @@ public class User implements UserDetails {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "bookmarks", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> bookmarks = new ArrayList<Long>();
-
+	
+	@Lob 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "inbox", joinColumns = @JoinColumn(name = "user_id"))
+	public List<Long> inbox = new ArrayList<Long>();
+	
+	@Lob 
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "sent", joinColumns = @JoinColumn(name = "user_id"))
+	public List<Long> sent = new ArrayList<Long>();
+	
 	
 	 public List<Long> getBookmarks() {
 			return bookmarks;
@@ -72,7 +83,7 @@ public class User implements UserDetails {
 	public void setBookmarks(List<Long> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
-	    
+	
 	public User(){
     	this.profile = new Profile();
     	this.authorities.add(new SimpleGrantedAuthority("ROLE_REGISTERED"));
@@ -102,7 +113,6 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -110,7 +120,6 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 	public Profile getProfile() {
 		return profile;
@@ -130,8 +139,6 @@ public class User implements UserDetails {
 	}
 
 
-
-	
 	//all set to return true, otherwise user cannot login.
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -183,6 +190,22 @@ public class User implements UserDetails {
 
 	public void setIsEmailValidated(Boolean isEmailValidated) {
 		this.isEmailValidated = isEmailValidated;
+	}
+	
+	public List<Long> getInbox() {
+		return inbox;
+	}
+
+	public void setInbox(List<Long> inbox) {
+		this.inbox = inbox;
+	}
+
+	public List<Long> getSent() {
+		return sent;
+	}
+
+	public void setSent(List<Long> sent) {
+		this.sent = sent;
 	}
 
 

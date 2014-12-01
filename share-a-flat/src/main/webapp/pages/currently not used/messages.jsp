@@ -17,19 +17,3 @@
 
 
 
-
-
-
-
-<!-- put this back to myPage.jsp when implmented -->
-
-<div class="col-md-2">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3>My Messages</h3>
-		</div>
-		<div class="panel-body">
-			<c:import url="embedded/messages.jsp" />
-		</div>
-	</div>
-</div>
