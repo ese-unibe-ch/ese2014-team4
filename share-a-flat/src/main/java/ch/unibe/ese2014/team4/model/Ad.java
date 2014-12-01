@@ -57,7 +57,7 @@ public class Ad {
 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "visitList", joinColumns = @JoinColumn(name = "ad_id"))
+	@CollectionTable(name = "ad_to_visit", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<Visit> visitList = new ArrayList<Visit>();
 	
 	private Date creationDate = new Date();
@@ -68,8 +68,8 @@ public class Ad {
 	private int netto;
 	private int charges;
 	private int brutto;
-	@Column(columnDefinition="date")
-	private Date availableDate;
+//	@Column(columnDefinition="date")
+	private String availableDate;
 	private String description;
 
 	private int nrOfFlatMates;
@@ -194,11 +194,11 @@ public class Ad {
 		this.creationDate = creationDate;
 	}
 
-	public Date getAvailableDate() {
+	public String getAvailableDate() {
 		return availableDate;
 	}
 
-	public void setAvailableDate(Date availableDate) {
+	public void setAvailableDate(String availableDate) {
 		this.availableDate = availableDate;
 	}
 
@@ -228,7 +228,7 @@ public class Ad {
 
 	public MapAddress getAddressForMap() {
 		MapAddress tmpMapAddress = new MapAddress();
-		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity() + " Switzerland";
+		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity();
 		tmpMapAddress.setAddressAsString(addressForMAp);
 		tmpMapAddress.setId(id);
 		return tmpMapAddress;

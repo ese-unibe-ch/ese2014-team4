@@ -15,6 +15,51 @@
 <script type="text/javascript">
 	
 	function checkSearchInput() {
+		
+		var availableDate = document.getElementById("field-availableDate").value;
+		if (availableDate != "") {
+			if (!availableDate
+					.match(/^(0?[1-9]|[12][0-9]|3[01])[\-](0?[1-9]|1[012])[\-]\d{4}$/)) {
+				alert("Please enter a valid available Date (E.g. 01-01-2000)");
+				document.getElementById("field-availableDate").focus();
+				return false;
+			} else {
+				var pdate = availableDate.split('-');
+
+				var dd = parseInt(pdate[0]);
+				var mm = parseInt(pdate[1]);
+				var yy = parseInt(pdate[2]);
+
+				// Create list of days of a month [assume there is no leap year by default]  
+				var ListofDays = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30,
+						31 ];
+
+				if (mm == 1 || mm > 2) {
+					if (dd > ListofDays[mm - 1]) {
+						alert('Invalid Date!\nBe careful how many days a month has!');
+						return false;
+					}
+				}
+
+				if (mm == 2) {
+					var lyear = false;
+
+					if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
+						lyear = true;
+					}
+
+					if ((lyear == false) && (dd >= 29)) {
+						alert('Leap year:\nFebruary only has 28 days!');
+						return false;
+					}
+
+					if ((lyear == true) && (dd > 29)) {
+						alert('Not leap year:\nFebruary has only 29 days!');
+						return false;
+					}
+				}
+			}
+		}
 		return (checkMaxPrice() && checkCityZipField());
 	}
 	
@@ -41,8 +86,7 @@
 		} else
 			return true;
 	}
-
-	
+		
 	function checkZip() {
 		var zip = document.getElementById("field-cityOrZip");
 
@@ -70,13 +114,13 @@ $(document).ready(function() {
 
 function disableFieldInSearch() {
 	if (document.getElementById("room").checked == true) {
-		$('#field-minNrOfFlatMates').prop('disabled', false);
-		$('#field-maxNrOfFlatMates').prop('disabled', false);
+		$('#field-minNrOfFlatMates').prop('readonly', false);
+		$('#field-maxNrOfFlatMates').prop('readonly', false);
 	}
 	
 	if (document.getElementById("flat").checked == true){
-		$('#field-minNrOfFlatMates').prop('disabled', true);
-		$('#field-maxNrOfFlatMates').prop('disabled', true);
+		$('#field-minNrOfFlatMates').prop('readonly', true);
+		$('#field-maxNrOfFlatMates').prop('readonly', true);
 	}
 }
 
@@ -87,7 +131,8 @@ function autofillMaxPrice() {
 	var minPrice = parseInt(document.getElementById("field-minPrice").value);
 	var maxPrice = document.getElementById("field-maxPrice");
 	
-	if (minPrice > 0) {		
+	if (minPrice > 0) {
+		maxPrice.min = minPrice;
 		maxPrice.value = minPrice;
 	}
 	
@@ -96,24 +141,12 @@ function autofillMaxPrice() {
 </script>
 
 <script type="text/javascript">
-// function autofillMinPrice() {
-// 	var maxPrice = parseInt(document.getElementById("field-maxPrice").value);
-// 	var minPrice = document.getElementById("field-minPrice");
-
-// 	if (maxPrice < parseInt(minPrice)) {		
-// 		minPrice.value = maxPrice;
-// 	}
-	
-// 	return true;
-// }
-</script>
-
-<script type="text/javascript">
 function autofillMaxNrOfRooms() {
 	var minNrOfRooms = parseInt(document.getElementById("field-minNrOfRooms").value);
 	var maxNrOfRooms = document.getElementById("field-maxNrOfRooms");
 	
 	if (minNrOfRooms > 0) {	
+		maxNrOfRooms.min = minNrOfRooms;
 		maxNrOfRooms.value = minNrOfRooms;
 	}
 	
@@ -122,45 +155,15 @@ function autofillMaxNrOfRooms() {
 </script>
 
 <script type="text/javascript">
-// function autofillMinNrOfRooms() {
-// 	var maxNrOfRooms = parseInt(document.getElementById("field-maxNrOfRooms").value);
-// 	var minNrOfRooms = document.getElementById("field-minNrOfRooms");
-	
-// 	if (minNrOfRooms > parseInt(maxNrOfRooms)) {	
-// 		minNrOfRooms.value = maxNrOfRooms;
-// 	}
-	
-// 	return true;
-// }
-</script>
-
-<script type="text/javascript">
 function autofillMaxNrOfFlatMates() {
 	var minNrOfFlatMates = parseInt(document.getElementById("field-minNrOfFlatMates").value);
 	var maxNrOfFlatMates = document.getElementById("field-maxNrOfFlatMates");
 	
 	if (minNrOfFlatMates > 0) {	
+		maxNrOfFlatMates.min = minNrOfFlatMates;
 		maxNrOfFlatMates.value = minNrOfFlatMates;
 	}
 	
 	return true;
 }
 </script>
-
-<script type="text/javascript">
-// function autofillMinNrOfFlatMates() {
-// 	var maxNrOfFlatMates = parseInt(document.getElementById("field-maxNrOfFlatMates").value);
-// 	var minNrOfFlatMates = document.getElementById("field-minNrOfFlatMates");
-	
-// 	if (minNrOfFlatMates > maxNrOfFlatMates) {	
-// 		minNrOfFlatMates.value = maxNrOfFlatMates;
-// 	}
-	
-// 	return true;
-// }
-</script>
-
-
-
-
-

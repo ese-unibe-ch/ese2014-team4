@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -52,16 +53,17 @@ public class User implements UserDetails {
     @OneToOne(cascade = {CascadeType.ALL})
     private Profile profile;
     
+	@IndexColumn(name="LIST_INDEX")
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
+	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+    
 	@Lob 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "bookmarks", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> bookmarks = new ArrayList<Long>();
 
-	@IndexColumn(name="LIST_INDEX")
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
-	private Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 	
 	 public List<Long> getBookmarks() {
 			return bookmarks;
@@ -87,7 +89,7 @@ public class User implements UserDetails {
     
 	public User(){
     	this.profile = new Profile();
-    	this.authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+    	this.authorities.add(new SimpleGrantedAuthority("ROLE_REGISTERED"));
     }
 	
     public String getPassword() {
@@ -132,7 +134,7 @@ public class User implements UserDetails {
 		this.profile = profile;
 	}
 //UserDetails methods
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<GrantedAuthority> getAuthorities() {
 
 		return authorities;
 	}
@@ -161,8 +163,8 @@ public class User implements UserDetails {
 	}
 
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		
+		return this.authorities.contains(new SimpleGrantedAuthority("ROLE_USER"));
 	}
 	public String getUserDescription() {
 		return userDescription;

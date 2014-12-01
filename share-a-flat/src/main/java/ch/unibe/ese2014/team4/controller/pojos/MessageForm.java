@@ -22,20 +22,7 @@ public class MessageForm {
 	
 
 	private Message message;
-	
-	
-	//should be added by submitting in sendMessageBox
-	private long receiverId;
-	
-
-	public long getReceiverId() {
-		return receiverId;
-	}
-
-	public void setReceiverId(long receiverId) {
-		this.receiverId = receiverId;
-	}
-
+		
 
 	public Message getMessage() {
 		return message;

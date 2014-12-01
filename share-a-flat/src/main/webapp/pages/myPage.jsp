@@ -21,11 +21,6 @@
 
 <div class="row">
 
-
-
-
-
-
 	<div class="col-md-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -33,9 +28,8 @@
 			</div>
 			<div class="panel-body">
 				<c:import url="embedded/profile.jsp" />
-				<br>
-
-				<div class="form-actions">
+				
+				<div class="form-actions col-md-3">
 					<a type="button"
 						href="${pageContext.request.contextPath}/modifyProfile"
 						class="btn btn-primary">Modify Profile</a>
@@ -60,7 +54,6 @@
 				<h3>My Ads</h3>
 		</div>
 		<div class="panel-body">
-
 			<c:import url="embedded/myAdsList.jsp" />
 		</div>
 	</div>
@@ -73,11 +66,16 @@
 		</div>
 		<div class="panel-body">
 
+
+	<hr>
+
+</div>
+		
+
 		</div>
 	</div>
 	</div>	
 	
-	</div>
 
 
 

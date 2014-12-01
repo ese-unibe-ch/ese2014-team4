@@ -66,7 +66,7 @@ public class AdServiceImpl implements AdService {
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 			
 			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
-			ad.setNrOfRooms(0);
+//			ad.setNrOfRooms(0);			//isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmante??
 
 		} else {
 			ad.setType(AdType.FLAT);
@@ -79,7 +79,12 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		ad.setAvailableDate(convertStringToDate(adForm));
+		
+		if(adForm.getAvailableDate().equals(""))
+			ad.setAvailableDate("--");
+		else
+			ad.setAvailableDate(adForm.getAvailableDate());
+		
 		ad.setAdAddedDate(new Date());
 		
 		
@@ -218,7 +223,7 @@ public class AdServiceImpl implements AdService {
 	}
 
 
-	
+
 	
 	public List<Ad> getBookmarkList(User user){
 		return null;
@@ -253,6 +258,7 @@ public class AdServiceImpl implements AdService {
 		return adDao.findAllByOwner(user);
 	}
 
+
 	public List<Visit> getVisitList(long adId) {
 
 		return adDao.findById(adId).getVisitList();
@@ -260,7 +266,14 @@ public class AdServiceImpl implements AdService {
 
 	public void registerUserForVisit(String userName,  Long visitId) {
 		Visit visit = visitDao.findById(visitId);
-		visit.getVisitorList().add(userDao.findByUsername(userName));	
+		visit.getVisitorList().add(userDao.findByUsername(userName));
+	}
+
+	public void addUserToVisitorsList(Long visitId, User user) {
+		Visit visit = visitDao.findById(visitId);
+		visit.getVisitorList().add(user);
+		visitDao.save(visit);
+
 	}
 
 }

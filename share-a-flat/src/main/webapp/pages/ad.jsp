@@ -54,11 +54,11 @@
 					<h1 style="color: blue" align="center">
 						<b>${adData.title}</b><a id="bookmarkStar"
 							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							><h6>bookmark me</h6></a>
+							><h5>bookmark me</h5></a>
 					</h1>
-					<h6 align="center">
+					<h5 align="center">
 						<span>${bookmarkResponse}</span>
-					</h6>
+					</h5>
 					<hr>
 				</div>
 			</div>
@@ -214,8 +214,8 @@
 						<b>Description:</b>
 					</h4>
 
-					<pre>${adData.description}</pre>
-
+<%-- 					<pre>${adData.description}</pre> --%>
+					${adData.description}
 
 				</div>
 			</div>
@@ -230,14 +230,12 @@
 				</div>
 				<div class="panel-body">
 					<h4>
-						<b>Ad placed by <a
-							href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
+						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 					</h4>
-					<b>Send ${adData.owner.username} an email: </b><a
-						href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
-					<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
+								
 					<br>
 					<c:import url="embedded/sendMessageBox.jsp" />
+					<c:import url="embedded/showVisits.jsp"></c:import>
 				</div>
 				<div class="panel-heading">
 					<h3>

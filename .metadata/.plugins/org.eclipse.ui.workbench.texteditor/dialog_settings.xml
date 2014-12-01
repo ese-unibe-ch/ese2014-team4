@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="addId" key="selection"/>
+		<item value="onclick" key="selection"/>
 		<list key="findhistory">
-			<item value="addId"/>
-			<item value="owner"/>
-			<item value="age"/>
-			<item value="nrOfFlat"/>
-			<item value="save"/>
-			<item value="signup"/>
-			<item value="mate"/>
-			<item value="mates"/>
+			<item value="onClick"/>
+			<item value="contact"/>
+			<item value="--&gt;"/>
+			<item value="messages"/>
+			<item value="date"/>
+			<item value="type=&quot;date&quot;"/>
+			<item value="visitin"/>
+			<item value="visiting dat"/>
 		</list>
 		<list key="replacehistory">
 			<item value="profileForm"/>

@@ -2,18 +2,20 @@ package ch.unibe.ese2014.team4.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Message {
 	
 	
 	@Id
 	@GeneratedValue
-	private Long messageId;
+	private Long id;
 	
 	
-	private String aMessage;
+	private String messageText;
 	private User sender;
 	private User receiver;
 	private Date date;
@@ -32,11 +34,11 @@ public class Message {
 	public void setSender(User sender) {
 		this.sender = sender;
 	}
-	public String getaMessage() {
-		return aMessage;
+	public String getMessageText() {
+		return messageText;
 	}
-	public void setaMessage(String aMessage) {
-		this.aMessage = aMessage;
+	public void setMessageText(String messageText) {
+		this.messageText = messageText;
 	}
 	public Date getDate() {
 		return date;
@@ -44,11 +46,11 @@ public class Message {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Long getMessageId() {
-		return messageId;
+	public Long getId() {
+		return id;
 	}
-	public void setMessageId(Long messageId) {
-		this.messageId = messageId;
+	public void setId(Long messageId) {
+		this.id = messageId;
 	}
 
 }

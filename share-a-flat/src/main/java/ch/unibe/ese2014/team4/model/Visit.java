@@ -25,7 +25,8 @@ public class Visit {
 	
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "visitors", joinColumns = @JoinColumn(name = "user_id"))
+	@CollectionTable(name = "visitorList", joinColumns = @JoinColumn(name = "user_id"))
+
 	private List<User> visitorList = new ArrayList<User>();
 	
 	public String toString(){

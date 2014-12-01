@@ -7,14 +7,15 @@
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
-
+		
+		<div style="color: red">(* are mandatory fields!)</div>
 
 		<c:set var="titleErrors">
 			<form:errors path="title" />
 		</c:set>
 		<div
 			class="control-group<c:if test="${not empty titleErrors}"> error</c:if>">
-			<label class="control-label" for="field-title">Title*</label>
+			<label class="control-label" for="field-title">Title<span style="color:red"> <b>*</b></span></label>
 
 			<div class="controls">
 				<form:input type="text" required="true" path="title"
@@ -32,7 +33,7 @@
 		<div
 			class="control-group<c:if test="${not empty adTypeErrors}"> error</c:if>"
 			onclick="disableFieldInCreateAd()">
-			<label class="control-label" for="field-adType">Type</label>
+			<label class="control-label" for="field-adType">Type<span style="color:red"> <b>*</b></span></label>
 			<div class="radio">
 				<label><form:radiobutton path="adType" id="room"
 						tabindex="2" value="ROOM" checked="true" />Room</label> <label><form:radiobutton
@@ -41,13 +42,13 @@
 		</div>
 
 
-		<div class="col-md-9" style="padding-left: 0px; padding-right: 3px">
+		<div class="col-md-8" style="padding-left: 0px; padding-right: 3px">
 			<c:set var="streetErrors">
 				<form:errors path="street" />
 			</c:set>
 			<div
 				class="control-group<c:if test="${not empty streetErrors}"> error</c:if>">
-				<label class="control-label" for="field-street">Street*</label>
+				<label class="control-label" for="field-street">Street<span style="color:red"> <b>*</b></span></label>
 				<div class="controls">
 					<form:input type="text" required="true" path="street"
 						id="field-street" class="form-control" tabindex="4" maxlength="35"
@@ -59,19 +60,20 @@
 			</div>
 		</div>
 
-		<div class="col-md-3" style="padding-left: 3px; padding-right: 0px">
+		<div class="col-md-4" style="padding-left: 3px; padding-right: 0px">
 			<c:set var="streetNumberErrors">
 				<form:errors path="streetNumber" />
 			</c:set>
 			<div
 				class="control-group<c:if test="${not empty streetNumberErrors}"> error</c:if>">
-				<label class="control-label" for="field-streetNumber">No*</label>
+				<label class="control-label" for="field-streetNumber">No<span style="color:red"> <b>*</b></span></label>
 				<div class="controls">
 					<form:input type="number" min="1" max="1000" step="1"
 						required="true" path="streetNumber" id="field-streetNumber"
 						class="form-control" tabindex="5" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
-						onblur="(this.value == '') && (this.value = '0')" />
+						onblur="(this.value == '') && (this.value = '0')" 
+						pattern="\d{1,3}[A-Za-z]?" title="e.g. 60a"/>
 					<form:errors path="streetNumber" cssClass="help-inline"
 						element="span" />
 				</div>
@@ -84,13 +86,14 @@
 			</c:set>
 			<div
 				class="control-group<c:if test="${not empty zipCodeErrors}"> error</c:if>">
-				<label class="control-label" for="field-zipCode">Zip-Code*</label>
+				<label class="control-label" for="field-zipCode">Zip-Code<span style="color:red"> <b>*</b></span></label>
 				<div class="controls">
 					<form:input type="number" min="1000" max="9658" step="1"
 						required="true" path="zipCode" id="field-zipCode"
 						class="form-control" tabindex="6" maxlength="35" value="0"
 						onfocus="(this.value == '0') && (this.value = '')"
-						onblur="(this.value == '') && (this.value = '0')" />
+						onblur="(this.value == '') && (this.value = '0')" 
+						pattern="\d{4}" title="e.g. 3000"/>
 					<form:errors path="zipCode" cssClass="help-inline" element="span" />
 				</div>
 			</div>
@@ -102,7 +105,7 @@
 			</c:set>
 			<div
 				class="control-group<c:if test="${not empty cityErrors}"> error</c:if>">
-				<label class="control-label" for="field-city">City*</label>
+				<label class="control-label" for="field-city">City<span style="color:red"> <b>*</b></span></label>
 				<div class="controls">
 					<form:input type="text" required="true" path="city" id="field-city"
 						class="form-control" tabindex="7" maxlength="35"
@@ -144,7 +147,7 @@
 			<div class="controls">
 				<form:input type="number" min="0" max="100" step="0.5"
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
-					tabindex="9" maxlength="45" value="0"
+					tabindex="9" maxlength="45" value="0"					
 					onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
@@ -216,9 +219,9 @@
 			<div class="controls">
 				<form:input type="text" path="availableDate"
 					id="field-availableDate" class="form-control" tabindex="12"
-					maxlength="35" placeholder="DD-MM-YYYY"
-					onfocus="(this.placeholder == 'DD-MM-YYYY') && (this.placeholder = '')"
-					onblur="(this.placeholder == '') && (this.placeholder = 'DD-MM-YYYY')" />
+					maxlength="35" placeholder="e.g. 01-01-2015"
+					onfocus="(this.placeholder == 'e.g. 01-01-2015') && (this.placeholder = '')"
+					onblur="(this.placeholder == '') && (this.placeholder = 'e.g. 01-01-2015')" />
 				<form:errors path="availableDate" cssClass="help-inline"
 					element="span" />
 				<br>
@@ -237,7 +240,7 @@
 				</script>
 		</div>
 
-		<div style="color: red">(* are mandatory fields!)</div>
+		
 	</div>
 
 	<div class="col-md-6">
@@ -271,7 +274,7 @@
 			</c:set>
 			<div
 				class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-				<label class="control-label" for="field-description">Description*</label>
+				<label class="control-label" for="field-description">Description<span style="color:red"> <b>*</b></span></label>
 				<div class="controls">
 					<form:textarea required="true" class="form-control"
 						path="description" id="field-description"

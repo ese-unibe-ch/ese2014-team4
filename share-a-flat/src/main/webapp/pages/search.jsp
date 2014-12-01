@@ -50,7 +50,7 @@
 								});
 
 								var infowindow = new google.maps.InfoWindow({
-									content: value
+									content : value
 								});
 								google.maps.event.addListener(marker,
 										'mouseover', function() {
@@ -73,7 +73,7 @@
 
 	function codeAddress() {
 		<c:forEach items="${addresses}" var="item">
-		var  src="${pageContext.request.contextPath}/imageController/ad/${item.id}/${imgId}";		
+		var src = "${pageContext.request.contextPath}/imageController/ad/${item.id}/${imgId}";
 		placeAddresses("${item.addressAsString}", "${item.id}", src);
 		</c:forEach>
 	}
@@ -84,45 +84,72 @@
 
 	<h1>Search</h1>
 	<hr>
-	</body>
+</body>
 
-	<div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-default">
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default">
 
-				<div class="panel-heading">
-					<h3>Search-Criteria</h3>
-				</div>
+			<div class="panel-heading">
+				<h3>Search-Criteria</h3>
+			</div>
 
-				<div class="panel-body">
-					<c:import url="searchCriteria.jsp" />
-				</div>
+			<div class="panel-body">
+				<c:import url="searchCriteria.jsp" />
 			</div>
 		</div>
-		
-		<div class="col-md-8">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3>${whatToDisplay}</h3>
-					
-				</div>
-				<br>
-				<button onClick="swap('two','one')">List View</button>
-				<button onClick="swap('one','two')">Map View</button>
-				<div>
-					<br> <span style="display: none" id="two"><c:import	url="searchResultsList.jsp" /></span>
-							<span id="one"><body><div id="map-canvas"></div>
-						</body></span>
-				</div>
+	</div>
+
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="row"></div>
+				<h3>${whatToDisplay}</h3>
+				<button id="listButton"
+					onClick="swap('two','one','mapButton', 'listButton')"
+					class="btn btn-info btn-xs">Switch to List View</button>
+				<button style="display: none" id="mapButton"
+					onClick="swap('one','two','listButton', 'mapButton' )"
+					class="btn btn-info btn-xs">Switch to Map View</button>
+				 <p> Sort by: <select name="aa" onchange="sort(this.value)">
+					<option value="date">Date</option>
+					<option value="price">Price</option>
+				</select>
+				<p>
+
+			</div>
+
+			<div class="panel-body" style="max-height: 563px ;overflow-y: scroll;">
+				<span style="display: none" id="two"><c:import
+						url="searchResultsList.jsp" /></span> <span id="one"><div
+						id="map-canvas"></div> </span>
+
 			</div>
 		</div>
-		</div>
+	</div>
+</div>
 
-		<script type="text/javascript">
-			function swap(one, two) {
-				document.getElementById(one).style.display = 'block';
-				document.getElementById(two).style.display = 'none';
-			}
-		</script>
+<!-- swap between list and map displays as well as changes the button  -->
 
-		<c:import url="template/footer.jsp" />
+<script type="text/javascript">
+	function swap(one, two, mapButton, listButton) {
+		document.getElementById(one).style.display = 'block';
+		document.getElementById(two).style.display = 'none';
+		document.getElementById(mapButton).style.display = 'block';
+		document.getElementById(listButton).style.display = 'none';
+	}
+
+	function sort(sortBy) {
+		if (sortBy == "")
+			return; // please select - possibly you want something else here
+		if (sortBy == "date") {
+
+		}
+
+		if (sortBy == "price") {
+
+		}
+	}
+</script>
+
+<c:import url="template/footer.jsp" />
