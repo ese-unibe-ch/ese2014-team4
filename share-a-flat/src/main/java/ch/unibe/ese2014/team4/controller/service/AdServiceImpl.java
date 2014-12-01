@@ -240,10 +240,10 @@ public class AdServiceImpl implements AdService {
 	public void bookMarkAdforUser(long adId, User user) {
 		List<Long> list = user.getBookmarks();
 		if(!list.contains(adId)){
-			System.out.println("added");
 			list.add(adId);
+			user.setBookmarks(list);
 			userDao.save(user);
-			user.setBookmarks(list);}
+			}
 
 		else{
 			throw new BookmarkException("Already bookmarked!");
@@ -251,6 +251,20 @@ public class AdServiceImpl implements AdService {
 		}
 		
 		
+	}
+	
+	public void unBookMarkAdForUser(long adId, User user){
+		List<Long> list = user.getBookmarks();
+		if(list.contains(adId)){
+
+			list.remove(adId);
+			
+			user.setBookmarks(list);
+			userDao.save(user);}
+		else{
+			throw new BookmarkException("Already bookmarked!");
+			
+		}	
 	}
 
 

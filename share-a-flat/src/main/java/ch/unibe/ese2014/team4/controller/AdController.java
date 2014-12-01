@@ -74,7 +74,7 @@ public class AdController {
 
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
-			return showAd(adForm.getId());
+			return showAd(adForm.getId(), principal);
 		
 		// many possible exceptions, therefore juxt catch Exception
 //		catch (Exception e) {
@@ -96,12 +96,14 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
 	public ModelAndView showAd(
-			@RequestParam(value = "adId", required = true) long adId) {
+			@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		ModelAndView model = new ModelAndView("ad");
 
 		Ad ad = newAdService.getAd(adId);
+		
 		MapAddress addressForMap = ad.getAddressForMap();
 		List<String> list = adService.getImageList(adId);
+		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
 		model.addObject("addressForMap", addressForMap);
 		model.addObject("imageList", list);
 		model.addObject("adData", ad); // called adData, otherwise gets confused
@@ -124,9 +126,10 @@ public class AdController {
 			Principal principal) {
 		User user = userService.getUserByUsername(principal.getName());
 
-		ModelAndView model = showAd(adId);
+		ModelAndView model = showAd(adId, principal);
 		try {
 			adService.bookMarkAdforUser(adId, user);
+			model.addObject("isBookmarked", true);
 			model.addObject("bookmarkResponse", "Bookmarked successfully!");
 
 		} catch (BookmarkException e) {
@@ -135,10 +138,29 @@ public class AdController {
 
 		return model;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/removeFromBookmarks", method = RequestMethod.GET)
+	public ModelAndView removeFromBookmarks(
+			@RequestParam(value = "adId", required = true) long adId,
+			Principal principal) {
+		User user = userService.getUserByUsername(principal.getName());
+
+		ModelAndView model = showAd(adId, principal);
+		try {
+			adService.unBookMarkAdForUser(adId, user);
+			model.addObject("isBookmarked", false);
+			model.addObject("bookmarkResponse", "Removed successfully!");
+
+		} catch (BookmarkException e) {
+			model.addObject("bookmarkResponse", "Was not bookmarked!");
+		}
+
+		return model;
+	}
 
 	
 
-	@ResponseBody
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
 	public ModelAndView registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,

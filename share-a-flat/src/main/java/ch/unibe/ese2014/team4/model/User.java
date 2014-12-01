@@ -46,8 +46,6 @@ public class User implements UserDetails {
     private String age;
     private String phoneNumber;
     private String userDescription;
-    
-    private Boolean isEmailValidated;
 
     
     @OneToOne(cascade = {CascadeType.ALL})
@@ -177,13 +175,6 @@ public class User implements UserDetails {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Boolean getIsEmailValidated() {
-		return isEmailValidated;
-	}
-
-	public void setIsEmailValidated(Boolean isEmailValidated) {
-		this.isEmailValidated = isEmailValidated;
-	}
 
 
 
