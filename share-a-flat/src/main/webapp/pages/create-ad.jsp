@@ -58,13 +58,18 @@
 	</div>
 				<div class="form-actions">
 				<span class="error">${errorMessage}</span>
+				
+
 				<button type="submit" class="btn btn-primary" tabindex="13">Create
 					Ad</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
-				<a type="button" href="${pageContext.request.contextPath}/adPreview"
-					tabindex="14" class="btn btn-default" target="_blank">Preview</a>
+<%-- 				<a type="button" href="${pageContext.request.contextPath}/adPreview" --%>
+<!-- 					tabindex="14" class="btn btn-default" target="_blank">Preview</a> -->
+					
+<!-- 					<button type="submit" value="saveAdChanges" tabindex="6" -->
+<!-- 								class="btn btn-primary">Save Ad-Changes</button> -->
 			</div>
 </form:form>
 
