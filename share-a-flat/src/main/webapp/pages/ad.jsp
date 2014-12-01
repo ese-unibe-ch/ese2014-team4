@@ -47,7 +47,7 @@
 
 <body onload="codeAddress()">
 
-	<div id="masthead">
+	<div id="masthead">localhost:8080/share-a-flat/submitValidationString?validationString=dec9914c4f31bfac84436caa8721cdffa0543081&userName=mv
 		<div class="container">
 			<div class="row">
 				<div>
@@ -235,25 +235,11 @@
 								
 					<br>
 					<c:import url="embedded/sendMessageBox.jsp" />
-					<c:import url="embedded/showVisits.jsp"></c:import>
+					
 				</div>
-				<div class="panel-heading">
-					<h3>
-						<b>Visit this place</b>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<form action="registerForVisit?adId=${adData.id}" method="post">
-					<fieldset>
-						<c:forEach items="${visitList}" var="visit">
-							<input type="radio" name="chosenVisit" value="${visit.id}"/>${visit}
-							<br>
-						</c:forEach>
-						<input type="submit" value = "Register"/>
-					</fieldset>
-					</form> 
-				</div>
+
 			</div>
+			<c:import url="embedded/showVisits.jsp"></c:import>
 		</div>
 
 		<div class="col-md-6">

@@ -65,17 +65,17 @@
 				<h3>My Visits</h3>
 		</div>
 		<div class="panel-body">
-
+		</div>
 
 	<hr>
 
-</div>
+
 		
 
-		</div>
+		
 	</div>
 	</div>	
-	
+	</div>
 
 
 

@@ -1,9 +1,10 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -134,22 +135,15 @@ public class AdController {
 
 		return model;
 	}
-	@ResponseBody
-	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
-	public ModelAndView registerForVisit(@RequestParam(value="chosenVisit") Long visitId, Principal principal ) {
 
-
-		adService.registerUserForVisit(principal.getName(), visitId);
-		return new ModelAndView("myPage");
-	}	
 	
 
 	@ResponseBody
-	@RequestMapping(value = "/registerForVisit", method = RequestMethod.GET)
-	public void registerForVisit(
+	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
+	public ModelAndView registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
-			Principal principal) {
-		System.out.println(visitId);
-		adService.addUserToVisitorsList(visitId, userService.getUserByUsername(principal.getName()));
+			Principal principal, HttpSession session) {
+		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
+		return new ModelAndView("myPage");
 	}
 }
