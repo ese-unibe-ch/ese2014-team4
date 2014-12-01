@@ -18,7 +18,7 @@
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 		
-		<div style="color: red">(* are mandatory fields!)</div>
+		<div align="center" style="color: red">( * are mandatory fields! )</div>
 
 		<c:set var="titleErrors">
 			<form:errors path="title" />

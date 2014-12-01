@@ -124,6 +124,22 @@ public class AdController {
 		return model;
 	}
 	
+	//not working
+//	@RequestMapping(value = "/saveAdChanges", method = RequestMethod.POST)
+//	public ModelAndView saveAdChanges(@RequestParam(value = "adId", required = true) long adId, AdForm adForm, BindingResult result, Principal principal) throws Exception {
+//		ModelAndView model;
+//		if (!result.hasErrors()){
+//				adService.updateAdFrom(adId, adForm, userService.getUserByUsername(principal.getName())); 
+//				return showAd(adForm.getId(), principal);
+//
+//		}
+//		else {
+//			model = new ModelAndView("myPage");
+//		}
+//		
+//		return model;
+//		
+//	}	
 	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
