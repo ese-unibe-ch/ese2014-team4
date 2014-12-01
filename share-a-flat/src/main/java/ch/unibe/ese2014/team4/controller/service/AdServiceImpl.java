@@ -1,13 +1,10 @@
 package ch.unibe.ese2014.team4.controller.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -138,20 +135,7 @@ public class AdServiceImpl implements AdService {
 		}
 		return list;
 	}
-	private Date convertStringToDate(AdForm adForm) throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		Date date = null;
-		
-		try {	 
-			date = formatter.parse(adForm.getAvailableDate());	 
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return date;
-	}
 	
-
 	@Transactional
 	public Ad getAd(Long id) {
 		Ad ad = adDao.findById(id);

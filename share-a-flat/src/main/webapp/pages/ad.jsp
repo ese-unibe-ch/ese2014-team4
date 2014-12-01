@@ -47,7 +47,7 @@
 
 <body onload="codeAddress()">
 
-	<div id="masthead">localhost:8080/share-a-flat/submitValidationString?validationString=dec9914c4f31bfac84436caa8721cdffa0543081&userName=mv
+	<div id="masthead">
 		<div class="container">
 			<div class="row">
 				<div>

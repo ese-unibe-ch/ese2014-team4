@@ -41,29 +41,29 @@ window.onload = function(){
 </script>
 
 <!-- <script type="text/javascript">                 -->
-// 	function isValid() {
-// 		var email = document.forms["signupForm"]["field-email"].value;
-// 	    var userName = document.forms["signupForm"]["field-username"].value;
-// 	    var pwd = document.forms["signupForm"]["field-password"].value;
-// 	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value;
+<!--  	function isValid() { -->
+<!--  		var email = document.forms["signupForm"]["field-email"].value; -->
+<!--  	    var userName = document.forms["signupForm"]["field-username"].value; -->
+<!--  	    var pwd = document.forms["signupForm"]["field-password"].value; -->
+<!--  	    var pwdRepeated = document.forms["signupForm"]["field-passwordRepeated"].value; -->
 	    
+    
+<!--  	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") { -->
+<!--  	    	alert("Please fill all required fields!"); -->
+<!--  	        return false; -->
+<!--  	    } -->
 	    
-// 	    if (email=="" || userName=="" || pwd=="" || pwdRepeated=="") {
-// 	    	alert("Please fill all required fields!");
-// 	        return false;
-// 	    }
+<!--  	    var regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"); -->
+<!--  	    if (!regex.test(email)) { -->
+<!--  	    	alert("Please enter a valid Email (E.g. example@example.example)"); -->
+<!--  	    	return false; -->
+<!--  	    } -->
 	    
-// 	    var regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-// 	    if (!regex.test(email)) {
-// 	    	alert("Please enter a valid Email (E.g. example@example.example)");
-// 	    	return false;
-// 	    }
-	    
-// 	    if (pwd!=pwdRepeated) {
-// 	    	alert("Reentered Password doesn't match!")
-// 	    	return false;
-// 	    }
-// 	}                
+<!--  	    if (pwd!=pwdRepeated) { -->
+<!--  	    	alert("Reentered Password doesn't match!") -->
+<!--  	    	return false; -->
+<!--  	    } -->
+<!--  	}                 -->
 <!-- </script> -->
 
 <c:import url="template/headerLogin.jsp" />
