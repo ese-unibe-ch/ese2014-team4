@@ -57,7 +57,7 @@ public class Ad {
 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "visitList", joinColumns = @JoinColumn(name = "ad_id"))
+	@CollectionTable(name = "ad_to_visit", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<Visit> visitList = new ArrayList<Visit>();
 	
 	private Date creationDate = new Date();

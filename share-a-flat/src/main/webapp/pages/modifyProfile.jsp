@@ -145,15 +145,11 @@
 						<div class="col-lg-8">
 							<form:password path="passwordRepeated" class="form-control"
 								id="field-passwordRepeated" tabindex="4" maxlength="35"
-								placeholder="Repeat password" />
+								placeholder="Repeat password" title="must be the same as the 'Password' entered before"/>
 							<form:errors path="passwordRepeated" cssClass="help-inline"
 								element="span" />
 						</div>
 					</div>
-
-
-
-
 
 					<c:set var="phoneNumberErrors">
 						<form:errors path="phoneNumber" />
@@ -163,9 +159,9 @@
 						<label class="col-lg-3 control-label" for="field-phoneNumber">phoneNumber:</label>
 						<div class="col-lg-8">
 							<form:input class="form-control" path="phoneNumber"
-								id="field-phoneNumber" type="number" min="" max="9999999999999"
-								step="1" pattern="[0-9]{0,13}" tabindex="5" maxlength="45"
-								value="${user.profile.phoneNumber}" placeholder="phone number" />
+								id="field-phoneNumber" type="tel" 
+								tabindex="5" maxlength="13"
+								value="${user.profile.phoneNumber}" placeholder="e.g. '032 123 12 12'" pattern='\d\d\d \d\d\d \d\d \d\d' title="e.g. '032 123 12 12'"/>
 							<form:errors path="phoneNumber" cssClass="help-inline"
 								element="span" />
 						</div>

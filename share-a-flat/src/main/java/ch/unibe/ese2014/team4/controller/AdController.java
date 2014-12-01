@@ -1,9 +1,10 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -105,6 +106,7 @@ public class AdController {
 		model.addObject("imageList", list);
 		model.addObject("adData", ad); // called adData, otherwise gets confused
 										// with "ad" page
+		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
@@ -134,4 +136,14 @@ public class AdController {
 		return model;
 	}
 
+	
+
+	@ResponseBody
+	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
+	public ModelAndView registerForVisit(
+			@RequestParam(value = "selectedVisit", required = true) long visitId,
+			Principal principal, HttpSession session) {
+		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
+		return new ModelAndView("myPage");
+	}
 }

@@ -52,6 +52,7 @@ public class MyPageController {
 			model.addObject("user", user);
 			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
 			model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
+			System.out.println(adService.getAdsOfUserByUser(user).size());
 		}
 		catch(InvalidUserException e){
 			
@@ -103,10 +104,7 @@ public class MyPageController {
 		return model;
 		
 	}	
-	@RequestMapping(value = "/deleteProfile", method = RequestMethod.POST)
-	public ModelAndView deleteProfile(Principal principal) throws ProfileException {
-		return null;
-	}
+
 
 	
 }

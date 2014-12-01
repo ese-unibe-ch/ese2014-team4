@@ -38,7 +38,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>My Bookmarks</h3>
@@ -48,45 +48,33 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 				<h3>My Ads</h3>
 		</div>
 		<div class="panel-body">
-<c:forEach items="${myAdsList}" var="ad">
-	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a><font size="1"> (${ad.type})</font>
-	<table>
-
-		<tr>
-			<td width="110"><a href="showAd?adId=${ad.id}"><img
-					src="${pageContext.request.contextPath}/imageController/ad/${ad.id}/0"
-					class="img-responsive" width="100"></a></td>
-
-			<td width="80"><b>Address:</b><br> <b></b> <b>Place:</b><br>
-			</td>
-
-
-			<td width="150">${ad.address.street} ${ad.address.streetNumber}<br>
-				${ad.address.zipCode} ${ad.address.city}
-			</td>
-
-			<td width="60"><b>Price:</b><br> <b>Size:</b><br></td>
-
-			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
-			</td>
-			
-			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
-	
-			
-		</tr>
-	</table>
-	<hr>
-</c:forEach>
-</div>
-		
+			<c:import url="embedded/myAdsList.jsp" />
 		</div>
 	</div>
+	</div>
+<!-- shows all visit dates of all my ads, including visitors -->
+	<div class="col-md-6">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+				<h3>My Visits</h3>
+		</div>
+		<div class="panel-body">
+		</div>
+
+	<hr>
+
+
+		
+
+		
+	</div>
+	</div>	
 	</div>
 
 

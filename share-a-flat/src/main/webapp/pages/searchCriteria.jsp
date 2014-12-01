@@ -54,7 +54,8 @@
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
-							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" />
+							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" 
+							x-moz-errormessage="Please specify a valid email address."/>
 						<form:errors path="cityOrZip" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -203,6 +204,17 @@
 							});
 						</script>
 					</div>
+					
+					 <tr>
+            <td>Order Search Results By:</td>
+            <td><form:select path="orderBy">
+               <option value="newestFirst">newest first</option>
+               <option value="availableDate">available date</option>
+               <option value="price">Price</option>
+               
+                </form:select>
+            </td>
+        </tr>
 
 					<span id="SearchErrorMessage"></span>
 
@@ -224,25 +236,11 @@
 	minPrice.addEventListener("blur", autofillMaxPrice, false);
 	minPrice.addEventListener("click", autofillMaxPrice, false);
 	
-// 	var maxPrice = document.getElementById("field-maxPrice");
-// 	maxPrice.addEventListener("blur", autofillMinPrice, false);
-// 	maxPrice.addEventListener("click", autofillMinPrice, false);
-	
 	var minNrOfRooms = document.getElementById("field-minNrOfRooms");
 	minNrOfRooms.addEventListener("blur", autofillMaxNrOfRooms, false);
 	minNrOfRooms.addEventListener("click", autofillMaxNrOfRooms, false);
 	
-// 	var maxNrOfRooms = document.getElementById("field-maxNrOfRooms");
-// 	maxNrOfRooms.addEventListener("blur", autofillMinNrOfRooms, false);
-// 	maxNrOfRooms.addEventListener("click", autofillMinNrOfRooms, false);
-	
 	var minNrOfFlatMates = document.getElementById("field-minNrOfFlatMates");
 	minNrOfFlatMates.addEventListener("blur", autofillMaxNrOfFlatMates, false);
 	minNrOfFlatMates.addEventListener("click", autofillMaxNrOfFlatMates, false);
-	
-// 	var minNrOfFlatMates = document.getElementById("field-maxNrOfFlatMates");
-// 	maxNrOfFlatMates.addEventListener("blur", autofillMinNrOfFlatMates, false);
-// 	maxNrOfFlatMates.addEventListener("click", autofillMinNrOfFlatMates, false);
-	
-	
 </script>

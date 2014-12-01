@@ -66,7 +66,7 @@ public class AdServiceImpl implements AdService {
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 			
 			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
-//			ad.setNrOfRooms(0);			isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmante??
+//			ad.setNrOfRooms(0);			//isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmante??
 
 		} else {
 			ad.setType(AdType.FLAT);
@@ -79,7 +79,12 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		ad.setAvailableDate(adForm.getAvailableDate());
+		
+		if(adForm.getAvailableDate().equals(""))
+			ad.setAvailableDate("--");
+		else
+			ad.setAvailableDate(adForm.getAvailableDate());
+		
 		ad.setAdAddedDate(new Date());
 		
 		
@@ -101,23 +106,23 @@ public class AdServiceImpl implements AdService {
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
 		
-		
-		List<Visit> visitList = new ArrayList<Visit>();
-
-
-		for (int i = 0; i < adForm.getVisitDate().size();i++){
-			if (adForm.getVisitDate().get(i)!=null){
-				Visit visit = new Visit();
-				visit.setDate( adForm.getVisitDate().get(i));
-				visit.setStartTime( adForm.getStartTime().get(i));
-				visit.setEndTime( adForm.getEndTime().get(i));
-				visitDao.save(visit);
-				visitList.add(visit);
+		if (adForm.getVisitDate() != null){
+			List<Visit> visitList = new ArrayList<Visit>();
+			for (int i = 0; i < adForm.getVisitDate().size();i++){
+				if (adForm.getVisitDate().get(i)!=null){
+					Visit visit = new Visit();
+					visit.setDate( adForm.getVisitDate().get(i));
+					visit.setStartTime( adForm.getStartTime().get(i));
+					visit.setEndTime( adForm.getEndTime().get(i));
+					visitDao.save(visit);
+					visitList.add(visit);
+					ad.setVisitList(visitList);
+				}
+	
 			}
-
 		}
 
-		ad.setVisitList(visitList);
+		
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
@@ -185,8 +190,17 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	public ArrayList<Ad> getAdByCity(String city) {
+	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+
+		if (orderBy.equals("availableDate")){
+			ads = adDao.findAllByAddressCityIgnoreCaseOrderByAvailableDateDesc(city);
+			return ads;	
+		}
+		if (orderBy.equals("price")){
+			ads = adDao.findAllByAddressCityOrderByBruttoAsc(city);
+			return ads;	
+		}
 		ads = adDao.findAllByAddressCityIgnoreCase(city);
 		return ads;
 	}
@@ -201,13 +215,13 @@ public class AdServiceImpl implements AdService {
 		return list;
 	}
 
-	public ArrayList<Ad> getAdByZip(int zipCode) {
+	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAllByAddressZipCode(zipCode);
 		return ads;
 	}
 
-	public ArrayList<Ad> getAllAds() {
+	public ArrayList<Ad> getAllAds(String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAll();
 		return ads;
@@ -251,6 +265,21 @@ public class AdServiceImpl implements AdService {
 
 	public List<Ad> getAdsOfUserByUser(User user) {
 		return adDao.findAllByOwner(user);
+	}
+
+
+	public List<Visit> getVisitList(long adId) {
+
+		return adDao.findById(adId).getVisitList();
+	}
+
+
+
+	public void registerUserForVisit(Long visitId, User user) {
+		Visit visit = visitDao.findById(visitId);
+		visit.getVisitorList().add(user);
+		visitDao.save(visit);
+
 	}
 
 }

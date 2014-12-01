@@ -27,6 +27,8 @@ public class SearcherTests {
 	private Ad testAd1 = new Ad();
 	private Ad testAd2 = new Ad();
 	private Ad testAd3 = new Ad();
+	private Ad testAd4 = new Ad();
+
 
 	@Before
 	public void setUp() {
@@ -39,6 +41,7 @@ public class SearcherTests {
 		Address testAddess2 = new Address();
 		Address testAddess3 = new Address();
 
+
 		testAddess1.setCity("City1");
 		testAddess2.setCity("City2");
 		testAddess3.setCity("City3");
@@ -50,22 +53,23 @@ public class SearcherTests {
 		testAd1.setAddress(testAddess1);
 		testAd2.setAddress(testAddess2);
 		testAd3.setAddress(testAddess3);
-
-//		testAd1.setPrice(100);
-//		testAd2.setPrice(200);
-//		testAd3.setPrice(300);
-		
+		testAd4.setAddress(testAddess1);
+	
 		testAd1.setNetto(100);
 		testAd2.setNetto(200);
 		testAd3.setNetto(300);
+		testAd4.setNetto(400);
 		
 		testAd1.setCharges(0);
 		testAd2.setCharges(0);
 		testAd3.setCharges(0);
+		testAd4.setCharges(0);
 		
 		testAd1.setBrutto();
 		testAd2.setBrutto();
 		testAd3.setBrutto();
+		testAd4.setBrutto();
+
 		
 		testAd1.setNrOfFlatMates(1);
 		testAd2.setNrOfFlatMates(2);
@@ -74,28 +78,16 @@ public class SearcherTests {
 		testAd1.setNrOfRooms(1);
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
-		
-		
-	
-		
-		testAd1.setAvailableDate(("01-01-2011"));
-		testAd2.setAvailableDate(("01-01-2012"));
-		testAd3.setAvailableDate(("01-01-2013"));
+
+
+		testAd1.setAvailableDate("01-01-2011");
+		testAd2.setAvailableDate("01-01-2012");
+		testAd3.setAvailableDate("01-01-2013");
+		testAd4.setAvailableDate("01-01-2014");
 
 	}
 	
-	private Date convertStringToDate(String dateAsString) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		Date date = null;
-		
-		try {	 
-			date = formatter.parse(dateAsString);	 
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return date;
-	}
+	
 
 	@Test
 	public void testByCity() {
@@ -142,6 +134,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfFlatMates(2);
+		searchForm.setMaxNrOfFlatMates(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -162,6 +155,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfRooms(2);
+		searchForm.setMaxNrOfRooms(2);
 
 		expect(mockDao.findAll()).andReturn(
 				mockedSearchResult);
@@ -236,6 +230,51 @@ public class SearcherTests {
 		assertEquals(1, adsFromSearcher.size());
 		verify(mockDao);
 	}
+	
+	@Test
+	public void testByCityWithResultWithPriceSort() {
+		resetSearchForm();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd4);
+
+		String city = "City1";
+		searchForm.setCityOrZip(city);
+		searchForm.setOrderBy("price");
+		
+		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(2, adsFromSearcher.size());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		verify(mockDao);
+	}
+	
+	@Test
+	public void testByCityWithResultWithPriceSortSwapPlaces() {
+		resetSearchForm();
+		
+		testAd4.setNetto(50);
+		testAd4.setBrutto();
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd4);
+
+		String city = "City1";
+		searchForm.setCityOrZip(city);
+		searchForm.setOrderBy("price");
+		
+		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
+				mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(2, adsFromSearcher.size());
+//		assertEquals(testAd1, adsFromSearcher.get(1));
+		verify(mockDao);
+	}
 
 	@Test
 	public void testByPriceAndCityNoResult() {
@@ -268,6 +307,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 
 		searchForm.setMinNrOfRooms(2);
+		searchForm.setMaxNrOfRooms(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(200);
 
@@ -311,6 +351,7 @@ public class SearcherTests {
 		mockedSearchResult.add(testAd3);
 		
 		searchForm.setMinNrOfFlatMates(2);
+		searchForm.setMaxNrOfFlatMates(2);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -354,6 +395,7 @@ public class SearcherTests {
 		String city = "City3";
 		searchForm.setCityOrZip(city);
 		searchForm.setMinNrOfFlatMates(3);
+		searchForm.setMaxNrOfFlatMates(3);
 		searchForm.setMinPrice(0);
 		searchForm.setMaxPrice(300);
 
@@ -428,15 +470,13 @@ public class SearcherTests {
 	}
 	
 
-	
-
-
 	private void resetSearchForm() {
 		searchForm.setCityOrZip("");
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
 		searchForm.setMinNrOfFlatMates(0);
 		searchForm.setAvailableDate("");
+		searchForm.setOrderBy("newestFirst");
 
 	}
 }

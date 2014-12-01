@@ -14,7 +14,7 @@
 #map-canvas {
 	width: 700px;
 	height: 395px;
-	}
+}
 </style>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -103,18 +103,36 @@
 	<div class="col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-			<div class="row"></div>
+				<div class="row"></div>
 				<h3>${whatToDisplay}</h3>
-				<button id="listButton" onClick="swap('two','one','mapButton', 'listButton')" class="btn btn-info btn-xs"> Switch to List View</button>
-				<button style="display: none" id="mapButton" onClick="swap('one','two','listButton', 'mapButton' )" class="btn btn-info btn-xs">Switch to Map View</button>
+				<button id="listButton"
+					onClick="swap('two','one','mapButton', 'listButton')"
+					class="btn btn-info btn-xs">Switch to List View</button>
+				<button style="display: none" id="mapButton"
+					onClick="swap('one','two','listButton', 'mapButton' )"
+					class="btn btn-info btn-xs">Switch to Map View</button>
+
+<!--    <input type="submit" value="Transfer Device" style="height: 68px; width: 197px; "> -->
+<!--         <tr> -->
+<!--             <td>order by:</td> -->
+<%--             <td><form:select path="orderBy"> --%>
+<%--                 <form:option value="0" label="--- Select ---" /> --%>
+<!--                <option value="newestFirst">newest first</option> -->
+<!--                <option value="availableDate">available date</option> -->
+<!--                <option value="price">Price</option> -->
+               
+<%--                 </form:select> --%>
+<!--             </td> -->
+<!--         </tr> -->
+<%-- </form:form> --%>
+
 			</div>
-			<div class="panel-body">
-				<span style="display: none" id="two">
-					<c:import url="searchResultsList.jsp" />
-				</span> 
-				<span id="one">
-					<div id="map-canvas"></div>
-				</span>
+
+			<div class="panel-body" style="max-height: 563px ;overflow-y: scroll;">
+				<span style="display: none" id="two"><c:import
+						url="searchResultsList.jsp" /></span> <span id="one"><div
+						id="map-canvas"></div> </span>
+
 			</div>
 		</div>
 	</div>

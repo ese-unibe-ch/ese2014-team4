@@ -11,4 +11,5 @@ public interface UserService {
 	public User getUser(Long id);
 	public boolean doesEmailAddressAlreadyExist(String email);
 	public boolean doesUserAlreadyExists(String username);
+	public boolean isEmailValidated(Long userId);
 }

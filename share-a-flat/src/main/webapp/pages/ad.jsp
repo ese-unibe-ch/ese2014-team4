@@ -47,18 +47,18 @@
 
 <body onload="codeAddress()">
 
-	<div id="masthead">
+	<div id="masthead">localhost:8080/share-a-flat/submitValidationString?validationString=dec9914c4f31bfac84436caa8721cdffa0543081&userName=mv
 		<div class="container">
 			<div class="row">
 				<div>
 					<h1 style="color: blue" align="center">
 						<b>${adData.title}</b><a id="bookmarkStar"
 							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							><h6>bookmark me</h6></a>
+							><h5>bookmark me</h5></a>
 					</h1>
-					<h6 align="center">
+					<h5 align="center">
 						<span>${bookmarkResponse}</span>
-					</h6>
+					</h5>
 					<hr>
 				</div>
 			</div>
@@ -178,7 +178,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3>
-						<b>Have a Feeling</b>
+						<b>Additional Information</b>
 					</h3>
 				</div>
 
@@ -232,13 +232,14 @@
 					<h4>
 						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 					</h4>
-					<b>Send ${adData.owner.username} an email: </b><a
-						href="mailTo:${adData.owner.email}">${adData.owner.email}</a><br>
-					<%-- 						Phonenumber: ${adData.owner.profile.phoneNumber} --%>
+								
 					<br>
 					<c:import url="embedded/sendMessageBox.jsp" />
+					
 				</div>
+
 			</div>
+			<c:import url="embedded/showVisits.jsp"></c:import>
 		</div>
 
 		<div class="col-md-6">
