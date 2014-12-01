@@ -58,11 +58,8 @@
 		</div>
 	</div>
 	</div>
-<!-- shows all visit dates of all my ads, including visitors -->
 
-
-
-
+<!-- shows all searches with search button -->
 
 	<div class="col-md-6">
 	<div class="panel panel-default">
@@ -77,8 +74,6 @@
 			</form:form> 
 		</c:forEach>
 		</div>
-
-	<hr>
 
 		
 	</div>

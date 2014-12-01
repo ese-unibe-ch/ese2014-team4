@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
+import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
+import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
@@ -42,13 +44,29 @@ public class MessageController {
 	@Autowired
 	UserService userService;
 	
+	
+	@RequestMapping(value = "/myMessages", method = RequestMethod.GET)
+	public ModelAndView myMessages(Principal principal)throws ProfileException {
+		ModelAndView model = new ModelAndView("myMessages");
+		try{
+			User user=userService.getUserByUsername(principal.getName());
+					
+			model.addObject("inboxList", messageService.getInboxList(user));
+			model.addObject("sentList", messageService.getSentList(user));
+		}
+		catch(InvalidUserException e){
+			
+		}
+
+		return model;
+	}
+	
 
 	/**
 	 * Controls submission of the message.
 	 * 
-	 * 
 	 */
-	@ResponseBody
+	//@ResponseBody
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
 	public ModelAndView sendMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
 		Principal principal) throws Exception {

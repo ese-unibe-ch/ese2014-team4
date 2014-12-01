@@ -13,13 +13,6 @@
 
 
 
-<%-- <c:forEach items="${zipCityAsArray}" var="zipCity"> --%>
-<%-- <c:if test="${zipCity.zip==2504}"> --%>
-<%-- <c:out value="${zipCity.city}"></c:out> --%>
-<%-- </c:if> --%>
-<%-- </c:forEach> --%>
-
-
 <div id="masthead">
 	<div class="container">
 		<div class="row">
@@ -71,6 +64,8 @@
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
+				<a type="button" href="${pageContext.request.contextPath}/adPreview"
+					tabindex="14" class="btn btn-default" target="_blank">Preview</a>
 			</div>
 </form:form>
 

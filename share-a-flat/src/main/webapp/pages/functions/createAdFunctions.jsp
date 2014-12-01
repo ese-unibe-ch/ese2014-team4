@@ -12,21 +12,10 @@
 
 <script type="text/javascript">
 	function createFormIsValid() {
-		// 		var title = document.forms["adForm"]["field-title"].value;
-		// 		var street = document.forms["adForm"]["field-street"].value;
-		// 		var streetNr = document.forms["adForm"]["field-streetNumber"].value;
-		// 		var zip = document.forms["adForm"]["field-zipCode"].value;
-		// 		var city = document.forms["adForm"]["field-city"].value;
+
 		var nrOfRooms = document.getElementById("field-nrOfRooms").value;
 		var availableDate = document.forms["adForm"]["field-availableDate"].value;
 		var visitDate = document.getElementById("dateInput0").value;
-		// 		var description = document.forms["adForm"]["field-description"].value;
-
-		// // 		if (title == "" || street == "" || streetNr == 0 || zip == 0
-		// // 				|| city == "" || description == "") {
-		// // 			alert("Please fill all mandatory fields!");
-		// // 			return false;
-		// // 		}
 
 		if (availableDate != "") {
 			if (!availableDate
@@ -152,6 +141,43 @@
 	}
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	checkAdOwnerAndPrincipal();	
+});
+
+checkAdOwnerAndPrincipal() {
+	var owner = "$adData.owner.username";
+	var principal = "$user";
+	
+	if (owner == principal) {
+		document.getElementById("field-title").value="$adData.title";
+		
+		if ("$adData.adType" == 'ROOM'){
+			document.getElementById("field-room").checked=true;
+			document.getElementById("field-flat").checked=false;
+		}
+		else {
+			document.getElementById("field-room").checked=false;
+			document.getElementById("field-flat").checked=true;	
+		}
+		
+		document.getElementById("field-street").value="$adData.address.street";
+		document.getElementById("field-streetNumber").value="$adData.address.streetNumber";
+		document.getElementById("field-zipCode").value="$adData.address.zipCode";
+		document.getElementById("field-size").value="$adData.size";
+		document.getElementById("field-nrOfRooms").value="$adData.nrOfRooms";
+		document.getElementById("field-netto").value="$adData.netto";
+		document.getElementById("field-charges").value="$adData.charges";
+		document.getElementById("field-nrOfFlatMates").value="$adData.nrOfFlatMates";
+		document.getElementById("field-availableDate").value="$adData.availableDate";
+		document.getElementById("field-description").value="$adData.description";
+		
+	}
+	
+	return true;
+}
+</script>
 
 <script type="text/javascript">
 	function zipToCity() {
