@@ -280,4 +280,14 @@ public class AdServiceImpl implements AdService {
 
 	}
 
+	public void registerUserForVisit(String userName, Long visitId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addUserToVisitorsList(Long visitId, User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
