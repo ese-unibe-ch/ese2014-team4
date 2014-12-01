@@ -8,7 +8,6 @@
 
 <c:import url="template/header.jsp" />
 <c:import url="functions/generalFunctions.jsp" />
-<%-- <c:import url="functions/searchFunctions.jsp" /> --%>
 <c:import url="functions/createAdFunctions.jsp" />
 
 

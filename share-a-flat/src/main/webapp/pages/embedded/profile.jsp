@@ -26,7 +26,7 @@
 </div>
 
 <div class="col-md-6">
-	<p>${user.username}</p>
+	<p>${user.profile.username}</p>
 </div>
 
 <div class="col-md-5">
@@ -36,7 +36,7 @@
 </div>
 
 <div class="col-md-6">
-	<p>${user.email}</p>
+	<p>${user.profile.email}</p>
 </div>
 
 <div class="col-md-5">

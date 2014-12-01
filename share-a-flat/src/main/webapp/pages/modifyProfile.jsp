@@ -7,7 +7,12 @@
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="template/header.jsp" />
 
-
+<style>
+#field-age {
+ 	-moz-appearance:textfield;
+ 	-webkit-appearance:textfield;
+}
+</style>
 
 <script type="text/javascript">                
 	function isValid() {

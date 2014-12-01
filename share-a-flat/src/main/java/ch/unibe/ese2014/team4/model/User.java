@@ -29,17 +29,14 @@ import ch.unibe.ese2014.team4.controller.pojos.Sex;
 @Entity
 public class User implements UserDetails {
 
-
-
 	@Id
     @GeneratedValue
     private Long id;
     
     private String username;
     private String email;
-    /**
-     * password is saved as a sha-digested hex-string.
-     */
+
+    //password is saved as a sha-digested hex-string.
     private String password;
     
     private Sex sex;
