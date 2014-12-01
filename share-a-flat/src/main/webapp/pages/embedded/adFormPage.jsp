@@ -247,27 +247,45 @@
 		<!-- middle column -->
 
 		<div class="layout-content-column">
-			<table id="fileTable">
-				<tr>
-					<td><form:input path="uploadedAdPictures" type="file" /></td>
-				</tr>
+			<table id="fileTable"><tr><th></th>
+						<th>File name</th></tr>
+
 			</table>
-			<button id="addFile" type="button" onclick="addMore">Add
-				more pictures</button>
+				    <INPUT type="button" value="Add more pictures" onclick="addRowFile('fileTable')" />
+ 
+    				<INPUT type="button" value="Delete selected picture" onclick="deleteRow('fileTable')" />
+
+
 
 			<!--  script for adding another file upload possibility -->
 			<!--  needs to be placed within <form:form></form:form> -->
 
-			<script>
-				$(document).ready(function() {
-					//add more file components if Add is clicked
-					$('#addFile').click(function() {
-						$('#fileTable').append('<tr><td>'
-												+ '<form:input path="uploadedAdPictures" type="file"/>'
-												+ '</td></tr>');
-					});
-				});
-			</script>
+ <SCRIPT type="text/javascript">
+        function addRowFile(tableID) {
+ 
+            var table = document.getElementById(tableID);
+ 
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            rowCount--;
+            var cell1 = row.insertCell(0);
+            var element1 = document.createElement("input");
+            element1.type = "checkbox";
+            element1.name="chkbox[]";
+            cell1.appendChild(element1);
+            
+            var id = "imageInput" + rowCount
+            var cell2 = row.insertCell(1);
+            var element2 = document.createElement("input");
+            element2.setAttribute("type", "file"); 
+            element2.type = "file";
+            element2.name = "uploadedAdPictures["+rowCount+"]";
+
+            cell2.appendChild(element2);
+ 
+        }
+ 
+    </SCRIPT>
 
 			<c:set var="descriptionErrors">
 				<form:errors path="description" />
