@@ -208,15 +208,13 @@
             <td>Order Search Results By:</td>
             <td><form:select path="orderBy">
                <option value="newestFirst">newest first</option>
-               <option value="availableDate">available date</option>
-               <option value="price">Price</option>
-               
+               <option value="availableDate">available date (earlier first)</option>
+               <option value="price">Price (cheapest first)</option>               
                 </form:select>
             </td>
         </tr>
 
 					<span id="SearchErrorMessage"></span>
-
 
 					<div class="form-actions">
 						<br>

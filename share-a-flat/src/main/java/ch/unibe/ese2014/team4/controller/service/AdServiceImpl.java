@@ -201,13 +201,25 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+		
+		if (orderBy.equals("availableDate")){
+			ads = adDao.findAllByAddressZipCodeOrderByAvailableDateDesc(zipCode);
+			return ads;	
+		}
+		if (orderBy.equals("price")){
+			ads = adDao.findAllByAddressZipCodeOrderByBruttoAsc(zipCode);
+			return ads;	
+		}
 		ads = adDao.findAllByAddressZipCode(zipCode);
 		return ads;
 	}
 
 	public ArrayList<Ad> getAllAds(String orderBy) {
-		ArrayList<Ad> ads = new ArrayList<Ad>();
+		ArrayList<Ad> ads = new ArrayList<Ad>();		
 		ads = adDao.findAll();
+		
+		
+		
 		return ads;
 	}
 

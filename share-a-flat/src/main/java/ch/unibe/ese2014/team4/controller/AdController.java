@@ -160,7 +160,7 @@ public class AdController {
 
 		ModelAndView model = showAd(adId, principal);
 		try {
-			adService.unBookMarkAdForUser(adId, user);
+			adService.bookMarkAdforUser(adId, user);
 			model.addObject("isBookmarked", false);
 			model.addObject("bookmarkResponse", "Removed successfully!");
 
