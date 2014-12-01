@@ -78,9 +78,9 @@ public class SearcherTests {
 		
 	
 		
-		testAd1.setAvailableDate(convertStringToDate("01-01-2011"));
-		testAd2.setAvailableDate(convertStringToDate("01-01-2012"));
-		testAd3.setAvailableDate(convertStringToDate("01-01-2013"));
+		testAd1.setAvailableDate(("01-01-2011"));
+		testAd2.setAvailableDate(("01-01-2012"));
+		testAd3.setAvailableDate(("01-01-2013"));
 
 	}
 	

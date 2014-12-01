@@ -21,6 +21,6 @@ import ch.unibe.ese2014.team4.model.dao.AdDao;
  */
 public interface MessageService {
 
-	public void sendMessage(Message message, User sender);
+	public void sendMessage(String messageText, User sender, User receiver);
 
 }
