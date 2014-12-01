@@ -80,7 +80,7 @@
 				<div class="controls">
 					<form:input type="number" min="1" max="1000" step="1"
 						required="true" path="streetNumber" id="field-streetNumber"
-						class="form-control" tabindex="5" maxlength="35" value="0"
+						class="form-control" tabindex="5" maxlength="35" value="${adForm.streetNumber}"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" 
 						pattern="\d{1,3}[A-Za-z]?" title="e.g. 60a"/>
@@ -100,7 +100,7 @@
 				<div class="controls">
 					<form:input type="number" min="1000" max="9658" step="1"
 						required="true" path="zipCode" id="field-zipCode"
-						class="form-control" tabindex="6" maxlength="35" value="0"
+						class="form-control" tabindex="6" maxlength="35" value="${adForm.zipCode}"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" 
 						pattern="\d{4}" title="e.g. 3000"/>

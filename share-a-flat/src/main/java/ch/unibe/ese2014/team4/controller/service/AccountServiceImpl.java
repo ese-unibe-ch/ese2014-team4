@@ -128,9 +128,10 @@ public class AccountServiceImpl implements AccountService {
 	}
 	public void activateAccount(User user, String validationString){
 		if (validationString.equals(generateValidationString(user))){
-			System.out.println(user.getAuthorities().size());
+			user.getAuthorities().clear();
 			user.getAuthorities().add(new SimpleGrantedAuthority("ROLE_USER"));
-			System.out.println(user.getAuthorities().size());
+
+			
 			userDao.save(user);
 		}
 		else{throw new InvalidUserException("email-validation failed");}

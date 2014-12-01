@@ -30,5 +30,7 @@ public interface AdService {
 	public List<Visit> getVisitList(long adId);		
 	public void registerUserForVisit(Long visitId, User user);
 	public void unBookMarkAdForUser(long adId, User user);
+	public AdForm getAdFormForExistingAd(long adId);
+	public void delete(Long adId);
 
 }

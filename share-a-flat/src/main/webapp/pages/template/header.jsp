@@ -62,7 +62,7 @@ body {
 					<!-- <li <%= isActive("favorites", request) %>><a href="favorites">My
 							Favorites</a></li> -->
 					<li <%= isActive("search", request) %>><a
-						href="search?resultType=list">Search</a></li>
+						href="search">Search</a></li>
 					<li <%= isActive("createAd", request) %>><a href="createAd">Create
 							an ad</a></li>
 				</ul>

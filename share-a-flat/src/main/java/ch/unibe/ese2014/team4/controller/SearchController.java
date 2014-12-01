@@ -2,6 +2,7 @@ package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -41,15 +42,13 @@ public class SearchController {
 	// simplify both search-methods, remove common stuff
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchOverview(
-			@RequestParam(value = "resultType", required = false) String resultType) {
+	public ModelAndView searchOverview() {
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("searchForm", new SearchForm());
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
-		model.addObject("resultType", resultType);
 		model.addObject("whatToDisplay", "Newest Ads");
-		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
 		model.addObject("addresses", addresses);
 		return model;
 	}
@@ -65,27 +64,23 @@ public class SearchController {
 	 * 
 	 * @param searchForm
 	 * @param result
-	 * @param resultType
 	 * @return
 	 */
 	@RequestMapping(params = "search", value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView search(
 			@Valid SearchForm searchForm,
-			BindingResult result,
-			@RequestParam(value = "resultType", required = true) String resultType) {
+			BindingResult result) {
 		ModelAndView model = new ModelAndView("search");
-		ArrayList<Ad> adsToAdd = new ArrayList<Ad>();
+		List<Ad> adsToAdd = new ArrayList<Ad>();
 
 		adsToAdd = searchService.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()) {
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
-			model.addObject("resultType", resultType);
-			ArrayList<MapAddress> addresses = getAddressesForMap(adsToAdd);	
+			List<MapAddress> addresses = getAddressesForMap(adsToAdd);	
 			model.addObject("addresses", addresses);
 		} else
 			model.addObject("whatToDisplay", "No Ads found");
-		model.addObject("resultType", resultType);
 		
 		return model;
 	}
@@ -93,17 +88,17 @@ public class SearchController {
 	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
 	public ModelAndView getMap() {
 		ModelAndView model = new ModelAndView("searchResultsMapLocation");	
-		ArrayList<Ad> newestAdds = adService.getNewestAds();
-		ArrayList<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		List<Ad> newestAdds = adService.getNewestAds();
+		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
 		model.addObject("addresses", addresses);
 		
 		return model;
 	}
 
 
-	private ArrayList<MapAddress> getAddressesForMap(ArrayList<Ad> ads) {
-		ArrayList<MapAddress> addresses = new ArrayList<MapAddress>();
-		for (Ad ad : ads) {
+	private List<MapAddress> getAddressesForMap(List<Ad> adsToAdd) {
+		List<MapAddress> addresses = new ArrayList<MapAddress>();
+		for (Ad ad : adsToAdd) {
 			MapAddress tmpMapAddress = ad.getAddressForMap();
 			addresses.add(tmpMapAddress);
 		}

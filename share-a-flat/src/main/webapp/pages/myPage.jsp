@@ -69,7 +69,7 @@
 		<div class="panel-body">
 		<c:forEach items="${mySearchList}" var="search">
 			<form:form modelAttribute="${search}" action="submitSearch" method="POST">
-			${search.city}
+			${search.cityOrZip}
 			<button type="submit" name="search">Search</button>
 			</form:form> 
 		</c:forEach>

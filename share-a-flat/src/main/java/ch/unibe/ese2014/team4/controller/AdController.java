@@ -104,8 +104,8 @@ public class AdController {
 
 		if ((ad.getOwner().getUsername()).equals(principal.getName())) {
 			model = new ModelAndView("create-ad");
-			AdForm adForm = new AdForm();
-			model.addObject("adForm", adForm);
+			model.addObject("isMyAd", true);
+			model.addObject("adForm", adService.getAdFormForExistingAd(adId));
 			model.addObject("adData", ad);
 			model.addObject("user", userService.getUserByUsername(principal.getName()));
 			
@@ -179,5 +179,10 @@ public class AdController {
 			Principal principal, HttpSession session) {
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
 		return new ModelAndView("myPage");
+	}
+	
+	@RequestMapping(value="/deleteAd")
+	public void deleteAd(@RequestParam(value="adId")Long adId){
+		adService.delete(adId);
 	}
 }

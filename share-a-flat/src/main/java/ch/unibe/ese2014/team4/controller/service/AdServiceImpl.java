@@ -86,7 +86,7 @@ public class AdServiceImpl implements AdService {
 		
 		
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-		
+		System.out.println(fileList.size());
 		if (!fileList.isEmpty()) {
 			if (fileList.get(0).getSize() != 0) {
 				ad.setBytePictureList(imageService
@@ -280,13 +280,26 @@ public class AdServiceImpl implements AdService {
 
 	}
 
-	public void registerUserForVisit(String userName, Long visitId) {
-		// TODO Auto-generated method stub
+
+
+	public AdForm getAdFormForExistingAd(long adId) {
+		Ad ad = getAd(adId);
+		AdForm adForm = new AdForm();
+		adForm.setAdType(ad.getType());
+		adForm.setAvailableDate(ad.getAvailableDate());
+		adForm.setCharges(ad.getCharges());
+		adForm.setNetto(ad.getNetto());
+		adForm.setCity(ad.getAddress().getCity());
+		adForm.setZipCode(ad.getAddress().getZipCode());
+		adForm.setStreetNumber(ad.getAddress().getStreetNumber());
+		adForm.setStreet(ad.getAddress().getStreet());
+		adForm.setId(adId);
 		
+		return adForm;
 	}
 
-	public void addUserToVisitorsList(Long visitId, User user) {
-		// TODO Auto-generated method stub
+	public void delete(Long adId) {
+		adDao.delete(adId);
 		
 	}
 

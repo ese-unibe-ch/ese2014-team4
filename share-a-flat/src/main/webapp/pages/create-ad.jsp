@@ -67,6 +67,11 @@
 					tabindex="14" class="btn btn-default" target="_blank">Preview</a>
 			</div>
 </form:form>
+<c:if test="${isMyAd eq true}">
+	<form method="post" action="deleteAd?adId=${adForm.id}">
+		<input type="submit" value="delete Ad" class="btn btn-warning">
+	</form>	
+</c:if>
 
 <script type="text/javascript">
 	var zip = document.getElementById("field-zipCode");
