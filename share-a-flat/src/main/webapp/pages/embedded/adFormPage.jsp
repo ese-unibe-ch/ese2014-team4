@@ -4,7 +4,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<style>
+#field-streetNumber{
+ 	-moz-appearance:textfield;
+ 	-webkit-appearance:textfield;
+}
 
+#field-zipCode{
+ 	-moz-appearance:textfield;
+ 	-webkit-appearance:textfield;
+}
+</style>
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 		

@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
+import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
+import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.MessageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
@@ -74,7 +76,7 @@ public class AdController {
 
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
-			return showAd(adForm.getId());
+			return showAd(adForm.getId(), principal);
 		
 		// many possible exceptions, therefore juxt catch Exception
 //		catch (Exception e) {
@@ -87,7 +89,7 @@ public class AdController {
 //		}
 
 	}
-
+	
 	/**
 	 * Requires /showAd?adId=x.
 	 * 
@@ -96,10 +98,20 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
 	public ModelAndView showAd(
-			@RequestParam(value = "adId", required = true) long adId) {
+			@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		ModelAndView model = new ModelAndView("ad");
-
 		Ad ad = newAdService.getAd(adId);
+		
+		if ((ad.getOwner().getUsername()).equals(principal.getName())) {
+			model = new ModelAndView("create-ad");
+			AdForm adForm = new AdForm();
+			model.addObject("adForm", adForm);
+			model.addObject("adData", ad);
+			model.addObject("user", userService.getUserByUsername(principal.getName()));
+			
+			return model;
+		}
+		
 		MapAddress addressForMap = ad.getAddressForMap();
 		List<String> list = adService.getImageList(adId);
 		model.addObject("addressForMap", addressForMap);
@@ -110,7 +122,8 @@ public class AdController {
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
-
+	
+	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
 	 * 
@@ -124,7 +137,7 @@ public class AdController {
 			Principal principal) {
 		User user = userService.getUserByUsername(principal.getName());
 
-		ModelAndView model = showAd(adId);
+		ModelAndView model = showAd(adId, principal);
 		try {
 			adService.bookMarkAdforUser(adId, user);
 			model.addObject("bookmarkResponse", "Bookmarked successfully!");
