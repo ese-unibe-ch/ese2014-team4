@@ -7,13 +7,25 @@
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
-<form action="registerForVisit">
-<c:forEach items="${adData.visitList}" var="visit">
-	<input type="radio" name="selectedVisit" value="${visit.id}"/>}${visit}
-</c:forEach>
-<input type="submit" value="register for visit">
-</form>
+
 
  
 
- 
+ <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>
+						<b>Visit this place</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<form action="registerForVisit" method="post">
+					<fieldset>
+						<c:forEach items="${adData.visitList}" var="visit">
+							<input type="radio" name="selectedVisit" value="${visit.id}"/>${visit}
+							<br>
+						</c:forEach>
+						<input type="submit" value = "register for visit"/>
+					</fieldset>
+					</form> 
+				</div>
+</div>

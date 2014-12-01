@@ -31,6 +31,19 @@
 			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
 			</td>
 		</tr>
+
 	</table>
+
+	<table>
+		<tr><th><h4>Visits</h4></th></tr>
+		<tr>
+	<c:forEach items="${ad.visitList}" var="visit">
+		<td width="200">
+			<b>${visit}</b><br>
+			<c:forEach items="${visit.visitorList}" var="visitor"><a href="profile?userId=${visitor.id}">${visitor.username}</a></c:forEach>
+		</td>
+		</c:forEach>
+		</tr>
+		</table>
 	<hr>
 </c:forEach>

@@ -26,11 +26,10 @@ public interface AdService {
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 	public List<Ad> getAdsOfUserByUser(User user);
-<<<<<<< HEAD
 	public List<Visit> getVisitList(long adId);
-	public void registerUserForVisit(String userName, Long visitId);
-=======
+
+
 	
-	public void addUserToVisitorsList(Long visitId, User user);
->>>>>>> 09fe7497852d3c6b204a342ac7f62dc45c5c8b4c
+	public void registerUserForVisit(Long visitId, User user);
+
 }

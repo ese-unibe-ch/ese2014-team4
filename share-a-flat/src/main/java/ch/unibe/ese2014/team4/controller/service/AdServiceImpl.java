@@ -264,12 +264,9 @@ public class AdServiceImpl implements AdService {
 		return adDao.findById(adId).getVisitList();
 	}
 
-	public void registerUserForVisit(String userName,  Long visitId) {
-		Visit visit = visitDao.findById(visitId);
-		visit.getVisitorList().add(userDao.findByUsername(userName));
-	}
 
-	public void addUserToVisitorsList(Long visitId, User user) {
+
+	public void registerUserForVisit(Long visitId, User user) {
 		Visit visit = visitDao.findById(visitId);
 		visit.getVisitorList().add(user);
 		visitDao.save(visit);
