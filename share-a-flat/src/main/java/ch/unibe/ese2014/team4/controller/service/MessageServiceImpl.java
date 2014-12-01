@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ch.unibe.ese2014.team4.controller.service;
 
 import java.util.List;
@@ -11,6 +8,7 @@ import ch.unibe.ese2014.team4.model.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +24,7 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
 
 /**
  * @author Zoyela
+ * Controls everything that has to do with sending and receiving of messages from user to user
  *
  */
 
@@ -38,12 +37,19 @@ public class MessageServiceImpl implements MessageService{
 	@Autowired
 	UserDao userDao;
 	
-	public void sendMessage(Message message, User sender){
+	public void sendMessage(String messageText, User sender, User receiver){
 		
-		//message.setSender(sender);
+		Message message = new Message(); //wird ID selbst generiert?
+		Date date = new Date();
+		
+		message.setDate(date);
+		message.setSender(sender);
+		message.setReceiver(receiver);
+		message.setMessageText(messageText);
+		messageDao.save(message);
 	
-		adMessageToInbox(message.getId(), message.getReceiver());
-		adMessageToSent(message.getId(), sender);
+//		adMessageToInbox(message.getId(), receiver);
+//		adMessageToSent(message.getId(), sender);
 		
 	}
 	
@@ -51,8 +57,8 @@ public class MessageServiceImpl implements MessageService{
 		List<Long> list = _receiver.getInbox();
 		if(!list.contains(messageId)){
 			list.add(messageId);
-			userDao.save(_receiver);
 			_receiver.setInbox(list);
+			userDao.save(_receiver);
 		}
 //		else throw new MessageExeption("already added to inbox");
 	}
@@ -62,13 +68,13 @@ public class MessageServiceImpl implements MessageService{
 		List<Long> list = _sender.getSent();
 		if(!list.contains(messageId)){
 			list.add(messageId);
-			userDao.save(_sender);
 			_sender.setSent(list);
+			userDao.save(_sender);
+		
 		}
 
 //		else throw new MessageException("already added to sent!");
-			
-			
+					
 	}
 
 	

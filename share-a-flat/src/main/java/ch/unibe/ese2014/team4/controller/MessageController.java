@@ -48,29 +48,17 @@ public class MessageController {
 	 * 
 	 * 
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(@RequestParam(value="receiver")User receiver, MessageForm messageForm,
-			BindingResult result, Principal principal) throws Exception {
+	public ModelAndView sendMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
+		Principal principal) throws Exception {
 
-		messageService.sendMessage(messageForm.getMessage(),userService.getUserByUsername(principal.getName()) 
-				);
+		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
 
-		ModelAndView model = new ModelAndView("ad");
+//		ModelAndView model = new ModelAndView("ad");
 		return null;
 	}
 	
-	
-//	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-//	public ModelAndView sendMessageTwo(MessageForm messageForm,
-//			BindingResult result, Principal principal) throws Exception {
-//
-//		messageService.sendMessage(messageForm.getMessage(),
-//				userService.getUserByUsername(principal.getName()),
-//				userService.getUser(messageForm.getReceiverId()));
-//
-//		ModelAndView model = new ModelAndView("ad");
-//		return null;
-//	}
 }
 
 	

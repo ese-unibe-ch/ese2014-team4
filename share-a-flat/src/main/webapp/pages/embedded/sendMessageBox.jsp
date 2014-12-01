@@ -5,60 +5,30 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
-<script type="text/javascript">
-
-function sendTheMessage(){
-	setReceiver();
-	setSender();
-	setMessageText();
-	//sendMessage(messageForm.getMessage());
-}
-
-//contactField in ad page: adData.owner, contactField in profile page: user
-//function setReceiver(){
-//	if(document.getElementById("${adData.owner}")!=0 )
-//		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
-//	else(messageForm.message.setReceiver(document.getElementById("${user}")));
-//}
-
-function setReceiver(){
-		messageForm.message.setReceiver(document.getElementById("${adData.owner}"));
-}
-
-function setSender(){
-		messageForm.message.setSender(document.getElementById("${principal}"));
-}
-
-function setMessageText(){
-	messageForm.message.setMessageText(document.getElementById("field-message").value);
-}
-
-
-</script>
-
-
 <!-- only used as imported part of other pages, therefore no header / footer. -->
-<h4>Send a message to ${adData.owner.username}${user.username}</h4>
+
+<c:set var="receiverName"> 
+	<c:if test="${adData.owner.username!=null}">${adData.owner.username}</c:if>
+	<c:if test="${user.username!=null}">${user.username}</c:if>  
+</c:set>
+
+<h4>Send a message to ${receiverName}</h4>
 
 
-<form:form method="post" modelAttribute="messageForm"
-	action="sendMessage" id="messageForm" cssClass="form-horizontal"
-	autocomplete="off" onsubmit="sendTheMessage()">
+<form method="post" action="sendMessage?receiverName=${receiverName}" id="messageForm" Class="form-horizontal"
+	autocomplete="off" >
 
-
-	<textarea required="true" class="form-control" path="message"
-		id="field-message" style="width: 100%; height: 80px; resize: none"
+	<textarea required class="form-control" name="messageText"
+		id="field-messageText" style="width: 100%; height: 80px; resize: none"
 		tabindex="1" placeholder="write your message here"
 		></textarea>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary" tabindex="13" onsubmit="sendTheMessage()">Send</button>
-
+		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>
 
 	</div>
 	<br>
 
-
-</form:form>
+</form>
 
 <script type="text/javascript">
 	

@@ -79,11 +79,11 @@ public class SearcherTests {
 		testAd2.setNrOfRooms(2);
 		testAd3.setNrOfRooms(2);
 
+
 		testAd1.setAvailableDate("01-01-2011");
 		testAd2.setAvailableDate("01-01-2012");
 		testAd3.setAvailableDate("01-01-2013");
 		testAd4.setAvailableDate("01-01-2014");
-
 
 	}
 	
