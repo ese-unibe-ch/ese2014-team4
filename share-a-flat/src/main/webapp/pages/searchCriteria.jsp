@@ -204,6 +204,17 @@
 							});
 						</script>
 					</div>
+					
+					 <tr>
+            <td>Order Search Results By:</td>
+            <td><form:select path="orderBy">
+               <option value="newestFirst">newest first</option>
+               <option value="availableDate">available date</option>
+               <option value="price">Price</option>
+               
+                </form:select>
+            </td>
+        </tr>
 
 					<span id="SearchErrorMessage"></span>
 

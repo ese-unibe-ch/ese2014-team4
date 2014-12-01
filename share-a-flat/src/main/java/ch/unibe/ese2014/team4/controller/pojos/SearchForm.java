@@ -33,7 +33,17 @@ public class SearchForm {
     private AdType adType;
     
     private String availableDate;
+    
+    private String orderBy;
    
+
+	public String getOrderBy() {
+		return orderBy;
+	}
+
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
+	}
 
 	private Long id;
     

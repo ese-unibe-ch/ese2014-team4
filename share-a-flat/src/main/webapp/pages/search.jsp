@@ -111,11 +111,20 @@
 				<button style="display: none" id="mapButton"
 					onClick="swap('one','two','listButton', 'mapButton' )"
 					class="btn btn-info btn-xs">Switch to Map View</button>
-				 <p> Sort by: <select name="aa" onchange="sort(this.value)">
-					<option value="date">Date</option>
-					<option value="price">Price</option>
-				</select>
-				<p>
+
+<!--    <input type="submit" value="Transfer Device" style="height: 68px; width: 197px; "> -->
+<!--         <tr> -->
+<!--             <td>order by:</td> -->
+<%--             <td><form:select path="orderBy"> --%>
+<%--                 <form:option value="0" label="--- Select ---" /> --%>
+<!--                <option value="newestFirst">newest first</option> -->
+<!--                <option value="availableDate">available date</option> -->
+<!--                <option value="price">Price</option> -->
+               
+<%--                 </form:select> --%>
+<!--             </td> -->
+<!--         </tr> -->
+<%-- </form:form> --%>
 
 			</div>
 
@@ -137,18 +146,6 @@
 		document.getElementById(two).style.display = 'none';
 		document.getElementById(mapButton).style.display = 'block';
 		document.getElementById(listButton).style.display = 'none';
-	}
-
-	function sort(sortBy) {
-		if (sortBy == "")
-			return; // please select - possibly you want something else here
-		if (sortBy == "date") {
-
-		}
-
-		if (sortBy == "price") {
-
-		}
 	}
 </script>
 
