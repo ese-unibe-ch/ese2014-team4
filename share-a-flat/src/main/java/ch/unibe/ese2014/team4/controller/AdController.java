@@ -124,6 +124,22 @@ public class AdController {
 		return model;
 	}
 	
+	//not working
+//	@RequestMapping(value = "/saveAdChanges", method = RequestMethod.POST)
+//	public ModelAndView saveAdChanges(@RequestParam(value = "adId", required = true) long adId, AdForm adForm, BindingResult result, Principal principal) throws Exception {
+//		ModelAndView model;
+//		if (!result.hasErrors()){
+//				adService.updateAdFrom(adId, adForm, userService.getUserByUsername(principal.getName())); 
+//				return showAd(adForm.getId(), principal);
+//
+//		}
+//		else {
+//			model = new ModelAndView("myPage");
+//		}
+//		
+//		return model;
+//		
+//	}	
 	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
@@ -160,7 +176,7 @@ public class AdController {
 
 		ModelAndView model = showAd(adId, principal);
 		try {
-			adService.unBookMarkAdForUser(adId, user);
+			adService.bookMarkAdforUser(adId, user);
 			model.addObject("isBookmarked", false);
 			model.addObject("bookmarkResponse", "Removed successfully!");
 
@@ -183,6 +199,6 @@ public class AdController {
 	
 	@RequestMapping(value="/deleteAd")
 	public void deleteAd(@RequestParam(value="adId")Long adId){
-		adService.delete(adId);
+		adService.deleteAd(adId);
 	}
 }

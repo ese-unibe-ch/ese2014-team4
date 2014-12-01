@@ -25,6 +25,8 @@ public interface AdDao extends CrudRepository<Ad,Long> {
 			String city);
 	public ArrayList<Ad> findAllByAddressCityOrderByBruttoAsc(
 			String city);
-	
+	public ArrayList<Ad> findAllByAddressZipCodeOrderByAvailableDateDesc(
+			int zipCode);
+	public ArrayList<Ad> findAllByAddressZipCodeOrderByBruttoAsc(int zipCode);	
 	
 }
