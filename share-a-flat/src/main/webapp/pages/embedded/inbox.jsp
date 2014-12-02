@@ -16,9 +16,8 @@
 
 <!-- <h2>Inbox</h2> -->
 
-<form method="post" action="deleteMessage?messageId=${messageId}" id="messageForm" Class="form-horizontal"
+<form method="post" action="deleteMessage?messageId=${messageId}" onsubmit="return deleteMessageAlert" id="messageForm" Class="form-horizontal"
 	autocomplete="off" >
-	
 <!-- to insert space: &#160. will be improved -->
 <c:forEach items="${inboxList}" var="message">
 <c:set var="messageId" value="${message.id}"></c:set>
@@ -27,8 +26,10 @@
 	<br><b>Received:</b> &#160
 		<fmt:formatDate type="both" dateStyle="short" pattern="dd.MM.yyyy   HH:mm" value="${message.date}" /><br>
 	<pre>${message.messageText}</pre>
-	<button type="submit" onclick="return deleteMessageAlert()"
-		>Delete message</button>
+	
+		<input name="delete" type="submit" value="delete Message" onclick="return confirm('Are you sure you want to delete this message?')" 
+		class="btn btn-warning">
+	
 <hr>
 </c:forEach>
 
