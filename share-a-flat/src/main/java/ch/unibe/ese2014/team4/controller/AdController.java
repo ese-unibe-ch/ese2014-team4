@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -72,21 +73,30 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
-			Principal principal, ModelAndView oldModel) throws Exception {
-
+			Principal principal) throws Exception {
+		try{
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
+		}
 		
+		catch (ConstraintViolationException e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityAsArray);
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
+
+			return model;
+		}
 		// many possible exceptions, therefore juxt catch Exception
-//		catch (Exception e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityAsArray);
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", e.getMessage());
-//
-//			return model;
-//		}
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityAsArray);
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", e.getMessage());
+
+			return model;
+		}
 
 	}
 	
@@ -101,28 +111,38 @@ public class AdController {
 			@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		ModelAndView model = new ModelAndView("ad");
 		Ad ad = newAdService.getAd(adId);
-		
+
 		if ((ad.getOwner().getUsername()).equals(principal.getName())) {
-			model = new ModelAndView("create-ad");
-			AdForm adForm = new AdForm();
-			model.addObject("adForm", adForm);
-			model.addObject("adData", ad);
-			model.addObject("user", userService.getUserByUsername(principal.getName()));
-			
-			return model;
+			model.addObject("isMyAd", true);
 		}
 		
 		MapAddress addressForMap = ad.getAddressForMap();
 		List<String> list = adService.getImageList(adId);
+		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
 		model.addObject("addressForMap", addressForMap);
 		model.addObject("imageList", list);
-		model.addObject("adData", ad); // called adData, otherwise gets confused
-										// with "ad" page
+		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
 	
+	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
+	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal){
+		ModelAndView model = new ModelAndView("create-ad");
+		model.addObject("isMyAd", true);
+		Ad ad = newAdService.getAd(adId);
+		model.addObject("adData", ad);
+
+		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
+		return model;
+	}
+	@ResponseBody
+	@RequestMapping(params ="delete", value="/modifyAd")
+	public void deleteAd(@RequestParam(value="adId")Long adId){
+		adService.deleteAd(adId);
+	}	
+
 	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
@@ -140,6 +160,7 @@ public class AdController {
 		ModelAndView model = showAd(adId, principal);
 		try {
 			adService.bookMarkAdforUser(adId, user);
+			model.addObject("isBookmarked", true);
 			model.addObject("bookmarkResponse", "Bookmarked successfully!");
 
 		} catch (BookmarkException e) {
@@ -148,10 +169,29 @@ public class AdController {
 
 		return model;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/removeFromBookmarks", method = RequestMethod.GET)
+	public ModelAndView removeFromBookmarks(
+			@RequestParam(value = "adId", required = true) long adId,
+			Principal principal) {
+		User user = userService.getUserByUsername(principal.getName());
+
+		ModelAndView model = showAd(adId, principal);
+		try {
+			adService.bookMarkAdforUser(adId, user);
+			model.addObject("isBookmarked", false);
+			model.addObject("bookmarkResponse", "Removed successfully!");
+
+		} catch (BookmarkException e) {
+			model.addObject("bookmarkResponse", "Was not bookmarked!");
+		}
+
+		return model;
+	}
 
 	
 
-	@ResponseBody
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
 	public ModelAndView registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
@@ -159,4 +199,6 @@ public class AdController {
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
 		return new ModelAndView("myPage");
 	}
+	
+
 }

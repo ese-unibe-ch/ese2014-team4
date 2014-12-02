@@ -25,10 +25,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import ch.unibe.ese2014.team4.controller.pojos.Sex;
 
 
-
 @Entity
 public class User implements UserDetails {
-
 
 	@Id
     @GeneratedValue
@@ -36,17 +34,14 @@ public class User implements UserDetails {
     
     private String username;
     private String email;
-    /**
-     * password is saved as a sha-digested hex-string.
-     */
+
+    //password is saved as a sha-digested hex-string.
     private String password;
     
     private Sex sex;
     private String age;
     private String phoneNumber;
     private String userDescription;
-    
-    private Boolean isEmailValidated;
 
     
     @OneToOne(cascade = {CascadeType.ALL})
@@ -183,14 +178,6 @@ public class User implements UserDetails {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public Boolean getIsEmailValidated() {
-		return isEmailValidated;
-	}
-
-	public void setIsEmailValidated(Boolean isEmailValidated) {
-		this.isEmailValidated = isEmailValidated;
-	}
 	
 	public List<Long> getInbox() {
 		return inbox;
@@ -207,9 +194,4 @@ public class User implements UserDetails {
 	public void setSent(List<Long> sent) {
 		this.sent = sent;
 	}
-
-
-
-
-
 }

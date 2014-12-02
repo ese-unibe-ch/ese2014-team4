@@ -140,44 +140,43 @@
 
 	}
 </script>
-
+<!--  
 <script type="text/javascript">
 $(document).ready(function() {
 	checkAdOwnerAndPrincipal();	
 });
 
-checkAdOwnerAndPrincipal() {
-	var owner = "$adData.owner.username";
-	var principal = "$user";
+function checkAdOwnerAndPrincipal() {
 	
-	if (owner == principal) {
-		document.getElementById("field-title").value="$adData.title";
+	if ("${adData.owner.username eq user}") {
+		$("#field-title").val("${adData.title}");
 		
-		if ("$adData.adType" == 'ROOM'){
-			document.getElementById("field-room").checked=true;
-			document.getElementById("field-flat").checked=false;
+		if ("${adData.type eq 'ROOM'}") {
+			$('#field-room').prop('checked', true);
+			$('#field-flat').prop('checked', false);
 		}
 		else {
-			document.getElementById("field-room").checked=false;
-			document.getElementById("field-flat").checked=true;	
+			$('#field-room').prop('readonly', false);
+			$('#field-flat').prop('readonly', true);
 		}
 		
-		document.getElementById("field-street").value="$adData.address.street";
-		document.getElementById("field-streetNumber").value="$adData.address.streetNumber";
-		document.getElementById("field-zipCode").value="$adData.address.zipCode";
-		document.getElementById("field-size").value="$adData.size";
-		document.getElementById("field-nrOfRooms").value="$adData.nrOfRooms";
-		document.getElementById("field-netto").value="$adData.netto";
-		document.getElementById("field-charges").value="$adData.charges";
-		document.getElementById("field-nrOfFlatMates").value="$adData.nrOfFlatMates";
-		document.getElementById("field-availableDate").value="$adData.availableDate";
-		document.getElementById("field-description").value="$adData.description";
+		$("#field-street").val("${adData.address.street}");
+		$("#field-streetNumber").val("${adData.address.streetNumber}");
+		$("#field-zipCode").val("${adData.address.zipCode}");
+		$("#field-city").val("${adData.address.city}");
+		$("#field-nrOfRooms").val("${adData.nrOfRooms}");
+		$("#field-netto").val("${adData.netto}");
+		$("#field-charges").val("${adData.charges}");
+		$("#field-nrOfFlatMates").val("${adData.nrOfFlatMates}");
+		$("#field-availableDate").val("${adData.availableDate}");
+		$("#field-description").val("${adData.description}");
 		
+		$('#adForm').prop('action', 'saveAdChanges?adId=${ad.id}');
 	}
 	
 	return true;
 }
-</script>
+</script>-->
 
 <script type="text/javascript">
 	function zipToCity() {

@@ -49,7 +49,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="home"><img src="img/logo3.png"
+				<a class="navbar-brand" href="search"><img src="img/logo3.png"
 					alt="logo" style="width: 120px; height: 35px"></a>
 			</div>
 			<div class="collapse navbar-collapse">
@@ -59,10 +59,12 @@ body {
 							Page</a></li>
 					<li <%= isActive("myMessages", request) %>><a href="myMessages">My
 							Messages</a></li>
+					<li <%= isActive("myProfile", request) %>><a href="myProfile">My
+							Profile</a></li>							
 					<!-- <li <%= isActive("favorites", request) %>><a href="favorites">My
 							Favorites</a></li> -->
 					<li <%= isActive("search", request) %>><a
-						href="search?resultType=list">Search</a></li>
+						href="search">Search</a></li>
 					<li <%= isActive("createAd", request) %>><a href="createAd">Create
 							an ad</a></li>
 				</ul>

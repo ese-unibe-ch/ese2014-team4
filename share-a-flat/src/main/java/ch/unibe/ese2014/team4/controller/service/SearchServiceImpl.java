@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
@@ -13,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
-import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.SearchForm;
+import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.dao.SearchFormDao;
 
 /**
  * 
@@ -31,6 +34,9 @@ public class SearchServiceImpl implements SearchService {
 
 	@Autowired
 	private AdService adService;
+	
+	@Autowired
+	private SearchFormDao searchFormDao;
 	
 	/**
 	 * checks if a city name or a zipcode or nothing has been put in the search
@@ -50,12 +56,13 @@ public class SearchServiceImpl implements SearchService {
 		if (zip > 0) {
 			adsToSort = adService.getAdByZip(zip, orderBy);
 		} else {
-			if (searchForm.getCityOrZip() != "") {
+			if (!(searchForm.getCityOrZip()).equals("")) {
 				adsToSort = adService.getAdByCity(searchForm.getCityOrZip(), orderBy);
 			} else {
 				adsToSort = adService.getAllAds(orderBy);
 			}
 		}
+		
 		return getRelevantAds(adsToSort);
 	}
 
@@ -74,9 +81,7 @@ public class SearchServiceImpl implements SearchService {
 			checkPrice(adsToSort);
 		}
 
-
 		if (searchForm.getMinNrOfFlatMates() > 0) {
-
 			checkNrFlatMates(adsToSort);
 		}
 
@@ -97,16 +102,30 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkAvailableDate(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
+		
+		Iterator<Ad> itr = adsToSort.iterator();
+		while(itr.hasNext()) {
+			Ad ad = itr.next();
+			if(ad.getAvailableDate().equals("--")) {
+				itr.remove();
+			}
+		}
+		
+		/*for (Ad ad : adsToSort) {
+			if (ad.getAvailableDate().equals("--")){
+				adsToSort.remove(ad);
+			}
+		}*/
+		
+		for (Ad ad : adsToSort) {
+				adsToSortCopy.add(ad);
+		}
 
 		for (Ad ad : adsToSortCopy)
-			try {
-				{
+			try {				
 					if ((convertStringToDate(searchForm.getAvailableDate()))
 							.compareTo(convertStringToDate(ad.getAvailableDate())) > 0)
-						adsToSort.remove(ad);
-				}
+						adsToSort.remove(ad);				
 			} catch (ParseException e) {
 				e.printStackTrace();
 
@@ -217,5 +236,15 @@ public class SearchServiceImpl implements SearchService {
 		Query query = factory.createEntityManager().createQuery(queryString);
 
 		return null;
+	}
+
+	public void saveSearchForm(SearchForm searchForm) {
+		searchFormDao.save(searchForm);
+		
+	}
+
+	public List<SearchForm> getMySavedSearchForms(User user) {
+		return searchFormDao.findAllByOwner(user);
+		
 	}	
 }

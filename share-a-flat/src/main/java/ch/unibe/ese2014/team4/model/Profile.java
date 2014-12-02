@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,14 @@ import ch.unibe.ese2014.team4.controller.pojos.Sex;
 
 //TODO: add more profile stuff.
 @Entity
-public class Profile {
+public class Profile implements Serializable {
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;

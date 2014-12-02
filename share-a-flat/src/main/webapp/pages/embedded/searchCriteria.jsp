@@ -18,7 +18,7 @@
 
 	<form:form enctype="multipart/form-data" method="post"
 		modelAttribute="searchForm"
-		action="submitSearch?resultType=${resultType}"
+		action="submitSearch"
 		onSubmit="return checkSearchInput()" id="searchForm"
 		cssClass="form-horizontal" autocomplete="off">
 		<fieldset>
@@ -49,12 +49,12 @@
 					<label class="control-label" for="field-cityOrZip">City or
 						Zip</label>
 					<div class="controls">
-						<form:input class="form-control" path="cityOrZip" required="true"
+						<form:input class="form-control" path="cityOrZip" 
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
 							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" 
-							x-moz-errormessage="Please specify a valid email address."/>
+							x-moz-errormessage="Please enter a Zip or a City."/>
 						<form:errors path="cityOrZip" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -208,20 +208,19 @@
             <td>Order Search Results By:</td>
             <td><form:select path="orderBy">
                <option value="newestFirst">newest first</option>
-               <option value="availableDate">available date</option>
-               <option value="price">Price</option>
-               
+               <option value="availableDate">available date (earlier first)</option>
+               <option value="price">Price (cheapest first)</option>               
                 </form:select>
             </td>
         </tr>
 
 					<span id="SearchErrorMessage"></span>
 
-
 					<div class="form-actions">
 						<br>
-						<button type="submit" tabindex="9" class="btn btn-primary">Search
+						<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search
 							Ad</button>
+							<button type="submit" name="save" tabindex="9" class="btn btn-primary"> Save search</button>
 						<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
 						<button type="reset" tabindex="10" class="btn btn-default">Reset</button>
 					</div>

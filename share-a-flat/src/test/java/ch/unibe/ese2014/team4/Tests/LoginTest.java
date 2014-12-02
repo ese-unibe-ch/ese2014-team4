@@ -2,6 +2,7 @@ package ch.unibe.ese2014.team4.Tests;
 
 
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,6 +35,8 @@ public class LoginTest {
     
     @Autowired
     UserService userService;
+    
+    
     
 
 		
@@ -84,8 +87,16 @@ public class LoginTest {
     public void testAutority(){
     	User user = userDao.findByUsername("testUser");
     	assertEquals("testUser", user.getUsername());
-    	assertTrue (userDao.findByUsername("testUser").getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")));
+    	assertTrue (userDao.findByUsername("testUser").getAuthorities().contains(new SimpleGrantedAuthority("ROLE_REGISTERED")));
     	assertFalse (userDao.findByUsername("testUser").getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN")));
+    }
+    
+    @Test
+    public void testActivation(){
+    	User user = userDao.findByUsername("testUser");
+    	nacS.activateAccount(user, DigestUtils.shaHex(user.getEmail()));
+    	assertTrue (userDao.findByUsername("testUser").getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")));
+    	assertEquals (1, userDao.findByUsername("testUser").getAuthorities().size());
     }
 
 }

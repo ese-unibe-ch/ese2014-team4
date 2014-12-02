@@ -9,11 +9,11 @@ import org.junit.*;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
-import ch.unibe.ese2014.team4.controller.pojos.SearchForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
 import ch.unibe.ese2014.team4.controller.service.SearchServiceImpl;
 import ch.unibe.ese2014.team4.model.*;
+
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
 public class SearcherTests {
@@ -53,22 +53,18 @@ public class SearcherTests {
 		testAd1.setAddress(testAddess1);
 		testAd2.setAddress(testAddess2);
 		testAd3.setAddress(testAddess3);
-		testAd4.setAddress(testAddess1);
 	
 		testAd1.setNetto(100);
 		testAd2.setNetto(200);
 		testAd3.setNetto(300);
-		testAd4.setNetto(400);
 		
 		testAd1.setCharges(0);
 		testAd2.setCharges(0);
 		testAd3.setCharges(0);
-		testAd4.setCharges(0);
 		
 		testAd1.setBrutto();
 		testAd2.setBrutto();
 		testAd3.setBrutto();
-		testAd4.setBrutto();
 
 		
 		testAd1.setNrOfFlatMates(1);
@@ -83,7 +79,6 @@ public class SearcherTests {
 		testAd1.setAvailableDate("01-01-2011");
 		testAd2.setAvailableDate("01-01-2012");
 		testAd3.setAvailableDate("01-01-2013");
-		testAd4.setAvailableDate("01-01-2014");
 
 	}
 	
@@ -231,51 +226,7 @@ public class SearcherTests {
 		verify(mockDao);
 	}
 	
-	@Test
-	public void testByCityWithResultWithPriceSort() {
-		resetSearchForm();
-
-		mockedSearchResult.add(testAd1);
-		mockedSearchResult.add(testAd4);
-
-		String city = "City1";
-		searchForm.setCityOrZip(city);
-		searchForm.setOrderBy("price");
-		
-		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
-				mockedSearchResult);
-
-		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(2, adsFromSearcher.size());
-		assertEquals(testAd1, adsFromSearcher.get(0));
-		verify(mockDao);
-	}
 	
-	@Test
-	public void testByCityWithResultWithPriceSortSwapPlaces() {
-		resetSearchForm();
-		
-		testAd4.setNetto(50);
-		testAd4.setBrutto();
-
-		mockedSearchResult.add(testAd1);
-		mockedSearchResult.add(testAd4);
-
-		String city = "City1";
-		searchForm.setCityOrZip(city);
-		searchForm.setOrderBy("price");
-		
-		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
-				mockedSearchResult);
-
-		replay(mockDao);
-		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(2, adsFromSearcher.size());
-//		assertEquals(testAd1, adsFromSearcher.get(1));
-		verify(mockDao);
-	}
-
 	@Test
 	public void testByPriceAndCityNoResult() {
 		resetSearchForm();
