@@ -255,6 +255,7 @@ public class AdServiceImpl implements AdService {
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAllByAddressCityIgnoreCase(city);
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
 			Collections.sort(ads, Ad.availableDateSorter);
@@ -279,7 +280,7 @@ public class AdServiceImpl implements AdService {
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAllByAddressZipCode(zipCode);
-
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
 			Collections.sort(ads, Ad.availableDateSorter);
@@ -295,6 +296,7 @@ public class AdServiceImpl implements AdService {
 	public ArrayList<Ad> getAllAds(String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAll();
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
 			Collections.sort(ads, Ad.availableDateSorter);
