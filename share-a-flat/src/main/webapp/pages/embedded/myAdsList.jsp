@@ -4,20 +4,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<<script type="text/javascript">
-function hideAd(id){
-	location.reload(); 
-	}
-</script>
-
 <br>
 <hr>
 
 <c:forEach items="${myAdsList}" var="ad">
 	<a href="showAd?adId=${ad.id}" id="${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
-	<font size="1">(${ad.type})</font>
-	<button id="removeButton" onClick="hideAd(${ad.id})" class="btn btn-info btn-xs">Remove
-		This Ad</button>
+	<font size="1">(${ad.type})</font>	
 	<table>
 
 		<tr>
