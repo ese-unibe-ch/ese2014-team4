@@ -82,14 +82,14 @@ public class OrderTests {
 		searchForm.setCityOrZip(city);
 		searchForm.setOrderBy("price");
 
-		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
+		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
 				mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -109,14 +109,14 @@ public class OrderTests {
 		searchForm.setCityOrZip(city);
 		searchForm.setOrderBy("price");
 
-		expect(mockDao.findAllByAddressCityOrderByBruttoAsc(city)).andReturn(
+		expect(mockDao.findAllByAddressCityIgnoreCase(city)).andReturn(
 				mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd2.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd1.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -133,14 +133,14 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 
 		expect(
-				mockDao.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city))
+				mockDao.findAllByAddressCityIgnoreCase(city))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd3.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd1.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -159,14 +159,14 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 
 		expect(
-				mockDao.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city))
+				mockDao.findAllByAddressCityIgnoreCase(city))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -182,14 +182,14 @@ public class OrderTests {
 		searchForm.setCityOrZip(city);
 		searchForm.setOrderBy("price");
 
-		expect(mockDao.findAllByAddressZipCodeOrderByBruttoAsc(1111))
+		expect(mockDao.findAllByAddressZipCode(1111))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -209,14 +209,14 @@ public class OrderTests {
 		searchForm.setCityOrZip(city);
 		searchForm.setOrderBy("price");
 
-		expect(mockDao.findAllByAddressZipCodeOrderByBruttoAsc(1111))
+		expect(mockDao.findAllByAddressZipCode(1111))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd2.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd1.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 	
@@ -233,14 +233,14 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 
 		expect(
-				mockDao.findAllByAddressZipCodeOrderByAvailableDateDesc(1111))
+				mockDao.findAllByAddressZipCode(1111))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -259,14 +259,14 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 
 		expect(
-				mockDao.findAllByAddressZipCodeOrderByAvailableDateDesc(1111))
+				mockDao.findAllByAddressZipCode(1111))
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd2.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd1.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 	
@@ -286,9 +286,9 @@ public class OrderTests {
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd2.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 
@@ -310,13 +310,57 @@ public class OrderTests {
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd2.getId(), adsFromSearcher.get(0).getId());
-		assertEquals(testAd3.getId(), adsFromSearcher.get(1).getId());
-		assertEquals(testAd1.getId(), adsFromSearcher.get(2).getId());
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
 	}
 	
+	@Test
+	public void testGetAllPriceSort() {
+		resetSearchForm();
 
+		mockedSearchResult.add(testAd3);
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		
+		searchForm.setOrderBy("price");
+
+		expect(mockDao.findAll())
+				.andReturn(mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(testAd1, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(2));
+		verify(mockDao);
+	}
+
+	@Test
+	public void testGetAllPriceSortDifferentOrder() {
+		resetSearchForm();
+
+		testAd1.setNetto(400);
+		testAd1.setCharges(0);
+		testAd1.setBrutto();
+
+		mockedSearchResult.add(testAd3);
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		
+		searchForm.setOrderBy("price");
+
+		expect(mockDao.findAll())
+				.andReturn(mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(testAd2, adsFromSearcher.get(0));
+		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
+		verify(mockDao);
+	}
 
 	private void resetSearchForm() {
 		searchForm.setCityOrZip("");

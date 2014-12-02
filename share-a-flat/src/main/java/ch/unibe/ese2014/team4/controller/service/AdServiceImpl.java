@@ -255,17 +255,15 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+		ads = adDao.findAllByAddressCityIgnoreCase(city);
 
 		if (orderBy.equals("availableDate")) {
-			ads = adDao
-					.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city);
-			return ads;
+			Collections.sort(ads, Ad.availableDateSorter);
 		}
+
 		if (orderBy.equals("price")) {
-			ads = adDao.findAllByAddressCityOrderByBruttoAsc(city);
-			return ads;
+			Collections.sort(ads, Ad.bruttoSorter);
 		}
-		ads = adDao.findAllByAddressCityIgnoreCase(city);
 		return ads;
 	}
 
@@ -281,17 +279,17 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+		ads = adDao.findAllByAddressZipCode(zipCode);
+
 
 		if (orderBy.equals("availableDate")) {
-			ads = adDao
-					.findAllByAddressZipCodeOrderByAvailableDateDesc(zipCode);
-			return ads;
+			Collections.sort(ads, Ad.availableDateSorter);
 		}
+
 		if (orderBy.equals("price")) {
-			ads = adDao.findAllByAddressZipCodeOrderByBruttoAsc(zipCode);
-			return ads;
+			Collections.sort(ads, Ad.bruttoSorter);
 		}
-		ads = adDao.findAllByAddressZipCode(zipCode);
+		
 		return ads;
 	}
 
