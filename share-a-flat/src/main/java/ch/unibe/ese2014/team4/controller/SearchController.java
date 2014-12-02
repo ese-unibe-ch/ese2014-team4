@@ -56,6 +56,7 @@ public class SearchController {
 		model.addObject("addresses", addresses);
 		return model;
 	}
+	
 	@RequestMapping(params = "save", value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView saveSearch(@Valid SearchForm searchForm,BindingResult result, Principal principal) {
 		ModelAndView model = new ModelAndView("myPage");

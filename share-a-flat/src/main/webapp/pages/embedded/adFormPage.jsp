@@ -158,8 +158,8 @@
 				<form:input type="number" min="0" max="100" step="0.5"
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
 					tabindex="9" maxlength="45" value="${adForm.nrOfRooms}"					
-					onfocus="(this.value == '0') && (this.value = '')"
-					onblur="(this.value == '') && (this.value = '0')" />
+					onfocus="(this.value == '0.0') && (this.value = '')"
+					onblur="(this.value == '') && (this.value = '0.0')" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
 			</div>
 		</div>

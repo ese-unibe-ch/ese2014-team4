@@ -50,14 +50,8 @@
 						<br>
 					</div>
 
-
-					<div class="form-group">
-						<label class="col-lg-5 control-label">Description:</label>
-						<div class="col-lg-5">${user.profile.userDescription}</div>
-						<br>
-					</div></td>
-
-
+					</td>
+									
 			</tr>
 		</table>
 

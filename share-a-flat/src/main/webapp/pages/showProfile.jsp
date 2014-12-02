@@ -34,9 +34,15 @@
 
 <c:import url="embedded/profile.jsp" />
 
+
 		<table>
 			<tr>
 				<td width="450">
+				
+				<div class="form-group">
+					<c:import url="embedded/sendMessageBox.jsp" />
+				</div>
+				
 					<div class="form-group">
 						<label class="col-lg-5 control-label"></label>
 						<div class="col-lg-5">

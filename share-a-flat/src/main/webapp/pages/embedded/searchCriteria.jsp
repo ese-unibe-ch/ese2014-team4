@@ -19,7 +19,7 @@
 	<form:form enctype="multipart/form-data" method="post"
 		modelAttribute="searchForm"
 		action="submitSearch"
-		onSubmit="return checkSearchInput()" id="searchForm"
+		onSubmit="return checkSearchInput() && storeValues(this)" id="searchForm"
 		cssClass="form-horizontal" autocomplete="off">
 		<fieldset>
 
@@ -203,12 +203,11 @@
 							});
 						</script>
 					</div>
-					${dropDownValue}
 					 <tr>
             <td>Order Search Results By:</td>
             <td><form:select path="orderBy" id="dropDown" onChange="clickButton()" selected="${dropDownValue}">
-               <option value="newestFirst">newest first</option>
-               <option value="availableDate">available date (earlier first)</option>
+               <option value="newestFirst">Newest First</option>
+               <option value="availableDate">Available Date (earlier first)</option>
                <option value="price">Price (cheapest first)</option>               
                 </form:select>
             </td>
