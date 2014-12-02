@@ -31,6 +31,7 @@
 	<br><br>
 
 
+
 <c:import url="embedded/profile.jsp" />
 
 		<table>

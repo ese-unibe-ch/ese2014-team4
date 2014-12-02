@@ -254,17 +254,16 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+		ads = adDao.findAllByAddressCityIgnoreCase(city);
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
-			ads = adDao
-					.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city);
-			return ads;
+			Collections.sort(ads, Ad.availableDateSorter);
 		}
+
 		if (orderBy.equals("price")) {
-			ads = adDao.findAllByAddressCityOrderByBruttoAsc(city);
-			return ads;
+			Collections.sort(ads, Ad.bruttoSorter);
 		}
-		ads = adDao.findAllByAddressCityIgnoreCase(city);
 		return ads;
 	}
 
@@ -280,23 +279,24 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+		ads = adDao.findAllByAddressZipCode(zipCode);
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
-			ads = adDao
-					.findAllByAddressZipCodeOrderByAvailableDateDesc(zipCode);
-			return ads;
+			Collections.sort(ads, Ad.availableDateSorter);
 		}
+
 		if (orderBy.equals("price")) {
-			ads = adDao.findAllByAddressZipCodeOrderByBruttoAsc(zipCode);
-			return ads;
+			Collections.sort(ads, Ad.bruttoSorter);
 		}
-		ads = adDao.findAllByAddressZipCode(zipCode);
+		
 		return ads;
 	}
 
 	public ArrayList<Ad> getAllAds(String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAll();
+		Collections.reverse(ads);
 
 		if (orderBy.equals("availableDate")) {
 			Collections.sort(ads, Ad.availableDateSorter);

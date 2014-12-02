@@ -82,6 +82,7 @@ public class SearchController {
 
 		adsToAdd = searchService.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()) {
+			model.addObject("dropDownValue", searchForm.getOrderBy());
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
 			List<MapAddress> addresses = getAddressesForMap(adsToAdd);	
