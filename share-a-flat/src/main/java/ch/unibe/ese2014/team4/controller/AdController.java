@@ -48,7 +48,7 @@ public class AdController {
 	AdService adService;
 
 
-	private final String SWISS_ZIP_FILE = "src/main/resources/files/plz.csv";
+	private final String SWISS_ZIP_FILE = "src/main/resources/files/plzSwiss.csv";
 	private ZipCityList zipCityListCh = new ZipCityList(SWISS_ZIP_FILE);
 	private ArrayList<ZipCity> zipCityAsArray = zipCityListCh
 			.getZipCityAsArrayList();
