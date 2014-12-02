@@ -49,9 +49,7 @@ public class SearchForm {
 
     
   //Address-Info, same field as Ad itself.
-  	private int streetNumber;
     private String cityOrZip;
-    private String street;
     
     public float getMinNrOfRooms() {
 		return minNrOfRooms;
@@ -110,13 +108,7 @@ public class SearchForm {
 		this.maxPrice = maxPrice;
 	}
 
-    public int getStreetNumber() {
-		return streetNumber;
-	}
 
-	public void setStreetNumber(int streetNumber) {
-		this.streetNumber = streetNumber;
-	}
 
 	public String getCityOrZip() {
 		return cityOrZip;
@@ -126,13 +118,6 @@ public class SearchForm {
 		this.cityOrZip = cityOrZip;
 	}	
 
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
 
 	public Long getId() {
 		return id;

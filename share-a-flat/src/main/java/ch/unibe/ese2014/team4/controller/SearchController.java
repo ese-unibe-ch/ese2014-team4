@@ -22,6 +22,7 @@ import ch.unibe.ese2014.team4.model.Address;
 import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.SearchForm;
 import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.dao.SearchFormDao;
 
 /**
  * Controls all pages / commands concerning ads.
@@ -38,6 +39,9 @@ public class SearchController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	SearchFormDao searchFormDao;
 
 	// simplify both search-methods, remove common stuff
 
@@ -58,6 +62,10 @@ public class SearchController {
 		User user = userService.getUserByUsername(principal.getName());
 		searchForm.setOwner(user);
 		searchService.saveSearchForm(searchForm);
+		model.addObject("user", user);
+		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
+		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
 		return model;
 	}
 	/**
@@ -68,8 +76,7 @@ public class SearchController {
 	 */
 	@RequestMapping(params = "search", value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView search(
-			@Valid SearchForm searchForm,
-			BindingResult result) {
+			@Valid SearchForm searchForm) {
 		ModelAndView model = new ModelAndView("search");
 		List<Ad> adsToAdd = new ArrayList<Ad>();
 
@@ -84,7 +91,32 @@ public class SearchController {
 		
 		return model;
 	}
+	
+	@RequestMapping(params="search", value = "/restoreSavedSearch", method = RequestMethod.POST)
+	public ModelAndView startSavedSearch(@RequestParam(value="id")Long searchFormId) {
+		ModelAndView model = new ModelAndView("search");
+		model.addObject("searchForm", searchFormDao.findById(searchFormId));
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		model.addObject("adList", newestAdds);
+		model.addObject("whatToDisplay", "Newest Ads");
+		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		model.addObject("addresses", addresses);
+		return model;
 
+	}
+	@RequestMapping(params = "delete", value = "/restoreSavedSearch", method = RequestMethod.POST)
+	public ModelAndView deleteSavedSearch(@RequestParam(value="id")Long searchFormId, Principal principal) {
+		searchFormDao.delete(searchFormId);
+		ModelAndView model = new ModelAndView("myPage");
+		User user = userService.getUserByUsername(principal.getName());
+
+		model.addObject("user", user);
+		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
+		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
+		return model;
+
+	}
 	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
 	public ModelAndView getMap() {
 		ModelAndView model = new ModelAndView("searchResultsMapLocation");	

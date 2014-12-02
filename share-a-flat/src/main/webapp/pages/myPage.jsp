@@ -57,10 +57,11 @@
 		<div class="panel-body">
 		<c:choose><c:when test="${fn:length(mySearchList) eq 0}">No searches saved.</c:when><c:otherwise>
 		<c:forEach items="${mySearchList}" var="search">
-			<form:form modelAttribute="${search}" action="submitSearch" method="POST">
+			<form  action="restoreSavedSearch?id=${search.id}" method="POST">
 			${search.cityOrZip}
 			<button type="submit" name="search">Search</button>
-			</form:form> 
+			<button type="submit" name="delete">Delete search</button>
+			</form> 
 		</c:forEach>
 		</c:otherwise></c:choose>
 		</div>

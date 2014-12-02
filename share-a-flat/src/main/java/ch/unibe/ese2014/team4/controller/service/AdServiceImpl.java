@@ -254,7 +254,7 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
-System.out.println(orderBy);
+
 		if (orderBy.equals("availableDate")) {
 			ads = adDao
 					.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city);

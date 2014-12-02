@@ -10,4 +10,6 @@ import ch.unibe.ese2014.team4.model.User;
 public interface SearchFormDao extends CrudRepository<SearchForm,Long> {
 
 	public List<SearchForm> findAllByOwner(User owner);
+
+	public SearchForm findById(Long searchFormId);
 }
