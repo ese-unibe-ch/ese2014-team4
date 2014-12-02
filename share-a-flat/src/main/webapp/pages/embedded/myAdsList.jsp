@@ -10,7 +10,6 @@ function hideAd(id){
 	}
 </script>
 
-
 <br>
 <hr>
 

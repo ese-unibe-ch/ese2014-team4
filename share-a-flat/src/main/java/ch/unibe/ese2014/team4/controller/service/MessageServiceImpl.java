@@ -58,6 +58,10 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.findAllByReceiver(user);
 	}
 
+	/**
+	 * Deletes the message from inbox or sent of the user. If it is deleted from the sender's sent and 
+	 * the receiver's inbox it is deleted from the database.
+	 */
 	public void deleteMessage(long id, User user) {
 		Message message = messageDao.findById(id);
 		if (message.getReceiver().getId() == user.getId()){

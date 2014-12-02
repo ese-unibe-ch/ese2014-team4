@@ -17,10 +17,9 @@
 
 
 	<form:form enctype="multipart/form-data" method="post"
-		modelAttribute="searchForm"
-		action="submitSearch"
-		onSubmit="return checkSearchInput() && storeValues(this)" id="searchForm"
-		cssClass="form-horizontal" autocomplete="off">
+		modelAttribute="searchForm" action="submitSearch"
+		onSubmit="return checkSearchInput() && storeValues(this)"
+		id="searchForm" cssClass="form-horizontal" autocomplete="off">
 		<fieldset>
 
 			<div class="col-md-12" style="padding-left: 0px; padding-right: 3px">
@@ -49,12 +48,12 @@
 					<label class="control-label" for="field-cityOrZip">City or
 						Zip</label>
 					<div class="controls">
-						<form:input class="form-control" path="cityOrZip" 
+						<form:input class="form-control" path="cityOrZip"
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
-							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" 
-							x-moz-errormessage="Please enter a Zip or a City."/>
+							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')"
+							x-moz-errormessage="Please enter a Zip or a City." />
 						<form:errors path="cityOrZip" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -107,7 +106,8 @@
 					</c:set>
 					<div
 						class="control-group<c:if test="${not empty minNrOfRoomsErrors}">error</c:if>">
-						<label class="control-label" for="field-minNrOfRooms">Nr of Rooms from: </label>
+						<label class="control-label" for="field-minNrOfRooms">Nr
+							of Rooms from: </label>
 						<div class="controls">
 
 							<form:input type="number" min="0" max="100" step="0.5"
@@ -122,7 +122,7 @@
 				</div>
 
 				<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
-				<c:set var="maxNrOfRoomsErrors">
+					<c:set var="maxNrOfRoomsErrors">
 						<form:errors path="maxNrOfRooms" />
 					</c:set>
 					<div
@@ -142,107 +142,113 @@
 				</div>
 
 
-					<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
-						<c:set var="minNrOfFlatMatesErrors">
-							<form:errors path="minNrOfFlatMates" />
-						</c:set>
-						<div
-							class="control-group<c:if test="${not empty minNrOfFlatMatesErrors}"> error</c:if>">
-							<label class="control-label" for="field-minNrOfFlatMates">Nr of Flatmates from:</label>
-							<div class="controls">
-								<form:input type="number" min="0" max="100" step="1"
-									class="form-control" path="minNrOfFlatMates"
-									id="field-minNrOfFlatMates" tabindex="7" maxlength="35"
-									value="0" onfocus="(this.value == '0') && (this.value = '')"
-									onblur="(this.value == '') && (this.value = '0')" />
-								<form:errors path="minNrOfFlatMates" cssClass="help-inline"
-									element="span" />
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
-					<c:set var="maxNrOfFlatMatesErrors">
-							<form:errors path="maxNrOfFlatMates" />
-						</c:set>
-						<div
-							class="control-group<c:if test="${not empty maxNrOfFlatMatesErrors}"> error</c:if>">
-							<label class="control-label" for="field-maxNrOfFlatMates">to:</label>
-							<div class="controls">
-								<form:input type="number" min="0" max="100" step="1"
-									class="form-control" path="maxNrOfFlatMates"
-									id="field-maxNrOfFlatMates" tabindex="7" maxlength="35"
-									value="0" onfocus="(this.value == '0') && (this.value = '')"
-									onblur="(this.value == '') && (this.value = '0')" />
-								<form:errors path="maxNrOfFlatMates" cssClass="help-inline"
-									element="span" />
-							</div>
-						</div>
-					</div>
-
-					<c:set var="availableDateErrors">
-						<form:errors path="availableDate" />
+				<div class="col-md-6" style="padding-left: 0px; padding-right: 3px">
+					<c:set var="minNrOfFlatMatesErrors">
+						<form:errors path="minNrOfFlatMates" />
 					</c:set>
 					<div
-						class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
-						<label class="control-label" for="field-availableDate">Available
-							Date:</label>
+						class="control-group<c:if test="${not empty minNrOfFlatMatesErrors}"> error</c:if>">
+						<label class="control-label" for="field-minNrOfFlatMates">Nr
+							of Flatmates from:</label>
 						<div class="controls">
-							<form:input type="text" class="form-control" path="availableDate"
-								id="field-availableDate" tabindex="8" placeholder="DD-MM-YYYY" />
-							<form:errors path="availableDate" cssClass="help-inline"
+							<form:input type="number" min="0" max="100" step="1"
+								class="form-control" path="minNrOfFlatMates"
+								id="field-minNrOfFlatMates" tabindex="7" maxlength="35"
+								value="0" onfocus="(this.value == '0') && (this.value = '')"
+								onblur="(this.value == '') && (this.value = '0')" />
+							<form:errors path="minNrOfFlatMates" cssClass="help-inline"
 								element="span" />
-							<br>
 						</div>
-						<script type="text/javascript">
-							// When the document is ready
-							$(document).ready(function() {
-								$('#field-availableDate').datepicker({
-									format : "dd-mm-yyyy"
-								});
-							});
-						</script>
 					</div>
-					 <tr>
-            <td>Order Search Results By:</td>
-            <td><form:select path="orderBy" id="dropDown" onChange="clickButton()" selected="${dropDownValue}">
-               <option value="newestFirst">Newest First</option>
-               <option value="availableDate">Available Date (earlier first)</option>
-               <option value="price">Price (cheapest first)</option>               
-                </form:select>
-            </td>
-        </tr>
-
-					<span id="SearchErrorMessage"></span>
-
-					<div class="form-actions">
-						<br>
-						<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search
-							Ad</button>
-							<button type="submit" name="save" tabindex="9" class="btn btn-primary"> Save search</button>
-						<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
-						<button type="reset" tabindex="10" class="btn btn-default">Reset</button>
-					</div>
-
 				</div>
+
+				<div class="col-md-6" style="padding-left: 3px; padding-right: 0px">
+					<c:set var="maxNrOfFlatMatesErrors">
+						<form:errors path="maxNrOfFlatMates" />
+					</c:set>
+					<div
+						class="control-group<c:if test="${not empty maxNrOfFlatMatesErrors}"> error</c:if>">
+						<label class="control-label" for="field-maxNrOfFlatMates">to:</label>
+						<div class="controls">
+							<form:input type="number" min="0" max="100" step="1"
+								class="form-control" path="maxNrOfFlatMates"
+								id="field-maxNrOfFlatMates" tabindex="7" maxlength="35"
+								value="0" onfocus="(this.value == '0') && (this.value = '')"
+								onblur="(this.value == '') && (this.value = '0')" />
+							<form:errors path="maxNrOfFlatMates" cssClass="help-inline"
+								element="span" />
+						</div>
+					</div>
+				</div>
+
+				<c:set var="availableDateErrors">
+					<form:errors path="availableDate" />
+				</c:set>
+				<div
+					class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
+					<label class="control-label" for="field-availableDate">Available
+						Date:</label>
+					<div class="controls">
+						<form:input type="text" class="form-control" path="availableDate"
+							id="field-availableDate" tabindex="8" placeholder="DD-MM-YYYY" />
+						<form:errors path="availableDate" cssClass="help-inline"
+							element="span" />
+						<br>
+					</div>
+					<script type="text/javascript">
+						// When the document is ready
+						$(document).ready(function() {
+							$('#field-availableDate').datepicker({
+								format : "dd-mm-yyyy"
+							});
+						});
+					</script>
+				</div>
+				<tr>
+					<td>Order Search Results By:</td>
+					<td><form:select path="orderBy" id="dropDown"
+							onChange="clickButton()" selected="${dropDownValue}">
+							<option value="newestFirst">Newest First</option>
+							<option value="availableDate">Available Date (earlier
+								first)</option>
+							<option value="price">Price (cheapest first)</option>
+						</form:select></td>
+				</tr>
+
+				<span id="SearchErrorMessage"></span>
+
+				<div class="form-actions">
+					<br>
+					<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search Ad</button>
+					<button type="submit" name="save" tabindex="9" class="btn btn-primary">Save search</button>
+					<button type="reset" tabindex="10" class="btn btn-default">Reset</button>
+<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
+				</div>
+
+			</div>
 		</fieldset>
 	</form:form>
-	
-<script type="text/javascript">
 
-	function clickButton() {
-// 		document.forms["searchForm"].submit();		
+
 	}
+	<script type="text/javascript">
+		function clickButton() {
 
-	var minPrice = document.getElementById("field-minPrice");
-	minPrice.addEventListener("blur", autofillMaxPrice, false);
-	minPrice.addEventListener("click", autofillMaxPrice, false);
-	
-	var minNrOfRooms = document.getElementById("field-minNrOfRooms");
-	minNrOfRooms.addEventListener("blur", autofillMaxNrOfRooms, false);
-	minNrOfRooms.addEventListener("click", autofillMaxNrOfRooms, false);
-	
-	var minNrOfFlatMates = document.getElementById("field-minNrOfFlatMates");
-	minNrOfFlatMates.addEventListener("blur", autofillMaxNrOfFlatMates, false);
-	minNrOfFlatMates.addEventListener("click", autofillMaxNrOfFlatMates, false);
-</script>
+			// 		document.forms["searchForm"].submit();		
+		}
+
+		var minPrice = document.getElementById("field-minPrice");
+		minPrice.addEventListener("blur", autofillMaxPrice, false);
+		minPrice.addEventListener("click", autofillMaxPrice, false);
+
+		var minNrOfRooms = document.getElementById("field-minNrOfRooms");
+		minNrOfRooms.addEventListener("blur", autofillMaxNrOfRooms, false);
+		minNrOfRooms.addEventListener("click", autofillMaxNrOfRooms, false);
+
+		var minNrOfFlatMates = document
+				.getElementById("field-minNrOfFlatMates");
+		minNrOfFlatMates.addEventListener("blur", autofillMaxNrOfFlatMates,
+				false);
+		minNrOfFlatMates.addEventListener("click", autofillMaxNrOfFlatMates,
+				false);
+	</script>

@@ -75,8 +75,8 @@ public class MessageController {
 
 		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
 
-//		ModelAndView model = new ModelAndView("ad");
-		return null;
+		ModelAndView model = new ModelAndView("oldModel");
+		return model;
 	}
 	
 	/**
