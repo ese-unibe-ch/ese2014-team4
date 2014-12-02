@@ -140,7 +140,7 @@
 
 	}
 </script>
-
+<!--  
 <script type="text/javascript">
 $(document).ready(function() {
 	checkAdOwnerAndPrincipal();	
@@ -176,7 +176,7 @@ function checkAdOwnerAndPrincipal() {
 	
 	return true;
 }
-</script>
+</script>-->
 
 <script type="text/javascript">
 	function zipToCity() {

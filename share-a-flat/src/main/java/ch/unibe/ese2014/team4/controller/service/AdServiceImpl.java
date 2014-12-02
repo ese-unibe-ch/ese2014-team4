@@ -65,17 +65,14 @@ public class AdServiceImpl implements AdService {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 
-			ad.setFlatmateList(getUserListFromUsernameList(adForm
-					.getFlatmateList()));
-			// ad.setNrOfRooms(0); //isn't it still important to know how many
-			// rooms the apartment has even it's an ad to look for a Flatmante??
+			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
+
 
 		} else {
 			ad.setType(AdType.FLAT);
-			ad.setNrOfRooms(adForm.getNrOfRooms());
 			ad.setNrOfFlatMates(0);
-
 		}
+		ad.setNrOfRooms(adForm.getNrOfRooms());
 
 		ad.setDescription(adForm.getDescription());
 		ad.setTitle(adForm.getTitle());
@@ -90,14 +87,12 @@ public class AdServiceImpl implements AdService {
 		ad.setAdAddedDate(new Date());
 
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-		System.out.println(fileList.size());
-		if (!fileList.isEmpty()) {
-			if (fileList.get(0).getSize() != 0) {
-				ad.setBytePictureList(imageService
-						.getByteArrayFromMultipart(fileList));
-			} else {
-				ad.setBytePictureList(imageService.getDefaultImage());
-			}
+
+		if (fileList.isEmpty()) {
+			ad.setBytePictureList(imageService.getDefaultImage());
+		}
+		else{
+			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
 		}
 
 		Address address = new Address();

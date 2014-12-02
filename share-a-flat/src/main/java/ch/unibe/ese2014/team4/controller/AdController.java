@@ -72,21 +72,21 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
-			Principal principal, ModelAndView oldModel) throws Exception {
-
+			Principal principal) throws Exception {
+		try{
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
-		
+		}
 		// many possible exceptions, therefore juxt catch Exception
-//		catch (Exception e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityAsArray);
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", e.getMessage());
-//
-//			return model;
-//		}
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityAsArray);
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", e.getMessage());
+
+			return model;
+		}
 
 	}
 	
@@ -103,13 +103,7 @@ public class AdController {
 		Ad ad = newAdService.getAd(adId);
 
 		if ((ad.getOwner().getUsername()).equals(principal.getName())) {
-			model = new ModelAndView("create-ad");
 			model.addObject("isMyAd", true);
-			model.addObject("adForm", adService.getAdFormForExistingAd(adId));
-			model.addObject("adData", ad);
-			model.addObject("user", userService.getUserByUsername(principal.getName()));
-			
-			return model;
 		}
 		
 		MapAddress addressForMap = ad.getAddressForMap();
@@ -117,29 +111,28 @@ public class AdController {
 		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
 		model.addObject("addressForMap", addressForMap);
 		model.addObject("imageList", list);
-		model.addObject("adData", ad); // called adData, otherwise gets confused
-										// with "ad" page
+		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
 	
-	//not working
-//	@RequestMapping(value = "/saveAdChanges", method = RequestMethod.POST)
-//	public ModelAndView saveAdChanges(@RequestParam(value = "adId", required = true) long adId, AdForm adForm, BindingResult result, Principal principal) throws Exception {
-//		ModelAndView model;
-//		if (!result.hasErrors()){
-//				adService.updateAdFrom(adId, adForm, userService.getUserByUsername(principal.getName())); 
-//				return showAd(adForm.getId(), principal);
-//
-//		}
-//		else {
-//			model = new ModelAndView("myPage");
-//		}
-//		
-//		return model;
-//		
-//	}	
+	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
+	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal){
+		ModelAndView model = new ModelAndView("create-ad");
+		model.addObject("isMyAd", true);
+		Ad ad = newAdService.getAd(adId);
+		model.addObject("adData", ad);
+
+		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
+		return model;
+	}
+	@ResponseBody
+	@RequestMapping(params ="delete", value="/modifyAd")
+	public void deleteAd(@RequestParam(value="adId")Long adId){
+		adService.deleteAd(adId);
+	}	
+
 	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
@@ -197,8 +190,5 @@ public class AdController {
 		return new ModelAndView("myPage");
 	}
 	
-	@RequestMapping(value="/deleteAd")
-	public void deleteAd(@RequestParam(value="adId")Long adId){
-		adService.deleteAd(adId);
-	}
+
 }
