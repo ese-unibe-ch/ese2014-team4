@@ -197,14 +197,10 @@
 		setCookie("field3", document.getElementById("field-maxPrice").value);
 		setCookie("field4", document.getElementById("field-minNrOfRooms").value);
 		setCookie("field5", document.getElementById("field-maxNrOfRooms").value);
-		setCookie("field6",
-				document.getElementById("field-minNrOfFlatMates").value);
-		setCookie("field7",
-				document.getElementById("field-maxNrOfFlatMates").value);
-		setCookie("field8",
-				document.getElementById("field-availableDate").value);
-
-		// 	setCookie("field4",form.field4.value);
+		setCookie("field6", document.getElementById("field-minNrOfFlatMates").value);
+		setCookie("field7", document.getElementById("field-maxNrOfFlatMates").value);
+		setCookie("field8", document.getElementById("field-availableDate").value);
+		setCookie("field9", document.getElementById("dropDown").value);
 
 		return true;
 	}
@@ -250,6 +246,11 @@
 		if (field8 = getCookie("field8")) {
 			document.getElementById("field-availableDate").value = field8;
 			deleteCookie("field8");
+		}
+		
+		if (field9 = getCookie("field9")) {
+			document.getElementById("dropDown").value = field9;
+			deleteCookie("field9");
 		}
 
 	}
