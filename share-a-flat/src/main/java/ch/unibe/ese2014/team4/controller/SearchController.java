@@ -73,7 +73,7 @@ public class SearchController {
 		ModelAndView model = new ModelAndView("search");
 		List<Ad> adsToAdd = new ArrayList<Ad>();
 
-		adsToAdd = (ArrayList<Ad>) searchService.getAdList(searchForm);       //casted to arraylist to be able to build, lina
+		adsToAdd = searchService.getAdList(searchForm);
 		if (!adsToAdd.isEmpty()) {
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
