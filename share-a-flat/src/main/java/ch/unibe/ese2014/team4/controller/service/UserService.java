@@ -13,4 +13,5 @@ public interface UserService {
 	public boolean doesUserAlreadyExists(String username);
 
 	public boolean isBookmarked(User user, long adId);
+	public boolean isPasswordCorrect(String oldPassword, User user);
 }

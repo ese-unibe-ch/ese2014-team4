@@ -10,6 +10,9 @@
 
 <c:forEach items="${myAdsList}" var="ad">
 	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a> <font size="1">(${ad.type})</font>
+	<button id="removeButton"
+					onClick=""
+					class="btn btn-info btn-xs">Remove Ad</button>
 	<table>
 
 		<tr>

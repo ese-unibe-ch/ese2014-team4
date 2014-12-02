@@ -14,37 +14,6 @@
 }
 </style>
 
-<script type="text/javascript">                
-	function isValid() {
-		var email = document.forms["profileForm"]["field-email"].value;
-	    var userName = document.forms["profileForm"]["field-username"].value;
-	    var pwd = document.forms["profileForm"]["field-password"].value;
-	    var pwdRepeated = document.forms["profileForm"]["field-passwordRepeated"].value;
-	    var oldPwd = document.forms["profileForm"]["field-oldPassword"].value;
-		var mailRegex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-	    
-		if (!mailRegex.test(email)) {
-	    	alert("Please enter a valid Email (E.g. example@example.example)");
-	    	return false;
-	    }
-	    
-		if(oldPwd!=profile.password){
-			alert("Old Password was wrong!)")
-			return false;
-		}
-		
-	    if (pwd!=pwdRepeated) {
-	    	alert("Reentered Password doesn't match!")
-	    	return false;
-	    }
-	}
-	
-	function isRightPassword(){
-    	return pwd == user.password;
-    }
-</script>
-
-
 
 <div class="container">
 	<h1>Edit Profile</h1>
@@ -53,7 +22,7 @@
 		<!-- left column -->
 		<!-- enctyp="multipart/form-data": enables MultipartFile-upload -->
 
-
+		
 		<form:form enctype="multipart/form-data" method="post"
 			modelAttribute="profileForm" action="saveProfile"
 			onsubmit="return isValid()" id="profileForm"
@@ -76,13 +45,8 @@
 
 				<!-- edit form column -->
 				<div class="col-md-9 personal-info">
-					<div class="alert alert-info alert-dismissable">Username,
-						Email, Password can't be changed yet.</div>
-
-
-
-					<legend>Personal info</legend>
-
+						<legend>Personal info</legend>
+					<p class="bg-danger">${errorMessage}</p>
 					<c:set var="usernameErrors">
 						<form:errors path="username" />
 					</c:set>
@@ -91,7 +55,7 @@
 						<label class="col-lg-3 control-label">Username:</label>
 						<div class="col-lg-8">
 							<form:input path="username" class="form-control"
-								value="${user.username}" type="text" tabindex="1" />
+								value="${user.username}" type="text" tabindex="1" readonly="true" />
 							<form:errors path="username" cssClass="help-inline"
 								element="span" />
 						</div>
@@ -106,13 +70,12 @@
 						<label class="col-lg-3 control-label">Email:</label>
 						<div class="col-lg-8">
 							<form:input path="email" class="form-control"
-								value="${user.email}" type="text" tabindex="2" />
+								value="${user.email}" type="text" tabindex="2" readonly="true" />
 							<form:errors path="email" cssClass="help-inline" element="span" />
 						</div>
 					</div>
 
 
-					<!-- 
           <c:set var="passwordErrors"><form:errors path="oldPassword"/></c:set>
 	        <div class="form-group<c:if test="${not empty passwordErrors}">error</c:if>">
 	            <label class="col-lg-3 control-label" for="field-oldPassword">Old Password:</label>
@@ -121,10 +84,7 @@
 	                <form:errors path="oldPassword" cssClass="help-inline" element="span"/>
 	            </div>
 	        </div>
-	        
-	        -->
-
-					<!-- TODO password does not work yet (is in wrong format) -->
+	      
 
 					<c:set var="passwordErrors">
 						<form:errors path="password" />
@@ -150,7 +110,7 @@
 						<div class="col-lg-8">
 							<form:password path="passwordRepeated" class="form-control"
 								id="field-passwordRepeated" tabindex="4" maxlength="35"
-								placeholder="Repeat password" title="must be the same as the 'Password' entered before"/>
+								placeholder="Repeat password" title="must be the same as the 'Password' entered before" oninput="checkPassword(document.getElementById('field-password'), this);"/>
 							<form:errors path="passwordRepeated" cssClass="help-inline"
 								element="span" />
 						</div>

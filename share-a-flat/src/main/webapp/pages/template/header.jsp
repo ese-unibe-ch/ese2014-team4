@@ -3,7 +3,7 @@
 
 <head>
 <meta name="viewport" content="width=1024" charset="utf-8" />
-
+<!-- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> -->
 
 <link rel="stylesheet" type="text/css"
 	href="/share-a-flat/css/bootstrap.css" media="all" />

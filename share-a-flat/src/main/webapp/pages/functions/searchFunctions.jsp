@@ -13,9 +13,8 @@
 
 
 <script type="text/javascript">
-	
 	function checkSearchInput() {
-		
+
 		var availableDate = document.getElementById("field-availableDate").value;
 		if (availableDate != "") {
 			if (!availableDate
@@ -60,38 +59,38 @@
 				}
 			}
 		}
-		return (checkMaxPrice() && checkCityZipField());
+		storeValues();
+		return (checkCityZipField());
 	}
-	
-// 	function checkCityZipField() {
-// 		var input = document.getElementById("field-cityOrZip");
-		
-// 		if (input.value.length == 0) {
-// 			SearchErrorMessage = "Please enter at least a City or a Zip.";
-// 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
-// 			input.focus();
-// 			return false;
-// 		} else
-// 			return true;
-// 	}
-	
+
+	// 	function checkCityZipField() {
+	// 		var input = document.getElementById("field-cityOrZip");
+
+	// 		if (input.value.length == 0) {
+	// 			SearchErrorMessage = "Please enter at least a City or a Zip.";
+	// 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
+	// 			input.focus();
+	// 			return false;
+	// 		} else
+	// 			return true;
+	// 	}
+
 	function checkMaxPrice() {
 		var max = document.getElementById("field-maxPrice");
 		var min = document.getElementById("field-minPrice");
 		if (max.value < min.value) {
-			SearchErrorMessage = "Max price must be higher than min price.";
-			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
+			alert("Max price must be higher than min price.");
+// 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
 			max.focus();
 			return false;
 		} else
 			return true;
 	}
-		
+
 	function checkZip() {
 		var zip = document.getElementById("field-cityOrZip");
 
-		
-		if (isNumber(zip.value) && zip.value.length!=4) {
+		if (isNumber(zip.value) && zip.value.length != 4) {
 			SearchErrorMessage = "Zip Code needs to be 4 digits.";
 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
 			zip.focus();
@@ -99,71 +98,168 @@
 		} else
 			return true;
 	}
-	
+
 	function isNumber(n) {
-		  return !isNaN(parseFloat(n)) && isFinite(n);
-		}
-	
-	
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	}
 </script>
 
 <script>
-$(document).ready(function() {
-	disableFieldInSearch();	
-});
+	$(document).ready(
+			function() {
+				disableFieldInSearch();
+				autofillSearchInputs();
+			}
+	);
 
-function disableFieldInSearch() {
-	if (document.getElementById("room").checked == true) {
-		$('#field-minNrOfFlatMates').prop('readonly', false);
-		$('#field-maxNrOfFlatMates').prop('readonly', false);
-	}
-	
-	if (document.getElementById("flat").checked == true){
-		$('#field-minNrOfFlatMates').prop('readonly', true);
-		$('#field-maxNrOfFlatMates').prop('readonly', true);
-	}
-}
+	function disableFieldInSearch() {
+		if (document.getElementById("room").checked == true) {
+			$('#field-minNrOfFlatMates').prop('readonly', false);
+			$('#field-maxNrOfFlatMates').prop('readonly', false);
+		}
 
+		if (document.getElementById("flat").checked == true) {
+			$('#field-minNrOfFlatMates').prop('readonly', true);
+			$('#field-maxNrOfFlatMates').prop('readonly', true);
+		}
+	}
 </script>
 
 <script type="text/javascript">
-function autofillMaxPrice() {
-	var minPrice = parseInt(document.getElementById("field-minPrice").value);
-	var maxPrice = document.getElementById("field-maxPrice");
+	function autofillMaxPrice() {
+		var minPrice = parseInt(document.getElementById("field-minPrice").value);
+		var maxPrice = document.getElementById("field-maxPrice");
+
+		if (minPrice > 0) {
+			maxPrice.min = minPrice;
+			maxPrice.value = minPrice;
+		}
+
+		return true;
+	}
+</script>
+
+<script type="text/javascript">
+	function autofillMaxNrOfRooms() {
+		var minNrOfRooms = parseInt(document
+				.getElementById("field-minNrOfRooms").value);
+		var maxNrOfRooms = document.getElementById("field-maxNrOfRooms");
+
+		if (minNrOfRooms > 0) {
+			maxNrOfRooms.min = minNrOfRooms;
+			maxNrOfRooms.value = minNrOfRooms;
+		}
+
+		return true;
+	}
+</script>
+
+<script type="text/javascript">
+	function autofillMaxNrOfFlatMates() {
+		var minNrOfFlatMates = parseInt(document
+				.getElementById("field-minNrOfFlatMates").value);
+		var maxNrOfFlatMates = document
+				.getElementById("field-maxNrOfFlatMates");
+
+		if (minNrOfFlatMates > 0) {
+			maxNrOfFlatMates.min = minNrOfFlatMates;
+			maxNrOfFlatMates.value = minNrOfFlatMates;
+		}
+
+		return true;
+	}
+</script>
+
+
+<script type="text/javascript">
+function getCookie(name) {
+	var re=new RegExp(name+"=([^;]+)");
+	var value=re.exec(document.cookie);
 	
-	if (minPrice > 0) {
-		maxPrice.min = minPrice;
-		maxPrice.value = minPrice;
+	return (value!=null) ? unescape(value[1]) : null;
 	}
 	
+var today=new Date();
+var expiry=new Date(today.getTime()+30*24*3600*1000);
+var expired=new Date(today.getTime()-24*3600*1000);
+
+function setCookie(name,value) {
+	document.cookie=name+"="+escape(value)+"; path=/; expires="+expiry.toGMTString();
+}
+
+function deleteCookie(name) {
+	document.cookie=name+"=null; path=/; expires="+expired.toGMTString();
+	}
+	
+function storeValues() {
+	alert("setCookie beginn");
+	setCookie("field1",document.getElementById("field-cityOrZip").value);
+	setCookie("field2",document.getElementById("field-minPrice").value);
+	setCookie("field3",document.getElementById("field-maxPrice").value);
+	setCookie("field4",document.getElementById("field-minNrOfRooms").value);
+	setCookie("field5",document.getElementById("field-maxNrOfRooms").value);
+	setCookie("field6",document.getElementById("field-minNrOfFlatMates").value);
+	setCookie("field7",document.getElementById("field-maxNrOfFlatMates").value);
+	setCookie("field8",document.getElementById("field-availableDate").value);
+	
+	
+// 	setCookie("field4",form.field4.value);
+
 	return true;
 }
 </script>
 
 <script type="text/javascript">
-function autofillMaxNrOfRooms() {
-	var minNrOfRooms = parseInt(document.getElementById("field-minNrOfRooms").value);
-	var maxNrOfRooms = document.getElementById("field-maxNrOfRooms");
+function autofillSearchInputs() {
+if(field1=getCookie("field1")) {
+	document.getElementById("field-cityOrZip").value=field1;
+	deleteCookie("field1");
+}
 	
-	if (minNrOfRooms > 0) {	
-		maxNrOfRooms.min = minNrOfRooms;
-		maxNrOfRooms.value = minNrOfRooms;
-	}
+if(field2=getCookie("field2")) {
+	document.getElementById("field-minPrice").value=field2;
+	deleteCookie("field2");	
+}
 	
-	return true;
+if(field3=getCookie("field3")) {
+	document.getElementById("field-maxPrice").value=field3;
+	deleteCookie("field3");
+}
+	
+if(field4=getCookie("field4")) {
+	document.getElementById("field-minNrOfRooms").value=field4;
+	deleteCookie("field4");
+}
+
+if(field5=getCookie("field5")) {
+	document.getElementById("field-maxNrOfRooms").value=field5;
+	deleteCookie("field5");
+}
+
+if(field6=getCookie("field6")) {
+	document.getElementById("field-minNrOfFlatMates").value=field6;
+	deleteCookie("field6");
+}
+
+if(field7=getCookie("field7")) {
+	document.getElementById("field-maxNrOfFlatMates").value=field7;
+	deleteCookie("field7");
+}
+
+if(field8=getCookie("field8")) {
+	document.getElementById("field-availableDate").value=field8;
+	deleteCookie("field8");
+}
+
 }
 </script>
 
-<script type="text/javascript">
-function autofillMaxNrOfFlatMates() {
-	var minNrOfFlatMates = parseInt(document.getElementById("field-minNrOfFlatMates").value);
-	var maxNrOfFlatMates = document.getElementById("field-maxNrOfFlatMates");
-	
-	if (minNrOfFlatMates > 0) {	
-		maxNrOfFlatMates.min = minNrOfFlatMates;
-		maxNrOfFlatMates.value = minNrOfFlatMates;
-	}
-	
-	return true;
-}
+<script type="text/javascript"> 
+// function clearCookies() { 
+// 	deleteCookie("field1"); 
+// 	deleteCookie("field2"); 
+// 	deleteCookie("field3"); 
+// 	deleteCookie("field4"); 
+// 	alert('Your cookies have been deleted!'); 
+// 	} 
 </script>

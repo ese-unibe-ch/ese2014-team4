@@ -24,9 +24,9 @@
 						<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
 					</tr>
 				</table>
-				    <INPUT type="button" value="Add flatmate" onclick="addRow('flatmateTable')" />
+				    <INPUT id="button-addFlatmate" type="button" value="Add flatmate" onclick="addRow('flatmateTable')" />
  
-    				<INPUT type="button" value="Delete selected flatmate" onclick="deleteRow('flatmateTable')" />
+    				<INPUT id="button-deleteFlatmate" type="button" value="Delete selected flatmate" onclick="deleteRow('flatmateTable')" />
 
 
 		    <SCRIPT type="text/javascript">
