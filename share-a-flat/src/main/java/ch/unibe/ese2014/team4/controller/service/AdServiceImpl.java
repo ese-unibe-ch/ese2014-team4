@@ -166,13 +166,11 @@ public class AdServiceImpl implements AdService {
 
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
-		if (!fileList.isEmpty()) {
-			if (fileList.get(0).getSize() != 0) {
-				ad.setBytePictureList(imageService
-						.getByteArrayFromMultipart(fileList));
-			} else {
-				ad.setBytePictureList(imageService.getDefaultImage());
-			}
+		if (fileList.isEmpty()) {
+			ad.setBytePictureList(imageService.getDefaultImage());
+		}
+		else{
+			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
 		}
 
 		Address address = ad.getAddress();
@@ -256,7 +254,7 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
-
+System.out.println(orderBy);
 		if (orderBy.equals("availableDate")) {
 			ads = adDao
 					.findAllByAddressCityIgnoreCaseOrderByAvailableDateDesc(city);
@@ -384,25 +382,18 @@ public class AdServiceImpl implements AdService {
 		adForm.setStreetNumber(ad.getAddress().getStreetNumber());
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setId(adId);
-		//adForm.setUploadedAdPictures(ad.getBytePictureList());
+		adForm.setTitle(ad.getTitle());
+		adForm.setDescription(ad.getDescription());
+		adForm.setNrOfFlatMates(ad.getNrOfFlatMates());
+		adForm.setNrOfRooms(ad.getNrOfRooms());
 		return adForm;
 	}
-//	private List<MultipartFile> getMultipartFileList(List<byte[]>list){
-//		new MultipartFile multi = new CommonsMultipartFile(list.get(0));
-//	}
+
 	public void deleteAd(Long adId) {
 		adDao.delete(adId);
 
 	}
 
-	public void registerUserForVisit(String userName, Long visitId) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public void addUserToVisitorsList(Long visitId, User user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

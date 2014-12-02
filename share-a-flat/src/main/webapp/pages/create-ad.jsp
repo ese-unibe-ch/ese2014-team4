@@ -69,7 +69,7 @@
 					
 <c:if test="${isMyAd eq true}">
 	<form method="post" action="modifyAd?adId=${adForm.id}">
-		<input type="submit" name="delete" value="delete Ad" class="btn btn-warning">
+		<input type="submit" name="delete" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')" class="btn btn-warning">
 	</form>	
 </c:if>
 

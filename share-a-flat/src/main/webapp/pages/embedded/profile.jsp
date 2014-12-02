@@ -14,88 +14,51 @@
 <span class=".hasError">${errorMessage}</span>
 
 <div class="col-md-12" align="center">
-<img
-	src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}"
-	class="img-responsive" alt="profileImage">
-</div>
+		<table>
+			<tr>
+				<td width="450">
+<!-- 				<legend style="font-size:2em"><br>Personal info</legend> -->
 
-<div class="col-md-5">
-	<p>
-		<b>Username: </b>
-	</p>
-</div>
+					<div class="form-group">
+						<label class="col-md-5 control-label">Username:</label>
+						<div class="col-lg-5">${user.username}</div>
+						<br>
+					</div>
 
-<div class="col-md-6">
-	<p>${user.username}</p>
-</div>
+					<div class="form-group">
+						<label class="col-lg-5 control-label">Email:</label>
+						<div class="col-lg-5">${user.email}</div>
+						<br>
+					</div>
 
-<div class="col-md-5">
-	<p>
-		<b>Email: </b>
-	</p>
-</div>
+					<div class="form-group">
+						<label class="col-lg-5 control-label" for="field-phoneNumber">phoneNumber:</label>
+						<div class="col-lg-5">${user.profile.phoneNumber}</div>
+						<br>
+					</div>
 
-<div class="col-md-6">
-	<p>${user.email}</p>
-</div>
+					<div class="form-group">
+						<label class="col-lg-5 control-label" for="field-age">Age:</label>
+						<div class="col-lg-5">${user.profile.age}</div>
+						<br>
+					</div>
 
-<div class="col-md-5">
-	<p>
-		<b>Phone: </b>
-	</p>
-</div>
+					<div class="form-group">
+						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
+						<div class="col-lg-5">${user.profile.sex}</div>
+						<br>
+					</div>
 
-<div class="col-md-6">
-	<c:set var="phoneNr" value="${user.profile.phoneNumber}" />
-	<c:if test="${user.profile.phoneNumber eq ''}">
-		<c:set var="phoneNr" value="--" />
-	</c:if>
 
-	<p>${phoneNr}</p>
-</div>
+					<div class="form-group">
+						<label class="col-lg-5 control-label">Description:</label>
+						<div class="col-lg-5">${user.profile.userDescription}</div>
+						<br>
+					</div></td>
 
-<div class="col-md-3">
-	<p>
-		<b>Age: </b>
-	</p>
-</div>
 
-<div class="col-md-3">
-<c:set var="userAge" value="${user.profile.age}" />
-	<c:if test="${user.profile.age eq ''}">
-		<c:set var="userAge" value="--" />
-	</c:if>
-
-	<p>${userAge}</p>
-</div>
-
-<div class="col-md-3">
-	<p>
-		<b>Gender: </b>
-	</p>
-</div>
-
-<div class="col-md-3">
-	<c:set var="userSex" value="${user.profile.sex}" />
-	<c:if test="${user.profile.sex eq ''}">
-		<c:set var="userAge" value="--" />
-	</c:if>
-
-	<p>${userSex}</p>
-</div>
-
-<div class="col-md-12">
-	<b>Description: </b>
-</div>
-
-<div class="col-md-12">
-<c:set var="userDescription" value="${user.profile.userDescription}" />
-	<c:if test="${user.profile.userDescription eq ''}">
-		<c:set var="userDescription" value="--" />
-	</c:if>
-
-	${userDescription}
-</div>
+			</tr>
+		</table>
 
 <div class="col-md-12">
 	<p><br></p>
