@@ -49,7 +49,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="home"><img src="img/logo3.png"
+				<a class="navbar-brand" href="search"><img src="img/logo3.png"
 					alt="logo" style="width: 120px; height: 35px"></a>
 			</div>
 			<div class="collapse navbar-collapse">
