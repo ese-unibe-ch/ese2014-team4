@@ -23,6 +23,9 @@ import org.hibernate.mapping.Map;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
+import java.util.Comparator;
+
+
 @Entity
 public class Ad {
 
@@ -232,5 +235,24 @@ public class Ad {
 		tmpMapAddress.setAddressAsString(addressForMAp);
 		tmpMapAddress.setId(id);
 		return tmpMapAddress;
-	}		
+	}
+	
+	public static Comparator<Ad> bruttoSorter = new Comparator<Ad>(){
+		public int compare(Ad ad1, Ad ad2){
+			int brutto1 = ad1.getBrutto();
+			int brutto2 = ad2.getBrutto();
+			
+			return brutto1-brutto2;
+		}
+	};
+	
+	public static Comparator<Ad> availableDateSorter = new Comparator<Ad>(){
+		public int compare(Ad ad1, Ad ad2){
+			String date1 = ad1.getAvailableDate();
+			String date2 = ad2.getAvailableDate();
+			
+			return date1.compareTo(date2);
+		}
+	};
+	
 }

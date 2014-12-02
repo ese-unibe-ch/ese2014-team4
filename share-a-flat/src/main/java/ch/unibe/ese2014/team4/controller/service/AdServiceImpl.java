@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.controller.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class AdServiceImpl implements AdService {
 	ImageService imageService;
 	@Autowired
 	UserDao userDao;
-	
+
 	@Autowired
 	VisitDao visitDao;
 
@@ -63,9 +64,11 @@ public class AdServiceImpl implements AdService {
 		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
-			
-			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
-//			ad.setNrOfRooms(0);			//isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmante??
+
+			ad.setFlatmateList(getUserListFromUsernameList(adForm
+					.getFlatmateList()));
+			// ad.setNrOfRooms(0); //isn't it still important to know how many
+			// rooms the apartment has even it's an ad to look for a Flatmante??
 
 		} else {
 			ad.setType(AdType.FLAT);
@@ -78,15 +81,14 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
-		
-		if(adForm.getAvailableDate().equals(""))
+
+		if (adForm.getAvailableDate().equals(""))
 			ad.setAvailableDate("--");
 		else
 			ad.setAvailableDate(adForm.getAvailableDate());
-		
+
 		ad.setAdAddedDate(new Date());
-		
-		
+
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 		System.out.println(fileList.size());
 		if (!fileList.isEmpty()) {
@@ -104,24 +106,23 @@ public class AdServiceImpl implements AdService {
 		address.setStreet(adForm.getStreet());
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
-		
-		if (adForm.getVisitDate() != null){
+
+		if (adForm.getVisitDate() != null) {
 			List<Visit> visitList = new ArrayList<Visit>();
-			for (int i = 0; i < adForm.getVisitDate().size();i++){
-				if (adForm.getVisitDate().get(i)!=null){
+			for (int i = 0; i < adForm.getVisitDate().size(); i++) {
+				if (adForm.getVisitDate().get(i) != null) {
 					Visit visit = new Visit();
-					visit.setDate( adForm.getVisitDate().get(i));
-					visit.setStartTime( adForm.getStartTime().get(i));
-					visit.setEndTime( adForm.getEndTime().get(i));
+					visit.setDate(adForm.getVisitDate().get(i));
+					visit.setStartTime(adForm.getStartTime().get(i));
+					visit.setEndTime(adForm.getEndTime().get(i));
 					visitDao.save(visit);
 					visitList.add(visit);
 					ad.setVisitList(visitList);
 				}
-	
+
 			}
 		}
 
-		
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
@@ -129,9 +130,10 @@ public class AdServiceImpl implements AdService {
 
 		return adForm;
 	}
-	
+
 	@Transactional
-	public void updateAdFrom(long adId, AdForm adForm, User user) throws Exception {
+	public void updateAdFrom(long adId, AdForm adForm, User user)
+			throws Exception {
 		Ad ad = getAd(adId);
 		ad.setNetto(adForm.getNetto());
 		ad.setCharges(adForm.getCharges());
@@ -141,9 +143,11 @@ public class AdServiceImpl implements AdService {
 		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
-			
-			ad.setFlatmateList(getUserListFromUsernameList(adForm.getFlatmateList()));
-//			ad.setNrOfRooms(0);			//isn't it still important to know how many rooms the apartment has even it's an ad to look for a Flatmate??
+
+			ad.setFlatmateList(getUserListFromUsernameList(adForm
+					.getFlatmateList()));
+			// ad.setNrOfRooms(0); //isn't it still important to know how many
+			// rooms the apartment has even it's an ad to look for a Flatmate??
 
 		} else {
 			ad.setType(AdType.FLAT);
@@ -156,17 +160,16 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adForm.getTitle());
 		ad.setSize(adForm.getSize());
 		ad.setOwner(ad.getOwner());
-		
-		if(adForm.getAvailableDate().equals(""))
+
+		if (adForm.getAvailableDate().equals(""))
 			ad.setAvailableDate("--");
 		else
 			ad.setAvailableDate(adForm.getAvailableDate());
-		
+
 		ad.setAdAddedDate(new Date());
-		
-		
+
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-		
+
 		if (!fileList.isEmpty()) {
 			if (fileList.get(0).getSize() != 0) {
 				ad.setBytePictureList(imageService
@@ -181,43 +184,42 @@ public class AdServiceImpl implements AdService {
 		address.setZipCode(adForm.getZipCode());
 		address.setStreet(adForm.getStreet());
 		address.setStreetNumber(adForm.getStreetNumber());
-		
+
 		addressDao.save(address);
-		
-		if (adForm.getVisitDate() != null){
+
+		if (adForm.getVisitDate() != null) {
 			List<Visit> visitList = new ArrayList<Visit>();
-			for (int i = 0; i < adForm.getVisitDate().size();i++){
-				if (adForm.getVisitDate().get(i)!=null){
+			for (int i = 0; i < adForm.getVisitDate().size(); i++) {
+				if (adForm.getVisitDate().get(i) != null) {
 					Visit visit = new Visit();
-					visit.setDate( adForm.getVisitDate().get(i));
-					visit.setStartTime( adForm.getStartTime().get(i));
-					visit.setEndTime( adForm.getEndTime().get(i));
-					
+					visit.setDate(adForm.getVisitDate().get(i));
+					visit.setStartTime(adForm.getStartTime().get(i));
+					visit.setEndTime(adForm.getEndTime().get(i));
+
 					visitDao.save(visit);
-					
+
 					visitList.add(visit);
 					ad.setVisitList(visitList);
 				}
-	
+
 			}
 		}
 
-		
 		ad.setAddress(address);
-		
+
 		ad = adDao.save(ad); // save object to DB
 
 		adForm.setId(ad.getId());
-	}	
+	}
 
-	private List<User> getUserListFromUsernameList(List<String> nameList){
+	private List<User> getUserListFromUsernameList(List<String> nameList) {
 		ArrayList<User> list = new ArrayList<User>();
-		for (String username : nameList){
+		for (String username : nameList) {
 			list.add(userDao.findByUsername(username));
 		}
 		return list;
 	}
-	
+
 	@Transactional
 	public Ad getAd(Long id) {
 		Ad ad = adDao.findById(id);
@@ -259,13 +261,14 @@ public class AdServiceImpl implements AdService {
 	public ArrayList<Ad> getAdByCity(String city, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 
-		if (orderBy.equals("availableDate")){
-			ads = adDao.findAllByAddressCityIgnoreCaseOrderByAvailableDateDesc(city);
-			return ads;	
+		if (orderBy.equals("availableDate")) {
+			ads = adDao
+					.findAllByAddressCityIgnoreCaseOrderByAvailableDateDesc(city);
+			return ads;
 		}
-		if (orderBy.equals("price")){
+		if (orderBy.equals("price")) {
 			ads = adDao.findAllByAddressCityOrderByBruttoAsc(city);
-			return ads;	
+			return ads;
 		}
 		ads = adDao.findAllByAddressCityIgnoreCase(city);
 		return ads;
@@ -283,25 +286,31 @@ public class AdServiceImpl implements AdService {
 
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
-		
-		if (orderBy.equals("availableDate")){
-			ads = adDao.findAllByAddressZipCodeOrderByAvailableDateDesc(zipCode);
-			return ads;	
+
+		if (orderBy.equals("availableDate")) {
+			ads = adDao
+					.findAllByAddressZipCodeOrderByAvailableDateDesc(zipCode);
+			return ads;
 		}
-		if (orderBy.equals("price")){
+		if (orderBy.equals("price")) {
 			ads = adDao.findAllByAddressZipCodeOrderByBruttoAsc(zipCode);
-			return ads;	
+			return ads;
 		}
 		ads = adDao.findAllByAddressZipCode(zipCode);
 		return ads;
 	}
 
 	public ArrayList<Ad> getAllAds(String orderBy) {
-		ArrayList<Ad> ads = new ArrayList<Ad>();		
+		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAll();
-		
-		
-		
+
+		if (orderBy.equals("availableDate")) {
+			Collections.sort(ads, Ad.availableDateSorter);
+		}
+
+		if (orderBy.equals("price")) {
+			Collections.sort(ads, Ad.bruttoSorter);
+		}
 		return ads;
 	}
 
@@ -309,46 +318,42 @@ public class AdServiceImpl implements AdService {
 		adDao = mockDao;
 	}
 
-
-
-	
-	public List<Ad> getBookmarkList(User user){
+	public List<Ad> getBookmarkList(User user) {
 		return null;
 	}
+
 	public void bookMarkAdforUser(long adId, User user) {
 		List<Long> list = user.getBookmarks();
-		if(!list.contains(adId)){
+		if (!list.contains(adId)) {
 			list.add(adId);
 			user.setBookmarks(list);
 			userDao.save(user);
-			}
-
-		else{
-			throw new BookmarkException("Already bookmarked!");
-			
 		}
-		
-		
+
+		else {
+			throw new BookmarkException("Already bookmarked!");
+
+		}
+
 	}
-	
-	public void unBookMarkAdForUser(long adId, User user){
+
+	public void unBookMarkAdForUser(long adId, User user) {
 		List<Long> list = user.getBookmarks();
-		if(list.contains(adId)){
+		if (list.contains(adId)) {
 
 			list.remove(adId);
-			
-			user.setBookmarks(list);
-			userDao.save(user);}
-		else{
-			throw new BookmarkException("Already bookmarked!");
-			
-		}	
-	}
 
+			user.setBookmarks(list);
+			userDao.save(user);
+		} else {
+			throw new BookmarkException("Already bookmarked!");
+
+		}
+	}
 
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks) {
 		List<Ad> list = new ArrayList<Ad>();
-		for(Long id : bookmarks){
+		for (Long id : bookmarks) {
 			Ad ad = adDao.findById(id);
 			list.add(ad);
 		}
@@ -359,13 +364,10 @@ public class AdServiceImpl implements AdService {
 		return adDao.findAllByOwner(user);
 	}
 
-
 	public List<Visit> getVisitList(long adId) {
 
 		return adDao.findById(adId).getVisitList();
 	}
-
-
 
 	public void registerUserForVisit(Long visitId, User user) {
 		Visit visit = visitDao.findById(visitId);
@@ -373,8 +375,6 @@ public class AdServiceImpl implements AdService {
 		visitDao.save(visit);
 
 	}
-
-
 
 	public AdForm getAdFormForExistingAd(long adId) {
 		Ad ad = getAd(adId);
@@ -388,12 +388,22 @@ public class AdServiceImpl implements AdService {
 		adForm.setStreetNumber(ad.getAddress().getStreetNumber());
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setId(adId);
-		
+
 		return adForm;
 	}
 
 	public void deleteAd(Long adId) {
 		adDao.delete(adId);
+
+	}
+
+	public void registerUserForVisit(String userName, Long visitId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addUserToVisitorsList(Long visitId, User user) {
+		// TODO Auto-generated method stub
 		
 	}
 

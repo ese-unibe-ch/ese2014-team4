@@ -281,7 +281,7 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 		
 		expect(
-				mockDao.findAllOrderByAvailableDateDesc())
+				mockDao.findAll())
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
@@ -305,7 +305,7 @@ public class OrderTests {
 		searchForm.setOrderBy("availableDate");
 		
 		expect(
-				mockDao.findAllOrderByAvailableDateDesc())
+				mockDao.findAll())
 				.andReturn(mockedSearchResult);
 
 		replay(mockDao);
