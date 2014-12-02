@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -77,6 +78,15 @@ public class AdController {
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
+		}
+		
+		catch (ConstraintViolationException e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityAsArray);
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
+
+			return model;
 		}
 		// many possible exceptions, therefore juxt catch Exception
 		catch (Exception e) {

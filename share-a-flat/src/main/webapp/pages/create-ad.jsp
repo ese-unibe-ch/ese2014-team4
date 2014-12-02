@@ -59,7 +59,7 @@
 				<div class="form-actions">
 				<span class="error">${errorMessage}</span>
 				
-				<c:choose> <c:when test="${isMyAd eq false}"><c:set var="buttonLabel" value="Create Ad"/></c:when><c:otherwise><c:set var="buttonLabel" value="Save Changes"/></c:otherwise></c:choose>
+				<c:choose> <c:when test="${isMyAd eq true}"><c:set var="buttonLabel" value="Save Changes"/></c:when><c:otherwise><c:set var="buttonLabel" value="Create Ad"/></c:otherwise></c:choose>
 				<button type="submit" class="btn btn-primary" tabindex="13" value="Create Ad">${buttonLabel}</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"

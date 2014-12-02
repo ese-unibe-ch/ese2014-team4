@@ -140,7 +140,7 @@
 			<div class="controls">
 				<form:input type="number" min="0" max="1000" step="1" path="size"
 					id="field-size" class="form-control" tabindex="8" maxlength="45"
-					value="0" onfocus="(this.value == '0') && (this.value = '')"
+					value="${adForm.size}" onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="size" cssClass="help-inline" element="span" />
 			</div>
@@ -157,7 +157,7 @@
 			<div class="controls">
 				<form:input type="number" min="0" max="100" step="0.5"
 					path="nrOfRooms" id="field-nrOfRooms" class="form-control"
-					tabindex="9" maxlength="45" value="0"					
+					tabindex="9" maxlength="45" value="${adForm.nrOfRooms}"					
 					onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
@@ -174,7 +174,7 @@
 				<div class="controls">
 					<form:input type="number" min="0" max="100000" step="1"
 						path="netto" id="field-netto" class="form-control" tabindex="10"
-						maxlength="35" value="0"
+						maxlength="35" value="${adForm.netto}"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="netto" cssClass="help-inline" element="span" />
@@ -192,7 +192,7 @@
 				<div class="controls">
 					<form:input type="number" min="0" max="100000" step="1"
 						path="charges" id="field-charges" class="form-control"
-						tabindex="10" maxlength="35" value="0"
+						tabindex="10" maxlength="35" value="${adForm.charges}"
 						onfocus="(this.value == '0') && (this.value = '')"
 						onblur="(this.value == '') && (this.value = '0')" />
 					<form:errors path="charges" cssClass="help-inline" element="span" />
@@ -210,7 +210,7 @@
 			<div class="controls">
 				<form:input type="number" min="0" max="10" step="1"
 					path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control"
-					tabindex="11" maxlength="35" value="0"
+					tabindex="11" maxlength="35" value="${adForm.nrOfFlatMates}"
 					onfocus="(this.value == '0') && (this.value = '')"
 					onblur="(this.value == '') && (this.value = '0')" />
 				<form:errors path="nrOfFlatMates" cssClass="help-inline"
@@ -259,17 +259,20 @@
 		<div class="layout-content-column">
 			<table id="fileTable"><tr><th></th>
 						<th>File name</th></tr>
+						
+
 
 			</table>
 				    <INPUT type="button" value="Add more pictures" onclick="addRowFile('fileTable')" />
  
     				<INPUT type="button" value="Delete selected picture" onclick="deleteRow('fileTable')" />
 
-
+			<script>
+			<c:forEach items="${adForm.uploadedAdPictures}" var="picture">
+			addRowFile('fileTable');
+			</c:forEach></script>
 
 			<!--  script for adding another file upload possibility -->
-			<!--  needs to be placed within <form:form></form:form> -->
-
  <SCRIPT type="text/javascript">
         function addRowFile(tableID) {
  

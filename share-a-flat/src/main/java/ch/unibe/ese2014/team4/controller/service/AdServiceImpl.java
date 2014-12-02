@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
@@ -383,10 +384,12 @@ public class AdServiceImpl implements AdService {
 		adForm.setStreetNumber(ad.getAddress().getStreetNumber());
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setId(adId);
-
+		//adForm.setUploadedAdPictures(ad.getBytePictureList());
 		return adForm;
 	}
-
+//	private List<MultipartFile> getMultipartFileList(List<byte[]>list){
+//		new MultipartFile multi = new CommonsMultipartFile(list.get(0));
+//	}
 	public void deleteAd(Long adId) {
 		adDao.delete(adId);
 
