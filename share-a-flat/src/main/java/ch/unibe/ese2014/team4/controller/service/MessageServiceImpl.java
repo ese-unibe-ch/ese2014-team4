@@ -68,9 +68,9 @@ public class MessageServiceImpl implements MessageService{
 			message.setShowInSent(1);
 			messageDao.save(message);
 		}
-//		if (((message.getShowInInbox()==1)&&(message.getShowInSent()==0))){
-//			messageDao.delete(id);
-//		}		
+		if (((message.getShowInInbox()==1)&&(message.getShowInSent()==1))){
+			messageDao.delete(id);
+		}		
 	}
 	
 
