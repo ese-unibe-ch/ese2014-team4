@@ -231,7 +231,6 @@
 <script type="text/javascript">
 
 	function clickButton() {
-		
 // 		document.forms["searchForm"].submit();		
 	}
 
