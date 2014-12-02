@@ -13,7 +13,6 @@ import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
 import ch.unibe.ese2014.team4.controller.service.SearchServiceImpl;
 import ch.unibe.ese2014.team4.model.*;
-
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
 public class OrderTests {
@@ -43,7 +42,7 @@ public class OrderTests {
 
 		testAd1.setAddress(testAddess1);
 		testAd2.setAddress(testAddess1);
-		testAd3.setAddress(testAddess1);
+		testAd3.setAddress(testAddess1);		
 
 		testAd1.setNetto(100);
 		testAd2.setNetto(200);
@@ -360,6 +359,27 @@ public class OrderTests {
 		assertEquals(testAd3, adsFromSearcher.get(1));
 		assertEquals(testAd1, adsFromSearcher.get(2));
 		verify(mockDao);
+	}	
+	
+	@Test
+	public void testGetAllNewestFirst() {
+		resetSearchForm();		
+
+		mockedSearchResult.add(testAd1);
+		mockedSearchResult.add(testAd2);
+		mockedSearchResult.add(testAd3);
+		
+		searchForm.setOrderBy("newestFirst");
+
+		expect(mockDao.findAll())
+				.andReturn(mockedSearchResult);
+
+		replay(mockDao);
+		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
+		assertEquals(testAd3, adsFromSearcher.get(0));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(2));
+		verify(mockDao);
 	}
 
 	private void resetSearchForm() {
@@ -369,5 +389,5 @@ public class OrderTests {
 		searchForm.setMinNrOfFlatMates(0);
 		searchForm.setAvailableDate("");
 		searchForm.setOrderBy("newestFirst");
-	}
+	}	
 }
