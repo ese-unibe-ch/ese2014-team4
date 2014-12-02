@@ -48,7 +48,7 @@ public class AdController {
 	AdService adService;
 
 
-	private final String SWISS_ZIP_FILE = "src/main/resources/files/plzSwiss.csv";
+	private final String SWISS_ZIP_FILE = "src/main/resources/files/plz.csv";
 	private ZipCityList zipCityListCh = new ZipCityList(SWISS_ZIP_FILE);
 	private ArrayList<ZipCity> zipCityAsArray = zipCityListCh
 			.getZipCityAsArrayList();
@@ -133,7 +133,7 @@ public class AdController {
 		model.addObject("isMyAd", true);
 		Ad ad = newAdService.getAd(adId);
 		model.addObject("adData", ad);
-
+		model.addObject("visitList", ad.getVisitList());
 		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
 		return model;
 	}

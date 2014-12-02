@@ -44,6 +44,7 @@ public class AdForm {
 	private List<String> visitDate;
     private List<String> startTime;
     private List<String> endTime;
+
     
     
     public List<String> getVisitDate() {
