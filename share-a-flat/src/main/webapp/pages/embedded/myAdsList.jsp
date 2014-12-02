@@ -9,10 +9,10 @@
 
 
 <c:forEach items="${myAdsList}" var="ad">
-	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a> <font size="1">(${ad.type})</font>
-	<button id="removeButton"
-					onClick=""
-					class="btn btn-info btn-xs">Remove Ad</button>
+	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
+	<font size="1">(${ad.type})</font>
+	<button id="removeButton" onClick="" class="btn btn-info btn-xs">Remove
+		Ad</button>
 	<table>
 
 		<tr>
@@ -24,29 +24,37 @@
 			</td>
 
 
-			<td width="150">${ad.address.street} ${ad.address.streetNumber}<br>
+			<td width="150">${ad.address.street}${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 
 			<td width="60"><b>Price:</b><br> <b>Size:</b><br></td>
 
-			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
+			<td width="100">${ad.brutto}CHF<br> ${ad.size} m&sup2<br>
 			</td>
+
+			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
 		</tr>
 
 	</table>
 
 	<table>
-		<tr><th><h4>Visits</h4></th></tr>
 		<tr>
-	<c:forEach items="${ad.visitList}" var="visit">
-		<td width="200">
-			<b>${visit}</b><br>
-			<c:forEach items="${visit.visitorList}" var="visitor"><a href="profile?userId=${visitor.id}">${visitor.username}</a></c:forEach>
-		</td>
-		</c:forEach>
+			<th><h5>
+					<b>Visits</b>
+				</h5></th>
 		</tr>
-		</table>
+		<tr >
+			<c:forEach items="${ad.visitList}" var="visit">
+				<td width="200">
+					<li style="margin-left:15px">${visit}</li>
+				<br> <c:forEach items="${visit.visitorList}" var="visitor">
+						<a href="profile?userId=${visitor.id}">${visitor.username}</a>
+					</c:forEach>
+				</td>
+			</c:forEach>
+		</tr>
+	</table>
 	<hr>
 </c:forEach>
 

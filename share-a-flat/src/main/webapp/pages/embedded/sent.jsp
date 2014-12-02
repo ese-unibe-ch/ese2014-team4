@@ -16,7 +16,7 @@
 <!-- <h2>Inbox</h2> -->
 
 
-<br>
+
 <!-- to insert space: &#160. will be improved -->
 <c:forEach items="${sentList}" var="message">
 <c:if test="${message.showInSent eq 0}"> 

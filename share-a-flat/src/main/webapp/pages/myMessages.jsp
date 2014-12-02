@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="row">
 			<div>
-				<h1>My Messages</h1>
+				<h1 align="center">My Messages</h1>
 				<hr>
 			</div>
 		</div>

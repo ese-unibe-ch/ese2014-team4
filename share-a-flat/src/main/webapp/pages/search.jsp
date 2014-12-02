@@ -82,7 +82,7 @@
 </script>
 <body onload="codeAddress()">
 
-	<h1>Search</h1>
+	<h1 align="center">Search</h1>
 	<hr>
 </body>
 

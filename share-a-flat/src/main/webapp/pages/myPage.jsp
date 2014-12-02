@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="row">
 			<div>
-				<h1>My Page</h1>
+				<h1 align="center">My Page</h1>
 				<hr>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 
 <div class="row">
 
-	<div class="col-md-5">
+	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>My Bookmarks</h3>
@@ -34,8 +34,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-5">
-	<div class="panel panel-default">
+	<div class="col-md-9">
+	<div class="panel panel-default" style="max-height: 560px ;overflow-y: scroll;">
 		<div class="panel-heading">
 				<h3>My Ads</h3>
 		</div>
@@ -49,7 +49,7 @@
 
 <!-- shows all searches with search button -->
 
-	<div class="col-md-2">
+	<div class="col-md-3">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 				<h3>My Searches</h3>
