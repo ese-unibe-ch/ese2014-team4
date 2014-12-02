@@ -16,4 +16,5 @@ public interface MessageDao extends CrudRepository<Message,Long>  {
 	
 	List<Message> findAllBySender(User sender);
 
+
 }

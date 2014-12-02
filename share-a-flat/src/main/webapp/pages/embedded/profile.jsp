@@ -77,7 +77,7 @@
 
 <div class="col-md-3">
 	<c:set var="userSex" value="${user.profile.sex}" />
-	<c:if test="${user.profile.sex ne 'F' || user.profile.sex ne 'M'}">
+  	<c:if test="${user.profile.sex ne 'F' && user.profile.sex ne 'M'}">
 		<c:set var="userSex" value="--" />
 	</c:if>
 

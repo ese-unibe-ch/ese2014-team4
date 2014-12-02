@@ -72,9 +72,14 @@
 						<label class="col-lg-5 control-label">Description:</label>
 						<div class="col-lg-5">${user.profile.userDescription}</div>
 						<br>
-					</div></td>
+					</div>
+				</td>
 
 				<%-- 				<td width="400"><c:import url="embedded/sendMessageBox.jsp" /> --%>
+			</tr>
+			<td width="400"><c:import url="embedded/sendMessageBox.jsp" />
+			<tr>
+			
 			</tr>
 		</table>
 
@@ -136,8 +141,6 @@
 <!-- 			<div class="panel-body"> -->
 <%-- 				<c:import url="embedded/profile.jsp" /> --%>
 <!-- 				<br> <br> -->
-
-
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</div> -->
