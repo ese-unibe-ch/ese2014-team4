@@ -203,10 +203,10 @@
 							});
 						</script>
 					</div>
-					
+					${dropDownValue}
 					 <tr>
             <td>Order Search Results By:</td>
-            <td><form:select path="orderBy">
+            <td><form:select path="orderBy" id="dropDown" onChange="clickButton()" selected="${dropDownValue}">
                <option value="newestFirst">newest first</option>
                <option value="availableDate">available date (earlier first)</option>
                <option value="price">Price (cheapest first)</option>               
@@ -230,6 +230,12 @@
 	</form:form>
 	
 <script type="text/javascript">
+
+	function clickButton() {
+		
+// 		document.forms["searchForm"].submit();		
+	}
+
 	var minPrice = document.getElementById("field-minPrice");
 	minPrice.addEventListener("blur", autofillMaxPrice, false);
 	minPrice.addEventListener("click", autofillMaxPrice, false);

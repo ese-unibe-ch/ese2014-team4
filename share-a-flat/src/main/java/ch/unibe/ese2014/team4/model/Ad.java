@@ -1,5 +1,7 @@
 package ch.unibe.ese2014.team4.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +27,6 @@ import ch.unibe.ese2014.team4.controller.pojos.AdType;
 
 import java.util.Comparator;
 
-
 @Entity
 public class Ad {
 
@@ -44,38 +45,37 @@ public class Ad {
 	private AdType type;
 
 	@ElementCollection(fetch = FetchType.EAGER)
-	@IndexColumn(name="LIST_INDEX")
+	@IndexColumn(name = "LIST_INDEX")
 	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
-	@Column(name="user_id", length=50)
+	@Column(name = "user_id", length = 50)
 	private List<User> flatmateList = new ArrayList<User>();
-	
 
 	private float nrOfRooms;
-	
-	@Lob 
+
+	@Lob
 	@ElementCollection(fetch = FetchType.EAGER)
-	@IndexColumn(name="LIST_INDEX")
+	@IndexColumn(name = "LIST_INDEX")
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
-	@IndexColumn(name="LIST_INDEX")
+	@IndexColumn(name = "LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "ad_to_visit", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<Visit> visitList = new ArrayList<Visit>();
-	
-	private Date creationDate = new Date();
 
+	private Date creationDate = new Date();
 
 	private String title;
 	private int size;
 	private int netto;
 	private int charges;
 	private int brutto;
-//	@Column(columnDefinition="date")
+	// @Column(columnDefinition="date")
 	private String availableDate;
 	private String description;
 
 	private int nrOfFlatMates;
+
 	/**
 	 * 
 	 * @return list of unvalidated usernames which will be the future roommates.
@@ -95,6 +95,7 @@ public class Ad {
 	public void setVisitList(List<Visit> visitList) {
 		this.visitList = visitList;
 	}
+
 	public void setBytePictureList(List<byte[]> bytePictureList) {
 		this.bytePictureList = bytePictureList;
 	}
@@ -131,10 +132,10 @@ public class Ad {
 		return id;
 	}
 
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public int getNrOfFlatMates() {
 		return nrOfFlatMates;
@@ -226,33 +227,156 @@ public class Ad {
 	}
 
 	public void setBrutto() {
-		this.brutto = netto+charges;
+		this.brutto = netto + charges;
 	}
 
 	public MapAddress getAddressForMap() {
 		MapAddress tmpMapAddress = new MapAddress();
-		String addressForMAp = address.getStreet()+ " " +address.getStreetNumber() +" "+ address.getZipCode()+" "+ address.getCity();
+		String addressForMAp = address.getStreet() + " "
+				+ address.getStreetNumber() + " " + address.getZipCode() + " "
+				+ address.getCity();
 		tmpMapAddress.setAddressAsString(addressForMAp);
 		tmpMapAddress.setId(id);
 		return tmpMapAddress;
 	}
-	
-	public static Comparator<Ad> bruttoSorter = new Comparator<Ad>(){
-		public int compare(Ad ad1, Ad ad2){
+
+	public static Comparator<Ad> bruttoSorter = new Comparator<Ad>() {
+		public int compare(Ad ad1, Ad ad2) {
 			int brutto1 = ad1.getBrutto();
 			int brutto2 = ad2.getBrutto();
-			
-			return brutto1-brutto2;
+
+			return brutto1 - brutto2;
 		}
 	};
-	
-	public static Comparator<Ad> availableDateSorter = new Comparator<Ad>(){
-		public int compare(Ad ad1, Ad ad2){
-			String date1 = ad1.getAvailableDate();
-			String date2 = ad2.getAvailableDate();
-			
+
+	public static Comparator<Ad> availableDateSorter = new Comparator<Ad>() {
+		public int compare(Ad ad1, Ad ad2) {
+			Date date1 = convertStringToDate(ad1.getAvailableDate());
+			Date date2 = convertStringToDate(ad2.getAvailableDate());
+
 			return date1.compareTo(date2);
 		}
 	};
+
+	private static Date convertStringToDate(String str) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = null;
+
+		try {
+			date = formatter.parse(str);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return date;
+	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result
+				+ ((availableDate == null) ? 0 : availableDate.hashCode());
+		result = prime * result + brutto;
+		result = prime * result
+				+ ((bytePictureList == null) ? 0 : bytePictureList.hashCode());
+		result = prime * result + charges;
+		result = prime * result
+				+ ((creationDate == null) ? 0 : creationDate.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result
+				+ ((flatmateList == null) ? 0 : flatmateList.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + netto;
+		result = prime * result + nrOfFlatMates;
+		result = prime * result + Float.floatToIntBits(nrOfRooms);
+		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+		result = prime * result + size;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result
+				+ ((visitList == null) ? 0 : visitList.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ad other = (Ad) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (availableDate == null) {
+			if (other.availableDate != null)
+				return false;
+		} else if (!availableDate.equals(other.availableDate))
+			return false;
+		if (brutto != other.brutto)
+			return false;
+		if (bytePictureList == null) {
+			if (other.bytePictureList != null)
+				return false;
+		} else if (!bytePictureList.equals(other.bytePictureList))
+			return false;
+		if (charges != other.charges)
+			return false;
+		if (creationDate == null) {
+			if (other.creationDate != null)
+				return false;
+		} else if (!creationDate.equals(other.creationDate))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (flatmateList == null) {
+			if (other.flatmateList != null)
+				return false;
+		} else if (!flatmateList.equals(other.flatmateList))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (netto != other.netto)
+			return false;
+		if (nrOfFlatMates != other.nrOfFlatMates)
+			return false;
+		if (Float.floatToIntBits(nrOfRooms) != Float
+				.floatToIntBits(other.nrOfRooms))
+			return false;
+		if (owner == null) {
+			if (other.owner != null)
+				return false;
+		} else if (!owner.equals(other.owner))
+			return false;
+		if (size != other.size)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (type != other.type)
+			return false;
+		if (visitList == null) {
+			if (other.visitList != null)
+				return false;
+		} else if (!visitList.equals(other.visitList))
+			return false;
+		return true;
+	}
+
+
 }
