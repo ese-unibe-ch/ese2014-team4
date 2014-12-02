@@ -9,15 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
-import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.Address;
-import ch.unibe.ese2014.team4.model.Profile;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Visit;
 import ch.unibe.ese2014.team4.model.dao.AdDao;

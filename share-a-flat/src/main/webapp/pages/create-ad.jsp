@@ -52,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-3" >
 		<!-- right column -->
 		<c:import url="embedded/addFlatmates.jsp"></c:import>
 	</div>

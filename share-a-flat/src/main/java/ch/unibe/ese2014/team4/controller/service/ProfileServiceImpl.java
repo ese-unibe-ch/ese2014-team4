@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.controller.service;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,7 @@ public class ProfileServiceImpl implements ProfileService {
 		profile.setAge(profileForm.getAge());
 		profile.setSex(profileForm.getSex());
 		profile.setUserDescription(profileForm.getUserDescription());
+		user.setPassword(DigestUtils.shaHex(profileForm.getPassword()));
 		
 		try {
 			MultipartFile imageFile = profileForm.getUploadedProfileImage();

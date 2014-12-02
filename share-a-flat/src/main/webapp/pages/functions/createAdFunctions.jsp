@@ -93,6 +93,7 @@
 		}
 
 		if (document.getElementById("flat").checked == true) {
+			$('#button-addFlatmate').prop('disabled', true);
 			$('#field-nrOfFlatMates').prop('disabled', true);
 
 		}

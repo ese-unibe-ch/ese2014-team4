@@ -84,8 +84,7 @@ public class ProfileController {
 	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
 	public ModelAndView modifyProfile(Principal principal) throws InvalidUserException {
 		ModelAndView model = new ModelAndView("modifyProfile");
-		ProfileForm profileForm = new ProfileForm();
-		model.addObject("profileForm", profileForm);
+		model.addObject("profileForm",  new ProfileForm());
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		return model;
 	}
@@ -94,9 +93,18 @@ public class ProfileController {
 	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 	public ModelAndView saveProfile(ProfileForm profileForm, BindingResult result, Principal principal) throws Exception {
 		ModelAndView model;
+		User user = userService.getUserByUsername(principal.getName());
 		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, userService.getUserByUsername(principal.getName())); 
+			if(userService.isPasswordCorrect(profileForm.getOldPassword(), user)){
+				profileService.updateProfileFrom(profileForm, user); 
 				return showMyProfile(principal);
+			}
+			else{
+				model = new ModelAndView("modifyProfile");
+				model.addObject("profileForm",  new ProfileForm());
+				model.addObject("user",user);
+				model.addObject("errorMessage", "Password wrong");
+			}
 
 		}
 		else {model = new ModelAndView("myPage");}

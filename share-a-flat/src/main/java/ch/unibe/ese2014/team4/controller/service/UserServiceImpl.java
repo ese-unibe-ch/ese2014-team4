@@ -1,5 +1,6 @@
 package ch.unibe.ese2014.team4.controller.service;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,10 @@ public class UserServiceImpl implements UserService {
 	public boolean isBookmarked(User user, long adId) {
 		
 		return user.getBookmarks().contains(adId);
+	}
+	public boolean isPasswordCorrect(String oldPassword, User user) {
+		
+		return DigestUtils.shaHex(oldPassword).equals(user.getPassword());
 	}
 
 }
