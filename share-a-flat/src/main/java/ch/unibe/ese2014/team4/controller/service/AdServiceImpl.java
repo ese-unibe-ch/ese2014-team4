@@ -263,7 +263,7 @@ public class AdServiceImpl implements AdService {
 
 		if (orderBy.equals("availableDate")) {
 			ads = adDao
-					.findAllByAddressCityIgnoreCaseOrderByAvailableDateDesc(city);
+					.findAllByAddressCityIgnoreCaseOrderByAvailableDateAsc(city);
 			return ads;
 		}
 		if (orderBy.equals("price")) {
