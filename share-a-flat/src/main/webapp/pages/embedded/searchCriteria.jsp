@@ -19,7 +19,7 @@
 	<form:form enctype="multipart/form-data" method="post"
 		modelAttribute="searchForm"
 		action="submitSearch"
-		onSubmit="return checkSearchInput()" id="searchForm"
+		onSubmit="return checkSearchInput() && storeValues(this)" id="searchForm"
 		cssClass="form-horizontal" autocomplete="off">
 		<fieldset>
 
