@@ -30,9 +30,11 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.ZipCityList;
 import ch.unibe.ese2014.team4.model.ZipCity;
 
+//TODO implement going back to the previous page when sending a message
+
 /**
  * @author Zoyela
- * Controls all concerning sending and receiving of messages.
+ * Controls all concerning sending, receiving  and displaying of messages.
  *
  */
 @Controller
@@ -75,6 +77,20 @@ public class MessageController {
 
 //		ModelAndView model = new ModelAndView("ad");
 		return null;
+	}
+	
+	/**
+	 * Controls deletion of the message.
+	 * 
+	 */
+	//@ResponseBody
+	@RequestMapping(value = "/deleteMessage", method = RequestMethod.POST)
+	public ModelAndView deleteMessage(@RequestParam(value="messageId", required=true) long messageId, Principal principal) throws Exception {
+		ModelAndView model = new ModelAndView("myMessages");
+
+		messageService.deleteMessage(messageId, userService.getUserByUsername(principal.getName()));
+
+		return model;
 	}
 	
 }

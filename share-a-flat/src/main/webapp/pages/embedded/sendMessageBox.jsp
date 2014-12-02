@@ -12,6 +12,10 @@
 	<c:if test="${user.username!=null}">${user.username}</c:if>  
 </c:set>
 
+<c:set var="whereIAm" value="history.go(-1)"></c:set>
+
+
+
 <h4>Send a message to ${receiverName}</h4>
 
 
@@ -24,7 +28,6 @@
 		></textarea>
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>
-
 	</div>
 	<br>
 

@@ -14,7 +14,90 @@
 <span class=".hasError">${errorMessage}</span>
 
 <div class="col-md-12" align="center">
+<<<<<<< HEAD
+<img
+	src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}"
+	class="img-responsive" alt="profileImage">
+</div>
 
+<div class="col-md-5">
+	<p>
+		<b>Username: </b>
+	</p>
+</div>
+
+<div class="col-md-6">
+	<p>${user.username}</p>
+</div>
+
+<div class="col-md-5">
+	<p>
+		<b>Email: </b>
+	</p>
+</div>
+
+<div class="col-md-6">
+	<p>${user.email}</p>
+</div>
+
+<div class="col-md-5">
+	<p>
+		<b>Phone: </b>
+	</p>
+</div>
+
+<div class="col-md-6">
+	<c:set var="phoneNr" value="${user.profile.phoneNumber}" />
+	<c:if test="${user.profile.phoneNumber eq '' || user.profile.phoneNumber eq 'NULL'}">
+		<c:set var="phoneNr" value="--" />
+	</c:if>
+
+	<p>${phoneNr}</p>
+</div>
+
+<div class="col-md-3">
+	<p>
+		<b>Age: </b>
+	</p>
+</div>
+
+<div class="col-md-3">
+<c:set var="userAge" value="${user.profile.age}" />
+	<c:if test="${user.profile.age eq '' || user.profile.age eq 'NULL'}">
+		<c:set var="userAge" value="--" />
+	</c:if>
+
+	<p>${userAge}</p>
+</div>
+
+<div class="col-md-3">
+	<p>
+		<b>Gender: </b>
+	</p>
+</div>
+
+<div class="col-md-3">
+	<c:set var="userSex" value="${user.profile.sex}" />
+  	<c:if test="${user.profile.sex ne 'F' && user.profile.sex ne 'M'}">
+		<c:set var="userSex" value="--" />
+	</c:if>
+
+	<p>${userSex}</p>
+</div>
+
+<div class="col-md-12">
+	<b>Description: </b>
+</div>
+
+<div class="col-md-12">
+<c:set var="userDescription" value="${user.profile.userDescription}" />
+	<c:if test="${user.profile.userDescription eq '' || user.profile.userDescription eq 'NULL'}">
+		<c:set var="userDescription" value="--" />
+	</c:if>
+
+	${userDescription}
+</div>
+=======
 		<table>
 			<tr>
 				<td width="450">
@@ -60,7 +143,7 @@
 
 			</tr>
 		</table>
-
+>>>>>>> 057e34d87e20ddeaa5e95eef4d9490cf1a490f2c
 
 <div class="col-md-12">
 	<p><br></p>

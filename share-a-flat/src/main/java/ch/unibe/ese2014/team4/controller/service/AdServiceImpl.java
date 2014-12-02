@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
@@ -165,13 +166,11 @@ public class AdServiceImpl implements AdService {
 
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
-		if (!fileList.isEmpty()) {
-			if (fileList.get(0).getSize() != 0) {
-				ad.setBytePictureList(imageService
-						.getByteArrayFromMultipart(fileList));
-			} else {
-				ad.setBytePictureList(imageService.getDefaultImage());
-			}
+		if (fileList.isEmpty()) {
+			ad.setBytePictureList(imageService.getDefaultImage());
+		}
+		else{
+			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
 		}
 
 		Address address = ad.getAddress();
@@ -381,7 +380,10 @@ public class AdServiceImpl implements AdService {
 		adForm.setStreetNumber(ad.getAddress().getStreetNumber());
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setId(adId);
-
+		adForm.setTitle(ad.getTitle());
+		adForm.setDescription(ad.getDescription());
+		adForm.setNrOfFlatMates(ad.getNrOfFlatMates());
+		adForm.setNrOfRooms(ad.getNrOfRooms());
 		return adForm;
 	}
 
@@ -390,14 +392,6 @@ public class AdServiceImpl implements AdService {
 
 	}
 
-	public void registerUserForVisit(String userName, Long visitId) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public void addUserToVisitorsList(Long visitId, User user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

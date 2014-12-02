@@ -12,7 +12,22 @@
 </script>
 
 
-<script>
+<script type="text/javascript">
+
+function deleteMessageAlert() {
+
+    if (confirm("Delete the message?") == true) {
+      //  alert("Message deleted!");
+        return true;
+    } else {
+      // alert("Message kept!");
+       return false;
+    }
+}
+</script>
+
+
+<script type="text/javascript">
 
 function showAlert(){
 	var cancelYes = confirm ( "Cancel and discard all?" );

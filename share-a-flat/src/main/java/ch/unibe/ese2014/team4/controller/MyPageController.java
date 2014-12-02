@@ -56,7 +56,6 @@ public class MyPageController {
 			model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
 			model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
-			System.out.println(adService.getAdsOfUserByUser(user).size());
 		}
 		catch(InvalidUserException e){
 			
@@ -67,47 +66,7 @@ public class MyPageController {
 	}
 
 	
-	/**
-	 * Used to display others profile.
-	 * @param profileId
-	 * @param principal
-	 * @return
-	 * @throws ProfileException
-	 */
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public ModelAndView showMyProfile(@RequestParam(value="userId") Long userId) throws InvalidUserException{
-		ModelAndView model = new ModelAndView("showProfile");
-		try{
-			model.addObject("user", userService.getUser(userId));
-		}
-		catch(InvalidUserException e){
-			model.addObject("errorMessage", e.getMessage());
-		}
-			return model;
-	}
-	
-	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
-	public ModelAndView modifyProfile(Principal principal) throws InvalidUserException {
-		ModelAndView model = new ModelAndView("modifyProfile");
-		ProfileForm profileForm = new ProfileForm();
-		model.addObject("profileForm", profileForm);
-		model.addObject("user", userService.getUserByUsername(principal.getName()));
-		return model;
-	}
 
-
-	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-	public ModelAndView saveProfile(ProfileForm profileForm, BindingResult result, Principal principal) throws Exception {
-		ModelAndView model;
-		if (!result.hasErrors()){
-				profileService.updateProfileFrom(profileForm, userService.getUserByUsername(principal.getName())); 
-				return myPage(principal);
-
-		}
-		else {model = new ModelAndView("myPage");}
-		return model;
-		
-	}	
 
 
 	

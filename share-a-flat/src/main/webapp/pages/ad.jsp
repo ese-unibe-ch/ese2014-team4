@@ -77,9 +77,9 @@
 	<!-- 						    <div id="map-canvas"></div> -->
 <c:if test="${isMyAd eq true}">
 <fieldset>
-	<form method="post" action="modifyAd?adId=${adData.id}">
+	<form method="post"  onsubmit="return confirm('Are you sure you want to delete your ad?')" action="modifyAd?adId=${adData.id}">
 		<input name="modify" type="submit" value="modify Ad" class="btn btn-warning">
-		<input name="delete" type="submit" value="delete Ad" class="btn btn-warning">
+		<input name="delete" type="submit" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')" class="btn btn-warning">
 	</form>
 </fieldset>	
 </c:if>

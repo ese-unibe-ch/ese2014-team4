@@ -49,12 +49,12 @@
 					<label class="control-label" for="field-cityOrZip">City or
 						Zip</label>
 					<div class="controls">
-						<form:input class="form-control" path="cityOrZip" required="true"
+						<form:input class="form-control" path="cityOrZip" 
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
 							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" 
-							x-moz-errormessage="Please specify a valid email address."/>
+							x-moz-errormessage="Please enter a Zip or a City."/>
 						<form:errors path="cityOrZip" cssClass="help-inline"
 							element="span" />
 					</div>

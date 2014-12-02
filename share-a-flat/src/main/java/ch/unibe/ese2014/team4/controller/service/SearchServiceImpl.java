@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
@@ -55,12 +56,13 @@ public class SearchServiceImpl implements SearchService {
 		if (zip > 0) {
 			adsToSort = adService.getAdByZip(zip, orderBy);
 		} else {
-			if (searchForm.getCityOrZip() != "") {
+			if (!(searchForm.getCityOrZip()).equals("")) {
 				adsToSort = adService.getAdByCity(searchForm.getCityOrZip(), orderBy);
 			} else {
 				adsToSort = adService.getAllAds(orderBy);
 			}
 		}
+		
 		return getRelevantAds(adsToSort);
 	}
 
@@ -79,9 +81,7 @@ public class SearchServiceImpl implements SearchService {
 			checkPrice(adsToSort);
 		}
 
-
 		if (searchForm.getMinNrOfFlatMates() > 0) {
-
 			checkNrFlatMates(adsToSort);
 		}
 
@@ -102,16 +102,30 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkAvailableDate(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
+		
+		Iterator<Ad> itr = adsToSort.iterator();
+		while(itr.hasNext()) {
+			Ad ad = itr.next();
+			if(ad.getAvailableDate().equals("--")) {
+				itr.remove();
+			}
+		}
+		
+		/*for (Ad ad : adsToSort) {
+			if (ad.getAvailableDate().equals("--")){
+				adsToSort.remove(ad);
+			}
+		}*/
+		
+		for (Ad ad : adsToSort) {
+				adsToSortCopy.add(ad);
+		}
 
 		for (Ad ad : adsToSortCopy)
-			try {
-				{
+			try {				
 					if ((convertStringToDate(searchForm.getAvailableDate()))
 							.compareTo(convertStringToDate(ad.getAvailableDate())) > 0)
-						adsToSort.remove(ad);
-				}
+						adsToSort.remove(ad);				
 			} catch (ParseException e) {
 				e.printStackTrace();
 
