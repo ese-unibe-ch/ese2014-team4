@@ -15,7 +15,11 @@
 
 <div class="col-md-12" align="center">
 
+		<div class="alert alert-info" align="left" style="height:50px">
+           <h4><u><b>Personal Info:</b></u></h4>
+        </div>
 		<table>
+
 			<tr>
 				<td width="450">
 <!-- 				<legend style="font-size:2em"><br>Personal info</legend> -->
@@ -33,78 +37,44 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-lg-5 control-label" for="field-phoneNumber">phoneNumber:</label>
-						<div class="col-lg-5">${user.profile.phoneNumber}</div>
+						<label class="col-lg-5 control-label" for="field-phoneNumber">Phone Number:</label>
+						<c:set var="phoneNr" value="${user.profile.phoneNumber}" />
+							<c:if test="${user.profile.phoneNumber eq ''}">
+								<c:set var="phoneNr" value="--" />
+							</c:if>
+						<div class="col-lg-5">${phoneNr}</div>
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-age">Age:</label>
-						<div class="col-lg-5">${user.profile.age}</div>
+						<c:set var="age" value="${user.profile.age}" />
+							<c:if test="${user.profile.age eq ''}">
+								<c:set var="age" value="--" />
+							</c:if>
+						<div class="col-lg-5">${age}</div>
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
-						<div class="col-lg-5">${user.profile.sex}</div>
+						<c:set var="sex" value="${user.profile.sex}" />
+							<c:if test="${user.profile.sex ne 'M' || user.profile.sex ne 'F'}">
+								<c:set var="sex" value="--" />
+							</c:if>
+						<div class="col-lg-5">${sex}</div>
 						<br>
 					</div>
-
-					</td>
-									
+					
+					<div class="form-group">
+						<label class="col-lg-5 control-label" for="field-description">Description:</label>
+						<c:set var="descr" value="${user.profile.userDescription}" />
+							<c:if test="${user.profile.userDescription eq ''}">
+								<c:set var="descr" value="--" />
+							</c:if>
+						<div class="col-lg-5">${descr}</div>
+						<br>
+					</div>
+				</td>									
 			</tr>
 		</table>
-
-
-<div class="col-md-12">
-	<p><br></p>
-</div>
-
-
-<!-- <table> -->
-<!-- 	<tr> -->
-<!-- 		<td width="110"> -->
-<!-- 			<p> -->
-<!-- 				<b>Username: </b> -->
-<!-- 			</p> -->
-<!-- 		</td> -->
-<%-- 		<td><p>${user.username}</p></td> --%>
-<!-- 	</tr> -->
-
-<!-- 	<tr> -->
-<!-- 		<td><p> -->
-<!-- 				<b>Email: </b> -->
-<!-- 			</p></td> -->
-<%-- 		<td><p>${user.email}</p></td> --%>
-<!-- 	</tr> -->
-
-<!-- 	<tr> -->
-<!-- 		<td><p> -->
-<!-- 				<b>Phone: </b> -->
-<!-- 			</p></td> -->
-<%-- 		<td><p>${user.profile.phoneNumber}</p></td> --%>
-<!-- 	</tr> -->
-
-<!-- 	<tr> -->
-<!-- 		<td width="30"><p> -->
-<!-- 				<b>Age: </b> -->
-<!-- 			</p></td> -->
-<%-- 		<td><p>${user.profile.age}</p></td> --%>
-
-<!-- 		<td><p> -->
-<!-- 				<b>Gender: </b> -->
-<!-- 			</p></td> -->
-<%-- 		<td><p>${user.profile.sex}</p></td> --%>
-<!-- 	</tr> -->
-<!-- </table> -->
-
-<!-- <div class="col-md-3"> -->
-<!-- <b>Age: </b> -->
-<!-- 			</p></td> -->
-<%-- 		<td><p>${user.profile.age}</p> --%>
-
-<!-- </div> -->
-<%-- <p><b>Description: </b><br>${user.profile.userDescription}</p> --%>
-
-
-

@@ -11,7 +11,7 @@
 	<hr>
 </div>
 <fieldset>
-
+	<div class="col-md-2"></div>
 
 	<div class="col-md-3">
 		<div class="text-center">
@@ -23,13 +23,12 @@
 
 	<!-- edit form column -->
 	<div class="col-md-5 personal-info">
-	<br><br>
-
-
-<c:import url="embedded/profile.jsp" />
-<a type="button"
- 						href="${pageContext.request.contextPath}/modifyProfile"
- 						class="btn btn-primary">Modify Profile</a>
+		<c:import url="embedded/profile.jsp" />
+		<div class="col-md-12" align="right">
+		<a type="button"
+			href="${pageContext.request.contextPath}/modifyProfile"
+			class="btn btn-primary">Modify Profile</a>
+			</div>
 
 	</div>
 </fieldset>

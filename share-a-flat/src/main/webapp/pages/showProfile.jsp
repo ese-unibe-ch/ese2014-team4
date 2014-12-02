@@ -14,9 +14,7 @@
 
 <fieldset>
 
-<div class="col-md-2">
-		
-	</div>
+	<div class="col-md-2"></div>
 
 	<div class="col-md-3">
 		<div class="text-center">
@@ -28,29 +26,26 @@
 
 	<!-- edit form column -->
 	<div class="col-md-5 personal-info">
-	<br><br>
 
 
-
-<c:import url="embedded/profile.jsp" />
+		<c:import url="embedded/profile.jsp" />
 
 
 		<table>
 			<tr>
 				<td width="450">
-				
-				<div class="form-group">
-					<c:import url="embedded/sendMessageBox.jsp" />
-				</div>
-				
+
 					<div class="form-group">
-						<label class="col-lg-5 control-label"></label>
-						<div class="col-lg-5">
-							<button type="button" onclick="history.go(-1);return true"
-								class=" btn btn-primary" tabindex="7">Go Back</button>
-						</div>
-						<br>
+						<hr>
+						<c:import url="embedded/sendMessageBox.jsp" />
 					</div>
+
+
+					<div class="col-md-12" align="right">
+						<button type="button" onclick="history.go(-1);return true"
+							class=" btn btn-primary" tabindex="7">Go Back</button>
+					</div>
+
 				</td>
 			</tr>
 		</table>
