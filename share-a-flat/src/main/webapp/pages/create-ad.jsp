@@ -59,24 +59,22 @@
 				<div class="form-actions">
 				<span class="error">${errorMessage}</span>
 				
-
-				<button type="submit" class="btn btn-primary" tabindex="13">Create
-					Ad</button>
+				<c:choose> <c:when test="${isMyAd eq false}"><c:set var="buttonLabel" value="Create Ad"/></c:when><c:otherwise><c:set var="buttonLabel" value="Save Changes"/></c:otherwise></c:choose>
+				<button type="submit" class="btn btn-primary" tabindex="13" value="Create Ad">${buttonLabel}</button>
 				<!-- 				<input type="reset" value="Reset"> -->
 				<a type="button" href="${pageContext.request.contextPath}/my-page"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
 <%-- 				<a type="button" href="${pageContext.request.contextPath}/adPreview" --%>
 <!-- 					tabindex="14" class="btn btn-default" target="_blank">Preview</a> -->
 					
-<!-- 					<button type="submit" value="saveAdChanges" tabindex="6" -->
-<!-- 								class="btn btn-primary">Save Ad-Changes</button> -->
-			</div>
-</form:form>
 <c:if test="${isMyAd eq true}">
-	<form method="post" action="deleteAd?adId=${adForm.id}">
-		<input type="submit" value="delete Ad" class="btn btn-warning">
+	<form method="post" action="modifyAd?adId=${adForm.id}">
+		<input type="submit" name="delete" value="delete Ad" class="btn btn-warning">
 	</form>	
 </c:if>
+
+			</div>
+</form:form>
 
 <script type="text/javascript">
 	var zip = document.getElementById("field-zipCode");

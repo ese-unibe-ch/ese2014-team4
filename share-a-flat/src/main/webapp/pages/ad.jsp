@@ -75,7 +75,14 @@
 	<!--/masthead-->
 
 	<!-- 						    <div id="map-canvas"></div> -->
-
+<c:if test="${isMyAd eq true}">
+<fieldset>
+	<form method="post" action="modifyAd?adId=${adData.id}">
+		<input name="modify" type="submit" value="modify Ad" class="btn btn-warning">
+		<input name="delete" type="submit" value="delete Ad" class="btn btn-warning">
+	</form>
+</fieldset>	
+</c:if>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="panel panel-default">

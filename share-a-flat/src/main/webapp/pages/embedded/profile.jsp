@@ -26,7 +26,7 @@
 </div>
 
 <div class="col-md-6">
-	<p>${user.profile.username}</p>
+	<p>${user.username}</p>
 </div>
 
 <div class="col-md-5">
@@ -36,7 +36,7 @@
 </div>
 
 <div class="col-md-6">
-	<p>${user.profile.email}</p>
+	<p>${user.email}</p>
 </div>
 
 <div class="col-md-5">
@@ -47,7 +47,7 @@
 
 <div class="col-md-6">
 	<c:set var="phoneNr" value="${user.profile.phoneNumber}" />
-	<c:if test="${user.profile.phoneNumber eq '' || user.profile.phoneNumber eq 'NULL'}">
+	<c:if test="${user.profile.phoneNumber eq ''}">
 		<c:set var="phoneNr" value="--" />
 	</c:if>
 
@@ -62,7 +62,7 @@
 
 <div class="col-md-3">
 <c:set var="userAge" value="${user.profile.age}" />
-	<c:if test="${user.profile.age eq '' || user.profile.age eq 'NULL'}">
+	<c:if test="${user.profile.age eq ''}">
 		<c:set var="userAge" value="--" />
 	</c:if>
 
@@ -77,8 +77,8 @@
 
 <div class="col-md-3">
 	<c:set var="userSex" value="${user.profile.sex}" />
-	<c:if test="${user.profile.sex ne 'F' || user.profile.sex ne 'M'}">
-		<c:set var="userSex" value="--" />
+	<c:if test="${user.profile.sex eq ''}">
+		<c:set var="userAge" value="--" />
 	</c:if>
 
 	<p>${userSex}</p>
@@ -90,7 +90,7 @@
 
 <div class="col-md-12">
 <c:set var="userDescription" value="${user.profile.userDescription}" />
-	<c:if test="${user.profile.userDescription eq '' || user.profile.userDescription eq 'NULL'}">
+	<c:if test="${user.profile.userDescription eq ''}">
 		<c:set var="userDescription" value="--" />
 	</c:if>
 
