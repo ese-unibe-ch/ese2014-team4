@@ -28,7 +28,7 @@
 				<h3>My Bookmarks</h3>
 			</div>
 			<div class="panel-body">
-			<c:choose><c:when test="${fn:length(adList) eq 0}">You have no bookmarks saved.</c:when><c:otherwise>
+			<c:choose><c:when test="${fn:length(adList) eq 0}">You have no bookmarks.</c:when><c:otherwise>
 				<c:import url="searchResultsList.jsp" />
 			</c:otherwise></c:choose>
 			</div>
