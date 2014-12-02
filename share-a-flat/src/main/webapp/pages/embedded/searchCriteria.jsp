@@ -217,7 +217,7 @@
 
 				<span id="SearchErrorMessage"></span>
 
-				<div class="form-actions">
+				<div class="form-actions" >
 					<br>
 					<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search Ad</button>
 					<button type="submit" name="save" tabindex="9" class="btn btn-info">Save search</button>
