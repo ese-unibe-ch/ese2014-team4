@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
@@ -17,15 +17,26 @@
 					</tr>
 
 					<tr>
-					<TD><INPUT type="checkbox" name="chk"/></TD>
+											<TD><INPUT type="checkbox" name="chk"/></TD>
 						<td><input type="text" name="visitDate[0]" id="dateInput0"
 							size="7" tabindex="15" /></td>
 						<td><input name="startTime[0]" size="3" tabindex="15" /></td>
-						<td><input name="endTime[0]" size="3" tabindex="15" /></td>
+						<td><input name="endTime[0]" size="3" tabindex="15" /></td>	
+				<!-- 	<c:choose>
+					<c:when test="${fn:length(visitList) eq 0}">
+						<TD><INPUT type="checkbox" name="chk"/></TD>
+						<td><input type="text" name="visitDate[0]" id="dateInput0"
+							size="7" tabindex="15" /></td>
+						<td><input name="startTime[0]" size="3" tabindex="15" /></td>
+						<td><input name="endTime[0]" size="3" tabindex="15" /></td>	
+					</c:when><c:otherwise><c:forEach items="${visitList}" var="visit" varStatus="loop">
+						<TD><INPUT type="checkbox" name="chk"/></TD>
+						<td><input type="text" name="visitDate[${loop.index}]" id="dateInput${loop.index}"
+							size="7" tabindex="15" /></td>
+						<td><input name="startTime[${loop.index}]" size="3" tabindex="15" /></td>
+						<td><input name="endTime[${loop.index}]" size="3" tabindex="15" /></td>					
+					</c:forEach></c:otherwise></c:choose> -->
 </tr>
-						<!--if using type="date" it doesn't work in chrome because it wants to use the date-input type of html5
-				that includes a date picker	wich doesn't work in firefox with the format mm/dd/yyyy, wich does not match 
-				MM-DD-YYYY, wich is the format we specified. Result: unusable date, like 1009-07-06 or so-->
 
 
 
