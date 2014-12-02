@@ -16,21 +16,27 @@
 
 <!-- <h2>Inbox</h2> -->
 
-<form method="post" action="deleteMessage?messageId=${messageId}" onsubmit="return deleteMessageAlert" id="messageForm" Class="form-horizontal"
-	autocomplete="off" >
+
 <!-- to insert space: &#160. will be improved -->
 <c:forEach items="${inboxList}" var="message">
+<c:if test="${message.showInInbox eq 0}"> 
 <c:set var="messageId" value="${message.id}"></c:set>
+<form method="post" action="deleteMessage?messageId=${messageId}" id="messageForm" Class="form-horizontal"
+	autocomplete="off" >
 	<b>From:</b> &#160&#160&#160&#160&#160&#160&#160&#160
 		<a href="${pageContext.request.contextPath}/profile?userId=${message.sender.id}">${message.sender.username}</a>
 	<br><b>Received:</b> &#160
 		<fmt:formatDate type="both" dateStyle="short" pattern="dd.MM.yyyy   HH:mm" value="${message.date}" /><br>
 	<pre>${message.messageText}</pre>
 	
-		<input name="delete" type="submit" value="delete Message" onclick="return confirm('Are you sure you want to delete this message?')" 
-		class="btn btn-warning">
+	<button name="delete" type="submit"	class="btn btn-warning">delete</button>
+		
+		<button name="delete" type="submit" value="delete Message" onclick="return confirm('Are you sure you want to delete this message?')" 
+		class="btn btn-warning">delete2</button>
 	
 <hr>
+</form>
+</c:if>
 </c:forEach>
 
-</form>
+

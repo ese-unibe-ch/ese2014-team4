@@ -39,7 +39,7 @@ public class MessageServiceImpl implements MessageService{
 	
 	public void sendMessage(String messageText, User sender, User receiver){
 		
-		Message message = new Message(); //wird ID selbst generiert?
+		Message message = new Message(); 
 		Date date = new Date();
 		
 		message.setDate(date);
@@ -47,8 +47,6 @@ public class MessageServiceImpl implements MessageService{
 		message.setReceiver(receiver);
 		message.setMessageText(messageText);
 		messageDao.save(message);
-	
-
 		
 	}
 	
@@ -62,14 +60,17 @@ public class MessageServiceImpl implements MessageService{
 
 	public void deleteMessage(long id, User user) {
 		Message message = messageDao.findById(id);
-		if (message.getReceiver()==user){
-			message.setReceiver(null);
+		if (message.getReceiver().getId() == user.getId()){
+			message.setShowInInbox(1);
+			messageDao.save(message);
 		}
-		else if (message.getSender()==user){
-			message.setSender(null);
+		if (message.getSender().getId() == user.getId()){
+			message.setShowInSent(1);
+			messageDao.save(message);
 		}
-
-		
+//		if (((message.getShowInInbox()==1)&&(message.getShowInSent()==0))){
+//			messageDao.delete(id);
+//		}		
 	}
 	
 

@@ -30,6 +30,10 @@ public class Message implements Serializable {
 	private User receiver;
 	
 	private Date date;
+	
+	//0 = show, 1 = do not show
+	private int showInInbox = 0;
+	private int showInSent = 0;
 
 	
 	public User getReceiver() {
@@ -63,5 +67,18 @@ public class Message implements Serializable {
 	public void setId(Long messageId) {
 		this.id = messageId;
 	}
+	public int getShowInInbox() {
+		return showInInbox;
+	}
+	public void setShowInInbox(int showInInbox) {
+		this.showInInbox = showInInbox;
+	}
+	public int getShowInSent() {
+		return showInSent;
+	}
+	public void setShowInSent(int showInSent) {
+		this.showInSent = showInSent;
+	}
+
 
 }

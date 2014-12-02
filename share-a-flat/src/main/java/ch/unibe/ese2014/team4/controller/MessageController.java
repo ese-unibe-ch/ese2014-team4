@@ -87,8 +87,12 @@ public class MessageController {
 	@RequestMapping(value = "/deleteMessage", method = RequestMethod.POST)
 	public ModelAndView deleteMessage(@RequestParam(value="messageId", required=true) long messageId, Principal principal) throws Exception {
 		ModelAndView model = new ModelAndView("myMessages");
+		User user = userService.getUserByUsername(principal.getName());
 
-		messageService.deleteMessage(messageId, userService.getUserByUsername(principal.getName()));
+		messageService.deleteMessage(messageId, user);
+		
+		model.addObject("inboxList", messageService.getInboxList(user));
+		model.addObject("sentList", messageService.getSentList(user));
 
 		return model;
 	}

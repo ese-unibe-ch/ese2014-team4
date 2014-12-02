@@ -20,7 +20,7 @@
 <!-- to insert space: &#160. will be improved -->
 <c:forEach items="${sentList}" var="message">
 	<b>To:</b> &#160&#160&#160&#160&#160 
-		<a href="${pageContext.request.contextPath}/profile?userId=${message.sender.id}">${message.sender.username}</a> 
+		<a href="${pageContext.request.contextPath}/profile?userId=${message.receiver.id}">${message.receiver.username}</a> 
 	<br> <b>Sent:</b> &#160&#160 
 		<fmt:formatDate type="both" dateStyle="short" pattern="dd.MM.yyyy   HH:mm" value="${message.date}" />
 	<pre>${message.messageText}</pre>
