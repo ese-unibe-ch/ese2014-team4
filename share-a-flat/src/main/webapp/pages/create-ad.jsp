@@ -58,8 +58,8 @@
 		<c:import url="embedded/addFlatmates.jsp"></c:import>
 	</div>
 	<div class="form-actions">
-		<span class="error">${errorMessage}</span>
-
+	
+	<span class="error">${errorMessage}</span>
 		<c:choose>
 			<c:when test="${isMyAd eq true}">
 				<c:set var="buttonLabel" value="Save Changes" />

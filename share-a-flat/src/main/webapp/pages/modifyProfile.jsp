@@ -165,7 +165,8 @@
 						<label class="col-lg-3 control-label" for="field-sex">Sex:</label>
 						<div class="radio">
 							<label><input type="radio" name="sex" id="male"
-								tabindex="7" value="M" ${checkedM}>Male</label> <label><input
+								tabindex="7" value="M" ${checkedM}>Male</label> <label>
+								<input
 								type="radio" name="sex" id="female" tabindex="8" value="F"
 								${checkedF}>Female</label><br>
 							<br>

@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -74,29 +75,30 @@ public class AdController {
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
-		try{
+		//try{
+		System.out.println(adForm.getId());
 			newAdService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
-		}
-		
-		catch (ConstraintViolationException e) {
-			ModelAndView model = new ModelAndView("create-ad");
-			model.addObject("zipCityAsArray", zipCityAsArray);
-			model.addObject("adForm", adForm);
-			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
-
-			return model;
-		}
-		// many possible exceptions, therefore juxt catch Exception
-		catch (Exception e) {
-			ModelAndView model = new ModelAndView("create-ad");
-			model.addObject("zipCityAsArray", zipCityAsArray);
-			model.addObject("adForm", adForm);
-			model.addObject("errorMessage", e.getMessage());
-
-			return model;
-		}
+//		}
+//		
+//		catch (ConstraintViolationException e) {
+//			ModelAndView model = new ModelAndView("create-ad");
+//			model.addObject("zipCityAsArray", zipCityAsArray);
+//			model.addObject("adForm", adForm);
+//			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
+//
+//			return model;
+//		}
+//		// many possible exceptions, therefore juxt catch Exception
+//		catch (Exception e) {
+//			ModelAndView model = new ModelAndView("create-ad");
+//			model.addObject("zipCityAsArray", zipCityAsArray);
+//			model.addObject("adForm", adForm);
+//			model.addObject("errorMessage", e.getMessage());
+//
+//			return model;
+//		}
 
 	}
 	
@@ -174,7 +176,7 @@ public class AdController {
 	@RequestMapping(value = "/removeFromBookmarks", method = RequestMethod.GET)
 	public ModelAndView removeFromBookmarks(
 			@RequestParam(value = "adId", required = true) long adId,
-			Principal principal) {
+			Principal principal, HttpServletRequest request) {
 		User user = userService.getUserByUsername(principal.getName());
 
 		ModelAndView model = showAd(adId, principal);
@@ -193,11 +195,11 @@ public class AdController {
 	
 
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
-	public ModelAndView registerForVisit(
+	public String registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
-			Principal principal, HttpSession session) {
+			Principal principal, HttpServletRequest request) {
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
-		return new ModelAndView("myPage");
+		return  "redirect:" + request.getHeader("Referer");
 	}
 	
 

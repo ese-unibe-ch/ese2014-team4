@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
@@ -18,6 +18,7 @@
 					</h3>
 				</div>
 				<div class="panel-body">
+				<c:choose><c:when test="${fn:length(adData.visitList) eq 0}">Visit by appointment only</c:when><c:otherwise>
 					<form action="registerForVisit" method="post">
 					<fieldset>
 						<c:forEach items="${adData.visitList}" var="visit">
@@ -27,5 +28,6 @@
 						<input type="submit" value = "register for visit"/>
 					</fieldset>
 					</form> 
+					</c:otherwise></c:choose>
 				</div>
 </div>

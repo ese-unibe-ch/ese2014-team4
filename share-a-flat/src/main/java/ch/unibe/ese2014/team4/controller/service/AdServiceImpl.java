@@ -49,10 +49,18 @@ public class AdServiceImpl implements AdService {
 	 */
 	@Transactional
 	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
+		Ad ad;
+		Address address;
+		if(adForm.getId()==0){
+			ad = new Ad();
+			address = new Address();
+		}
+		else{
+			ad = adDao.findById(adForm.getId());
+			address=ad.getAddress();
+		}
 
-		Ad ad = new Ad();
 
-		// ad.setPrice(adForm.getPrice());
 		ad.setNetto(adForm.getNetto());
 		ad.setCharges(adForm.getCharges());
 		ad.setBrutto();
@@ -92,7 +100,7 @@ public class AdServiceImpl implements AdService {
 			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
 		}
 
-		Address address = new Address();
+		
 		address.setCity(adForm.getCity());
 		address.setZipCode(adForm.getZipCode());
 		address.setStreet(adForm.getStreet());
@@ -161,12 +169,13 @@ public class AdServiceImpl implements AdService {
 		ad.setAdAddedDate(new Date());
 
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-
-		if (fileList.isEmpty()) {
-			ad.setBytePictureList(imageService.getDefaultImage());
-		}
-		else{
-			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
+		if(adForm.getId()!=0){
+			if (fileList.isEmpty()) {
+				ad.setBytePictureList(imageService.getDefaultImage());
+			}
+			else{
+				ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
+			}
 		}
 
 		Address address = ad.getAddress();
@@ -230,11 +239,6 @@ public class AdServiceImpl implements AdService {
 			return tmp;
 	}
 
-	// public List<Ad> getAdByPrice(int price) {
-	// List<Ad> ads = adDao.findAllByPrice(price);
-	// assert (ads.size() != 0);
-	// return ads;
-	// }
 
 	public List<Ad> getAdByBrutto(int brutto) {
 		List<Ad> ads = adDao.findAllByBrutto(brutto);

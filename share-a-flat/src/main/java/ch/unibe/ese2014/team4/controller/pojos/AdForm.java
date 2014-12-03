@@ -22,7 +22,7 @@ import ch.unibe.ese2014.team4.model.Visit;
 
 public class AdForm {
 
-	private Long id;
+	private long id;
 	
 	private String title;
 	private int size;
@@ -183,11 +183,11 @@ public class AdForm {
 		this.street = makeCapital(street);
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

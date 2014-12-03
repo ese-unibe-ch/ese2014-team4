@@ -60,7 +60,7 @@
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
 						<c:set var="sex" value="${user.profile.sex}" />
-							<c:if test="${user.profile.sex ne 'M' || user.profile.sex ne 'F'}">
+							<c:if test="${user.profile.sex ne 'M' && user.profile.sex ne 'F'}">
 								<c:set var="sex" value="--" />
 							</c:if>
 						<div class="col-lg-5">${sex}</div>

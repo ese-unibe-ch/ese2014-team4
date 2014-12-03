@@ -19,7 +19,7 @@
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 		
 		<div align="center" style="color: red">( * are mandatory fields! )</div>
-
+		<form:hidden path="id"/>
 		<c:set var="titleErrors">
 			<form:errors path="title" />
 		</c:set>
