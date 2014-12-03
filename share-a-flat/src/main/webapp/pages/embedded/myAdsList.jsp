@@ -8,8 +8,9 @@
 <hr>
 
 <c:forEach items="${myAdsList}" var="ad">
-	<a href="showAd?adId=${ad.id}" id="${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
-	<font size="1">(${ad.type})</font>	
+	<a href="showAd?adId=${ad.id}" id="${ad.id}"
+		style="font-size: 14pt; color: blue"><b>${ad.title}</b></a>
+	<font size="1">(${ad.type})</font>
 
 	<table>
 
@@ -22,7 +23,7 @@
 			</td>
 
 
-			<td width="150">${ad.address.street} ${ad.address.streetNumber}<br>
+			<td width="150">${ad.address.street}${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 
@@ -42,12 +43,13 @@
 					<b>Visits</b>
 				</h5></th>
 		</tr>
-		<tr >
+		<tr>
 			<c:forEach items="${ad.visitList}" var="visit">
-				<td width="200">
-					<li style="margin-left:15px">${visit}</li><br> registered visitors: 
-				<br> <c:forEach items="${visit.visitorList}" var="visitor">
-						<a href="profile?userId=${visitor.id}">${visitor.username}</a>
+				<td width="200" style="vertical-align:top">
+					<li style="margin-left: 15px">${visit}</li>
+				<br> registered visitors: <br> <c:forEach
+						items="${visit.visitorList}" var="visitor">
+						<a href="profile?userId=${visitor.id}">${visitor.username}</a> 
 					</c:forEach>
 				</td>
 			</c:forEach>

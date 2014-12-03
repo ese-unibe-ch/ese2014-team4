@@ -28,9 +28,6 @@
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>
 	</div>
-
-	<br>
-	
 </form>
 
 

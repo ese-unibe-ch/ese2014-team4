@@ -184,6 +184,7 @@
 				<c:set var="availableDateErrors">
 					<form:errors path="availableDate" />
 				</c:set>
+				
 				<div
 					class="control-group<c:if test="${not empty availableDateErrors}"> error</c:if>">
 					<label class="control-label" for="field-availableDate">Available
@@ -195,6 +196,7 @@
 							element="span" />
 						<br>
 					</div>
+					
 					<script type="text/javascript">
 						// When the document is ready
 						$(document).ready(function() {
@@ -204,6 +206,7 @@
 						});
 					</script>
 				</div>
+				
 				<tr>
 					<td>Order Search Results By:</td>
 					<td><form:select path="orderBy" id="dropDown"

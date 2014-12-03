@@ -18,6 +18,7 @@
 </style>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 <script>
 	//     document.getElementById("map-canvas").style.visibility="hidden";
 
@@ -80,6 +81,7 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
 <body onload="codeAddress()">
 
 	<h1 align="center">Search</h1>
@@ -112,26 +114,12 @@
 					onClick="swap('one','two','listButton', 'mapButton' )"
 					class="btn btn-info btn-xs">Switch to Map View</button>
 
-<!--    <input type="submit" value="Transfer Device" style="height: 68px; width: 197px; "> -->
-<!--         <tr> -->
-<!--             <td>order by:</td> -->
-<%--             <td><form:select path="orderBy"> --%>
-<%--                 <form:option value="0" label="--- Select ---" /> --%>
-<!--                <option value="newestFirst">newest first</option> -->
-<!--                <option value="availableDate">available date</option> -->
-<!--                <option value="price">Price</option> -->
-               
-<%--                 </form:select> --%>
-<!--             </td> -->
-<!--         </tr> -->
-<%-- </form:form> --%>
-
 			</div>
 
 			<div class="panel-body" style="max-height: 563px ;overflow-y: scroll;">
 				<span style="display: none" id="two"><c:import
-						url="searchResultsList.jsp" /></span> <span id="one"><div
-						id="map-canvas"></div> </span>
+						url="searchResultsList.jsp" /></span> 
+						<span id="one"><div id="map-canvas"></div></span>
 
 			</div>
 		</div>
