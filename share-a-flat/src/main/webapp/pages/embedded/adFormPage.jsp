@@ -297,6 +297,8 @@
             cell2.appendChild(element2);
  
         }
+        
+        <!-- delete defined in addFlatmates.jsp -->
  
     </SCRIPT>
 

@@ -7,6 +7,9 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -70,20 +73,20 @@ public class MessageController {
 	 */
 	//@ResponseBody
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
-		Principal principal) throws Exception {
+	public String sendMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
+		Principal principal, HttpServletRequest request) throws Exception {
 
 		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
+		//http://stackoverflow.com/questions/804581/spring-mvc-controller-redirect-to-previous-page
 
-		ModelAndView model = new ModelAndView("oldModel");
-		return model;
+		return "redirect:" + request.getHeader("Referer");
 	}
 	
 	/**
 	 * Controls deletion of the message.
 	 * 
 	 */
-	//@ResponseBody
+
 	@RequestMapping(value = "/deleteMessage", method = RequestMethod.POST)
 	public ModelAndView deleteMessage(@RequestParam(value="messageId", required=true) long messageId, Principal principal) throws Exception {
 		ModelAndView model = new ModelAndView("myMessages");

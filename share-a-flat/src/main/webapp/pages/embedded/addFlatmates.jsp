@@ -24,13 +24,13 @@
 						<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
 					</tr>
 				</table>
-				    <INPUT id="button-addFlatmate" type="button" value="Add flatmate" onclick="addRow('flatmateTable')" />
+				    <INPUT id="button-addFlatmate" type="button" value="Add flatmate" onclick="addRowFlatmate('flatmateTable')" />
  
     				<INPUT id="button-deleteFlatmate" type="button" value="Delete selected flatmate" onclick="deleteRow('flatmateTable')" />
 
 
 		    <SCRIPT type="text/javascript">
-        function addRow(tableID) {
+        function addRowFlatmate(tableID) {
  
             var table = document.getElementById(tableID);
  
@@ -43,7 +43,7 @@
             element1.name="chkbox[]";
             cell1.appendChild(element1);
  			
-            var id = "nput" + rowCount
+            var id = "input" + rowCount
             var cell2 = row.insertCell(1);
             var element2 = document.createElement("input");
             element2.type = "text";
@@ -60,8 +60,10 @@
             var rowCount = table.rows.length;
  
             for(var i=0; i<rowCount; i++) {
+            	alert(i);
                 var row = table.rows[i];
                 var chkbox = row.cells[0].childNodes[0];
+                alert(rowCount);
                 if(null != chkbox && true == chkbox.checked) {
                     table.deleteRow(i);
                     rowCount--;

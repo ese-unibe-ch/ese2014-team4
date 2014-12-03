@@ -22,7 +22,7 @@
 			</td>
 
 
-			<td width="150">${ad.address.street}${ad.address.streetNumber}<br>
+			<td width="150">${ad.address.street} ${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 
@@ -45,7 +45,7 @@
 		<tr >
 			<c:forEach items="${ad.visitList}" var="visit">
 				<td width="200">
-					<li style="margin-left:15px">${visit}</li>
+					<li style="margin-left:15px">${visit}</li><br> registered visitors: 
 				<br> <c:forEach items="${visit.visitorList}" var="visitor">
 						<a href="profile?userId=${visitor.id}">${visitor.username}</a>
 					</c:forEach>
