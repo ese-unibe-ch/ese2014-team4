@@ -161,6 +161,11 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	height: auto;
 }
 
+input[type='number'] {
+    -moz-appearance:textfield;
+    -webkit-appearance: textfield;
+}
+
 input[type="search"] {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;

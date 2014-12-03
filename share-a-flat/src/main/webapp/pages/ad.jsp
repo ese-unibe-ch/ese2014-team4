@@ -6,10 +6,8 @@
 
 <c:import url="template/header.jsp" />
 
-
-
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 <script>
 	var geocoder;
 	var map;
@@ -63,10 +61,13 @@
 							><h5>remove from bookmark</h5></a></c:otherwise>
 							</c:choose>
 					</h1>
+					
 					<h5 align="center">
 						<span>${bookmarkResponse}</span>
 					</h5>
+					
 					<hr>
+					
 				</div>
 			</div>
 		</div>
@@ -74,32 +75,35 @@
 	</div>
 	<!--/masthead-->
 
-	<!-- 						    <div id="map-canvas"></div> -->
-<c:if test="${isMyAd eq true}">
-<fieldset>
-	<form method="post" action="modifyAd?adId=${adData.id}">
-		<input name="modify" type="submit" value="modify Ad" class="btn btn-warning">
-		<input name="delete" type="submit" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')" class="btn btn-warning">
-	</form>
-</fieldset>	
-</c:if>
+	<c:if test="${isMyAd eq true}">
+		<fieldset>
+			<form method="post" action="modifyAd?adId=${adData.id}">
+				<input name="modify" type="submit" value="modify Ad" class="btn btn-warning"> 
+				<input name="delete" type="submit" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')"
+					class="btn btn-warning">
+			</form>
+		</fieldset>
+	</c:if>
+	
 	<div class="row">
 		<div class="col-md-3">
 			<div class="panel panel-default">
+			
 				<div class="panel-heading">
+				
 					<h3>
 						<b>Basic Data</b>
 					</h3>
 				</div>
+				
 				<div class="panel-body">
-
-
 
 					<h4>
 						<b>Address</b>
 					</h4>
 					${adData.address.street} ${adData.address.streetNumber}<br>
 					${adData.address.zipCode} ${adData.address.city}
+					
 					<hr>
 
 					<table>
@@ -125,48 +129,41 @@
 							<td>${adData.nrOfRooms}</td>
 						</tr>
 
-
-
 						<tr>
 							<td width="140"><b>Available from:</b></td>
 							<td>${adData.availableDate}</td>
 						</tr>
-
 					</table>
+					
 					<hr>
 
 					<c:if test="${adData.nrOfFlatMates != '0'}">
 
-					<table>
-						<tr><td>
-							<h4>
-								<b>Flatmates</b>
-							</h4>
-						</td></tr>
-
-						<tr>
-							<td width="140"><b>Nr of Flatmates:</b></td>
-							<td>${adData.nrOfFlatMates}</td>							
-						</tr>
-						<tr><td>
-						<c:forEach items="${adData.flatmateList}" var="flatmate">
-						
-							<a href="${pageContext.request.contextPath}/profile?userId=${flatmate.id}">${flatmate.username} </a>
-
-						
-						</c:forEach>
-						</td></tr>
-
-
-
+						<table>
+							<tr>
+								<td><h4><b>Flatmates</b></h4></td>
+							</tr>
+	
+							<tr>
+								<td width="140"><b>Nr of Flatmates:</b></td>
+								<td>${adData.nrOfFlatMates}</td>							
+							</tr>
+							
+							<tr>
+								<td>							
+									<c:forEach items="${adData.flatmateList}" var="flatmate">						
+									<a href="${pageContext.request.contextPath}/profile?userId=${flatmate.id}">${flatmate.username} </a>					
+									</c:forEach>							
+								</td>
+							</tr>
 						</table>
+						
 						<hr>
+					
 					</c:if>
+					
 					<table>
-						<tr>
-							<h4>
-								<b>Price</b>
-							</h4>
+						<tr><h4><b>Price</b></h4>
 						</tr>
 
 						<tr>
@@ -184,6 +181,7 @@
 							<td>CHF ${adData.brutto}.--</td>
 						</tr>
 					</table>
+					
 				</div>
 			</div>
 		</div>
@@ -224,15 +222,24 @@
 					<!-- /.modal -->
 
 					<p>
-					<h4>
-						<b>Description:</b>
-					</h4>
+					
+					<h4><b>Description:</b></h4>
 
-<%-- 					<pre>${adData.description}</pre> --%>
 					${adData.description}
 
 				</div>
 			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3><b>On Map</b></h3>
+				</div>
+				
+				<div class="panel-body">
+					<div id="map-canvas" style="width:520px; height:300px"></div>
+				</div>
+			</div>
+					
 		</div>
 
 		<div class="col-md-3">
@@ -242,37 +249,21 @@
 						<b>Contact</b>
 					</h3>
 				</div>
+				
 				<div class="panel-body">
 					<h4>
-						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
+						<u><b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b></u>
 					</h4>
-								
-					<br>
+					
 					<c:import url="embedded/sendMessageBox.jsp" />
 					
 				</div>
-
 			</div>
-			<c:import url="embedded/showVisits.jsp"></c:import>
-		</div>
-
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3>
-						<b>On Map</b>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div id="map-canvas" style="width:520px; height:300px"></div>
-				</div>
-			</div>
-		</div>
-
-
+			
+			<c:import url="embedded/showVisits.jsp"></c:import>	
+					
+		</div>	
 	</div>
-
-
 
 
 	<script>

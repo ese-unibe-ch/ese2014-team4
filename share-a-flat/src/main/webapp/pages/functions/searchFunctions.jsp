@@ -130,7 +130,6 @@
 
 		if (minPrice > 0) {
 			maxPrice.min = minPrice;
-			maxPrice.value = minPrice;
 		}
 
 		return true;
@@ -145,7 +144,6 @@
 
 		if (minNrOfRooms > 0) {
 			maxNrOfRooms.min = minNrOfRooms;
-			maxNrOfRooms.value = minNrOfRooms;
 		}
 
 		return true;
@@ -161,7 +159,6 @@
 
 		if (minNrOfFlatMates > 0) {
 			maxNrOfFlatMates.min = minNrOfFlatMates;
-			maxNrOfFlatMates.value = minNrOfFlatMates;
 		}
 
 		return true;

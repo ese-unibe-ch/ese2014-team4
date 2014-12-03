@@ -13,7 +13,7 @@
 <br>
 <span class=".hasError">${errorMessage}</span>
 
-<div class="col-md-12" align="center">
+
 
 		<div class="alert alert-info" align="left" style="height:50px">
            <h4><u><b>Personal Info:</b></u></h4>
@@ -22,8 +22,7 @@
 
 			<tr>
 				<td width="450">
-<!-- 				<legend style="font-size:2em"><br>Personal info</legend> -->
-
+				
 					<div class="form-group">
 						<label class="col-md-5 control-label">Username:</label>
 						<div class="col-lg-5">${user.username}</div>
@@ -76,6 +75,7 @@
 						<div class="col-lg-5">${descr}</div>
 						<br>
 					</div>
+					
 				</td>									
 			</tr>
 		</table>
