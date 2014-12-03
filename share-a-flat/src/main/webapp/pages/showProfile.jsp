@@ -12,45 +12,43 @@
 	<hr>
 </div>
 
-<fieldset>
 
-	<div class="col-md-2"></div>
 
-	<div class="col-md-3">
-		<div class="text-center">
-			<img
-				src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}"
-				class="img-responsive" alt="profileImage">
-		</div>
+<div class="col-md-3">
+	<div class="text-center">
+		<img
+			src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}"
+			class="img-responsive" alt="profileImage">
+	</div>
+</div>
+
+
+<!-- edit form column -->
+<div class="col-md-5 personal-info">
+	<c:import url="embedded/profile.jsp" />
+</div>
+
+
+<div class="col-md-4">
+	<br>
+	
+	<div class="alert alert-success" align="left" style="height: 50px">
+		<h4>
+			<u><b>Messaging:</b></u>
+		</h4>
+	</div>
+	
+	<div>
+		<c:import url="embedded/sendMessageBox.jsp" />
 	</div>
 
-	<!-- edit form column -->
-	<div class="col-md-5 personal-info">
-
-
-		<c:import url="embedded/profile.jsp" />
-
-
-		<table>
-			<tr>
-				<td width="450">
-
-					<div class="form-group">
-						<hr>
-						<c:import url="embedded/sendMessageBox.jsp" />
-					</div>
-
-
-					<div class="col-md-12" align="right">
-						<button type="button" onclick="history.go(-1);return true"
-							class=" btn btn-primary" tabindex="7">Go Back</button>
-					</div>
-
-				</td>
-			</tr>
-		</table>
+	<div class="col-md-12" align="right">
+		<button type="button" onclick="history.go(-1);return true"
+			class=" btn btn-warning" tabindex="7">Go Back</button>
 	</div>
-</fieldset>
+	
+</div>
+
 <hr>
 
 <script>
