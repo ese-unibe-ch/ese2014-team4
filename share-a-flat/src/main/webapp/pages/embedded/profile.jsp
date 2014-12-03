@@ -49,6 +49,7 @@
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-age">Age:</label>
 						<c:set var="age" value="${user.profile.age}" />
+							
 							<c:if test="${user.profile.age eq ''}">
 								<c:set var="age" value="--" />
 							</c:if>

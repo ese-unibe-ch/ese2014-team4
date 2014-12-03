@@ -52,28 +52,39 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3" >
+	
+	<div class="col-md-3">
 		<!-- right column -->
 		<c:import url="embedded/addFlatmates.jsp"></c:import>
 	</div>
-				<div class="form-actions">
-				<span class="error">${errorMessage}</span>
-				
-				<c:choose> <c:when test="${isMyAd eq true}"><c:set var="buttonLabel" value="Save Changes"/></c:when><c:otherwise><c:set var="buttonLabel" value="Create Ad"/></c:otherwise></c:choose>
-				<button type="submit" class="btn btn-primary" tabindex="13" value="Create Ad">${buttonLabel}</button>
-				<!-- 				<input type="reset" value="Reset"> -->
-				<a type="button" href="${pageContext.request.contextPath}/myPage"
-					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
-<%-- 				<a type="button" href="${pageContext.request.contextPath}/adPreview" --%>
-<!-- 					tabindex="14" class="btn btn-default" target="_blank">Preview</a> -->
-					
-<c:if test="${isMyAd eq true}">
-	<form method="post" action="modifyAd?adId=${adForm.id}">
-		<input type="submit" name="delete" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')" class="btn btn-warning">
-	</form>	
-</c:if>
+	<div class="form-actions">
+		<span class="error">${errorMessage}</span>
 
-			</div>
+		<c:choose>
+			<c:when test="${isMyAd eq true}">
+				<c:set var="buttonLabel" value="Save Changes" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="buttonLabel" value="Create Ad" />
+			</c:otherwise>
+		</c:choose>
+		<button type="submit" class="btn btn-primary" tabindex="13"
+			value="Create Ad">${buttonLabel}</button>
+		<!-- 				<input type="reset" value="Reset"> -->
+		<a type="button" href="${pageContext.request.contextPath}/myPage"
+			tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
+		<%-- 				<a type="button" href="${pageContext.request.contextPath}/adPreview" --%>
+		<!-- 					tabindex="14" class="btn btn-default" target="_blank">Preview</a> -->
+
+		<c:if test="${isMyAd eq true}">
+			<form method="post" action="modifyAd?adId=${adForm.id}">
+				<input type="submit" name="delete" value="delete Ad"
+					onclick="return confirm('Are you sure you want to delete your ad?')"
+					class="btn btn-warning">
+			</form>
+		</c:if>
+
+	</div>
 </form:form>
 
 <script type="text/javascript">
