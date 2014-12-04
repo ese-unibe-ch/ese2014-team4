@@ -61,7 +61,7 @@ public class Address {
 	    public String toString(){
 	    	StringBuilder builder = new StringBuilder();
 	    	builder.append(street + " " + streetNumber);
-	    	builder.append("\n"+ zipCode + " " + city);
+	    	builder.append(" "+ zipCode + " " + city);
 	    	return builder.toString();
 	    }
 	    
@@ -86,24 +86,7 @@ public class Address {
 		if (getClass() != obj.getClass())
 			return false;
 		Address other = (Address) obj;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (street == null) {
-			if (other.street != null)
-				return false;
-		} else if (!street.equals(other.street))
-			return false;
-		if (streetNumber != other.streetNumber)
-			return false;
-		if (zipCode != other.zipCode)
+		if (!id.equals(other.id))
 			return false;
 		return true;
 	}

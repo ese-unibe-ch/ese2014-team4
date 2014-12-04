@@ -310,73 +310,11 @@ public class Ad {
 		if (getClass() != obj.getClass())
 			return false;
 		Ad other = (Ad) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (availableDate == null) {
-			if (other.availableDate != null)
-				return false;
-		} else if (!availableDate.equals(other.availableDate))
-			return false;
-		if (brutto != other.brutto)
-			return false;
-		if (bytePictureList == null) {
-			if (other.bytePictureList != null)
-				return false;
-		} else if (!bytePictureList.equals(other.bytePictureList))
-			return false;
-		if (charges != other.charges)
-			return false;
-		if (creationDate == null) {
-			if (other.creationDate != null)
-				return false;
-		} else if (!creationDate.equals(other.creationDate))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (flatmateList == null) {
-			if (other.flatmateList != null)
-				return false;
-		} else if (!flatmateList.equals(other.flatmateList))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (netto != other.netto)
-			return false;
-		if (nrOfFlatMates != other.nrOfFlatMates)
-			return false;
-		if (Float.floatToIntBits(nrOfRooms) != Float
-				.floatToIntBits(other.nrOfRooms))
-			return false;
-		if (owner == null) {
-			if (other.owner != null)
-				return false;
-		} else if (!owner.equals(other.owner))
-			return false;
-		if (size != other.size)
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
-		if (type != other.type)
-			return false;
-		if (visitList == null) {
-			if (other.visitList != null)
-				return false;
-		} else if (!visitList.equals(other.visitList))
-			return false;
-		return true;
-	}
 
+		if (!id.equals(other.id))
+			return false;
+		else
+			return true;
+	}
 
 }

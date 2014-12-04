@@ -151,45 +151,10 @@ public class Profile implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Profile other = (Profile) obj;
-		if (age == null) {
-			if (other.age != null)
+
+		if (other.id != null)
 				return false;
-		} else if (!age.equals(other.age))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (!Arrays.equals(profileImage, other.profileImage))
-			return false;
-		if (sex != other.sex)
-			return false;
-		if (userDescription == null) {
-			if (other.userDescription != null)
-				return false;
-		} else if (!userDescription.equals(other.userDescription))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
+
 		return true;
 	}
 

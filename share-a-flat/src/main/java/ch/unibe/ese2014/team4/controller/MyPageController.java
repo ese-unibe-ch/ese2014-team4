@@ -55,7 +55,9 @@ public class MyPageController {
 			model.addObject("user", user);
 			model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 			model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+			//used for myAds and myVisitors
 			model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
+			model.addObject("myVisitsList", adService.getVisitsUserRegistered(user));
 		}
 		catch(InvalidUserException e){
 			

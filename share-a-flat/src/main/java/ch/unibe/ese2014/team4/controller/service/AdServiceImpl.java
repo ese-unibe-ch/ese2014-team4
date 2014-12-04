@@ -394,6 +394,11 @@ public class AdServiceImpl implements AdService {
 
 	}
 
+	public List<Visit> getVisitsUserRegistered(User user) {
+		
+		return user.getVisitsRegistered();
+	}
+
 
 
 }

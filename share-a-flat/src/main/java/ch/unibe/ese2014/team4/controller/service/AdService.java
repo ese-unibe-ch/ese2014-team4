@@ -19,7 +19,8 @@ public interface AdService {
 	//AdForm
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
 	public void updateAdFrom(long adId, AdForm adForm, User user) throws Exception;
-
+	public AdForm getAdFormForExistingAd(long adId);
+	
 	//Get ads
 	public Ad getAd(Long id);
 	public ArrayList<Ad> getNewestAds();
@@ -42,9 +43,11 @@ public interface AdService {
 	//Visit
 	public List<Visit> getVisitList(long adId);		
 	public void registerUserForVisit(Long visitId, User user);
+	public List<Visit> getVisitsUserRegistered(User user);
 
-
-	public AdForm getAdFormForExistingAd(long adId);
+	
 	public void deleteAd(Long adId);
+
+
 
 }

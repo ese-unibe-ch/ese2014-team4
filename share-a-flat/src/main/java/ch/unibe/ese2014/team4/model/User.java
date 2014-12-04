@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.IndexColumn;
@@ -62,14 +63,16 @@ public class User implements UserDetails {
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "inbox", joinColumns = @JoinColumn(name = "user_id"))
-	public List<Long> inbox = new ArrayList<Long>();
+	private List<Long> inbox = new ArrayList<Long>();
 	
 	@Lob 
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "sent", joinColumns = @JoinColumn(name = "user_id"))
-	public List<Long> sent = new ArrayList<Long>();
+	private List<Long> sent = new ArrayList<Long>();
 	
+	@OneToMany
+	private List<Visit> visitsRegistered = new ArrayList<Visit>();
 	
 	 public List<Long> getBookmarks() {
 			return bookmarks;
@@ -293,6 +296,14 @@ public class User implements UserDetails {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	public List<Visit> getVisitsRegistered() {
+		
+		return visitsRegistered;
+	}
+	public void setVisitsRegistered(List<Visit> list){
+		this.visitsRegistered=list;
 	}
 
 }

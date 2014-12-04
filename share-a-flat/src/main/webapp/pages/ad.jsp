@@ -52,13 +52,10 @@
 				<div>
 					<h1 style="color: blue" align="center">
 						<b>${adData.title}</b>
-							<c:if test=""></c:if>
-							<c:choose><c:when test="${isBookmarked eq false}"><a id="bookmarkStar"
-							href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"
-							><h5>bookmark me</h5></a></c:when>
-							<c:otherwise><a id="bookmarkStar"
-							href="${pageContext.request.contextPath}/removeFromBookmarks?adId=${adData.id}"
-							><h5>remove from bookmark</h5></a></c:otherwise>
+
+							<c:choose><c:when test="${isBookmarked eq false}">
+							<a id="bookmarkStar" href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"><img width=35 height=35 alt="click to bookmark" src="img/notbookmarked.png"></a></c:when>
+							<c:otherwise><a id="bookmarkStar" href="${pageContext.request.contextPath}/removeFromBookmarks?adId=${adData.id}"><img width=35 height=35  alt="click to remove from bookmarks" src="img/bookmarked.png"></a></c:otherwise>
 							</c:choose>
 					</h1>
 					
