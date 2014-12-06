@@ -101,7 +101,7 @@ public class AccountController {
 	public ModelAndView validateAccount(@RequestParam(value="validationString") String validationString, @RequestParam(value="userName") String userName){
 		User user = userService.getUserByUsername(userName);
 		accountService.activateAccount(user, validationString);
-		accountService.loginManually(user);
+//		accountService.loginManually(user);
 		return getSearchView(user);
 	}
 	/**
