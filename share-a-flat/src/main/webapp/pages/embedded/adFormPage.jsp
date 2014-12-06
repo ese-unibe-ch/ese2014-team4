@@ -71,7 +71,7 @@
 		<div class="controls">
 			<form:input type="number" min="1" max="1000" step="1" required="true"
 				path="streetNumber" id="field-streetNumber" class="form-control"
-				tabindex="5" maxlength="35" value="${adForm.streetNumber}"
+				tabindex="5" maxlength="4" value="${adForm.streetNumber}"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')"
 				pattern="\d{1,3}[A-Za-z]?" title="e.g. 60a" />
@@ -92,7 +92,7 @@
 		<div class="controls">
 			<form:input type="number" min="1000" max="9658" step="1"
 				required="true" path="zipCode" id="field-zipCode"
-				class="form-control" tabindex="6" maxlength="35"
+				class="form-control" tabindex="6" maxlength="4"
 				value="${adForm.zipCode}"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')" pattern="\d{4}"
@@ -131,8 +131,8 @@
 	</label>
 
 	<div class="controls">
-		<form:input type="number" min="0" max="1000" step="1" path="size"
-			id="field-size" class="form-control" tabindex="8" maxlength="45"
+		<form:input type="number" min="0" max="1000000" step="1" path="size"
+			id="field-size" class="form-control" tabindex="8" maxlength="6"
 			value="${adForm.size}"
 			onfocus="(this.value == '0') && (this.value = '')"
 			onblur="(this.value == '') && (this.value = '0')" />
@@ -149,9 +149,9 @@
 		Rooms (whole flat)</label>
 
 	<div class="controls">
-		<form:input type="number" min="0" max="100" step="0.5"
+		<form:input type="number" min="0" max="1000000" step="0.5"
 			path="nrOfRooms" id="field-nrOfRooms" class="form-control"
-			tabindex="9" maxlength="45" value="${adForm.nrOfRooms}"
+			tabindex="9" maxlength="6" value="${adForm.nrOfRooms}"
 			onfocus="(this.value == '0.0') && (this.value = '')"
 			onblur="(this.value == '') && (this.value = '0.0')" />
 		<form:errors path="nrOfRooms" cssClass="help-inline" element="span" />
@@ -166,8 +166,8 @@
 		class="control-group<c:if test="${not empty nettoErrors}"> error</c:if>">
 		<label class="control-label" for="field-netto">Netto-Price:</label>
 		<div class="controls">
-			<form:input type="number" min="0" max="100000" step="1" path="netto"
-				id="field-netto" class="form-control" tabindex="10" maxlength="35"
+			<form:input type="number" min="0" max="1000000" step="1" path="netto"
+				id="field-netto" class="form-control" tabindex="10" maxlength="6"
 				value="${adForm.netto}"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')" />
@@ -184,9 +184,9 @@
 		class="control-group<c:if test="${not empty chargesErrors}"> error</c:if>">
 		<label class="control-label" for="field-charges">Charges:</label>
 		<div class="controls">
-			<form:input type="number" min="0" max="100000" step="1"
-				path="charges" id="field-charges" class="form-control" tabindex="10"
-				maxlength="35" value="${adForm.charges}"
+			<form:input type="number" min="0" max="1000000" step="1"
+				path="charges" id="field-charges" class="form-control" tabindex="11"
+				maxlength="6" value="${adForm.charges}"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')" />
 			<form:errors path="charges" cssClass="help-inline" element="span" />
@@ -202,9 +202,9 @@
 	<label class="control-label" for="field-nrOfFlatMates">Number
 		of Flatmates</label>
 	<div class="controls">
-		<form:input type="number" min="0" max="10" step="1"
+		<form:input type="number" min="0" max="1000000" step="1"
 			path="nrOfFlatMates" id="field-nrOfFlatMates" class="form-control"
-			tabindex="11" maxlength="35" value="${adForm.nrOfFlatMates}"
+			tabindex="12" maxlength="6" value="${adForm.nrOfFlatMates}"
 			onfocus="(this.value == '0') && (this.value = '')"
 			onblur="(this.value == '') && (this.value = '0')" />
 		<form:errors path="nrOfFlatMates" cssClass="help-inline"
@@ -222,7 +222,7 @@
 		from</label>
 	<div class="controls">
 		<form:input type="text" path="availableDate" id="field-availableDate"
-			class="form-control" tabindex="12" maxlength="35"
+			class="form-control" tabindex="13" maxlength="35"
 			placeholder="e.g. 01-01-2015"
 			onfocus="(this.placeholder == 'e.g. 01-01-2015') && (this.placeholder = '')"
 			onblur="(this.placeholder == '') && (this.placeholder = 'e.g. 01-01-2015')" />
@@ -314,7 +314,7 @@
 			<div class="controls">
 				<form:textarea required="true" class="form-control"
 					path="description" id="field-description"
-					style="width:100%; height:160px; resize:none" tabindex="12"
+					style="width:100%; height:160px; resize:none" tabindex="14"
 					placeholder="Description"
 					onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
 					onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />

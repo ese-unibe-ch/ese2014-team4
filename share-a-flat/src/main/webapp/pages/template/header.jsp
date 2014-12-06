@@ -12,6 +12,7 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/customFunctions.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
+
 <style>
 body {
 	padding-top: 50px;

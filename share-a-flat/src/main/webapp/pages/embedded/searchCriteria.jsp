@@ -52,8 +52,7 @@
 							id="field-cityOrZip" tabindex="3" maxlength="35"
 							placeholder="City or Zip"
 							onfocus="(this.placeholder == 'City or Zip') && (this.placeholder = '')"
-							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')"
-							x-moz-errormessage="Please enter a Zip or a City." />
+							onblur="(this.placeholder == '') && (this.placeholder = 'City or Zip')" />
 						<form:errors path="cityOrZip" cssClass="help-inline"
 							element="span" />
 					</div>
@@ -70,7 +69,7 @@
 						<div class="controls">
 							<form:input type="number" min="0" max="10000000" step="100"
 								class="form-control" path="minPrice" id="field-minPrice"
-								tabindex="4" maxlength="35" value="0"
+								tabindex="4" maxlength="6" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="minPrice" cssClass="help-inline"
@@ -91,7 +90,7 @@
 						<div class="controls">
 							<form:input type="number" min="0" max="10000000" step="100"
 								class="form-control" path="maxPrice" id="field-maxPrice"
-								tabindex="5" maxlength="35" value="0"
+								tabindex="5" maxlength="6" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="maxPrice" cssClass="help-inline"
@@ -110,9 +109,9 @@
 							of Rooms from: </label>
 						<div class="controls">
 
-							<form:input type="number" min="0" max="100" step="0.5"
+							<form:input type="number" min="0" max="1000000" step="0.5"
 								class="form-control" path="minNrOfRooms" id="field-minNrOfRooms"
-								tabindex="6" maxlength="35" value="0"
+								tabindex="6" maxlength="6" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="minNrOfRooms" cssClass="help-inline"
@@ -130,9 +129,9 @@
 						<label class="control-label" for="field-maxNrOfRooms">to:</label>
 						<div class="controls">
 
-							<form:input type="number" min="0" max="100" step="0.5"
+							<form:input type="number" min="0" max="1000000" step="0.5"
 								class="form-control" path="maxNrOfRooms" id="field-maxNrOfRooms"
-								tabindex="6" maxlength="35" value="0"
+								tabindex="7" maxlength="6" value="0"
 								onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="maxNrOfRooms" cssClass="help-inline"
@@ -151,9 +150,9 @@
 						<label class="control-label" for="field-minNrOfFlatMates">Nr
 							of Flatmates from:</label>
 						<div class="controls">
-							<form:input type="number" min="0" max="100" step="1"
+							<form:input type="number" min="0" max="1000000" step="1"
 								class="form-control" path="minNrOfFlatMates"
-								id="field-minNrOfFlatMates" tabindex="7" maxlength="35"
+								id="field-minNrOfFlatMates" tabindex="8" maxlength="6"
 								value="0" onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="minNrOfFlatMates" cssClass="help-inline"
@@ -170,9 +169,9 @@
 						class="control-group<c:if test="${not empty maxNrOfFlatMatesErrors}"> error</c:if>">
 						<label class="control-label" for="field-maxNrOfFlatMates">to:</label>
 						<div class="controls">
-							<form:input type="number" min="0" max="100" step="1"
+							<form:input type="number" min="0" max="1000000" step="1"
 								class="form-control" path="maxNrOfFlatMates"
-								id="field-maxNrOfFlatMates" tabindex="7" maxlength="35"
+								id="field-maxNrOfFlatMates" tabindex="9" maxlength="6"
 								value="0" onfocus="(this.value == '0') && (this.value = '')"
 								onblur="(this.value == '') && (this.value = '0')" />
 							<form:errors path="maxNrOfFlatMates" cssClass="help-inline"
@@ -191,7 +190,7 @@
 						Date:</label>
 					<div class="controls">
 						<form:input type="text" class="form-control" path="availableDate"
-							id="field-availableDate" tabindex="8" placeholder="DD-MM-YYYY" />
+							id="field-availableDate" tabindex="10" placeholder="DD-MM-YYYY" />
 						<form:errors path="availableDate" cssClass="help-inline"
 							element="span" />
 						<br>
@@ -222,10 +221,9 @@
 
 				<div class="form-actions" >
 					<br>
-					<button type="submit" name="search" tabindex="9" class="btn btn-primary">Search Ad</button>
-					<button type="submit" name="save" tabindex="9" class="btn btn-info">Save search</button>
-					<button type="reset" tabindex="10" class="btn btn-default">Reset</button>
-<!-- 					<button type="button" onclick="history.go(-1);return true" class=" btn" tabindex="7">Back</button> -->
+					<button type="submit" name="search" tabindex="11" class="btn btn-primary">Search Ad</button>
+					<button type="submit" name="save" tabindex="12" class="btn btn-info">Save search</button>
+					<button type="reset" tabindex="13" class="btn btn-default">Reset</button>
 				</div>
 
 			</div>

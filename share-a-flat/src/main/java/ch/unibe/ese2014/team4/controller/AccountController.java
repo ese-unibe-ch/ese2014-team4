@@ -2,6 +2,8 @@ package ch.unibe.ese2014.team4.controller;
 
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -18,7 +20,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
 import ch.unibe.ese2014.team4.controller.service.AccountService;
+import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
+import ch.unibe.ese2014.team4.model.Ad;
+import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.SearchForm;
 import ch.unibe.ese2014.team4.model.User;
 
@@ -38,8 +43,9 @@ public class AccountController {
     @Autowired
     UserService userService;
     
-
-
+    @Autowired
+	AdService adService;
+    
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		
@@ -114,9 +120,23 @@ public class AccountController {
 	private ModelAndView getSearchView(User user){
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("whatToDisplay", "Newest Ads");
+		ArrayList<Ad> newestAdds = adService.getNewestAds();
+		model.addObject("adList", newestAdds);
+		
+		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
+		model.addObject("addresses", addresses);
 
 		model.addObject("user", user);
 		model.addObject("searchForm", new SearchForm());
 		return model;
+	}
+	
+	private List<MapAddress> getAddressesForMap(List<Ad> adsToAdd) {
+		List<MapAddress> addresses = new ArrayList<MapAddress>();
+		for (Ad ad : adsToAdd) {
+			MapAddress tmpMapAddress = ad.getAddressForMap();
+			addresses.add(tmpMapAddress);
+		}
+		return addresses;
 	}
 }

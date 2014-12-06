@@ -7,6 +7,15 @@
 
 <c:forEach items="${adList}" var="ad">
 	<a href="showAd?adId=${ad.id}" style="font-size: 14pt; color: blue"><b>${ad.title}</b></a> <font size="1">(${ad.type})</font>
+	
+<!-- 	<span style="float:right; width:50px; displas:block"> -->
+<%-- 		<c:choose><c:when test="${isBookmarked eq false}"> --%>
+<%-- 			<a id="bookmarkStar" href="${pageContext.request.contextPath}/addToBookmarks?adId=${adData.id}"><img width=35 height=35 alt="click to bookmark" src="img/notbookmarked.png"></a></c:when> --%>
+<%-- 		<c:otherwise> --%>
+<%-- 			<a id="bookmarkStar" href="${pageContext.request.contextPath}/removeFromBookmarks?adId=${adData.id}"><img width=35 height=35  alt="click to remove from bookmarks" src="img/bookmarked.png"></a></c:otherwise> --%>
+<%-- 		</c:choose> --%>
+<!-- 	</span> -->
+	
 	<table>
 
 		<tr>

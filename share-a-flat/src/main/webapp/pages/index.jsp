@@ -12,7 +12,6 @@ div.transbox {
 	height: 270px;
 	margin: 60px 40px;
 	background-color: #fff;
-	/*     background-color: rgba(255,255,255,.5); */
 	border: 1px solid black;
 	opacity: 0.6;
 }
@@ -23,11 +22,11 @@ div.transbox {
 
 <!-- focuses userfield on load -->
 <script type="text/javascript">
-window.onload = function(){
-  var text_input = document.getElementById ('userField');
-  text_input.focus ();
-  text_input.select ();
-}
+	window.onload = function() {
+		var text_input = document.getElementById('userField');
+		text_input.focus();
+		text_input.select();
+	}
 </script>
 <li class="inactive"><a
 	href="${pageContext.request.contextPath}/register">Not yet a
@@ -59,9 +58,9 @@ window.onload = function(){
 
 
 			<b>Username:</b><br> <input id="userField" type="text"
-				name="j_username" value="" tabindex="1" placeholder="Username" /><br>
+				name="j_username" value="" tabindex="1" placeholder="Username" required x-moz-errormessage="Please enter your Username."/><br>
 			<br> <b>Password:</b><br> <input type="password"
-				name="j_password" value="" tabindex="2" placeholder="Password" /><br>
+				name="j_password" value="" tabindex="2" placeholder="Password" required x-moz-errormessage="Please enter your Password"/><br>
 			<br>
 
 			<div class="form-actions">

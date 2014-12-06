@@ -94,21 +94,24 @@ public class ProfileController {
 	public ModelAndView saveProfile(ProfileForm profileForm, BindingResult result, Principal principal) throws Exception {
 		ModelAndView model;
 		User user = userService.getUserByUsername(principal.getName());
-		if (!result.hasErrors()){
+		if (!result.hasErrors()) {
+			
 			if(userService.isPasswordCorrect(profileForm.getOldPassword(), user)){
 				profileService.updateProfileFrom(profileForm, user); 
 				return showMyProfile(principal);
 			}
-			else{
+			else {
 				model = new ModelAndView("modifyProfile");
-				model.addObject("profileForm",  new ProfileForm());
-				model.addObject("user",user);
+				model.addObject("profileForm", new ProfileForm());
+				model.addObject("user", user);
 				model.addObject("errorMessage", "Password wrong");
 			}
-
+			
 		}
-		else {model = new ModelAndView("myPage");}
-		return model;
+		else {
+			model = new ModelAndView("myPage");
+		}
 		
+		return model;	
 	}	
 }
