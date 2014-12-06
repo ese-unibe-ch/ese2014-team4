@@ -6,26 +6,22 @@
 
 <c:import url="functions/generalFunctions.jsp" />
 <c:import url="template/header.jsp" />
-
-<style>
-#field-age {
- 	-moz-appearance:textfield;
- 	-webkit-appearance:textfield;
-}
-</style>
+<c:import url="functions/modifyProfileFunctions.jsp" />
 
 
 <div class="container">
 	<h1>Edit Profile</h1>
+	
 	<hr>
+	
 	<div class="row">
 		<!-- left column -->
 		<!-- enctyp="multipart/form-data": enables MultipartFile-upload -->
 
-		
+
 		<form:form enctype="multipart/form-data" method="post"
 			modelAttribute="profileForm" action="saveProfile"
-			onsubmit="return isValid()" id="profileForm"
+			onsubmit="return storeValues()" id="profileForm"
 			cssClass="form-horizontal" autocomplete="off">
 
 
@@ -45,7 +41,7 @@
 
 				<!-- edit form column -->
 				<div class="col-md-9 personal-info">
-						<legend>Personal info</legend>
+					<legend>Personal info</legend>
 					<p class="bg-danger">${errorMessage}</p>
 					<c:set var="usernameErrors">
 						<form:errors path="username" />
@@ -55,12 +51,12 @@
 						<label class="col-lg-3 control-label">Username:</label>
 						<div class="col-lg-8">
 							<form:input path="username" class="form-control"
-								value="${user.username}" type="text" tabindex="1" readonly="true" />
+								value="${user.username}" type="text" tabindex="1"
+								readonly="true" />
 							<form:errors path="username" cssClass="help-inline"
 								element="span" />
 						</div>
 					</div>
-
 
 
 					<c:set var="emailErrors">
@@ -76,15 +72,22 @@
 					</div>
 
 
-          <c:set var="passwordErrors"><form:errors path="oldPassword"/></c:set>
-	        <div class="form-group<c:if test="${not empty passwordErrors}">error</c:if>">
-	            <label class="col-lg-3 control-label" for="field-oldPassword">Old Password:</label>
-	            <div class="col-lg-8">
-	                <form:input path="oldPassword" class="form-control"  id="field-oldPassword" tabindex="3" maxlength="35" placeholder="Password" />
-	                <form:errors path="oldPassword" cssClass="help-inline" element="span"/>
-	            </div>
-	        </div>
-	      
+					<c:set var="passwordErrors">
+						<form:errors path="oldPassword" />
+					</c:set>
+					<div
+						class="form-group<c:if test="${not empty passwordErrors}">error</c:if>">
+						<label class="col-lg-3 control-label" for="field-oldPassword">Old
+							Password:</label>
+						<div class="col-lg-8">
+							<form:input path="oldPassword" class="form-control"
+								id="field-oldPassword" tabindex="3" maxlength="35"
+								placeholder="Password" required="true" />
+							<form:errors path="oldPassword" cssClass="help-inline"
+								element="span" />
+						</div>
+					</div>
+
 
 					<c:set var="passwordErrors">
 						<form:errors path="password" />
@@ -95,7 +98,7 @@
 							Password:</label>
 						<div class="col-lg-8">
 							<form:password path="password" class="form-control"
-								id="field-password" tabindex="3" maxlength="35"
+								id="field-password" tabindex="4" maxlength="35"
 								placeholder="Password" />
 							<form:errors path="password" cssClass="help-inline"
 								element="span" />
@@ -109,8 +112,10 @@
 							new password:</label>
 						<div class="col-lg-8">
 							<form:password path="passwordRepeated" class="form-control"
-								id="field-passwordRepeated" tabindex="4" maxlength="35"
-								placeholder="Repeat password" title="must be the same as the 'Password' entered before" oninput="checkPassword(document.getElementById('field-password'), this);"/>
+								id="field-passwordRepeated" tabindex="5" maxlength="35"
+								placeholder="Repeat password"
+								title="must be the same as the 'Password' entered before"
+								oninput="checkPassword(document.getElementById('field-password'), this);" />
 							<form:errors path="passwordRepeated" cssClass="help-inline"
 								element="span" />
 						</div>
@@ -124,9 +129,10 @@
 						<label class="col-lg-3 control-label" for="field-phoneNumber">phoneNumber:</label>
 						<div class="col-lg-8">
 							<form:input class="form-control" path="phoneNumber"
-								id="field-phoneNumber" type="tel" 
-								tabindex="5" maxlength="13"
-								value="${user.profile.phoneNumber}" placeholder="e.g. '032 123 12 12'" pattern='\d\d\d \d\d\d \d\d \d\d' title="e.g. '032 123 12 12'"/>
+								id="field-phoneNumber" type="tel" tabindex="6" maxlength="13"
+								value="${user.profile.phoneNumber}"
+								placeholder="e.g. '032 123 12 12'"
+								pattern='\d\d\d \d\d\d \d\d \d\d' title="e.g. '032 123 12 12'" />
 							<form:errors path="phoneNumber" cssClass="help-inline"
 								element="span" />
 						</div>
@@ -140,7 +146,7 @@
 						<label class="col-lg-3 control-label" for="field-age">Age:</label>
 						<div class="col-lg-8">
 							<form:input type="number" min="10" max="120" step="1"
-								class="form-control" path="age" id="field-age" tabindex="6"
+								class="form-control" path="age" id="field-age" tabindex="7"
 								maxlength="45" value="${user.profile.age}" />
 							<form:errors path="age" cssClass="help-inline" element="span" />
 						</div>
@@ -165,11 +171,10 @@
 						<label class="col-lg-3 control-label" for="field-sex">Sex:</label>
 						<div class="radio">
 							<label><input type="radio" name="sex" id="male"
-								tabindex="7" value="M" ${checkedM}>Male</label> <label>
-								<input
-								type="radio" name="sex" id="female" tabindex="8" value="F"
-								${checkedF}>Female</label><br>
-							<br>
+								tabindex="8" value="M" ${checkedM}>Male</label> <label>
+								<input type="radio" name="sex" id="female" tabindex="9"
+								value="F" ${checkedF}>Female
+							</label><br> <br>
 						</div>
 					</div>
 
@@ -177,9 +182,9 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">Description:</label>
 						<div class="col-lg-8">
-							<form:input class="form-control"
+							<form:input class="form-control" id="field-description"
 								value="${user.profile.userDescription}" type="text"
-								path="userDescription" tabindex="8"
+								path="userDescription" tabindex="10"
 								placeholder="describe yourself" />
 							<form:errors path="userDescription" cssClass="help-inline"
 								element="span" />
@@ -187,25 +192,21 @@
 					</div>
 
 
-
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-8">
-							<button type="submit" value="saveProfile" tabindex="6"
+							<button type="submit" value="saveProfile" tabindex="11"
 								class="btn btn-primary">Save Profile</button>
-							<!--             <input type="reset" value="Reset"> -->
 							<a type="button" href="${pageContext.request.contextPath}/myPage"
-								onclick="return showAlert()" tabindex="7"
+								onclick="return showAlert()" tabindex="12"
 								class="btn btn-default">Cancel</a>
 						</div>
 					</div>
 			</fieldset>
 		</form:form>
-
-
 	</div>
 </div>
-</div>
+
 <hr>
 
 <c:import url="template/footer.jsp" />

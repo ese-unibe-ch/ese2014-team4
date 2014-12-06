@@ -23,13 +23,13 @@
 			</td>
 
 
-			<td width="150">${ad.address.street}${ad.address.streetNumber}<br>
+			<td width="150">${ad.address.street} ${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 
 			<td width="60"><b>Price:</b><br> <b>Size:</b><br></td>
 
-			<td width="100">${ad.brutto}CHF<br> ${ad.size} m&sup2<br>
+			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
 			</td>
 
 			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
@@ -39,8 +39,8 @@
 
 	<table>
 		<tr>
-			<th><h5>
-					<b>Visits</b>
+			<th><h5 style="color:DarkOrange">
+					<u><b>Visits</b></u>
 				</h5></th>
 		</tr>
 		<tr>
@@ -49,7 +49,7 @@
 					<li style="margin-left: 15px">${visit}</li>
 				<br> registered visitors: <br> <c:forEach
 						items="${visit.visitorList}" var="visitor">
-						<a href="profile?userId=${visitor.id}">${visitor.username}</a> 
+						<a href="profile?userId=${visitor.id}">${visitor.username}, </a> 
 					</c:forEach>
 				</td>
 			</c:forEach>

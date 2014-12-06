@@ -56,6 +56,7 @@ public class AdController {
 
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
 	public ModelAndView createAd() {
+		
 		ModelAndView model = new ModelAndView("create-ad");
 		model.addObject("zipCityAsArray", zipCityAsArray);
 		model.addObject("adForm", new AdForm());
@@ -111,6 +112,7 @@ public class AdController {
 	@RequestMapping(value = "/showAd", method = RequestMethod.GET)
 	public ModelAndView showAd(
 			@RequestParam(value = "adId", required = true) long adId, Principal principal) {
+		
 		ModelAndView model = new ModelAndView("ad");
 		Ad ad = newAdService.getAd(adId);
 
@@ -130,18 +132,20 @@ public class AdController {
 	}
 	
 	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
-	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal){
+	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
+		
 		ModelAndView model = new ModelAndView("create-ad");
 		model.addObject("isMyAd", true);
 		Ad ad = newAdService.getAd(adId);
 		model.addObject("adData", ad);
 		model.addObject("visitList", ad.getVisitList());
 		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
+		
 		return model;
 	}
 	@ResponseBody
 	@RequestMapping(params ="delete", value="/modifyAd")
-	public void deleteAd(@RequestParam(value="adId")Long adId){
+	public void deleteAd(@RequestParam(value="adId")Long adId) {
 		adService.deleteAd(adId);
 	}	
 
@@ -160,14 +164,10 @@ public class AdController {
 		User user = userService.getUserByUsername(principal.getName());
 
 		ModelAndView model = showAd(adId, principal);
-		try {
-			adService.bookMarkAdforUser(adId, user);
-			model.addObject("isBookmarked", true);
-			model.addObject("bookmarkResponse", "Bookmarked successfully!");
-
-		} catch (BookmarkException e) {
-			model.addObject("bookmarkResponse", "Already bookmarked!");
-		}
+		
+		adService.bookMarkAdforUser(adId, user);
+		model.addObject("isBookmarked", true);
+		model.addObject("bookmarkResponse", "Bookmarked successfully!");
 
 		return model;
 	}
@@ -177,17 +177,14 @@ public class AdController {
 	public ModelAndView removeFromBookmarks(
 			@RequestParam(value = "adId", required = true) long adId,
 			Principal principal, HttpServletRequest request) {
+		
 		User user = userService.getUserByUsername(principal.getName());
 
 		ModelAndView model = showAd(adId, principal);
-		try {
-			adService.bookMarkAdforUser(adId, user);
-			model.addObject("isBookmarked", false);
-			model.addObject("bookmarkResponse", "Removed successfully!");
-
-		} catch (BookmarkException e) {
-			model.addObject("bookmarkResponse", "Was not bookmarked!");
-		}
+		
+		adService.bookMarkAdforUser(adId, user);
+		model.addObject("isBookmarked", false);
+		model.addObject("bookmarkResponse", "Removed Bookmark successfully!");
 
 		return model;
 	}
@@ -198,7 +195,9 @@ public class AdController {
 	public String registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
 			Principal principal, HttpServletRequest request) {
+		
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
+		
 		return  "redirect:" + request.getHeader("Referer");
 	}
 	

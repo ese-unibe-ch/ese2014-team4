@@ -58,7 +58,7 @@ public class SearchController {
 	}
 	
 	@RequestMapping(params = "save", value = "/submitSearch", method = RequestMethod.POST)
-	public ModelAndView saveSearch(@Valid SearchForm searchForm,BindingResult result, Principal principal) {
+	public ModelAndView saveSearch(@Valid SearchForm searchForm, BindingResult result, Principal principal) {
 		ModelAndView model = new ModelAndView("myPage");
 		User user = userService.getUserByUsername(principal.getName());
 		searchForm.setOwner(user);

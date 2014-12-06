@@ -31,7 +31,7 @@ function deleteMessageAlert() {
 
 function showAlert(){
 	var cancelYes = confirm ( "Cancel and discard all?" );
-	 if( cancelYes == true ){
+	 if( cancelYes == true ) {
 	      //alert("User wants to continue!");
 		  return true;
 	   }else{

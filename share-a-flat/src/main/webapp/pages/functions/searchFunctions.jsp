@@ -75,18 +75,6 @@
 	// 			return true;
 	// 	}
 
-	function checkMaxPrice() {
-		var max = document.getElementById("field-maxPrice");
-		var min = document.getElementById("field-minPrice");
-		if (max.value < min.value) {
-			alert("Max price must be higher than min price.");
-			// 			document.getElementById("SearchErrorMessage").innerHTML = SearchErrorMessage;
-			max.focus();
-			return false;
-		} else
-			return true;
-	}
-
 	function checkZip() {
 		var zip = document.getElementById("field-cityOrZip");
 

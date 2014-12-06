@@ -325,7 +325,10 @@ public class AdServiceImpl implements AdService {
 		}
 
 		else {
-			throw new BookmarkException("Already bookmarked!");
+			list.remove(list.indexOf(adId));
+			user.setBookmarks(list);
+			userDao.save(user);
+//			throw new BookmarkException("Already bookmarked!");
 
 		}
 
