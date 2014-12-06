@@ -37,7 +37,7 @@
 					
 				</table>
 
-				    <INPUT type="button" value="Add visit" onclick="addRowVisit('visitTable')" />
+				    <INPUT type="button" value="Add another visit" onclick="addRowVisit('visitTable')" />
  
     				<INPUT type="button" value="Delete selected visit" onclick="deleteRow('visitTable')" />
 

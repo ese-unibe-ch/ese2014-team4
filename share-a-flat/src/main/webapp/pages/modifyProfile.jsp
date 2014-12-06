@@ -29,7 +29,7 @@
 				<div class="col-md-3">
 					<div class="text-center">
 						<img
-							src="${pageContext.request.contextPath}/imageController/profile/${user.profile.id}"
+							src="${pageContext.request.contextPath}/imageController/profile/${user.id}"
 							class="img-responsive" alt="profileImage">
 						<h6>Upload a different photo...</h6>
 
@@ -130,7 +130,7 @@
 						<div class="col-lg-8">
 							<form:input class="form-control" path="phoneNumber"
 								id="field-phoneNumber" type="tel" tabindex="6" maxlength="13"
-								value="${user.profile.phoneNumber}"
+								value="${user.phoneNumber}"
 								placeholder="e.g. '032 123 12 12'"
 								pattern='\d\d\d \d\d\d \d\d \d\d' title="e.g. '032 123 12 12'" />
 							<form:errors path="phoneNumber" cssClass="help-inline"
@@ -147,19 +147,19 @@
 						<div class="col-lg-8">
 							<form:input type="number" min="10" max="120" step="1"
 								class="form-control" path="age" id="field-age" tabindex="7"
-								maxlength="45" value="${user.profile.age}" />
+								maxlength="45" value="${user.age}" />
 							<form:errors path="age" cssClass="help-inline" element="span" />
 						</div>
 					</div>
 
 					<!-- sets current_profile sex -->
 					<c:set var="checkedM" value="" />
-					<c:if test="${user.profile.sex eq 'M'}">
+					<c:if test="${user.sex eq 'M'}">
 						<c:set var="checkedM" value="checked" />
 					</c:if>
 
 					<c:set var="checkedF" value="" />
-					<c:if test="${user.profile.sex eq 'F'}">
+					<c:if test="${user.sex eq 'F'}">
 						<c:set var="checkedF" value="checked" />
 					</c:if>
 
@@ -183,7 +183,7 @@
 						<label class="col-lg-3 control-label">Description:</label>
 						<div class="col-lg-8">
 							<form:input class="form-control" id="field-description"
-								value="${user.profile.userDescription}" type="text"
+								value="${user.userDescription}" type="text"
 								path="userDescription" tabindex="10"
 								placeholder="describe yourself" />
 							<form:errors path="userDescription" cssClass="help-inline"

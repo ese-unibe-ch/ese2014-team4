@@ -18,7 +18,6 @@ public interface AdService {
 	
 	//AdForm
 	public AdForm saveAdForm(AdForm adForm, User owner) throws InvalidUserException, Exception;
-	public void updateAdFrom(long adId, AdForm adForm, User user) throws Exception;
 	public AdForm getAdFormForExistingAd(long adId);
 	
 	//Get ads

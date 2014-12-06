@@ -37,8 +37,8 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-phoneNumber">Phone Number:</label>
-						<c:set var="phoneNr" value="${user.profile.phoneNumber}" />
-							<c:if test="${user.profile.phoneNumber eq ''}">
+						<c:set var="phoneNr" value="${user.phoneNumber}" />
+							<c:if test="${user.phoneNumber eq ''}">
 								<c:set var="phoneNr" value="--" />
 							</c:if>
 						<div class="col-lg-5">${phoneNr}</div>
@@ -47,9 +47,9 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-age">Age:</label>
-						<c:set var="age" value="${user.profile.age}" />
+						<c:set var="age" value="${user.age}" />
 							
-							<c:if test="${user.profile.age eq ''}">
+							<c:if test="${user.age eq ''}">
 								<c:set var="age" value="--" />
 							</c:if>
 						<div class="col-lg-5">${age}</div>
@@ -58,8 +58,8 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
-						<c:set var="sex" value="${user.profile.sex}" />
-							<c:if test="${user.profile.sex ne 'M' && user.profile.sex ne 'F'}">
+						<c:set var="sex" value="${user.sex}" />
+							<c:if test="${user.sex ne 'M' && user.sex ne 'F'}">
 								<c:set var="sex" value="--" />
 							</c:if>
 						<div class="col-lg-5">${sex}</div>
@@ -68,8 +68,8 @@
 					
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-description">Description:</label>
-						<c:set var="descr" value="${user.profile.userDescription}" />
-							<c:if test="${user.profile.userDescription eq ''}">
+						<c:set var="descr" value="${user.userDescription}" />
+							<c:if test="${user.userDescription eq ''}">
 								<c:set var="descr" value="--" />
 							</c:if>
 						<div class="col-lg-5">${descr}</div>

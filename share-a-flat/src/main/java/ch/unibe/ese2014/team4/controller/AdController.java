@@ -1,11 +1,9 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
-import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
-import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
-import ch.unibe.ese2014.team4.controller.service.MessageService;
+import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
+import ch.unibe.ese2014.team4.controller.service.ZipCityService;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
-import ch.unibe.ese2014.team4.model.ZipCityList;
-import ch.unibe.ese2014.team4.model.ZipCity;
+
 
 
 /**
@@ -40,25 +36,26 @@ import ch.unibe.ese2014.team4.model.ZipCity;
 public class AdController {
 
 	@Autowired
-	AdService newAdService;
+	AdService adService;
 
 	@Autowired
 	UserService userService;
-
+	
 	@Autowired
-	AdService adService;
+	SearchService searchService;
+	
+	@Autowired
+	ZipCityService zipCityService;
 
 
-	private final String SWISS_ZIP_FILE = "src/main/resources/files/plzSwiss.csv";
-	private ZipCityList zipCityListCh = new ZipCityList(SWISS_ZIP_FILE);
-	private ArrayList<ZipCity> zipCityAsArray = zipCityListCh
-			.getZipCityAsArrayList();
+
+
 
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
 	public ModelAndView createAd() {
 		
 		ModelAndView model = new ModelAndView("create-ad");
-		model.addObject("zipCityAsArray", zipCityAsArray);
+		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("adForm", new AdForm());
 
 		return model;
@@ -76,16 +73,17 @@ public class AdController {
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
-		//try{
 		System.out.println(adForm.getId());
-			newAdService.saveAdForm(adForm,
+		//try{
+
+			adService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
 //		}
 //		
 //		catch (ConstraintViolationException e) {
 //			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityAsArray);
+//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 //			model.addObject("adForm", adForm);
 //			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
 //
@@ -94,7 +92,7 @@ public class AdController {
 //		// many possible exceptions, therefore juxt catch Exception
 //		catch (Exception e) {
 //			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityAsArray);
+//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 //			model.addObject("adForm", adForm);
 //			model.addObject("errorMessage", e.getMessage());
 //
@@ -114,7 +112,7 @@ public class AdController {
 			@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		
 		ModelAndView model = new ModelAndView("ad");
-		Ad ad = newAdService.getAd(adId);
+		Ad ad = adService.getAd(adId);
 
 		if ((ad.getOwner().getUsername()).equals(principal.getName())) {
 			model.addObject("isMyAd", true);
@@ -135,18 +133,28 @@ public class AdController {
 	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		
 		ModelAndView model = new ModelAndView("create-ad");
+		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("isMyAd", true);
-		Ad ad = newAdService.getAd(adId);
+		Ad ad = adService.getAd(adId);
 		model.addObject("adData", ad);
-		model.addObject("visitList", ad.getVisitList());
+		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
 		
 		return model;
 	}
 	@ResponseBody
 	@RequestMapping(params ="delete", value="/modifyAd")
-	public void deleteAd(@RequestParam(value="adId")Long adId) {
+	public ModelAndView deleteAd(@RequestParam(value="adId")Long adId, Principal principal) {
 		adService.deleteAd(adId);
+		ModelAndView model = new ModelAndView("myPage");
+		User user=userService.getUserByUsername(principal.getName());
+		model.addObject("user", user);
+		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
+		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		//used for myAds and myVisitors
+		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
+		model.addObject("myVisitsList", adService.getVisitsUserRegistered(user));
+		return model;
 	}	
 
 	
@@ -194,10 +202,10 @@ public class AdController {
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
 	public String registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
-			Principal principal, HttpServletRequest request) {
+			Principal principal, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
-		
+		redirectAttributes.addFlashAttribute("message", "Successfully registered");
 		return  "redirect:" + request.getHeader("Referer");
 	}
 	

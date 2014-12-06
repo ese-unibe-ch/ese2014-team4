@@ -20,7 +20,7 @@
 				<div class="panel-body">
 				<c:choose><c:when test="${fn:length(myVisitsList) eq 0}">You have not registered for any visits</c:when><c:otherwise>
 						<c:forEach items="${myVisitsList}" var="visit">
-							${visit}
+							<a href="showAd?adId=${visit.adId}">${visit}</a>
 							<br>
 						</c:forEach> 
 					</c:otherwise></c:choose>
@@ -33,9 +33,9 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-				<c:choose><c:when test="${fn:length(myVisitsList) eq 0}">You have no visitors</c:when><c:otherwise>
+				<c:choose><c:when test="${fn:length(myAdsList) eq 0}">You have not announced visit dates</c:when><c:otherwise>
 						<c:forEach items="${myVisitsList}" var="visit">
-							${visit}: <c:forEach items="${visit.visitorList}" var="user">${user.username} </c:forEach>
+							${visit}: <c:forEach items="${visit.visitorList}" var="user"><a href="profile?userId=${user.id}">${user.username}  </a> </c:forEach>
 							<br>
 						</c:forEach> 
 					</c:otherwise></c:choose>

@@ -14,11 +14,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,10 +51,13 @@ public class User implements UserDetails {
     private String phoneNumber;
     private String userDescription;
 
+	@Lob
+	// big data format
+	@Column(name = "profileImage", columnDefinition = "mediumblob")
+	private byte[] profileImage;
+
     
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Profile profile;
-    
+
 	@IndexColumn(name="LIST_INDEX")
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
@@ -71,7 +81,8 @@ public class User implements UserDetails {
 	@CollectionTable(name = "sent", joinColumns = @JoinColumn(name = "user_id"))
 	private List<Long> sent = new ArrayList<Long>();
 	
-	@OneToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(mappedBy="visitorList")
 	private List<Visit> visitsRegistered = new ArrayList<Visit>();
 	
 	 public List<Long> getBookmarks() {
@@ -83,7 +94,6 @@ public class User implements UserDetails {
 	}
 	
 	public User(){
-    	this.profile = new Profile();
     	this.authorities.add(new SimpleGrantedAuthority("ROLE_REGISTERED"));
     }
 	
@@ -119,13 +129,6 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
 //UserDetails methods
 	public Collection<GrantedAuthority> getAuthorities() {
 
@@ -197,7 +200,13 @@ public class User implements UserDetails {
 	public void setSent(List<Long> sent) {
 		this.sent = sent;
 	}
-	
+	public byte[] getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(byte[] profileImage) {
+		this.profileImage = profileImage;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -214,7 +223,6 @@ public class User implements UserDetails {
 				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result
 				+ ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
 		result = prime * result + ((sent == null) ? 0 : sent.hashCode());
 		result = prime * result + ((sex == null) ? 0 : sex.hashCode());
 		result = prime * result
@@ -272,11 +280,6 @@ public class User implements UserDetails {
 			if (other.phoneNumber != null)
 				return false;
 		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (profile == null) {
-			if (other.profile != null)
-				return false;
-		} else if (!profile.equals(other.profile))
 			return false;
 		if (sent == null) {
 			if (other.sent != null)

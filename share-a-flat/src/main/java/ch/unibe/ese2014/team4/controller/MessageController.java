@@ -27,10 +27,10 @@ import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.MessageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
+import ch.unibe.ese2014.team4.controller.service.ZipCityServiceImpl;
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
-import ch.unibe.ese2014.team4.model.ZipCityList;
 import ch.unibe.ese2014.team4.model.ZipCity;
 
 //TODO implement going back to the previous page when sending a message

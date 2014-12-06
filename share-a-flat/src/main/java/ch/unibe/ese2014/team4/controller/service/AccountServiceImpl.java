@@ -66,14 +66,8 @@ public class AccountServiceImpl implements AccountService {
 			user.setUsername(signupForm.getUsername());
 			user.setEmail(signupForm.getEmail());
 			user.setPassword(DigestUtils.shaHex(signupForm.getPassword()));
+			user.setProfileImage(getDefaultProfileImage());
 			user = userDao.save(user); // save object to DB
-			
-			
-
-			Profile profile = user.getProfile();
-			profile.setProfileImage(getDefaultProfileImage());
-			profileDao.save(profile);
-
 			signupForm.setId(user.getId());
 		} else {
 			throw new InvalidUserException("Repeated Password is not the same as the Password entered before");

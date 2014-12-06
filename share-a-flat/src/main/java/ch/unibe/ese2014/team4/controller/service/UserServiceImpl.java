@@ -4,10 +4,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
-import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
-import ch.unibe.ese2014.team4.model.Profile;
+import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 
@@ -16,13 +16,34 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private ImageService imageService;
 	
-	//currently not needed?
-	public Profile getProfileByUsername(String username) throws ProfileException {
-		Profile profile = userDao.findByUsername(username).getProfile();
-		if (profile==null) throw new ProfileException("Profile of " + username +" not found");
-		return profile;
+	@Transactional
+	public void updateUserFrom(ProfileForm profileForm, User user){
+		if (profileForm.getPassword()=="" || DigestUtils.shaHex(profileForm.getOldPassword())==user.getPassword()){
+			user.setPassword(DigestUtils.shaHex(profileForm.getPassword()));
+			System.out.println("if");
+		}
+		else{System.out.println("else");}
+		user.setPhoneNumber(profileForm.getPhoneNumber());
+		user.setAge(profileForm.getAge());
+		user.setSex(profileForm.getSex());
+		user.setUserDescription(profileForm.getUserDescription());
+		
+		
+		try {
+			MultipartFile imageFile = profileForm.getUploadedProfileImage();
+			if(imageFile.getSize()!=0){	
+				user.setProfileImage(imageService.getByteArrayFromMultipart(imageFile));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		userDao.save(user);
 	}
+	
 	/**
 	 * @exception InvalidUserException
 	 */

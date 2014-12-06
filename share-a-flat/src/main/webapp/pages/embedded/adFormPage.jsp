@@ -24,7 +24,7 @@
 		<form:errors path="title" cssClass="help-inline" element="span" />
 	</div>
 </div>
-
+<form:input type="hidden" path="id"/>
 <c:set var="adTypeErrors">
 	<form:errors path="adType" />
 </c:set>

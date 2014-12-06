@@ -70,7 +70,7 @@
 	</div>
 	</div>	
 	</div>
-
+<c:import url="embedded/myVisitsAndMyVisitors.jsp"/>
 
 
 <c:import url="template/footer.jsp" />

@@ -14,13 +14,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import ch.unibe.ese2014.team4.model.dao.ProfileDao;
+import ch.unibe.ese2014.team4.model.dao.UserDao;
 
 @Service
 public class ImageServiceImpl implements ImageService {
 
 	@Autowired
-	ProfileDao profileDao;
+	UserDao userDao;
 	
 	@Autowired
 	ApplicationContext appContext;
@@ -42,8 +42,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	
-	public byte[] getProfileImage(long profileId) {
-		return  profileDao.findById(profileId).getProfileImage();
+	public byte[] getProfileImage(long userId) {
+		return  userDao.findById(userId).getProfileImage();
 	}
 
 	public List<byte[]> getDefaultImage(){
