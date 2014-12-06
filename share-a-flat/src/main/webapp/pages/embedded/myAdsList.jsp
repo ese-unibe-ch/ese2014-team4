@@ -28,8 +28,13 @@
 			</td>
 
 			<td width="60"><b>Price:</b><br> <b>Size:</b><br></td>
+			
+			<c:if test="${ad.brutto eq 0}"><c:set var="brutto" value="--"></c:set></c:if>
+			<c:if test="${ad.brutto ne 0}"><c:set var="brutto" value="${ad.brutto} CHF"></c:set></c:if>
+			<c:if test="${ad.size eq 0}"><c:set var="size" value="--"></c:set></c:if>
+			<c:if test="${ad.size ne 0}"><c:set var="size" value="${ad.size} m&sup2"></c:set></c:if>
 
-			<td width="100">${ad.brutto} CHF<br> ${ad.size} m&sup2<br>
+			<td width="100">${brutto}<br> ${size}<br>
 			</td>
 
 			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
