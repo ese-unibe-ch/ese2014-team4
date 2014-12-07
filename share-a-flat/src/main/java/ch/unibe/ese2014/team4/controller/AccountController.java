@@ -97,7 +97,6 @@ public class AccountController {
 	@RequestMapping(value="/submitValidationString", method = RequestMethod.GET)
 	public ModelAndView validateAccount(@RequestParam(value="validationString") String validationString, @RequestParam(value="userName") String userName){
 		User user = userService.getUserByUsername(userName);
-		System.out.println(userService.isUserActivated(user));
 		if(!userService.isUserActivated(user)){
 			accountService.activateAccount(user, validationString);
 			accountService.loginManually(user);
@@ -108,6 +107,7 @@ public class AccountController {
 			model.addObject("message", "Account already activated. Please log in");
 			return model;
 		}
+
 	}
 
 	
