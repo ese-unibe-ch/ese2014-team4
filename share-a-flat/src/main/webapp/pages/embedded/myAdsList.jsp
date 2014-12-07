@@ -45,7 +45,7 @@
 	<table>
 		<tr>
 			<th><h5 style="color:DarkOrange">
-					<u><b>Visits</b></u>
+					<b>Visits</b>
 				</h5></th>
 		</tr>
 		<tr>

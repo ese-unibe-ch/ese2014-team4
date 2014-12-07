@@ -16,7 +16,7 @@
 
 
 		<div class="alert alert-info" align="left" style="height:50px">
-           <h4><u><b>Personal Info:</b></u></h4>
+           <h4><b>Personal Info</b></h4>
         </div>
 		<table>
 

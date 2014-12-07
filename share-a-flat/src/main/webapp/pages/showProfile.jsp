@@ -34,9 +34,14 @@
 	
 	<div class="alert alert-success" align="left" style="height: 50px">
 		<h4>
-			<u><b>Messaging:</b></u>
+			<b>Messaging:</b>
 		</h4>
 	</div>
+	
+	
+	<c:set var="receiverName">
+		<c:if test="${user.username!=null}">${user.username}</c:if>
+	</c:set>
 	
 	<div>
 		<c:import url="embedded/sendMessageBox.jsp" />

@@ -249,10 +249,12 @@
 				
 				<div class="panel-body">
 					<h4>
-						<u><b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b></u>
+						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 					</h4>
 					
-					<c:import url="embedded/sendMessageBox.jsp" />
+					
+					<c:set var="receiverName" value="${adData.owner.username}"><c:import url="embedded/sendMessageBox.jsp" /></c:set>
+					
 					
 				</div>
 			</div>

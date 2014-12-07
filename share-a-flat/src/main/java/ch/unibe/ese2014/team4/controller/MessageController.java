@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.UnknownUserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
-import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.MessageForm;
 import ch.unibe.ese2014.team4.controller.service.AdService;
@@ -51,7 +52,7 @@ public class MessageController {
 	
 	
 	@RequestMapping(value = "/myMessages", method = RequestMethod.GET)
-	public ModelAndView myMessages(Principal principal)throws ProfileException {
+	public ModelAndView myMessages(Principal principal)throws InvalidUserException {
 		ModelAndView model = new ModelAndView("myMessages");
 		try{
 			User user=userService.getUserByUsername(principal.getName());
@@ -74,13 +75,54 @@ public class MessageController {
 	//@ResponseBody
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
 	public String sendMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
-		Principal principal, HttpServletRequest request) throws Exception {
+		Principal principal, HttpServletRequest request, RedirectAttributes redirectAttrs) throws Exception {
 
 		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
 		//http://stackoverflow.com/questions/804581/spring-mvc-controller-redirect-to-previous-page
-
+		
+		
+		redirectAttrs.addFlashAttribute("sendMessageResponse", "Message sent successfully!");
+		
 		return "redirect:" + request.getHeader("Referer");
 	}
+	
+	/**
+	 * 
+	 * @param receiverName
+	 * @param messageText
+	 * @param principal
+	 * @param request
+	 * @param redirectAttrs
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/replyMessageBox", method = RequestMethod.GET)
+	public ModelAndView replyMessageBox(Principal principal)throws InvalidUserException {
+		ModelAndView model = new ModelAndView("replyMessageBox");
+		try{
+			User user=userService.getUserByUsername(principal.getName());
+		}
+		catch(InvalidUserException e){
+			
+		}
+		
+
+		return model;
+	}
+	
+	@RequestMapping(value = "/replyToMessage", method = RequestMethod.POST)
+	public String replyToMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
+		Principal principal, HttpServletRequest request, RedirectAttributes redirectAttrs) throws Exception {
+
+		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
+		//http://stackoverflow.com/questions/804581/spring-mvc-controller-redirect-to-previous-page
+		
+		
+		redirectAttrs.addFlashAttribute("sendMessageResponse", "Message sent successfully!");
+		
+		return "redirect:" + request.getHeader("Referer");
+	}
+	
 	
 	/**
 	 * Controls deletion of the message.

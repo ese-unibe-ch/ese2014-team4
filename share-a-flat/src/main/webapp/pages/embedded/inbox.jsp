@@ -15,6 +15,7 @@
 
 
 <!-- to insert space: &#160. will be improved -->
+<span>${sendMessageResponse}</span>
 <c:forEach items="${inboxList}" var="message">
 	<c:if test="${message.showInInbox eq 0}">
 		<c:set var="messageId" value="${message.id}"></c:set>
@@ -38,9 +39,16 @@
 			<button name="delete" type="submit" value="delete Message"
 				onclick="return confirm('Are you sure you want to delete this message?')"
 				class="btn btn-warning">delete</button>
+			<button onclick="openReply()" type="button" class="btn btn-primary">Reply</button>
 
 			<hr>
 			
 		</form>
 	</c:if>
 </c:forEach>
+
+<script>
+function openReply() {
+    var myWindow = window.open("${pageContext.request.contextPath}/replyMessageBox", "", "width=500, height=300 left=300 top=150");
+}
+</script>
