@@ -253,7 +253,7 @@
 					</h4>
 					
 					
-					<c:set var="receiverName" value="${adData.owner.username}"><c:import url="embedded/sendMessageBox.jsp" /></c:set>
+					<c:set var="receiverName" value="${adData.owner.username}"></c:set><c:import url="embedded/sendMessageBox.jsp" />
 					
 					
 				</div>
