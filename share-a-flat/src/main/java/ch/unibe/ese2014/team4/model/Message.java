@@ -18,6 +18,7 @@ public class Message implements Serializable {
 	@GeneratedValue
 	private Long id;  
 	
+	private boolean isRead;
 	
 	private String messageText;
 	
@@ -35,7 +36,10 @@ public class Message implements Serializable {
 	private int showInInbox = 0;
 	private int showInSent = 0;
 
-	
+	public Message(){
+		super();
+		isRead=false;
+	}
 	public User getReceiver() {
 		return receiver;
 	}
@@ -78,6 +82,12 @@ public class Message implements Serializable {
 	}
 	public void setShowInSent(int showInSent) {
 		this.showInSent = showInSent;
+	}
+	public boolean isRead() {
+		return isRead;
+	}
+	public void setRead(boolean isRead) {
+		this.isRead = isRead;
 	}
 
 

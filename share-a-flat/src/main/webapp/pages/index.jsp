@@ -55,6 +55,7 @@ div.transbox {
 			<c:if test="${not empty param.time}">
 				<div>You've been logged out due to inactivity.</div>
 			</c:if>
+				<div>${message}</div>
 
 
 			<b>Username:</b><br> <input id="userField" type="text"

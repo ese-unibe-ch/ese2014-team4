@@ -2,6 +2,7 @@ package ch.unibe.ese2014.team4.controller.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,11 +22,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	public void updateUserFrom(ProfileForm profileForm, User user){
-		if (profileForm.getPassword()=="" || DigestUtils.shaHex(profileForm.getOldPassword())==user.getPassword()){
+		System.out.println(profileForm.getPassword());
+		if (profileForm.getPassword().length()!=0){
 			user.setPassword(DigestUtils.shaHex(profileForm.getPassword()));
-			System.out.println("if");
 		}
-		else{System.out.println("else");}
 		user.setPhoneNumber(profileForm.getPhoneNumber());
 		user.setAge(profileForm.getAge());
 		user.setSex(profileForm.getSex());
@@ -78,6 +78,10 @@ public class UserServiceImpl implements UserService {
 	public boolean isPasswordCorrect(String oldPassword, User user) {
 		
 		return DigestUtils.shaHex(oldPassword).equals(user.getPassword());
+	}
+
+	public boolean isUserActivated(User user) {
+		return user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"));
 	}
 
 }

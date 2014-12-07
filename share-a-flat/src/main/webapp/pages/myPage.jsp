@@ -20,40 +20,41 @@
 </div>
 <!--/masthead-->
 
-<div class="row">
-
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3>My Bookmarks</h3>
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseBookmarks"><h3>My Bookmarks</h3></a>
 			</div>
-			<div class="panel-body">
+			<div class="panel-collapse collapse" id="collapseBookmarks">
+			<div class="panel-body" >
 			<c:choose><c:when test="${fn:length(adList) eq 0}">You have no bookmarks.</c:when><c:otherwise>
 				<c:import url="searchResultsList.jsp" />
 			</c:otherwise></c:choose>
-			</div>
+			</div></div>
 		</div>
 	</div>
-	<div class="col-md-9">
-	<div class="panel panel-default" style="max-height: 560px ;overflow-y: scroll;">
+	<div class="col-md-12">
+	<div class="panel panel-default">
 		<div class="panel-heading">
-				<h3>My Ads</h3>
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyAds"><h3>My Ads</h3></a>
 		</div>
+		<div class="panel-collapse collapse" id="collapseMyAds">
 		<div class="panel-body">
 		<c:choose><c:when test="${fn:length(myAdsList) eq 0}">You have not submitted ads.</c:when><c:otherwise>
 			<c:import url="embedded/myAdsList.jsp" />
 		</c:otherwise></c:choose>
-		</div>
+		</div></div>
 	</div>
 	</div>
 
 <!-- shows all searches with search button -->
 
-	<div class="col-md-3">
+	<div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-				<h3>My Searches</h3>
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseMySearches"><h3>My Searches</h3></a>
 		</div>
+		<div class="panel-collapse collapse" id="collapseMySearches">
 		<div class="panel-body">
 		<c:choose><c:when test="${fn:length(mySearchList) eq 0}">No searches saved.</c:when><c:otherwise>
 		<c:forEach items="${mySearchList}" var="search">
@@ -67,10 +68,42 @@
 		</div>
 
 		
-	</div>
+	</div></div>
 	</div>	
-	</div>
-<c:import url="embedded/myVisitsAndMyVisitors.jsp"/>
+	<div class="col-md-12">
+ <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisits"><h3>My Visits</h3></a>
+					</h3>
+				</div>
+				<div class="panel-collapse collapse" id="collapseMyVisits">
+				<div class="panel-body">
+				<c:choose><c:when test="${fn:length(myVisitsList) eq 0}">You have not registered for any visits</c:when><c:otherwise>
+						<c:forEach items="${myVisitsList}" var="visit">
+							<a href="showAd?adId=${visit.adId}">${visit}</a>
+							<br>
+						</c:forEach> 
+					</c:otherwise></c:choose>
+				</div>
+</div></div></div>
+<div class="col-md-12">
+ <div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisitors"><h3>My Visitors</h3></a>
+					</h3>
+				</div>
+				<div class="panel-collapse collapse" id="collapseMyVisitors">
+				<div class="panel-body">
+				<c:choose><c:when test="${fn:length(myAdsList) eq 0}">You have not announced visit dates</c:when><c:otherwise>
+						<c:forEach items="${myVisitsList}" var="visit">
+							<a href="showAd?adId=${visit.adId}">${visit}</a>: <c:forEach items="${visit.visitorList}" var="user"><a href="profile?userId=${user.id}">${user.username}  </a> </c:forEach>
+							<br>
+						</c:forEach> 
+					</c:otherwise></c:choose>
+				</div>
+</div></div></div>
 
 
 <c:import url="template/footer.jsp" />

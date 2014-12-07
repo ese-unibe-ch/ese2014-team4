@@ -14,17 +14,15 @@
 
 <c:set var="whereIAm" value="history.go(-1)"></c:set>
 
-
-<h4>Send a message to ${receiverName}</h4>
+<h4>${message}</h4>
 <span>${sendMessageResponse}</span>
-
 
 <form method="post" action="sendMessage?receiverName=${receiverName}"
 	id="messageForm" Class="form-horizontal" autocomplete="off">
 
 	<textarea required class="form-control" name="messageText"
 		id="field-messageText" style="width: 100%; height: 80px; resize: none"
-		tabindex="1" placeholder="Write your message here"></textarea>
+		tabindex="1" placeholder="Send a message to ${receiverName}"></textarea>
 
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary" tabindex="13">Send</button>

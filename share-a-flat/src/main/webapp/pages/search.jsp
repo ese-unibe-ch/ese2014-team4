@@ -73,9 +73,9 @@
 	}
 
 	function codeAddress() {
-		<c:forEach items="${addresses}" var="item">
+		<c:forEach items="${adList}" var="item">
 		var src = "${pageContext.request.contextPath}/imageController/ad/${item.id}/${imgId}";
-		placeAddresses("${item.addressAsString}", "${item.id}", src);
+		placeAddresses("${item.address}", "${item.id}", src);
 		</c:forEach>
 	}
 

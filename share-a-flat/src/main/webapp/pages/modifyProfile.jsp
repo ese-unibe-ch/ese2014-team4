@@ -80,7 +80,7 @@
 						<label class="col-lg-3 control-label" for="field-oldPassword">Old
 							Password:</label>
 						<div class="col-lg-8">
-							<form:input path="oldPassword" class="form-control"
+							<form:password path="oldPassword" class="form-control"
 								id="field-oldPassword" tabindex="3" maxlength="35"
 								placeholder="Password" required="true" />
 							<form:errors path="oldPassword" cssClass="help-inline"
