@@ -13,4 +13,5 @@ public interface UserService {
 
 	public boolean isBookmarked(User user, long adId);
 	public boolean isPasswordCorrect(String oldPassword, User user);
+	public boolean isUserActivated(User user);
 }

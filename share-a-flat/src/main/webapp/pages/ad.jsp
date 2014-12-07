@@ -27,7 +27,7 @@
 <script>
 	function codeAddress() {
 		geocoder.geocode({
-			'address' : "${addressForMap.addressAsString}"
+			'address' : "${adData.address}"
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
@@ -36,7 +36,7 @@
 					position : results[0].geometry.location
 				});
 			} else {
-				alert('the address "'+ "${addressForMap.addressAsString}" + '" could not be found on the map for the following reason: '
+				alert('the address "'+ "${adData.address}" + '" could not be found on the map for the following reason: '
 						+ status);
 			}
 		});
@@ -249,7 +249,7 @@
 				
 				<div class="panel-body">
 					<h4>
-						<u><b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b></u>
+						<b>Ad placed by <a href="${pageContext.request.contextPath}/profile?userId=${adData.owner.id}">${adData.owner.username}</a></b>
 					</h4>
 					
 					<c:import url="embedded/sendMessageBox.jsp" />

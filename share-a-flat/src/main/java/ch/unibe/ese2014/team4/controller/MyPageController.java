@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
-import ch.unibe.ese2014.team4.controller.exceptions.ProfileException;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
-import ch.unibe.ese2014.team4.controller.service.ProfileService;
 import ch.unibe.ese2014.team4.model.User;
 /**
  * Controls Elements of MyPage and Profile
@@ -23,8 +21,6 @@ public class MyPageController {
 	@Autowired
 	UserService myPageService;
 	@Autowired
-	ProfileService profileService;
-	@Autowired
 	UserService userService;
 	@Autowired
 	AdService adService;
@@ -33,7 +29,7 @@ public class MyPageController {
 
 
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public ModelAndView myPage(Principal principal)throws ProfileException {
+	public ModelAndView myPage(Principal principal)  {
 		ModelAndView model = new ModelAndView("myPage");
 		try{
 			User user=userService.getUserByUsername(principal.getName());

@@ -115,11 +115,11 @@ public class AdServiceImpl implements AdService {
 		ad = adDao.save(ad); // save object to DB
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
-		
+
+
 		if (adForm.getVisitDate() != null) {
 			List<Visit> visitList = new ArrayList<Visit>();
 			for (int i = 0; i < adForm.getVisitDate().size(); i++) {
-				System.out.println(adForm.getVisitDate().get(i));
 				if (adForm.getVisitDate().get(i) != null) {
 					
 					Visit visit = new Visit();

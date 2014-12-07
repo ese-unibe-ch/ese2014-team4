@@ -22,9 +22,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.model.Profile;
 import ch.unibe.ese2014.team4.model.User;
-import ch.unibe.ese2014.team4.model.dao.ProfileDao;
 import ch.unibe.ese2014.team4.model.dao.UserDao;
 
 
@@ -36,9 +34,6 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	ProfileDao profileDao;
 	
     @Autowired
     ApplicationContext appContext;
@@ -130,6 +125,7 @@ public class AccountServiceImpl implements AccountService {
 		}
 		else{throw new InvalidUserException("email-validation failed");}
 	}
+	
 	private String generateValidationString(User user){
 		return DigestUtils.shaHex(user.getEmail());
 	}

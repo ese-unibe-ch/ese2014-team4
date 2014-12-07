@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
@@ -46,28 +48,29 @@ public class SearchController {
 	// simplify both search-methods, remove common stuff
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchOverview() {
+	public ModelAndView searchOverview(Principal principal) {
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("searchForm", new SearchForm());
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		model.addObject("whatToDisplay", "Newest Ads");
-		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
-		model.addObject("addresses", addresses);
+		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		return model;
 	}
 	
 	@RequestMapping(params = "save", value = "/submitSearch", method = RequestMethod.POST)
-	public ModelAndView saveSearch(@Valid SearchForm searchForm, BindingResult result, Principal principal) {
-		ModelAndView model = new ModelAndView("myPage");
+	public String saveSearch(@Valid SearchForm searchForm, BindingResult result, Principal principal,  HttpServletRequest request,RedirectAttributes redirectAttributes) {
+
 		User user = userService.getUserByUsername(principal.getName());
 		searchForm.setOwner(user);
-		searchService.saveSearchForm(searchForm);
-		model.addObject("user", user);
-		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
-		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
-		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
-		return model;
+		try{
+			searchService.saveSearchForm(searchForm);
+			redirectAttributes.addFlashAttribute("message", "Search successfully saved");}
+		catch (Exception e){
+			redirectAttributes.addFlashAttribute("message", "Search not saved");
+		}
+		
+		return  "redirect:" + request.getHeader("Referer");
 	}
 	/**
 	 * 
@@ -77,7 +80,7 @@ public class SearchController {
 	 */
 	@RequestMapping(params = "search", value = "/submitSearch", method = RequestMethod.POST)
 	public ModelAndView search(
-			@Valid SearchForm searchForm) {
+			@Valid SearchForm searchForm, Principal principal) {
 		ModelAndView model = new ModelAndView("search");
 		List<Ad> adsToAdd = new ArrayList<Ad>();
 
@@ -86,8 +89,7 @@ public class SearchController {
 			model.addObject("dropDownValue", searchForm.getOrderBy());
 			model.addObject("adList", adsToAdd);
 			model.addObject("whatToDisplay", "Search Results");
-			List<MapAddress> addresses = getAddressesForMap(adsToAdd);	
-			model.addObject("addresses", addresses);
+			model.addObject("user", userService.getUserByUsername(principal.getName()));
 		} else
 			model.addObject("whatToDisplay", "No Ads found");
 		
@@ -95,14 +97,13 @@ public class SearchController {
 	}
 	
 	@RequestMapping(params="search", value = "/restoreSavedSearch", method = RequestMethod.POST)
-	public ModelAndView startSavedSearch(@RequestParam(value="id")Long searchFormId) {
+	public ModelAndView startSavedSearch(@RequestParam(value="id")Long searchFormId, Principal principal) {
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("searchForm", searchFormDao.findById(searchFormId));
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		model.addObject("whatToDisplay", "Newest Ads");
-		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
-		model.addObject("addresses", addresses);
+		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		return model;
 
 	}
@@ -123,19 +124,9 @@ public class SearchController {
 	public ModelAndView getMap() {
 		ModelAndView model = new ModelAndView("searchResultsMapLocation");	
 		List<Ad> newestAdds = adService.getNewestAds();
-		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
-		model.addObject("addresses", addresses);
+		model.addObject("whatToDisplay", "Newest Ads");
+		model.addObject("adList", newestAdds);
 		
 		return model;
-	}
-
-
-	private List<MapAddress> getAddressesForMap(List<Ad> adsToAdd) {
-		List<MapAddress> addresses = new ArrayList<MapAddress>();
-		for (Ad ad : adsToAdd) {
-			MapAddress tmpMapAddress = ad.getAddressForMap();
-			addresses.add(tmpMapAddress);
-		}
-		return addresses;
 	}
 }

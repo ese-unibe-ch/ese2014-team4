@@ -23,7 +23,6 @@ import ch.unibe.ese2014.team4.controller.service.AccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
-import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.SearchForm;
 import ch.unibe.ese2014.team4.model.User;
 
@@ -74,8 +73,6 @@ public class AccountController {
 				accountService.saveFrom(signupForm);
 
 				model = new ModelAndView("validate");
-				
-				String username = signupForm.getUsername();
 				User user = userService.getUser(signupForm.getId());
 				accountService.sendValidationMail(user, request.getLocalAddr());
 
@@ -100,22 +97,19 @@ public class AccountController {
 	@RequestMapping(value="/submitValidationString", method = RequestMethod.GET)
 	public ModelAndView validateAccount(@RequestParam(value="validationString") String validationString, @RequestParam(value="userName") String userName){
 		User user = userService.getUserByUsername(userName);
-		accountService.activateAccount(user, validationString);
-		accountService.loginManually(user);
-		return getSearchView(user);
+		System.out.println(userService.isUserActivated(user));
+		if(!userService.isUserActivated(user)){
+			accountService.activateAccount(user, validationString);
+			accountService.loginManually(user);
+			return getSearchView(user);
+		}
+		else{
+			ModelAndView model = new ModelAndView("index");
+			model.addObject("message", "Account already activated. Please log in");
+			return model;
+		}
 	}
-	/**
-	 * validation via validation form
-	 * @param validationString
-	 * @param userName
-	 * @return
-	 */
-	@RequestMapping(value="/submitValidationString", method = RequestMethod.POST)
-	public ModelAndView validateAccount(@RequestParam(value="validationString") String validationString,Principal principal){
-		User user = userService.getUserByUsername(principal.getName());
-		accountService.activateAccount(user, validationString);
-		return getSearchView(user);
-	}
+
 	
 	private ModelAndView getSearchView(User user){
 		ModelAndView model = new ModelAndView("search");
@@ -123,20 +117,11 @@ public class AccountController {
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		
-		List<MapAddress> addresses = getAddressesForMap(newestAdds);	
-		model.addObject("addresses", addresses);
 
 		model.addObject("user", user);
 		model.addObject("searchForm", new SearchForm());
 		return model;
 	}
 	
-	private List<MapAddress> getAddressesForMap(List<Ad> adsToAdd) {
-		List<MapAddress> addresses = new ArrayList<MapAddress>();
-		for (Ad ad : adsToAdd) {
-			MapAddress tmpMapAddress = ad.getAddressForMap();
-			addresses.add(tmpMapAddress);
-		}
-		return addresses;
-	}
+
 }
