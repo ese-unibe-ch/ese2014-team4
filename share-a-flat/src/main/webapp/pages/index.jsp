@@ -57,8 +57,9 @@ div.transbox {
 			</c:if>
 				<div>${message}</div>
 
-
-			<b>User Name:</b><br> <input id="userField" type="text"
+<!-- http://english.stackexchange.com/questions/43436/username-user-name-or-user-name  
+User Name means the actual Name of the person, we want the username he chose for this page-->
+			<b>Username:</b><br> <input id="userField" type="text"
 				name="j_username" value="" tabindex="1" placeholder="Username" required x-moz-errormessage="Please enter your Username."/><br>
 			<br> <b>Password:</b><br> <input type="password"
 				name="j_password" value="" tabindex="2" placeholder="Password" required x-moz-errormessage="Please enter your Password"/><br>
