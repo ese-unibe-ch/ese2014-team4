@@ -83,10 +83,10 @@ public class Message implements Serializable {
 	public void setShowInSent(int showInSent) {
 		this.showInSent = showInSent;
 	}
-	public boolean isRead() {
+	public boolean getIsRead() {
 		return isRead;
 	}
-	public void setRead(boolean isRead) {
+	public void setIsRead(boolean isRead) {
 		this.isRead = isRead;
 	}
 

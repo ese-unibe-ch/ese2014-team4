@@ -4,6 +4,7 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 
 import ch.unibe.ese2014.team4.controller.service.MessageService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
+import ch.unibe.ese2014.team4.model.Message;
 import ch.unibe.ese2014.team4.model.User;
+import ch.unibe.ese2014.team4.model.dao.MessageDao;
 
 //TODO implement going back to the previous page when sending a message
 
@@ -36,6 +39,9 @@ public class MessageController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MessageDao messageDao;
 	
 	
 	@RequestMapping(value = "/myMessages", method = RequestMethod.GET)
@@ -71,52 +77,6 @@ public class MessageController {
 		//http://stackoverflow.com/questions/804581/spring-mvc-controller-redirect-to-previous-page
 		
 		redirectAttributes.addFlashAttribute("sendMessageResponse", "Message sent successfully!");
-		
-		return "redirect:" + request.getHeader("Referer");
-	}
-	
-	/**
-	 * 
-	 * @param receiverName
-	 * @param messageText
-	 * @param principal
-	 * @param request
-	 * @param redirectAttrs
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "/replyMessageBox", method = RequestMethod.GET)
-	public ModelAndView replyMessageBox(Principal principal)throws InvalidUserException {
-		ModelAndView model = new ModelAndView("replyMessageBox");
-		try{
-			User user=userService.getUserByUsername(principal.getName());
-		}
-		catch(InvalidUserException e){
-			
-		}
-		
-
-		return model;
-	}
-	
-	/**
-	 * controls repling to messages
-	 * @param receiverName
-	 * @param messageText
-	 * @param principal
-	 * @param request
-	 * @param redirectAttributes
-	 * @return
-	 * @throws Exception
-	 */
-	
-	@RequestMapping(value = "/replyToMessage", method = RequestMethod.POST)
-	public String replyToMessage(@RequestParam(value="receiverName", required=true) String receiverName, @RequestParam(value="messageText", required=true) String messageText,
-		Principal principal, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
-
-
-		messageService.sendMessage(messageText, userService.getUserByUsername(principal.getName()), userService.getUserByUsername(receiverName));
-		redirectAttributes.addFlashAttribute("message", "message sent");
 		
 		return "redirect:" + request.getHeader("Referer");
 	}
