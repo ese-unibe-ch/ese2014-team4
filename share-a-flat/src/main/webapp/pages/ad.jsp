@@ -202,19 +202,7 @@
 				</div>
 
 				<div class="panel-body">
-					<!-- image address will get mapped by ImageController -->
-					<div class="container">
-
-						<ul class="row">
-							<c:forEach items="${imageList}" var="imgId">
-								<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 gallery"><img
-									src="${pageContext.request.contextPath}/imageController/ad/${adData.id}/${imgId}"
-									class="img-responsive" alt="${adData.id}/${imgId}"
-									width="100px" height="100px" id="img${imgId}"></li>
-							</c:forEach>
-						</ul>
-
-					</div>
+					<c:import url="embedded/imageOverview.jsp"/>
 
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">

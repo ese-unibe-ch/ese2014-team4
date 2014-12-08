@@ -25,7 +25,6 @@ public interface AdService {
 	public ArrayList<Ad> getNewestAds();
 	public List<Ad> getAdByBrutto(int brutto);
 	public List<Ad> getAdByTitle(String title);
-	public List<String> getImageList(long adId);
 	
 	//Ordered ads
 	public ArrayList<Ad> getAdByCity(String city, String orderBy);

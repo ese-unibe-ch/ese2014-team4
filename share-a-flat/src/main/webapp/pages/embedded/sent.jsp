@@ -18,7 +18,7 @@
 
 
 <!-- to insert space: &#160. will be improved -->
-<c:forEach items="${user.sent}" var="message" varStatus="loopIndex">
+<c:forEach items="${sentList}" var="message" varStatus="loopIndex">
 	<c:if test="${message.showInSent eq 0}"> 
 	<c:set var="messageId" value="${message.id}"></c:set>
 	<form method="post" action="deleteMessage?messageId=${messageId}" id="messageForm" Class="form-horizontal"

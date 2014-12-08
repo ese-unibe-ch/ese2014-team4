@@ -52,7 +52,8 @@ public class MessageController {
 		try{
 			User user=userService.getUserByUsername(principal.getName());
 					
-
+			model.addObject("inboxList", messageService.getInboxList(user));
+			model.addObject("sentList", messageService.getSentList(user));
 			model.addObject("user", user);
 
 		}

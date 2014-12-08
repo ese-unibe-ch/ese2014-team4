@@ -51,15 +51,31 @@ public class AdServiceImpl implements AdService {
 	public AdForm saveAdForm(AdForm adForm, User owner) throws Exception {
 		Ad ad;
 		Address address;
-		System.out.println(adForm.getId());
+		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
+		
 		if(adForm.getId()==0){
 			ad = new Ad();
 			address = new Address();
+			if (fileList.isEmpty()) {
+				ad.setBytePictureList(imageService.getDefaultImage());
+			}
+			else{
+				ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
+			}
 		}
 		else{
 			ad = adDao.findById(adForm.getId());
 			address=ad.getAddress();
+			if(ad.getBytePictureList().get(0).length==imageService.getDefaultImage().get(0).length){	//assuming that length of defaultImage is unique.
+				ad.getBytePictureList().remove(0);
+			}
+			for (MultipartFile mf : fileList){
+				ad.getBytePictureList().add(imageService.getByteArrayFromMultipart(mf));
+			}
+			
 		}
+		
+		
 
 
 		ad.setNetto(adForm.getNetto());
@@ -95,14 +111,7 @@ public class AdServiceImpl implements AdService {
 
 		ad.setAdAddedDate(new Date());
 
-		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
-		if (fileList.isEmpty()) {
-			ad.setBytePictureList(imageService.getDefaultImage());
-		}
-		else{
-			ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
-		}
 
 		
 		address.setCity(adForm.getCity());
@@ -198,15 +207,6 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-	public List<String> getImageList(long adId) {
-		Ad ad = adDao.findById(adId);
-		List<String> list = new ArrayList<String>();
-
-		for (int i = 0; i < ad.getBytePictureList().size(); i++) {
-			list.add(new Integer(i).toString());
-		}
-		return list;
-	}
 
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();

@@ -15,7 +15,7 @@
 		<div class="row">
 			<div>
 
-				<h1 align="center">New Ad</h1>
+				<h1 align="center">${adCreationOrModification}</h1>
 
 				<hr>
 			</div>

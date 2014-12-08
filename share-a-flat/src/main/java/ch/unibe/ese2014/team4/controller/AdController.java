@@ -53,6 +53,7 @@ public class AdController {
 	public ModelAndView createAd(Principal principal) {
 		
 		ModelAndView model = new ModelAndView("create-ad");
+		model.addObject("adCreationOrModification", "New Ad");
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("adForm", new AdForm());
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
@@ -72,30 +73,30 @@ public class AdController {
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
-		//try{
+		try{
 
 			adService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
-//		}
-//		
-//		catch (ConstraintViolationException e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
-//
-//			return model;
-//		}
-//		// many possible exceptions, therefore juxt catch Exception
-//		catch (Exception e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", e.getMessage());
-//
-//			return model;
-//		}
+		}
+		
+		catch (ConstraintViolationException e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
+
+			return model;
+		}
+		// many possible exceptions, therefore juxt catch Exception
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", e.getMessage());
+
+			return model;
+		}
 
 	}
 	
@@ -116,9 +117,7 @@ public class AdController {
 			model.addObject("isMyAd", true);
 		}
 		
-		List<String> list = adService.getImageList(adId);
 		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
-		model.addObject("imageList", list);
 		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
@@ -134,7 +133,7 @@ public class AdController {
 		model.addObject("isMyAd", true);
 		
 		Ad ad = adService.getAd(adId);
-		
+		model.addObject("adCreationOrModification", "Modify Ad: " + ad.getTitle());
 		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("adForm", adService.getAdFormForExistingAd(adId));

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
 
@@ -267,13 +267,51 @@
 			onclick="addRowFile('fileTable')" /> <INPUT type="button"
 			value="Delete selected picture" onclick="deleteRow('fileTable')" />
 
-		<script>
-			<c:forEach items="${adForm.uploadedAdPictures}" var="picture">
-			addRowFile('fileTable');
-			</c:forEach>
-		</script>
+		<c:if test="${fn:length(adData.bytePictureList) ne 0}">
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Already uploaded images</h4>
 
-		<!--  script for adding another file upload possibility -->
+			</div>
+
+			<div class="panel-body">
+			<c:import url="embedded/imageOverview.jsp"/>
+<!-- 			Tick to delete images:<br> -->
+<!-- 			<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 gallery"> -->
+<%-- 				<form><c:forEach items="${adData.bytePictureList}" varStatus="loop"> --%>
+<%-- 					<form:checkboxes items="${loop.index}" path="imageCheckboxes"/> --%>
+<%-- 				</c:forEach></form> --%>
+<!-- 			</li> -->
+		</div></div>
+		</c:if>
+
+
+		<c:set var="descriptionErrors">
+			<form:errors path="description" />
+		</c:set>
+
+		<div
+			class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
+			<label class="control-label" for="field-description">Description<span
+				style="color: red"> <b>*</b></span></label>
+			<div class="controls">
+				<form:textarea required="true" class="form-control"
+					path="description" id="field-description"
+					style="width:100%; height:160px; resize:none" tabindex="14"
+					placeholder="Description"
+					onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
+					onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />
+				<form:errors path="description" cssClass="help-inline"
+					element="span" />
+				<br> <br>
+			</div>
+		</div>
+
+	</div>
+
+	
+			<!--  script for adding another file upload possibility -->
 		<SCRIPT type="text/javascript">
 			function addRowFile(tableID) {
 
@@ -303,26 +341,3 @@
 			delete defined in addFlatmates.jsp
 			-->
 		</SCRIPT>
-
-		<c:set var="descriptionErrors">
-			<form:errors path="description" />
-		</c:set>
-
-		<div
-			class="control-group<c:if test="${not empty descriptionErrors}"> error</c:if>">
-			<label class="control-label" for="field-description">Description<span
-				style="color: red"> <b>*</b></span></label>
-			<div class="controls">
-				<form:textarea required="true" class="form-control"
-					path="description" id="field-description"
-					style="width:100%; height:160px; resize:none" tabindex="14"
-					placeholder="Description"
-					onfocus="(this.placeholder == 'Description') && (this.placeholder = '')"
-					onblur="(this.placeholder == '') && (this.placeholder = 'Description')" />
-				<form:errors path="description" cssClass="help-inline"
-					element="span" />
-				<br> <br>
-			</div>
-		</div>
-
-	</div>
