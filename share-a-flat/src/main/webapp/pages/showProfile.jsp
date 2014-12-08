@@ -17,7 +17,7 @@
 <div class="col-md-3">
 	<div class="text-center">
 		<img
-			src="${pageContext.request.contextPath}/imageController/profile/${user.id}"
+			src="${pageContext.request.contextPath}/imageController/profile/${userProfile.id}"
 			class="img-responsive" alt="profileImage">
 	</div>
 </div>
