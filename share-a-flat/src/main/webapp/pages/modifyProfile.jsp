@@ -82,7 +82,7 @@
 						<div class="col-lg-8">
 							<form:password path="oldPassword" class="form-control"
 								id="field-oldPassword" tabindex="3" maxlength="35"
-								placeholder="Password" required="true" />
+								placeholder="Password" />
 							<form:errors path="oldPassword" cssClass="help-inline"
 								element="span" />
 						</div>

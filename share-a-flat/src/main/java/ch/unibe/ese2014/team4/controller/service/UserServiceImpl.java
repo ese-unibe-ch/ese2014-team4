@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	public void updateUserFrom(ProfileForm profileForm, User user){
-		System.out.println(profileForm.getPassword());
 		if (profileForm.getPassword().length()!=0){
 			user.setPassword(DigestUtils.shaHex(profileForm.getPassword()));
 		}

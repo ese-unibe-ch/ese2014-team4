@@ -70,7 +70,6 @@ div.transbox {
 			</div>
 
 		</form>
-		</p>
 	</div>
 </div>
 
