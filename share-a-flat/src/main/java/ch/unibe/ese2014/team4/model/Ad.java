@@ -16,11 +16,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.mapping.Map;
 
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
@@ -58,9 +61,8 @@ public class Ad {
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
-	@IndexColumn(name = "LIST_INDEX")
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "ad_to_visit", joinColumns = @JoinColumn(name = "ad_id"))
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany()
 	private List<Visit> visitList = new ArrayList<Visit>();
 
 	private Date creationDate = new Date();

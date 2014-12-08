@@ -53,6 +53,7 @@ public class AdServiceImpl implements AdService {
 		Address address;
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 		
+		//do things differently, depending on ad creation or ad modifying
 		if(adForm.getId()==0){
 			ad = new Ad();
 			address = new Address();
@@ -66,9 +67,7 @@ public class AdServiceImpl implements AdService {
 		else{
 			ad = adDao.findById(adForm.getId());
 			address=ad.getAddress();
-			if(ad.getBytePictureList().get(0).length==imageService.getDefaultImage().get(0).length){	//assuming that length of defaultImage is unique.
-				ad.getBytePictureList().remove(0);
-			}
+
 			for (MultipartFile mf : fileList){
 				ad.getBytePictureList().add(imageService.getByteArrayFromMultipart(mf));
 			}
@@ -86,11 +85,9 @@ public class AdServiceImpl implements AdService {
 		if (adForm.getAdType() == AdType.ROOM) {
 			ad.setType(AdType.ROOM);
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
-
-			if(adForm.getFlatmateList() != null){
-				ad.setFlatmateList(getUserListFromUsernameList(adForm
-					.getFlatmateList()));
-			}
+			List<User> userList = getUserListFromUsernameList(adForm.getFlatmateList());
+			ad.setFlatmateList(userList);
+		
 
 
 		} else {
@@ -129,7 +126,7 @@ public class AdServiceImpl implements AdService {
 		if (adForm.getVisitDate() != null) {
 			List<Visit> visitList = new ArrayList<Visit>();
 			for (int i = 0; i < adForm.getVisitDate().size(); i++) {
-				if (adForm.getVisitDate().get(i) != null) {
+				if (!adForm.getVisitDate().get(i).equals("")) {
 					
 					Visit visit = new Visit();
 					visit.setDate(adForm.getVisitDate().get(i));
@@ -154,7 +151,10 @@ public class AdServiceImpl implements AdService {
 	private List<User> getUserListFromUsernameList(List<String> nameList) {
 		ArrayList<User> list = new ArrayList<User>();
 		for (String username : nameList) {
-			list.add(userDao.findByUsername(username));
+			User tempUser = userDao.findByUsername(username);
+			if(tempUser!=null){
+				list.add(tempUser);
+			}
 		}
 		return list;
 	}
