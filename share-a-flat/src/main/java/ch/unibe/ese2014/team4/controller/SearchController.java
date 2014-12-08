@@ -20,8 +20,6 @@ import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.Ad;
-import ch.unibe.ese2014.team4.model.Address;
-import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.SearchForm;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.SearchFormDao;
@@ -55,6 +53,7 @@ public class SearchController {
 		model.addObject("adList", newestAdds);
 		model.addObject("whatToDisplay", "Newest Ads");
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
+		
 		return model;
 	}
 	
@@ -72,6 +71,7 @@ public class SearchController {
 		
 		return  "redirect:" + request.getHeader("Referer");
 	}
+	
 	/**
 	 * 
 	 * @param searchForm
@@ -104,9 +104,11 @@ public class SearchController {
 		model.addObject("adList", newestAdds);
 		model.addObject("whatToDisplay", "Newest Ads");
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
+		
 		return model;
 
 	}
+	
 	@RequestMapping(params = "delete", value = "/restoreSavedSearch", method = RequestMethod.POST)
 	public ModelAndView deleteSavedSearch(@RequestParam(value="id")Long searchFormId, Principal principal) {
 		searchFormDao.delete(searchFormId);
@@ -117,15 +119,17 @@ public class SearchController {
 		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
 		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
+		
 		return model;
 
 	}
+	
 	@RequestMapping(value = "/getMap", method = RequestMethod.GET)
 	public ModelAndView getMap() {
 		ModelAndView model = new ModelAndView("searchResultsMapLocation");	
 		List<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("whatToDisplay", "Newest Ads");
-		model.addObject("adList", newestAdds);
+		model.addObject("adList", newestAdds);	
 		
 		return model;
 	}

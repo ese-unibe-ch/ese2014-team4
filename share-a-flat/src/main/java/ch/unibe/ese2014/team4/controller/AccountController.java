@@ -1,10 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
-
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
@@ -32,7 +28,6 @@ import ch.unibe.ese2014.team4.model.User;
  * /login (currently not needed), /createAccount: result page after account
  * creation.
  * 
- *
  */
 @Controller
 public class AccountController {
@@ -49,6 +44,7 @@ public class AccountController {
 	public ModelAndView index() {
 		
 		ModelAndView model = new ModelAndView("index");
+		
 		return model;
 	}
 
@@ -56,10 +52,12 @@ public class AccountController {
 	public ModelAndView login() {
 		ModelAndView model = new ModelAndView("register");
 		model.addObject("signupForm", new SignupForm());
+		
 		return model;
 	}
+	
 	@RequestMapping(value="/validate")
-	public ModelAndView getValidationForm(){
+	public ModelAndView getValidationForm() {
 		return new ModelAndView("validate");
 	}
 
@@ -67,7 +65,9 @@ public class AccountController {
 	public ModelAndView signIn(@Valid SignupForm signupForm,
 			BindingResult result, HttpServletRequest request,
 			Principal principal) {
+		
 		ModelAndView model;
+		
 		if (!result.hasErrors()) {
 			try {
 				accountService.saveFrom(signupForm);
@@ -86,8 +86,10 @@ public class AccountController {
 		} else {
 			model = new ModelAndView("index");
 		}
+		
 		return model;
 	}
+	
 	/**
 	 * validation via validation link
 	 * @param validationString
@@ -100,28 +102,26 @@ public class AccountController {
 		if(!userService.isUserActivated(user)){
 			accountService.activateAccount(user, validationString);
 			accountService.loginManually(user);
+			
 			return getSearchView(user);
 		}
-		else{
+		else {
 			ModelAndView model = new ModelAndView("index");
 			model.addObject("message", "Account already activated. Please log in");
+			
 			return model;
 		}
-
 	}
 
-	
 	private ModelAndView getSearchView(User user){
 		ModelAndView model = new ModelAndView("search");
 		model.addObject("whatToDisplay", "Newest Ads");
 		ArrayList<Ad> newestAdds = adService.getNewestAds();
 		model.addObject("adList", newestAdds);
 		
-
 		model.addObject("user", user);
 		model.addObject("searchForm", new SearchForm());
+		
 		return model;
 	}
-	
-
 }

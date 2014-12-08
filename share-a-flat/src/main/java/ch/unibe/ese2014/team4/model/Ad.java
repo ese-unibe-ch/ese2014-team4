@@ -230,15 +230,15 @@ public class Ad {
 		this.brutto = netto + charges;
 	}
 
-	public MapAddress getAddressForMap() {
-		MapAddress tmpMapAddress = new MapAddress();
-		String addressForMAp = address.getStreet() + " "
-				+ address.getStreetNumber() + " " + address.getZipCode() + " "
-				+ address.getCity();
-		tmpMapAddress.setAddressAsString(addressForMAp);
-		tmpMapAddress.setId(id);
-		return tmpMapAddress;
-	}
+//	public MapAddress getAddressForMap() {
+//		MapAddress tmpMapAddress = new MapAddress();
+//		String addressForMAp = address.getStreet() + " "
+//				+ address.getStreetNumber() + " " + address.getZipCode() + " "
+//				+ address.getCity();
+//		tmpMapAddress.setAddressAsString(addressForMAp);
+//		tmpMapAddress.setId(id);
+//		return tmpMapAddress;
+//	}
 
 	public static Comparator<Ad> bruttoSorter = new Comparator<Ad>() {
 		public int compare(Ad ad1, Ad ad2) {

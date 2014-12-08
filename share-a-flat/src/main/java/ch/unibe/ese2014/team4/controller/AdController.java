@@ -23,7 +23,7 @@ import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.controller.service.ZipCityService;
 import ch.unibe.ese2014.team4.model.Ad;
-import ch.unibe.ese2014.team4.model.MapAddress;
+//import ch.unibe.ese2014.team4.model.MapAddress;
 import ch.unibe.ese2014.team4.model.User;
 
 
@@ -47,10 +47,7 @@ public class AdController {
 	@Autowired
 	ZipCityService zipCityService;
 
-
-
-
-
+	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
 	public ModelAndView createAd() {
 		
@@ -118,14 +115,13 @@ public class AdController {
 			model.addObject("isMyAd", true);
 		}
 		
-		MapAddress addressForMap = ad.getAddressForMap();
 		List<String> list = adService.getImageList(adId);
 		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
-		model.addObject("addressForMap", addressForMap);
 		model.addObject("imageList", list);
 		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
+		
 		return model;
 	}
 	
@@ -135,13 +131,16 @@ public class AdController {
 		ModelAndView model = new ModelAndView("create-ad");
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("isMyAd", true);
+		
 		Ad ad = adService.getAd(adId);
+		
 		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
 		
 		return model;
 	}
+	
 	@ResponseBody
 	@RequestMapping(params ="delete", value="/modifyAd")
 	public ModelAndView deleteAd(@RequestParam(value="adId")Long adId, Principal principal) {
@@ -151,12 +150,12 @@ public class AdController {
 		model.addObject("user", user);
 		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));
+		
 		//used for myAds and myVisitors
 		model.addObject("myAdsList", adService.getAdsOfUserByUser(user));
 		model.addObject("myVisitsList", adService.getVisitsUserRegistered(user));
 		return model;
 	}	
-
 	
 	/**
 	 * @RequestParam /addToBookmarks?adId=x.
@@ -187,7 +186,6 @@ public class AdController {
 			Principal principal, HttpServletRequest request) {
 		
 		User user = userService.getUserByUsername(principal.getName());
-
 		ModelAndView model = showAd(adId, principal);
 		
 		adService.bookMarkAdforUser(adId, user);
@@ -197,8 +195,6 @@ public class AdController {
 		return model;
 	}
 
-	
-
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
 	public String registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
@@ -206,8 +202,7 @@ public class AdController {
 		
 		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
 		redirectAttributes.addFlashAttribute("message", "Successfully registered");
+		
 		return  "redirect:" + request.getHeader("Referer");
 	}
-	
-
 }

@@ -110,16 +110,8 @@ public class SearchServiceImpl implements SearchService {
 				itr.remove();
 			}
 		}
-		
-		/*for (Ad ad : adsToSort) {
-			if (ad.getAvailableDate().equals("--")){
-				adsToSort.remove(ad);
-			}
-		}*/
-		
-		for (Ad ad : adsToSort) {
-				adsToSortCopy.add(ad);
-		}
+				
+		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
 
 		for (Ad ad : adsToSortCopy)
 			try {				
@@ -130,7 +122,6 @@ public class SearchServiceImpl implements SearchService {
 				e.printStackTrace();
 
 			}
-
 	}
 
 	private Date convertStringToDate(String str) throws ParseException {
@@ -148,14 +139,7 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkPrice(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
-
-		// for (Ad ad : adsToSortCopy) {
-		// if (searchForm.getMinPrice() > ad.getPrice()
-		// || searchForm.getMaxPrice() < ad.getPrice())
-		// adsToSort.remove(ad);
-		// }
+		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
 
 		for (Ad ad : adsToSortCopy) {
 			if (searchForm.getMinPrice() > ad.getBrutto()
@@ -166,8 +150,8 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkNrFlatMates(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
+		
+		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
 
 		for (Ad ad : adsToSortCopy) {
 			if (searchForm.getMinNrOfFlatMates() > ad.getNrOfFlatMates() || searchForm.getMaxNrOfFlatMates() < ad.getNrOfFlatMates())
@@ -177,8 +161,7 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkNrRooms(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
+		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
 
 		for (Ad ad : adsToSortCopy) {
 			if (searchForm.getMinNrOfRooms() > ad.getNrOfRooms() || searchForm.getMaxNrOfRooms() < ad.getNrOfRooms())
@@ -188,8 +171,7 @@ public class SearchServiceImpl implements SearchService {
 
 	private void checkType(ArrayList<Ad> adsToSort) {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
-		for (Ad ad : adsToSort)
-			adsToSortCopy.add(ad);
+		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
 
 		for (Ad ad : adsToSortCopy) {
 			if (searchForm.getAdType() == AdType.ROOM) {
@@ -200,6 +182,14 @@ public class SearchServiceImpl implements SearchService {
 					adsToSort.remove(ad);
 			}
 		}
+	}
+
+	private ArrayList<Ad> copyListToSort(ArrayList<Ad> adsToSort,
+			ArrayList<Ad> adsToSortCopy) {
+		for (Ad ad : adsToSort)
+			adsToSortCopy.add(ad);
+		
+		return adsToSortCopy;
 	}
 
 	/**
@@ -222,7 +212,6 @@ public class SearchServiceImpl implements SearchService {
 
 	public void setAdService(AdService as) {
 		this.adService = as;
-
 	}
 
 	@Autowired

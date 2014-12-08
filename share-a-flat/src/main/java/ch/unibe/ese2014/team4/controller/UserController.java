@@ -31,7 +31,6 @@ import ch.unibe.ese2014.team4.model.User;
  * AccountController: Login process is routed via Spring Security. Controlls /,
  * /login (currently not needed), /createAccount: result page after account
  * creation.
- * 
  *
  */
 @Controller
@@ -65,6 +64,7 @@ public class UserController {
 		}
 			return model;
 	}
+	
 	/**
 	 * shows myProfile
 	 */
@@ -79,6 +79,7 @@ public class UserController {
 		}
 			return model;
 	}
+	
 	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
 	public ModelAndView modifyProfile(Principal principal) throws InvalidUserException {
 		ModelAndView model = new ModelAndView("modifyProfile");
@@ -86,7 +87,6 @@ public class UserController {
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		return model;
 	}
-
 
 	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 	public ModelAndView saveProfile(ProfileForm profileForm, BindingResult result, Principal principal) throws Exception {
@@ -103,8 +103,7 @@ public class UserController {
 				model.addObject("profileForm", new ProfileForm());
 				model.addObject("user", user);
 				model.addObject("errorMessage", "Password wrong");
-			}
-			
+			}			
 		}
 		else {
 			model = new ModelAndView("myPage");

@@ -11,6 +11,7 @@ import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.User;
+
 /**
  * Controls Elements of MyPage and Profile
  *
@@ -29,9 +30,9 @@ public class MyPageController {
 
 
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public ModelAndView myPage(Principal principal)  {
+	public ModelAndView myPage(Principal principal) {
 		ModelAndView model = new ModelAndView("myPage");
-		try{
+		try {
 			User user=userService.getUserByUsername(principal.getName());
 			model.addObject("user", user);
 			model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
@@ -43,14 +44,8 @@ public class MyPageController {
 		catch(InvalidUserException e){
 			
 		}
-			
-		
+	
 		return model;
 	}
-
-	
-
-
-
 	
 }
