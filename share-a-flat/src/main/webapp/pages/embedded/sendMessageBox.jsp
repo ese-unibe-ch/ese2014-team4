@@ -9,7 +9,7 @@
 
 <c:set var="receiverName">
 	<c:if test="${adData.owner.username!=null}">${adData.owner.username}</c:if>
-	<c:if test="${user.username!=null}">${user.username}</c:if>
+	<c:if test="${userProfile.username!=null}">${userProfile.username}</c:if>
 </c:set>
 
 <c:set var="whereIAm" value="history.go(-1)"></c:set>

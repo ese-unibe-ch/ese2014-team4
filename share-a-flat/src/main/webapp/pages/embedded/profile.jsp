@@ -25,20 +25,20 @@
 				
 					<div class="form-group">
 						<label class="col-md-5 control-label">Username:</label>
-						<div class="col-lg-5">${user.username}</div>
+						<div class="col-lg-5">${userProfile.username}</div>
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label">Email:</label>
-						<div class="col-lg-5">${user.email}</div>
+						<div class="col-lg-5">${userProfile.email}</div>
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-phoneNumber">Phone Number:</label>
-						<c:set var="phoneNr" value="${user.phoneNumber}" />
-							<c:if test="${user.phoneNumber eq ''}">
+						<c:set var="phoneNr" value="${userProfile.phoneNumber}" />
+							<c:if test="${userProfile.phoneNumber eq ''}">
 								<c:set var="phoneNr" value="--" />
 							</c:if>
 						<div class="col-lg-5">${phoneNr}</div>
@@ -47,9 +47,9 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-age">Age:</label>
-						<c:set var="age" value="${user.age}" />
+						<c:set var="age" value="${userProfile.age}" />
 							
-							<c:if test="${user.age eq ''}">
+							<c:if test="${userProfile.age eq ''}">
 								<c:set var="age" value="--" />
 							</c:if>
 						<div class="col-lg-5">${age}</div>
@@ -58,8 +58,8 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
-						<c:set var="sex" value="${user.sex}" />
-							<c:if test="${user.sex ne 'M' && user.sex ne 'F'}">
+						<c:set var="sex" value="${userProfile.sex}" />
+							<c:if test="${userProfile.sex ne 'M' && user.sex ne 'F'}">
 								<c:set var="sex" value="--" />
 							</c:if>
 						<div class="col-lg-5">${sex}</div>
@@ -68,8 +68,8 @@
 					
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-description">Description:</label>
-						<c:set var="descr" value="${user.userDescription}" />
-							<c:if test="${user.userDescription eq ''}">
+						<c:set var="descr" value="${userProfile.userDescription}" />
+							<c:if test="${userProfile.userDescription eq ''}">
 								<c:set var="descr" value="--" />
 							</c:if>
 						<div class="col-lg-5">${descr}</div>

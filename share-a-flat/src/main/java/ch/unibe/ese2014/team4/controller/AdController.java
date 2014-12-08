@@ -122,6 +122,9 @@ public class AdController {
 		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		
+		User user=userService.getUserByUsername(principal.getName());
+		model.addObject("user", user);
+		
 		return model;
 	}
 	

@@ -54,10 +54,12 @@ public class UserController {
 	 * @throws ProfileException
 	 */
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public ModelAndView showProfile(@RequestParam(value="userId") Long userId) throws InvalidUserException{
+	public ModelAndView showProfile(@RequestParam(value="userId") Long userId, Principal principal) throws InvalidUserException{
 		ModelAndView model = new ModelAndView("showProfile");
-		try{
-			model.addObject("user", userService.getUser(userId));
+		try {
+			model.addObject("userProfile", userService.getUser(userId));
+			User user=userService.getUserByUsername(principal.getName());
+			model.addObject("user", user);
 		}
 		catch(InvalidUserException e){
 			model.addObject("errorMessage", e.getMessage());

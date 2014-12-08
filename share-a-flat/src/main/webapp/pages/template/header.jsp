@@ -71,6 +71,7 @@ body {
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+
 					<li <%= isActive("logout", request) %>><a href="logout">Logout (${user.username})</a></li>
 
 				</ul>

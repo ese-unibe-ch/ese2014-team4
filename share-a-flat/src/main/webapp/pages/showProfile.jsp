@@ -8,7 +8,7 @@
 <c:import url="template/header.jsp" />
 
 <div class="container">
-	<h1 align="center">Profile of ${user.username}</h1>
+	<h1 align="center">Profile of ${userProfile.username}</h1>
 	<hr>
 </div>
 
