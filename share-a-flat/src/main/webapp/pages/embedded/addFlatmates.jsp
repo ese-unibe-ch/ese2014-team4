@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
@@ -19,10 +19,23 @@
 						<th>Name</th>
 
 					</tr>
-					<tr>
-					<TD><INPUT type="checkbox" name="chk"/></TD>
-						<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
-					</tr>
+					<c:choose>
+						<c:when test="${fn:length(adData.flatmateList) ne 0}">
+						<c:forEach items="${adData.flatmateList}" var="mate">
+							<tr>
+								<TD><INPUT type="checkbox" name="chk"/></TD>
+								<td><input name="flatmateList[0]" size="10" tabindex="16" value="${mate.username}" /></td>
+							</tr>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<TD><INPUT type="checkbox" name="chk"/></TD>
+								<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+
 				</table>
 				    <INPUT id="button-addFlatmate" type="button" value="Add a flatmate" onclick="addRowFlatmate('flatmateTable')" />
  
