@@ -111,10 +111,18 @@ public class SearchController {
 	
 	@RequestMapping(params = "delete", value = "/restoreSavedSearch", method = RequestMethod.POST)
 	public ModelAndView deleteSavedSearch(@RequestParam(value="id")Long searchFormId, Principal principal) {
-		searchFormDao.delete(searchFormId);
 		ModelAndView model = new ModelAndView("myPage");
+		try{
+			searchFormDao.delete(searchFormId);
+			model.addObject("message", "message deleted successfully");
+		}//no information about possible exceptions, therefore Exception.
+		catch(Exception e){
+			model.addObject("message", "message could not be deleted");
+			
+		}
+		
 		User user = userService.getUserByUsername(principal.getName());
-
+		model.addObject("message", "message deleted successfully");
 		model.addObject("user", user);
 		model.addObject("mySearchList", searchService.getMySavedSearchForms(user));
 		model.addObject("adList", adService.getBookmarkedAds(user.getBookmarks()));

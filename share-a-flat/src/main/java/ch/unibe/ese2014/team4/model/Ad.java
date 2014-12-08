@@ -70,7 +70,7 @@ public class Ad {
 	private int netto;
 	private int charges;
 	private int brutto;
-	// @Column(columnDefinition="date")
+
 	private String availableDate;
 	private String description;
 

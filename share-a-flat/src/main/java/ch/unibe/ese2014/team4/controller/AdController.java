@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -194,15 +195,26 @@ public class AdController {
 
 		return model;
 	}
+	/**
+	 * Saves current user as visitor of this ad. Visitor can only be registered for the same visit once.
+	 * @param visitId
+	 * @param principal
+	 * @param request
+	 * @param redirectAttributes
+	 * @return
+	 */
 
 	@RequestMapping(value = "/registerForVisit", method = RequestMethod.POST)
 	public String registerForVisit(
 			@RequestParam(value = "selectedVisit", required = true) long visitId,
 			Principal principal, HttpServletRequest request,RedirectAttributes redirectAttributes) {
-		
-		adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
-		redirectAttributes.addFlashAttribute("message", "Successfully registered");
-		
+		try{
+			adService.registerUserForVisit(visitId, userService.getUserByUsername(principal.getName()));
+			redirectAttributes.addFlashAttribute("message", "Successfully registered");
+		}
+		catch(InvalidDataAccessApiUsageException e){
+			redirectAttributes.addFlashAttribute("message", "Could not register. You probably are already registered?");
+		}	
 		return  "redirect:" + request.getHeader("Referer");
 	}
 }

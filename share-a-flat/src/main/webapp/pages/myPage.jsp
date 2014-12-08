@@ -14,6 +14,7 @@
 				<h1 align="center">My Page</h1>
 				<hr>
 			</div>
+			<h4>${message}</h4>
 		</div>
 	</div>
 	<!--/container-->
@@ -23,7 +24,7 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapseBookmarks"><h3>My Bookmarks</h3></a>
+				<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseBookmarks">My Bookmarks</a></h3>
 			</div>
 			<div class="panel-collapse collapse" id="collapseBookmarks">
 			<div class="panel-body" >
@@ -36,7 +37,7 @@
 	<div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyAds"><h3>My Ads</h3></a>
+				<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseMyAds">My Ads</a></h3>
 		</div>
 		<div class="panel-collapse collapse" id="collapseMyAds">
 		<div class="panel-body">
@@ -52,14 +53,14 @@
 	<div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapseMySearches"><h3>My Searches</h3></a>
+				<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseMySearches">My Searches</a></h3>
 		</div>
 		<div class="panel-collapse collapse" id="collapseMySearches">
 		<div class="panel-body">
 		<c:choose><c:when test="${fn:length(mySearchList) eq 0}">No searches saved.</c:when><c:otherwise>
 		<c:forEach items="${mySearchList}" var="search">
 			<form  action="restoreSavedSearch?id=${search.id}" method="POST">
-			${search.cityOrZip}
+			${search.adType} in ${search.cityOrZip}. 
 			<button type="submit" name="search">Search</button>
 			<button type="submit" name="delete">Delete search</button>
 			</form> 
@@ -73,9 +74,9 @@
 	<div class="col-md-12">
  <div class="panel panel-default">
 				<div class="panel-heading">
-					<h3>
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisits"><h3>My Visits</h3></a>
-					</h3>
+					
+						<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisits">My Visits</a></h3>
+					
 				</div>
 				<div class="panel-collapse collapse" id="collapseMyVisits">
 				<div class="panel-body">
@@ -90,9 +91,7 @@
 <div class="col-md-12">
  <div class="panel panel-default">
 				<div class="panel-heading">
-					<h3>
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisitors"><h3>My Visitors</h3></a>
-					</h3>
+						<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseMyVisitors">My Visitors</a></h3>
 				</div>
 				<div class="panel-collapse collapse" id="collapseMyVisitors">
 				<div class="panel-body">

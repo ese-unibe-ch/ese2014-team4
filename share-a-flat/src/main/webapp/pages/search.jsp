@@ -95,6 +95,7 @@
 			<div class="panel-heading">
 				<h3>Search-Criteria</h3>
 			</div>
+			<h4>${message}</h4>
 
 			<div class="panel-body">
 				<c:import url="embedded/searchCriteria.jsp" />
