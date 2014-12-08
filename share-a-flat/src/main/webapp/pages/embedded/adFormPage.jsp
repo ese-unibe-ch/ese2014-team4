@@ -164,13 +164,14 @@
 	</c:set>
 	<div
 		class="control-group<c:if test="${not empty nettoErrors}"> error</c:if>">
-		<label class="control-label" for="field-netto">Netto-Price:</label>
+		<label class="control-label" for="field-netto">Netto-Price:<span
+		style="color: red"> <b>*</b></span></label>
 		<div class="controls">
 			<form:input type="number" min="0" max="1000000" step="1" path="netto"
-				id="field-netto" class="form-control" tabindex="10" maxlength="6"
+				id="field-netto"  required="true" class="form-control" tabindex="10" maxlength="6"
 				value="${adForm.netto}"
 				onfocus="(this.value == '0') && (this.value = '')"
-				onblur="(this.value == '') && (this.value = '0')" />
+				onblur="(this.value == '') && (this.value = '0')"/>
 			<form:errors path="netto" cssClass="help-inline" element="span" />
 		</div>
 	</div>
@@ -252,7 +253,7 @@
 
 	<div class="alert alert-warning" align="left"
 		style="height: 50px; text-align: center">
-		<b>( <span style="color:red">*</span> are mandatory fields! )</b>
+		<b> <span style="color:red">*</span> are mandatory fields! </b>
 	</div>
 
 	<div class="layout-content-column">

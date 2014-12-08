@@ -32,13 +32,6 @@
 <div class="col-md-4">
 	<br>
 	
-	<div class="alert alert-success" align="left" style="height: 50px">
-		<h4>
-			<b>Messaging:</b>
-		</h4>
-	</div>
-	
-	
 	<c:set var="receiverName">
 		<c:if test="${user.username!=null}">${user.username}</c:if>
 	</c:set>
