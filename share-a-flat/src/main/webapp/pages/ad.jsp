@@ -75,8 +75,8 @@
 	<c:if test="${isMyAd eq true}">
 		<fieldset>
 			<form method="post" action="modifyAd?adId=${adData.id}">
-				<input name="modify" type="submit" value="modify Ad" class="btn btn-warning"> 
-				<input name="delete" type="submit" value="delete Ad" onclick="return confirm('Are you sure you want to delete your ad?')"
+				<input name="modify" type="submit" value="Modify ad" class="btn btn-warning"> 
+				<input name="delete" type="submit" value="Delete ad" onclick="return confirm('Are you sure you want to delete your ad?')"
 					class="btn btn-warning">
 			</form>
 		</fieldset>
@@ -89,7 +89,7 @@
 				<div class="panel-heading">
 				
 					<h3>
-						<b>Basic Data</b>
+						<b>General</b>
 					</h3>
 				</div>
 				
@@ -127,7 +127,7 @@
 						</tr>
 
 						<tr>
-							<td width="140"><b>Available from:</b></td>
+							<td width="140"><b>Available From:</b></td>
 							<td>${adData.availableDate}</td>
 						</tr>
 					</table>
