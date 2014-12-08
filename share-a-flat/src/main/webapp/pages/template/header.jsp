@@ -66,7 +66,7 @@ body {
 							Favorites</a></li> -->
 					<li <%= isActive("search", request) %>><a
 						href="search">Search</a></li>
-					<li <%= isActive("createAd", request) %>><a href="createAd">Create
+					<li <%= isActive("create-ad", request) %>><a href="createAd">Create
 							an ad</a></li>
 				</ul>
 
