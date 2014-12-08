@@ -93,8 +93,8 @@ public class UserController {
 		ModelAndView model;
 		User user = userService.getUserByUsername(principal.getName());
 		if (!result.hasErrors()) {
-			
-			if(userService.isPasswordCorrect(profileForm.getOldPassword(), user)){
+			System.out.println(profileForm.getPassword());
+			if(profileForm.getPassword().equals("") || userService.isPasswordCorrect(profileForm.getOldPassword(), user)){
 				userService.updateUserFrom(profileForm, user); 
 				return showMyProfile(principal);
 			}

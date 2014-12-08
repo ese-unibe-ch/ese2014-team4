@@ -16,7 +16,7 @@
 
 <!-- to insert space: &#160. will be improved -->
 <span>${sendMessageResponse}</span>
-<c:forEach items="${inboxList}" var="message" varStatus="loopIndex">
+<c:forEach items="${user.inbox}" var="message" varStatus="loopIndex">
 
 	<c:if test="${message.showInInbox eq 0}">
 		<c:set var="messageId" value="${message.id}"></c:set>

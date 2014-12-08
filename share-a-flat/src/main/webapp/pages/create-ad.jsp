@@ -14,7 +14,9 @@
 	<div class="container">
 		<div class="row">
 			<div>
-				<h1 align="center">Create an Ad</h1>
+
+				<h1 align="center">New Ad</h1>
+
 				<hr>
 			</div>
 		</div>

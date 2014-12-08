@@ -49,11 +49,12 @@ public class AdController {
 
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
-	public ModelAndView createAd() {
+	public ModelAndView createAd(Principal principal) {
 		
 		ModelAndView model = new ModelAndView("create-ad");
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("adForm", new AdForm());
+		model.addObject("user", userService.getUserByUsername(principal.getName()));
 
 		return model;
 	}
@@ -70,7 +71,6 @@ public class AdController {
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
-		System.out.println(adForm.getId());
 		//try{
 
 			adService.saveAdForm(adForm,
