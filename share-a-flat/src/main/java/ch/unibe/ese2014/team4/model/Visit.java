@@ -41,7 +41,7 @@ public class Visit {
 	private List<User> visitorList = new ArrayList<User>();
 	
 	public String toString(){
-		return date + ",  " + startTime + " - " + endTime;
+		return date + ", " + startTime + " - " + endTime;
 			
 	}
 	

@@ -96,10 +96,11 @@
 				<div class="panel-collapse collapse" id="collapseMyVisitors">
 				<div class="panel-body">
 				<c:choose><c:when test="${fn:length(myAdsList) eq 0}">You have not announced visit dates</c:when><c:otherwise>
-						<c:forEach items="${myVisitsList}" var="visit">
-							<a href="showAd?adId=${visit.adId}">${visit}</a>: <c:forEach items="${visit.visitorList}" var="user"><a href="profile?userId=${user.id}">${user.username}  </a> </c:forEach>
+						<c:forEach items="${myAdsList}" var="ad">
+						<c:forEach items="${ad.visitList}" var="visit">
+							<a href="showAd?adId=${ad.id}">${visit}</a>: <c:forEach items="${visit.visitorList}" var="user"><a href="profile?userId=${user.id}">${user.username}  </a> </c:forEach>
 							<br>
-						</c:forEach> 
+						</c:forEach> </c:forEach>
 					</c:otherwise></c:choose>
 				</div>
 </div></div></div>

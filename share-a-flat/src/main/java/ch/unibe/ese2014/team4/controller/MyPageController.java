@@ -13,7 +13,7 @@ import ch.unibe.ese2014.team4.controller.service.UserService;
 import ch.unibe.ese2014.team4.model.User;
 
 /**
- * Controls Elements of MyPage and Profile
+ * Controls Elements of MyPage.
  *
  */
 @Controller

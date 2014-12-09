@@ -98,6 +98,12 @@ public class LoginTest {
     	assertTrue (userDao.findByUsername("testUser").getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")));
     	assertEquals (1, userDao.findByUsername("testUser").getAuthorities().size());
     }
+    
+    @Test(expected=ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException.class)
+    public void testNotExistent(){
+    	userService.getUserByUsername("notHere");
+    	
+    }
 
 }
 

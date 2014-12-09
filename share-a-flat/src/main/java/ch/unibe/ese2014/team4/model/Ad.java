@@ -317,7 +317,7 @@ public class Ad {
 			return false;
 		Ad other = (Ad) obj;
 
-		if (!id.equals(other.id))
+		if (!this.id.equals(other.id))
 			return false;
 		else
 			return true;
