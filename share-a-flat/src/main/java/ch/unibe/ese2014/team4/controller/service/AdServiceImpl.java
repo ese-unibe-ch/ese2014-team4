@@ -276,19 +276,6 @@ public class AdServiceImpl implements AdService {
 		}
 	}
 
-	// public void unBookMarkAdForUser(long adId, User user) {
-	// List<Long> list = user.getBookmarks();
-	//
-	// if (list.contains(adId)) {
-	// list.remove(adId);
-	// user.setBookmarks(list);
-	// userDao.save(user);
-	// }
-	// else {
-	// throw new BookmarkException("Already bookmarked!");
-	// }
-	// }
-
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks) {
 		List<Ad> list = new ArrayList<Ad>();
 

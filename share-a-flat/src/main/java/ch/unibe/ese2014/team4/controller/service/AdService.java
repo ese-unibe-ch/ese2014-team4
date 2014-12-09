@@ -36,7 +36,6 @@ public interface AdService {
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 	public List<Ad> getAdsOfUserByUser(User user);
-//	public void unBookMarkAdForUser(long adId, User user);
 
 	//Visit
 	public List<Visit> getVisitList(long adId);		
