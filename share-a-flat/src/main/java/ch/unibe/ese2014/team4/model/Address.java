@@ -13,16 +13,16 @@ public class Address {
 	    private Long id;
 
 	  	private String street;
-		private int streetNumber;
+		private String streetNumber;
 	    private String city;
 	    private int zipCode;
 	    
 	    
-	    public int getStreetNumber() {
+	    public String getStreetNumber() {
 			return streetNumber;
 		}
 
-		public void setStreetNumber(int streetNumber) {
+		public void setStreetNumber(String streetNumber) {
 			this.streetNumber = streetNumber;
 		}
 
@@ -72,7 +72,7 @@ public class Address {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
-		result = prime * result + streetNumber;
+		result = prime * result + ((streetNumber == null) ? 0 : streetNumber.hashCode());
 		result = prime * result + zipCode;
 		return result;
 	}

@@ -16,74 +16,70 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Visit;
 
 /**
- * Used to transfer ad-information from form to controller.
- * If you add more fields: Need to be added in Ad.java and in corresponding forms in *.jps.
+ * Used to transfer ad-information from form to controller. If you add more
+ * fields: Need to be added in Ad.java and in corresponding forms in *.jps.
  */
 
 public class AdForm {
 
 	private long id;
-	
+
+	// Basic Data
 	private String title;
 	private int size;
-    @NotNull
-    private int netto;
-    private int charges;
-    private int brutto;
-    
-	@NotNull
-    private String description;   
-    private int nrOfFlatMates;  
-    
-    private String availableDate;
-
 	private AdType adType;
-	private List<String> flatmateList;
 	private float nrOfRooms;
-    private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
-	private List<String> visitDate;
-    private List<String> startTime;
-    private List<String> endTime;
+	@NotNull
+	private String description;
+	private int nrOfFlatMates;
+	private String availableDate;
 
-    
-    
-    public List<String> getVisitDate() {
+	// Pictures
+	private ArrayList<MultipartFile> uploadedAdPictures = new ArrayList<MultipartFile>();
+
+	// Price
+	@NotNull
+	private int netto;
+	private int charges;
+	private int brutto;
+
+	// Address-Info, same field as Ad itself.
+	private String street;
+	private String streetNumber;
+	private String city;
+	private int zipCode;
+
+	// Flatmate-Names
+	private List<String> flatmateList;
+
+	// Visit-Dates
+	private List<String> visitDate;
+	private List<String> startTime;
+	private List<String> endTime;
+
+	public List<String> getVisitDate() {
 		return visitDate;
 	}
-
 
 	public void setVisitDate(List<String> visitDate) {
 		this.visitDate = visitDate;
 	}
 
-
 	public List<String> getStartTime() {
 		return startTime;
 	}
-
 
 	public void setStartTime(List<String> startTime) {
 		this.startTime = startTime;
 	}
 
-
 	public List<String> getEndTime() {
 		return endTime;
 	}
 
-
 	public void setEndTime(List<String> endTime) {
 		this.endTime = endTime;
 	}
-
-
- 
-	//Address-Info, same field as Ad itself.
-    private String street;
-    private int streetNumber;
-    private String city;
-    private int zipCode;
-
 
 	public int getSize() {
 		return size;
@@ -101,9 +97,7 @@ public class AdForm {
 		this.nrOfFlatMates = nrOfFlatMates;
 	}
 
-
-	
-    public int getNetto() {
+	public int getNetto() {
 		return netto;
 	}
 
@@ -124,7 +118,7 @@ public class AdForm {
 	}
 
 	public void setBrutto() {
-		this.brutto = netto+charges;
+		this.brutto = netto + charges;
 	}
 
 	public String getAvailableDate() {
@@ -134,7 +128,7 @@ public class AdForm {
 	public void setAvailableDate(String availableDate) {
 		this.availableDate = availableDate;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
@@ -151,11 +145,11 @@ public class AdForm {
 		this.title = title;
 	}
 
-    public int getStreetNumber() {
+	public String getStreetNumber() {
 		return streetNumber;
 	}
 
-	public void setStreetNumber(int streetNumber) {
+	public void setStreetNumber(String streetNumber) {
 		this.streetNumber = streetNumber;
 	}
 
@@ -179,7 +173,7 @@ public class AdForm {
 		return street;
 	}
 
-	public void setStreet(String street) { 
+	public void setStreet(String street) {
 		this.street = makeCapital(street);
 	}
 
@@ -199,7 +193,6 @@ public class AdForm {
 		this.adType = type;
 	}
 
-
 	public float getNrOfRooms() {
 		return nrOfRooms;
 	}
@@ -212,7 +205,8 @@ public class AdForm {
 		return uploadedAdPictures;
 	}
 
-	public void setUploadedAdPictures(ArrayList<MultipartFile> uploadedAdPictures) {
+	public void setUploadedAdPictures(
+			ArrayList<MultipartFile> uploadedAdPictures) {
 		this.uploadedAdPictures = uploadedAdPictures;
 	}
 
@@ -224,15 +218,12 @@ public class AdForm {
 		return tmp;
 	}
 
-
 	public List<String> getFlatmateList() {
 		return flatmateList;
 	}
-
 
 	public void setFlatmateList(List<String> flatmateList) {
 		this.flatmateList = flatmateList;
 	}
 
-    
 }

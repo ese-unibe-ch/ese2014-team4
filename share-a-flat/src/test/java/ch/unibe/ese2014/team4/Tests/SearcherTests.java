@@ -1,10 +1,6 @@
 package ch.unibe.ese2014.team4.Tests;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
 import org.junit.*;
 
 import static org.easymock.EasyMock.*;
@@ -13,7 +9,6 @@ import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.AdServiceImpl;
 import ch.unibe.ese2014.team4.controller.service.SearchServiceImpl;
 import ch.unibe.ese2014.team4.model.*;
-
 import ch.unibe.ese2014.team4.model.dao.AdDao;
 
 public class SearcherTests {
