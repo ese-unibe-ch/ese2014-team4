@@ -420,6 +420,7 @@ public class SearcherTests {
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
 		searchForm.setMinNrOfFlatMates(0);
+		searchForm.setMaxNrOfFlatMates(0);
 		searchForm.setAvailableDate("");
 		searchForm.setOrderBy("newestFirst");
 

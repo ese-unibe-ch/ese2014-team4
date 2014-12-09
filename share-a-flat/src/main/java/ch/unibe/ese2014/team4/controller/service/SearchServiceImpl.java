@@ -81,11 +81,11 @@ public class SearchServiceImpl implements SearchService {
 			checkPrice(adsToSort);
 		}
 
-		if (searchForm.getMinNrOfFlatMates() > 0) {
+		if (searchForm.getMinNrOfFlatMates() > 0 || searchForm.getMaxNrOfFlatMates() > 0) {
 			checkNrFlatMates(adsToSort);
 		}
-
-		if (searchForm.getMinNrOfRooms() > 0) {
+		
+		if (searchForm.getMinNrOfRooms() > 0 || searchForm.getMaxNrOfRooms() > 0) {
 			checkNrRooms(adsToSort);
 		}
 		
@@ -152,11 +152,18 @@ public class SearchServiceImpl implements SearchService {
 		ArrayList<Ad> adsToSortCopy = new ArrayList<Ad>();
 		
 		adsToSortCopy = copyListToSort(adsToSort, adsToSortCopy);
-
-		for (Ad ad : adsToSortCopy) {
-			if (searchForm.getMinNrOfFlatMates() > ad.getNrOfFlatMates() || searchForm.getMaxNrOfFlatMates() < ad.getNrOfFlatMates())
-				adsToSort.remove(ad);
-		}
+		
+//		if (searchForm.getMinNrOfFlatMates() > 0) {
+			for (Ad ad : adsToSortCopy) {
+				if (searchForm.getMinNrOfFlatMates() > ad.getNrOfFlatMates() || searchForm.getMaxNrOfFlatMates() < ad.getNrOfFlatMates())
+					adsToSort.remove(ad);
+			}
+//		} else {
+//			for (Ad ad : adsToSortCopy) {
+//				if (searchForm.getMaxNrOfFlatMates() < ad.getNrOfFlatMates())
+//					adsToSort.remove(ad);
+//			}
+//		}
 	}
 
 	private void checkNrRooms(ArrayList<Ad> adsToSort) {
