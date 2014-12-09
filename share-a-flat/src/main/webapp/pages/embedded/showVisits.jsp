@@ -23,7 +23,7 @@
 					<form action="registerForVisit" method="post">
 					<fieldset>
 						<c:forEach items="${adData.visitList}" var="visit">
-							<input type="radio" id="selectedVisit" name="selectedVisit" value="${visit.id}"/>${visit}
+							<input type="radio" id="selectedVisitGroup" name="selectedVisit" checked="checked" value="${visit.id}"/>${visit}
 							<br>
 						</c:forEach>
 						<input type="submit" id="submitButton" value = "register for visit"/>
@@ -32,17 +32,3 @@
 					</c:otherwise></c:choose>
 				</div>
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		  $('#submitButton').click(function() {
-			  if(!$('#selectedVisit').is(':checked')) {
-		       alert('Please chose a visit date before register!');
-		        return false;
-		    } else {
-		    	return true;
-		    }
-		  }
-		 );
-		});	
-</script>

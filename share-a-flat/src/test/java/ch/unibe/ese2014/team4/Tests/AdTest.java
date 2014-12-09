@@ -73,10 +73,7 @@ public class AdTest {
     	assertEquals("testUser", adService.getAd(new Long(1)).getOwner().getUsername());
     }
     
-    @Test(expected = ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException.class)
-    public void testInvalidUserException() {
 
-    }
 
     
 
