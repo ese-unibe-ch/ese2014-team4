@@ -6,6 +6,7 @@
 
 
 <c:import url="template/header.jsp" />
+<c:set var="userProfile" value="${user}"/>
 <div class="container">
 	<h1 align="center">My Profile</h1>
 	<hr>

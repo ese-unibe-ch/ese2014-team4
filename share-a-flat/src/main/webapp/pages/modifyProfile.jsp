@@ -182,7 +182,7 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">Description:</label>
 						<div class="col-lg-8">
-							<form:input class="form-control" id="field-description"
+							<form:textarea class="form-control" id="field-description"
 								value="${user.userDescription}" type="text"
 								path="userDescription" tabindex="10"
 								placeholder="describe yourself" />

@@ -33,9 +33,7 @@
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label">Email:</label>
-==
 						<div class="col-lg-5">${userProfile.email}</div>
-
 						<br>
 					</div>
 
@@ -48,25 +46,21 @@
 
 							</c:if>
 															
-							${phone}						
-						</div>
-						<br>
-	
-
+							<div class="col-lg-5">${phoneNr}	</div>					
+					</div>
+					<br><br>
 					<div class="form-group">
-						<label class="col-lg-5 control-label" for="field-age">Age:</label>
+						<label class="col-lg-5 control-label" for="field-phoneNumber">Age:</label>
+
 						<c:set var="age" value="${userProfile.age}" />
-							
 							<c:if test="${userProfile.age eq ''}">
 								<c:set var="age" value="--" />
 
 							</c:if>
-																
-							${age}							
-						</div>
-						<br>
-	
-
+															
+							<div class="col-lg-5">${age}	</div>					
+					</div>	
+					<br>
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
 
@@ -76,7 +70,7 @@
 
 							</c:if>
 						
-							${sex}
+							<div class="col-lg-5">${sex}</div>
 						</div>
 						<br>
 
@@ -90,7 +84,7 @@
 
 							</c:if>
 						
-							${descr}
+							<pre>${descr}</pre>
 						</div>
 						<br>
 

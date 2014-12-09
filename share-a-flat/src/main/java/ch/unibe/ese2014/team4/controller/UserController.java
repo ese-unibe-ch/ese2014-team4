@@ -56,7 +56,7 @@ public class UserController {
 		catch(InvalidUserException e){
 			model.addObject("errorMessage", e.getMessage());
 		}
-			return model;
+		return model;
 	}
 	
 	/**
@@ -64,7 +64,16 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView showMyProfile(Principal principal) throws InvalidUserException{
-			return showProfile(userService.getUserByUsername(principal.getName()).getId(), principal);
+		ModelAndView model = new ModelAndView("myProfile");
+		try{
+			User user = userService.getUserByUsername(principal.getName()); //currently active user
+			model.addObject("user", user);
+			model.addObject("userProfile", user);
+			}
+		catch(InvalidUserException e){
+			model.addObject("errorMessage", e.getMessage());
+		}
+		return model;
 	}
 	
 	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
