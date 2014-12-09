@@ -22,7 +22,6 @@ public class SearcherTests {
 	private Ad testAd1 = new Ad();
 	private Ad testAd2 = new Ad();
 	private Ad testAd3 = new Ad();
-	private Ad testAd4 = new Ad();
 
 
 	@Before
@@ -421,6 +420,7 @@ public class SearcherTests {
 		searchForm.setMaxPrice(0);
 		searchForm.setMinPrice(0);
 		searchForm.setMinNrOfFlatMates(0);
+		searchForm.setMaxNrOfFlatMates(0);
 		searchForm.setAvailableDate("");
 		searchForm.setOrderBy("newestFirst");
 
