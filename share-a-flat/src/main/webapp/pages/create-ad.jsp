@@ -27,10 +27,8 @@
 <!--/masthead-->
 
 
-<form:form enctype="multipart/form-data" method="post"
-	modelAttribute="adForm" action="submitAd"
-	onSubmit="return createFormIsValid()" id="adForm"
-	cssClass="form-horizontal" autocomplete="off">
+<form:form enctype="multipart/form-data" method="post" modelAttribute="adForm" action="submitAd"
+	onSubmit="return createFormIsValid()" id="adForm" cssClass="form-horizontal" autocomplete="off">
 
 	<div class="col-md-3">
 
@@ -58,7 +56,7 @@
 			
 			<c:if test="${isMyAd eq true}">
 				<form method="post" action="modifyAd?adId=${adForm.id}">
-					<input type="submit" name="delete" value="delete Ad"
+					<input type="submit" name="delete" value="Delete Ad"
 						onclick="return confirm('Are you sure you want to delete your ad?')"
 						class="btn btn-warning">
 				</form>

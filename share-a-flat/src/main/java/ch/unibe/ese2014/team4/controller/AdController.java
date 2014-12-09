@@ -75,8 +75,7 @@ public class AdController {
 			Principal principal) throws Exception {
 		//try{
 
-			adService.saveAdForm(adForm,
-					userService.getUserByUsername(principal.getName()));
+			adService.saveAdForm(adForm,userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
 //		}
 //		
