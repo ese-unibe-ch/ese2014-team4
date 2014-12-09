@@ -117,22 +117,22 @@
 						</tr>
 
 						<tr>
+							<c:set var="size" value="${adData.size} m&sup2"></c:set>
 							<c:if test="${adData.size eq 0}"><c:set var="size" value="--"></c:set></c:if>
-							<c:if test="${adData.size ne 0}"><c:set var="size" value="${adData.size} m&sup2"></c:set></c:if>
 							<td width="140"><b>Size:</b></td>
-							<td>${size} </td>
+							<td>${size}</td>
 						</tr>
 
 						<tr>
+							<c:set var="nrOfRooms" value="${adData.nrOfRooms}"></c:set>
 							<c:if test="${adData.nrOfRooms eq 0}"><c:set var="nrOfRooms" value="--"></c:set></c:if>
-							<c:if test="${adData.nrOfRooms ne 0}"><c:set var="nrOfRooms" value="${adData.nrOfRooms}"></c:set></c:if>
 							<td width="140"><b>Nr of Rooms:</b></td>
 							<td>${nrOfRooms}</td>
 						</tr>
 
 						<tr>
 							<c:set var="availableDate" value="${adData.availableDate}"></c:set>
-							<c:if test="${empty availableDate}">
+							<c:if test="${empty adData.availableDate}">
 								<c:set var="availableDate" value="--"></c:set>
 							</c:if>
 							<td width="140"><b>Available From:</b></td>
@@ -177,22 +177,22 @@
 						</tr>
 
 						<tr>
+							<c:set var="netto" value=" CHF ${adData.netto}.-"></c:set>
 							<c:if test="${adData.netto eq 0}"><c:set var="netto" value="--"></c:set></c:if>
-							<c:if test="${adData.netto ne 0}"><c:set var="netto" value=" CHF ${adData.netto}.-"></c:set></c:if>
 							<td width="140"><b>Netto-Price:</b></td>
 							<td>${netto}</td>
 						</tr>
 
 						<tr>
+							<c:set var="charges" value=" CHF ${adData.charges}.-"></c:set>
 							<c:if test="${adData.charges eq 0}"><c:set var="charges" value="--"></c:set></c:if>
-							<c:if test="${adData.charges ne 0}"><c:set var="charges" value=" CHF ${adData.charges}.-"></c:set></c:if>
 							<td width="140"><b>Charges:</b></td>
 							<td>${charges}</td>
 						</tr>
 
 						<tr>
+							<c:set var="brutto" value=" CHF ${adData.brutto}.-"></c:set>
 							<c:if test="${adData.brutto eq 0}"><c:set var="brutto" value="--"></c:set></c:if>
-							<c:if test="${adData.brutto ne 0}"><c:set var="brutto" value=" CHF ${adData.brutto}.-"></c:set></c:if>
 							<td width="140"><b>Brutto-Price:</b></td>
 							<td>${brutto}</td>
 						</tr>

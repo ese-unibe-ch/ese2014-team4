@@ -22,7 +22,6 @@ public class SearcherTests {
 	private Ad testAd1 = new Ad();
 	private Ad testAd2 = new Ad();
 	private Ad testAd3 = new Ad();
-	private Ad testAd4 = new Ad();
 
 
 	@Before

@@ -105,10 +105,7 @@ public class AdServiceImpl implements AdService {
 		ad.setSize(adForm.getSize());
 		ad.setOwner(owner);
 
-//		if (adForm.getAvailableDate().equals(""))
-//			ad.setAvailableDate("--");
-//		else
-			ad.setAvailableDate(adForm.getAvailableDate());
+		ad.setAvailableDate(adForm.getAvailableDate());
 
 		ad.setAdAddedDate(new Date());
 
@@ -315,6 +312,7 @@ public class AdServiceImpl implements AdService {
 		AdForm adForm = new AdForm();
 		adForm.setAdType(ad.getType());
 		adForm.setAvailableDate(ad.getAvailableDate());
+		adForm.setSize(ad.getSize());
 		adForm.setCharges(ad.getCharges());
 		adForm.setNetto(ad.getNetto());
 		adForm.setCity(ad.getAddress().getCity());

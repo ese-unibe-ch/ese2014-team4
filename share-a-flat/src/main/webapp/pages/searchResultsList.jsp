@@ -27,31 +27,24 @@
 			<td width="80"><b>Address:</b><br> <b></b> <b>Place:</b><br>
 			</td>
 
-
 			<td width="150">${ad.address.street}${ad.address.streetNumber}<br>
 				${ad.address.zipCode} ${ad.address.city}
 			</td>
 
 			<td width="60"><b>Price:</b><br> <b>Size:</b><br></td>
 
-			<c:if test="${ad.brutto eq 0}">
-				<c:set var="brutto" value="--"></c:set>
-			</c:if>
-			<c:if test="${ad.brutto ne 0}">
-				<c:set var="brutto" value="${ad.brutto} CHF"></c:set>
-			</c:if>
-			<c:if test="${ad.size eq 0}">
-				<c:set var="size" value="--"></c:set>
-			</c:if>
-			<c:if test="${ad.size ne 0}">
-				<c:set var="size" value="${ad.size} m&sup2"></c:set>
-			</c:if>
+			<c:set var="brutto" value="${ad.brutto} CHF"></c:set>
+			<c:if test="${ad.brutto eq 0}"><c:set var="brutto" value="--"></c:set></c:if>
+				
+			<c:set var="size" value="${ad.size} m&sup2"></c:set>
+			<c:if test="${ad.size eq 0}"><c:set var="size" value="--"></c:set></c:if>
 
-			<td width="100">${brutto}<br> ${size}<br>
+
+			<td width="100">${brutto}<br>${size}<br>
 			</td>
 
 			<c:set var="availableDate" value="${ad.availableDate}"></c:set>
-			<c:if test="${empty availableDate}">
+			<c:if test="${empty ad.availableDate}">
 				<c:set var="availableDate" value="--"></c:set>
 			</c:if>
 
