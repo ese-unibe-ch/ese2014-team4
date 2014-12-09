@@ -16,6 +16,7 @@ import ch.unibe.ese2014.team4.model.dao.UserDao;
 /**
  * Provides a UserDetails token used by String Security to check credentials.
  * Does not work as Interface, Spring Security doesn't like Interface-Beans...
+ * Only used as a provider for UserDetails, used by Spring security.
  *
  */
 @Service
