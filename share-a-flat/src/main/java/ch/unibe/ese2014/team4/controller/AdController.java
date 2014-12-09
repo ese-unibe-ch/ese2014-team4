@@ -60,7 +60,7 @@ public class AdController {
 	}
 	
 	private ModelAndView getCreateAdPage(Principal principal, long adId){
-		ModelAndView model = new ModelAndView("create-ad");
+		ModelAndView model = new ModelAndView("createAd");
 		model.addObject("adCreationOrModification", "New Ad");
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		if(adId==0){
@@ -97,7 +97,7 @@ public class AdController {
 		}
 		
 		catch (ConstraintViolationException e) {
-			ModelAndView model = new ModelAndView("create-ad");
+			ModelAndView model = new ModelAndView("createAd");
 			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 			model.addObject("adForm", adForm);
 			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
@@ -106,7 +106,7 @@ public class AdController {
 		}
 		// many possible exceptions, therefore juxt catch Exception
 		catch (Exception e) {
-			ModelAndView model = new ModelAndView("create-ad");
+			ModelAndView model = new ModelAndView("createAd");
 			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 			model.addObject("adForm", adForm);
 			model.addObject("errorMessage", e.getMessage());

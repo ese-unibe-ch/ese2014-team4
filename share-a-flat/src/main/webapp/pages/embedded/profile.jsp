@@ -41,24 +41,24 @@
 						<label class="col-lg-5 control-label" for="field-phoneNumber">Phone Number:</label>
 
 						<c:set var="phoneNr" value="${userProfile.phoneNumber}" />
-							<c:if test="${userProfile.phoneNumber eq ''}">
+							<c:if test="${empty userProfile.phoneNumber}">
 								<c:set var="phoneNr" value="--" />
 
 							</c:if>
 															
-							<div class="col-lg-5">${phoneNr}	</div>					
+							<div class="col-lg-5">${phoneNr}</div>					
 					</div>
 					<br><br>
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-phoneNumber">Age:</label>
 
 						<c:set var="age" value="${userProfile.age}" />
-							<c:if test="${userProfile.age eq ''}">
+							<c:if test="${empty userProfile.age}">
 								<c:set var="age" value="--" />
 
 							</c:if>
 															
-							<div class="col-lg-5">${age}	</div>					
+							<div class="col-lg-5">${age}</div>					
 					</div>	
 					<br>
 					<div class="form-group">
@@ -79,7 +79,7 @@
 						<label class="col-lg-5 control-label" for="field-description">Description:</label>
 
 						<c:set var="descr" value="${userProfile.userDescription}" />
-							<c:if test="${userProfile.userDescription eq ''}">
+							<c:if test="${empty userProfile.userDescription}">
 								<c:set var="descr" value="--" />
 
 							</c:if>
