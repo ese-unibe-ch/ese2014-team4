@@ -77,13 +77,10 @@
 	function showAlert() {
 		var cancelYes = confirm("Cancel and discard all?");
 		if (cancelYes == true) {
-			//alert("User wants to continue!");
 			return true;
 		} else {
-			//alert("User does not want to continue!");
 			return false;
 		}
-		//return true;
 	}
 </script>
 
@@ -96,9 +93,7 @@
 		if (document.getElementById("flat").checked == true) {
 			$('#button-addFlatmate').prop('disabled', true);
 			$('#field-nrOfFlatMates').prop('disabled', true);
-
 		}
-
 	}
 </script>
 
@@ -123,5 +118,14 @@
 		}
 		return true;
 	}
+</script>
+
+
+<script>
+	$(document).ready(function() {
+		<c:if test="${isMyAd eq true}">
+		  $("#basicButtons").css({"padding-left":"257px"});
+		  </c:if>
+	});	
 </script>
 
