@@ -3,9 +3,6 @@ package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,17 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 
 import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
-import ch.unibe.ese2014.team4.controller.pojos.SignupForm;
-import ch.unibe.ese2014.team4.controller.service.AccountService;
 import ch.unibe.ese2014.team4.controller.service.AdService;
 import ch.unibe.ese2014.team4.controller.service.SearchService;
 import ch.unibe.ese2014.team4.controller.service.UserService;
-import ch.unibe.ese2014.team4.model.SearchForm;
 import ch.unibe.ese2014.team4.model.User;
 
 
@@ -54,10 +46,14 @@ public class UserController {
 	 * @throws ProfileException
 	 */
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public ModelAndView showProfile(@RequestParam(value="userId") Long userId) throws InvalidUserException{
+	public ModelAndView showProfile(@RequestParam(value="userId") Long userId, Principal principal) throws InvalidUserException{
 		ModelAndView model = new ModelAndView("showProfile");
+		
 		try{
-			model.addObject("user", userService.getUser(userId));
+			User userProfile = userService.getUser(userId); //profile to be shown
+			User user = userService.getUserByUsername(principal.getName()); //currently active user
+			model.addObject("user", user);
+			model.addObject("userProfile", userProfile);
 		}
 		catch(InvalidUserException e){
 			model.addObject("errorMessage", e.getMessage());
@@ -70,14 +66,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView showMyProfile(Principal principal) throws InvalidUserException{
-		ModelAndView model = new ModelAndView("myProfile");
-		try{
-			model.addObject("user", userService.getUserByUsername(principal.getName()));
-		}
-		catch(InvalidUserException e){
-			model.addObject("errorMessage", e.getMessage());
-		}
-			return model;
+			return showProfile(userService.getUserByUsername(principal.getName()).getId(), principal);
 	}
 	
 	@RequestMapping(value = "/modifyProfile", method = RequestMethod.GET)
@@ -93,7 +82,6 @@ public class UserController {
 		ModelAndView model;
 		User user = userService.getUserByUsername(principal.getName());
 		if (!result.hasErrors()) {
-			System.out.println(profileForm.getPassword());
 			if(profileForm.getPassword().equals("") || userService.isPasswordCorrect(profileForm.getOldPassword(), user)){
 				userService.updateUserFrom(profileForm, user); 
 				return showMyProfile(principal);

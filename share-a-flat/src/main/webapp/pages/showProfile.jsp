@@ -8,7 +8,7 @@
 <c:import url="template/header.jsp" />
 
 <div class="container">
-	<h1 align="center">Profile of ${user.username}</h1>
+	<h1 align="center">Profile of ${userProfile.username}</h1>
 	<hr>
 </div>
 
@@ -17,7 +17,7 @@
 <div class="col-md-3">
 	<div class="text-center">
 		<img
-			src="${pageContext.request.contextPath}/imageController/profile/${user.id}"
+			src="${pageContext.request.contextPath}/imageController/profile/${userProfile.id}"
 			class="img-responsive" alt="profileImage">
 	</div>
 </div>
@@ -33,7 +33,7 @@
 	<br>
 	
 	<c:set var="receiverName">
-		<c:if test="${user.username!=null}">${user.username}</c:if>
+		<c:if test="${userProfile.username!=null}">${userProfile.username}</c:if>
 	</c:set>
 	
 	<div>
