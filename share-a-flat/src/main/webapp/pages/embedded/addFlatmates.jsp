@@ -19,22 +19,22 @@
 						<th>Name</th>
 
 					</tr>
-					<c:choose>
-						<c:when test="${fn:length(adData.flatmateList) ne 0}">
-						<c:forEach items="${adData.flatmateList}" var="mate">
-							<tr>
-								<TD><INPUT type="checkbox" name="chk"/></TD>
-								<td><input name="flatmateList[0]" size="10" tabindex="16" value="${mate.username}" /></td>
-							</tr>
-						</c:forEach>
-						</c:when>
-						<c:otherwise>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${fn:length(flatmateListFromAd) ne 0}"> --%>
+<%-- 						<c:forEach items="${flatmateListFromAd}" var="mate" varStatus="loop"> --%>
+<!-- 							<tr> -->
+<!-- 								<TD><INPUT type="checkbox" name="chk"/></TD> -->
+<%-- 								<td><input name="flatmateList[${loop.index}]" size="10" tabindex="16" value="${mate.username}" /></td> --%>
+<!-- 							</tr> -->
+<%-- 						</c:forEach> --%>
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
 								<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
 							</tr>
-						</c:otherwise>
-					</c:choose>
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
 
 				</table>
 				    <INPUT id="button-addFlatmate" type="button" value="Add a flatmate" onclick="addRowFlatmate('flatmateTable')" />

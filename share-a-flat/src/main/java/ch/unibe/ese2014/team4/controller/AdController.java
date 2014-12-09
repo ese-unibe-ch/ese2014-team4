@@ -73,30 +73,29 @@ public class AdController {
 	@RequestMapping(value = "/submitAd", method = RequestMethod.POST)
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
-		//try{
-
+		try{
 			adService.saveAdForm(adForm,
 					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
-//		}
-//		
-//		catch (ConstraintViolationException e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
-//
-//			return model;
-//		}
-//		// many possible exceptions, therefore juxt catch Exception
-//		catch (Exception e) {
-//			ModelAndView model = new ModelAndView("create-ad");
-//			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-//			model.addObject("adForm", adForm);
-//			model.addObject("errorMessage", e.getMessage());
-//
-//			return model;
-//		}
+		}
+		
+		catch (ConstraintViolationException e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", "one of your flatmates seems already to live in another flat!");
+
+			return model;
+		}
+		// many possible exceptions, therefore juxt catch Exception
+		catch (Exception e) {
+			ModelAndView model = new ModelAndView("create-ad");
+			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
+			model.addObject("adForm", adForm);
+			model.addObject("errorMessage", e.getMessage());
+
+			return model;
+		}
 
 	}
 	
@@ -127,16 +126,18 @@ public class AdController {
 	
 	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
 	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
-		
 		ModelAndView model = new ModelAndView("create-ad");
+		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
 		model.addObject("isMyAd", true);
 		
 		Ad ad = adService.getAd(adId);
 		model.addObject("adCreationOrModification", "Modify Ad: " + ad.getTitle());
+		model.addObject("user", userService.getUserByUsername(principal.getName()));
+		model.addObject("flatmateListFromAd", ad.getFlatmateList());
 		model.addObject("adData", ad);
 		model.addObject("visitList", adService.getVisitList(adId));
-		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
+		
 		
 		return model;
 	}

@@ -150,10 +150,12 @@ public class AdServiceImpl implements AdService {
 
 	private List<User> getUserListFromUsernameList(List<String> nameList) {
 		ArrayList<User> list = new ArrayList<User>();
-		for (String username : nameList) {
-			User tempUser = userDao.findByUsername(username);
-			if(tempUser!=null){
-				list.add(tempUser);
+		if(nameList!=null){
+			for (String username : nameList) {
+				User tempUser = userDao.findByUsername(username);
+				if(tempUser!=null){
+					list.add(tempUser);
+				}
 			}
 		}
 		return list;
