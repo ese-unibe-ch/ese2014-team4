@@ -80,10 +80,19 @@
 
 			<div class="panel-body">
 				<c:import url="embedded/addVisits.jsp"></c:import>
-
 			</div>
 		</div>
-		<c:import url="embedded/addFlatmates.jsp"></c:import>
+			<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Flatmates</h3>
+				<br>
+			</div>
+
+			<div class="panel-body">
+				<c:import url="embedded/addFlatmates.jsp"></c:import>
+			</div>
+		</div>
+		
 	</div>
 
 

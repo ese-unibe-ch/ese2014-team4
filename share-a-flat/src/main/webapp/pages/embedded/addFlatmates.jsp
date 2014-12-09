@@ -7,42 +7,35 @@
 
 
 <!-- only used as imported part of other pages, therefore no header / footer. -->
-	<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3>Flatmates</h3>
-				<br>
-			</div>
 
-			<div class="panel-body">
 				<table id="flatmateTable">
 					<tr>
 						<th>Name</th>
 
 					</tr>
 					<c:choose>
-						<c:when test="${fn:length(adData.flatmateList) ne 0}">
-						<c:forEach items="${adData.flatmateList}" var="mate">
+						<c:when test="${fn:length(adData.flatmateList) eq 0}">
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
-								<td><input name="flatmateList[0]" size="10" tabindex="16" value="${mate.username}" /></td>
+								<td><input name="flatmateNames[0]" size="10" tabindex="16" id="flatmateInput0"/></td>
 							</tr>
-						</c:forEach>
 						</c:when>
 						<c:otherwise>
+							<c:forEach items="${adData.flatmateList}" var="mate" varStatus="loop">
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
-								<td><input name="flatmateList[0]" size="10" tabindex="16" /></td>
+								<td><input name="flatmateNames[${loop.index}]" size="10" tabindex="16" value="${mate.username}" id="flatmateInput${loop.index}"/></td>
 							</tr>
+						</c:forEach>
 						</c:otherwise>
 					</c:choose>
 
 				</table>
-				    <INPUT id="button-addFlatmate" type="button" value="Add a flatmate" onclick="addRowFlatmate('flatmateTable')" />
- 
-    				<INPUT id="button-deleteFlatmate" type="button" value="Delete selected flatmate" onclick="deleteRow('flatmateTable')" />
+				<INPUT id="button-addFlatmate" type="button" value="Add a flatmate" onclick="addRowFlatmate('flatmateTable')" />
+	 			<INPUT id="button-deleteFlatmate" type="button" value="Delete selected flatmate" onclick="deleteRow('flatmateTable')" />
 
 
-		    <SCRIPT type="text/javascript">
+<SCRIPT type="text/javascript">
         function addRowFlatmate(tableID) {
  
             var table = document.getElementById(tableID);
@@ -61,7 +54,7 @@
             var element2 = document.createElement("input");
             element2.type = "text";
             element2.id = id;
-            element2.name = "flatmateList["+rowCount+"]";
+            element2.name = "flatmateNames["+rowCount+"]";
             element2.size="10"
             cell2.appendChild(element2);
 
@@ -88,6 +81,4 @@
             }
         }
  
-    </SCRIPT>
-			</div>
-		</div>
+</SCRIPT>

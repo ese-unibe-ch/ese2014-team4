@@ -50,7 +50,7 @@ public class AdForm {
 	private int zipCode;
 
 	// Flatmate-Names
-	private List<String> flatmateList;
+	private List<String> flatmateNames;
 
 	// Visit-Dates
 	private List<String> visitDate;
@@ -218,12 +218,12 @@ public class AdForm {
 		return tmp;
 	}
 
-	public List<String> getFlatmateList() {
-		return flatmateList;
+	public List<String> getFlatmateNames() {
+		return flatmateNames;
 	}
 
-	public void setFlatmateList(List<String> flatmateList) {
-		this.flatmateList = flatmateList;
+	public void setFlatmateNames(List<String> flatmateNames) {
+		this.flatmateNames = flatmateNames;
 	}
 
 }

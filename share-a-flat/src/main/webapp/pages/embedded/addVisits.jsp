@@ -17,13 +17,13 @@
 					</tr>
 
 					
-					<c:choose><c:when test="${fn:length(visitList) eq 0}">
+					<c:choose><c:when test="${fn:length(adData.visitList) eq 0}">
 						<tr><TD><INPUT type="checkbox" name="chk"/></TD>
 						<td><input type="text" name="visitDate[0]" id="dateInput0"
 							size="7" tabindex="15" /></td>
 						<td><input name="startTime[0]" size="3" tabindex="15" /></td>
 						<td><input name="endTime[0]" size="3" tabindex="15" /></td>	</tr>
-					</c:when><c:otherwise><c:forEach items="${visitList}" var="visit" varStatus="loop">
+					</c:when><c:otherwise><c:forEach items="${adData.visitList}" var="visit" varStatus="loop">
 						<tr><TD><INPUT type="checkbox" name="chkbox[]"/></TD>
 						<td><input type="text" name="visitDate[${loop.index}]" id="dateInput${loop.index}"
 							size="7" tabindex="15" value="${visit.date}" /></td>
@@ -36,10 +36,8 @@
 
 					
 				</table>
-
-				    <INPUT type="button" value="Add another visit" onclick="addRowVisit('visitTable')" />
- 
-    				<INPUT type="button" value="Delete selected visit" onclick="deleteRow('visitTable')" />
+				<INPUT type="button" value="Add another visit" onclick="addRowVisit('visitTable')" />
+ 				<INPUT type="button" value="Delete selected visit" onclick="deleteRow('visitTable')" />
 
 
 
@@ -50,7 +48,7 @@
 					});
 				</script>
 		
-				    <SCRIPT type="text/javascript">
+<SCRIPT type="text/javascript">
         function addRowVisit(tableID) {
  
             var table = document.getElementById(tableID);
@@ -92,8 +90,7 @@
         }
  
 		//delete defined in addFlatmates	
- 
-    </SCRIPT>
+</SCRIPT>
 
  
 
