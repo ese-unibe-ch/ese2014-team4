@@ -25,109 +25,75 @@
 							
 					<div class="form-group">
 						<label class="col-md-5 control-label">Username:</label>
-						<div class="col-lg-5">
-						
-							<c:set var="username" value="${user.username}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="username" value="${userProfile.username}"/>
-							</c:if>
-							
-							${username}
-						</div>
+
+						<div class="col-lg-5">${userProfile.username}</div>
+
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label">Email:</label>
-						<div class="col-lg-5">
-						
-							<c:set var="email" value="${user.email}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="email" value="${userProfile.email}"/>
-							</c:if>
-							
-							${email}
-						</div>
+==
+						<div class="col-lg-5">${userProfile.email}</div>
+
 						<br>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-phoneNumber">Phone Number:</label>
-													
-						<div class="col-lg-5">
-						
-							<c:set var="phone" value="${user.phoneNumber}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="phone" value="${userProfile.phoneNumber}"/>
-							</c:if>
-							
-							<c:if test="${empty phone}" >
-								<c:set var="phone" value="--"/>
+
+						<c:set var="phoneNr" value="${userProfile.phoneNumber}" />
+							<c:if test="${userProfile.phoneNumber eq ''}">
+								<c:set var="phoneNr" value="--" />
+
 							</c:if>
 															
 							${phone}						
 						</div>
 						<br>
-					</div>
+	
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-age">Age:</label>
 						<c:set var="age" value="${userProfile.age}" />
+							
+							<c:if test="${userProfile.age eq ''}">
+								<c:set var="age" value="--" />
 
-						<div class="col-lg-5">
-						
-							<c:set var="age" value="${user.age}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="age" value="${userProfile.age}"/>
-							</c:if>
-								
-							<c:if test="${empty age}" >
-								<c:set var="age" value="--"/>
 							</c:if>
 																
 							${age}							
 						</div>
 						<br>
-					</div>
+	
 
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-sex">Sex:</label>
-				
-						<div class="col-lg-5">
-						
-							<c:set var="sex" value="${user.sex}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="sex" value="${userProfile.sex}"/>
-							</c:if>
-								
-							<c:if test="${sex ne 'M' && sex ne 'F'}" >
-								<c:set var="sex" value="--"/>
+
+						<c:set var="sex" value="${userProfile.sex}" />
+							<c:if test="${userProfile.sex ne 'M' && userProfile.sex ne 'F'}">
+								<c:set var="sex" value="--" />
+
 							</c:if>
 						
 							${sex}
 						</div>
 						<br>
-					</div>
+
 					
 					<div class="form-group">
 						<label class="col-lg-5 control-label" for="field-description">Description:</label>
-	
-						<div class="col-lg-5">
-						
-							<c:set var="descr" value="${user.userDescription}" />
-							<c:if test="${userProfile.username!=null}">
-								<c:set var="descr" value="${userProfile.userDescription}"/>
-							</c:if>
-								
-							<c:if test="${empty descr}" >
-								<c:set var="descr" value="--"/>
+
+						<c:set var="descr" value="${userProfile.userDescription}" />
+							<c:if test="${userProfile.userDescription eq ''}">
+								<c:set var="descr" value="--" />
+
 							</c:if>
 						
 							${descr}
 						</div>
 						<br>
-					</div>
-					
+
 				</td>									
 			</tr>
 		</table>

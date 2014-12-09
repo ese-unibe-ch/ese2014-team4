@@ -44,11 +44,16 @@ public class AdController {
 	@Autowired
 	ZipCityService zipCityService;
 
-	
+	/**
+	 * Controlls the creation and modification of ads.
+	 * @param principal
+	 * @return
+	 */
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
 	public ModelAndView createAd(Principal principal) {
 		return getCreateAdPage(principal, 0);
 	}
+	
 	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
 	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
 		return getCreateAdPage(principal, adId);
@@ -131,9 +136,9 @@ public class AdController {
 		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
 		model.addObject("adData", ad);
 		model.addObject("messageForm", new MessageForm());
-		
 		User user=userService.getUserByUsername(principal.getName());
 		model.addObject("user", user);
+
 		
 		return model;
 	}

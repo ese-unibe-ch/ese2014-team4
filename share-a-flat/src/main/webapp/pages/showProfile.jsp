@@ -33,7 +33,7 @@
 	<br>
 	
 	<c:set var="receiverName">
-		<c:if test="${user.username!=null}">${user.username}</c:if>
+		<c:if test="${userProfile.username!=null}">${userProfile.username}</c:if>
 	</c:set>
 	
 	<div>

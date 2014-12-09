@@ -54,7 +54,7 @@ public class AdServiceImpl implements AdService {
 		Address address;
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
 
-		// do things differently, depending on ad creation or ad modifying
+		//in this block, create- and modify-specific elements respectively.
 		if (adForm.getId() == 0) {
 			ad = new Ad();
 			address = new Address();
@@ -141,7 +141,11 @@ public class AdServiceImpl implements AdService {
 
 		return adForm;
 	}
-
+	/**
+	 * flatmateList must not be null.
+	 * @param flatmateList
+	 * @return
+	 */
 	private List<String> getUserWithoutAccount(List<String> flatmateList) {
 		ArrayList<String> list = new ArrayList<String>();
 		
@@ -154,15 +158,19 @@ public class AdServiceImpl implements AdService {
 		}
 		return list;
 	}
-
+	/**
+	 * flatmateList must not be null.
+	 * @param nameList
+	 * @return
+	 */
 	private List<User> getUserListFromUsernameList(List<String> nameList) {
+
 		List<User> list = new ArrayList<User>();	
 		for (String username : nameList) {
 			User tempUser = userDao.findByUsername(username);
 
 			if (tempUser != null) {
 				list.add(tempUser);
-
 			}
 		}
 		return list;

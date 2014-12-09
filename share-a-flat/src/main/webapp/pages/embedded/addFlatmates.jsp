@@ -13,6 +13,7 @@
 						<th>Name</th>
 
 					</tr>
+
 					<c:choose>
 						<c:when test="${fn:length(adData.flatmateList) eq 0}">
 							<tr>
@@ -22,13 +23,16 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${adData.flatmateList}" var="mate" varStatus="loop">
+
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
 								<td><input name="flatmateNames[${loop.index}]" size="10" tabindex="16" value="${mate.username}" id="flatmateInput${loop.index}"/></td>
 							</tr>
+
 						</c:forEach>
 						</c:otherwise>
 					</c:choose>
+
 
 				</table>
 				<INPUT id="button-addFlatmate" type="button" value="Add a flatmate" onclick="addRowFlatmate('flatmateTable')" />
