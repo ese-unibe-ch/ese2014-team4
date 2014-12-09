@@ -45,17 +45,7 @@
 					
 			</fieldset>
 			
-<<<<<<< HEAD
-			<c:if test="${isMyAd eq true}">
-				<form method="post" action="modifyAd?adId=${adForm.id}">
-					<input type="submit" name="delete" value="Delete Ad"
-						onclick="return confirm('Are you sure you want to delete your ad?')"
-						class="btn btn-warning">
-				</form>
-			</c:if>
-=======
-			
->>>>>>> 1c54eba06834e69a9de55069d11ef05aa2ceb82e
+
 		</div>
 	</div>
 
