@@ -1,10 +1,7 @@
 package ch.unibe.ese2014.team4.controller;
 
 import java.security.Principal;
-
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -50,15 +47,31 @@ public class AdController {
 	
 	@RequestMapping(value = "/createAd", method = RequestMethod.GET)
 	public ModelAndView createAd(Principal principal) {
-		
+		return getCreateAdPage(principal, 0);
+	}
+	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
+	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
+		return getCreateAdPage(principal, adId);
+	}
+	
+	private ModelAndView getCreateAdPage(Principal principal, long adId){
 		ModelAndView model = new ModelAndView("create-ad");
 		model.addObject("adCreationOrModification", "New Ad");
 		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-		model.addObject("adForm", new AdForm());
+		if(adId==0){
+			model.addObject("adForm", new AdForm());
+			model.addObject("adCreationOrModification", "Create new Ad");
+		}
+		else {
+			model.addObject("adForm", adService.getAdFormForExistingAd(adId));
+			Ad ad = adService.getAd(adId);
+			model.addObject("adCreationOrModification", "Modify Ad: " + ad.getTitle());
+			model.addObject("adData", ad);
+		}
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
-
 		return model;
 	}
+
 
 	/**
 	 * Controls submission of newly created ad.
@@ -117,7 +130,6 @@ public class AdController {
 		model.addObject("user", userService.getUserByUsername(principal.getName()));
 		model.addObject("isBookmarked", userService.isBookmarked(userService.getUserByUsername(principal.getName()),adId));
 		model.addObject("adData", ad);
-		model.addObject("visitList", adService.getVisitList(adId));
 		model.addObject("messageForm", new MessageForm());
 		
 		User user=userService.getUserByUsername(principal.getName());
@@ -126,20 +138,7 @@ public class AdController {
 		return model;
 	}
 	
-	@RequestMapping(params ="modify", value="/modifyAd", method=RequestMethod.POST)
-	public ModelAndView modifyAd(@RequestParam(value = "adId", required = true) long adId, Principal principal) {
-		
-		ModelAndView model = new ModelAndView("create-ad");
-		model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());
-		model.addObject("isMyAd", true);
-		
-		Ad ad = adService.getAd(adId);
-		model.addObject("adCreationOrModification", "Modify Ad: " + ad.getTitle());
-		model.addObject("adData", ad);
-		model.addObject("adForm", adService.getAdFormForExistingAd(adId));
-		
-		return model;
-	}
+
 	
 	@ResponseBody
 	@RequestMapping(params ="delete", value="/modifyAd")
@@ -163,7 +162,7 @@ public class AdController {
 	 * @param adId
 	 * @return ad-page containing ad with adId x.
 	 */
-	@ResponseBody
+
 	@RequestMapping(value = "/addToBookmarks", method = RequestMethod.GET)
 	public ModelAndView addToBookmars(
 			@RequestParam(value = "adId", required = true) long adId,

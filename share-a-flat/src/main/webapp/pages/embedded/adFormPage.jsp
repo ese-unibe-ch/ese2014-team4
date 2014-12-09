@@ -71,7 +71,7 @@
 		<div class="controls">
 			<form:input type="text" required="true"
 				path="streetNumber" id="field-streetNumber" class="form-control"
-				tabindex="5" maxlength="4" value="${adForm.streetNumber}"
+				tabindex="5" maxlength="4" placeholder="0"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')"
 				pattern="[1-9][0-9]{0,2}[A-Za-z]?" title="e.g. 1/1a/12/12a/123/123a" />

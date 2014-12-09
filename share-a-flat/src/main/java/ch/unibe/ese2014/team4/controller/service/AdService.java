@@ -5,7 +5,7 @@ import java.util.List;
 
 import ch.unibe.ese2014.team4.controller.exceptions.InvalidUserException;
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
-import ch.unibe.ese2014.team4.controller.pojos.ProfileForm;
+
 import ch.unibe.ese2014.team4.model.Ad;
 import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.Visit;
@@ -36,7 +36,7 @@ public interface AdService {
 	public List<Ad> getBookmarkList(User user);
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks);
 	public List<Ad> getAdsOfUserByUser(User user);
-	public void unBookMarkAdForUser(long adId, User user);
+//	public void unBookMarkAdForUser(long adId, User user);
 
 	//Visit
 	public List<Visit> getVisitList(long adId);		

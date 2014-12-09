@@ -22,7 +22,7 @@
 				<c:choose><c:when test="${fn:length(adData.visitList) eq 0}">Visit by appointment only</c:when><c:otherwise>
 					<form action="registerForVisit" method="post">
 					<fieldset>
-						<c:forEach items="${visitList}" var="visit">
+						<c:forEach items="${adData.visitList}" var="visit">
 							<input type="radio" id="selectedVisit" name="selectedVisit" value="${visit.id}"/>${visit}
 							<br>
 						</c:forEach>
