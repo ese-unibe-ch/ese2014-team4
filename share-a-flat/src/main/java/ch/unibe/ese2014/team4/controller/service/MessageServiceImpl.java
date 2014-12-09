@@ -8,6 +8,7 @@ import ch.unibe.ese2014.team4.model.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,11 +52,15 @@ public class MessageServiceImpl implements MessageService{
 	}
 	
 	public List<Message> getSentList(User user){
-		return messageDao.findAllBySender(user);
+		List<Message> messages = messageDao.findAllBySender(user);
+		Collections.reverse(messages); 
+		return messages;
 	}
 	
 	public List<Message> getInboxList(User user){
-		return messageDao.findAllByReceiver(user);
+		List<Message> messages = messageDao.findAllByReceiver(user);
+		Collections.reverse(messages); 
+		return messages;
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package ch.unibe.ese2014.team4.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 import javax.persistence.Entity;

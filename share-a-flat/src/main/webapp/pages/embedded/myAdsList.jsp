@@ -54,7 +54,7 @@
 					<li style="margin-left: 15px">${visit}</li>
 				<br> registered visitors: <br> <c:forEach
 						items="${visit.visitorList}" var="visitor">
-						<a href="profile?userId=${visitor.id}">${visitor.username}, </a> 
+						<a href="profile?userId=${visitor.id}">${visitor.username}<br> </a> 
 					</c:forEach>
 				</td>
 			</c:forEach>

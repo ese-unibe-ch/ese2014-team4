@@ -14,7 +14,7 @@
 
 <c:set var="whereIAm" value="history.go(-1)"></c:set>
 
-<h4>${message}</h4>
+<%-- <h4>${message}</h4> --%>
 <span>${sendMessageResponse}</span>
 
 <form method="post" action="sendMessage?receiverName=${receiverName}"

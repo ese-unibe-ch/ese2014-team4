@@ -153,11 +153,11 @@
 							<tr>
 								<td>							
 									<c:forEach items="${adData.flatmateList}" var="flatmate">						
-										<a href="${pageContext.request.contextPath}/profile?userId=${flatmate.id}">${flatmate.username} </a>					
+										<a href="${pageContext.request.contextPath}/profile?userId=${flatmate.id}">${flatmate.username}<br></a>					
 									</c:forEach>							
 									
 									<c:forEach items="${adData.flatmateListWithoutAccount}" var="flatmate">						
-										${flatmate} 					
+										${flatmate}<br> 					
 									</c:forEach>
 									
 								</td>

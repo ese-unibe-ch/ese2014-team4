@@ -16,7 +16,7 @@
 					<h3>
 						<b>Visit this place</b>
 					</h3><br>
-					<h4>${message}</h4>
+					<span>${message}</span>
 				</div>
 				<div class="panel-body">
 				<c:choose><c:when test="${fn:length(adData.visitList) eq 0}">Visit by appointment only</c:when><c:otherwise>
