@@ -307,20 +307,20 @@ public class Ad {
 		return result;
 	}
 
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Ad other = (Ad) obj;
-//
-//		if (!id.equals(other.id))
-//			return false;
-//		else
-//			return true;
-//	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ad other = (Ad) obj;
+
+		if (!id.equals(other.id))
+			return false;
+		else
+			return true;
+	}
 
 }
