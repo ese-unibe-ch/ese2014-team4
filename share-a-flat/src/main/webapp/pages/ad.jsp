@@ -131,8 +131,12 @@
 						</tr>
 
 						<tr>
+							<c:set var="availableDate" value="${adData.availableDate}"></c:set>
+							<c:if test="${empty availableDate}">
+								<c:set var="availableDate" value="--"></c:set>
+							</c:if>
 							<td width="140"><b>Available From:</b></td>
-							<td>${adData.availableDate}</td>
+							<td>${availableDate}</td>
 						</tr>
 					</table>
 					

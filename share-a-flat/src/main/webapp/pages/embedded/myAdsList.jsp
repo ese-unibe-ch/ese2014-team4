@@ -37,7 +37,12 @@
 			<td width="100">${brutto}<br> ${size}<br>
 			</td>
 
-			<td width="150"><b>Available from:</b><br>${ad.availableDate}</td>
+			<c:set var="availableDate" value="${ad.availableDate}"></c:set>
+			<c:if test="${empty availableDate}">
+				<c:set var="availableDate" value="--"></c:set>
+			</c:if>
+
+			<td width="150"><b>Available from:</b><br>${availableDate}</td>
 		</tr>
 
 	</table>

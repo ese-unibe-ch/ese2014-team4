@@ -106,7 +106,7 @@ public class SearchServiceImpl implements SearchService {
 		Iterator<Ad> itr = adsToSort.iterator();
 		while(itr.hasNext()) {
 			Ad ad = itr.next();
-			if(ad.getAvailableDate().equals("--")) {
+			if(ad.getAvailableDate().equals("")) {
 				itr.remove();
 			}
 		}
