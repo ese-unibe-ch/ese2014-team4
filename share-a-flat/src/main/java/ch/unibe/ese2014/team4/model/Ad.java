@@ -75,6 +75,12 @@ public class Ad {
 	@Column(name = "user_id", length = 50)
 	private List<User> flatmateList = new ArrayList<User>();
 	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@IndexColumn(name = "LIST_INDEX")
+	@CollectionTable(name = "flatmatesWithoutAccount", joinColumns = @JoinColumn(name = "ad_id"))
+	@Column(name = "user_id", length = 50)
+	private List<String> flatmateListWithoutAccount = new ArrayList<String>();
+	
 	// Visit-Dates
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany()
@@ -90,6 +96,15 @@ public class Ad {
 
 	public void setFlatmateList(List<User> flatmateList) {
 		this.flatmateList = flatmateList;
+	}
+
+	public List<String> getFlatmateListWithoutAccount() {
+		return flatmateListWithoutAccount;
+	}
+
+	public void setFlatmateListWithoutAccount(
+			List<String> flatmateListWithoutAccount) {
+		this.flatmateListWithoutAccount = flatmateListWithoutAccount;
 	}
 
 	public List<Visit> getVisitList() {

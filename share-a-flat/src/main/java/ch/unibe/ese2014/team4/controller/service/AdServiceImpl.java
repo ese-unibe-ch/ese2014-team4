@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import ch.unibe.ese2014.team4.controller.exceptions.BookmarkException;
+
 import ch.unibe.ese2014.team4.controller.pojos.AdForm;
 import ch.unibe.ese2014.team4.controller.pojos.AdType;
 import ch.unibe.ese2014.team4.model.Ad;
@@ -38,6 +38,7 @@ public class AdServiceImpl implements AdService {
 
 	@Autowired
 	ImageService imageService;
+
 	@Autowired
 	UserDao userDao;
 
@@ -52,30 +53,26 @@ public class AdServiceImpl implements AdService {
 		Ad ad;
 		Address address;
 		ArrayList<MultipartFile> fileList = adForm.getUploadedAdPictures();
-		
-		//do things differently, depending on ad creation or ad modifying
-		if(adForm.getId()==0){
+
+		// do things differently, depending on ad creation or ad modifying
+		if (adForm.getId() == 0) {
 			ad = new Ad();
 			address = new Address();
 			if (fileList.isEmpty()) {
 				ad.setBytePictureList(imageService.getDefaultImage());
+			} else {
+				ad.setBytePictureList(imageService
+						.getByteArrayFromMultipart(fileList));
 			}
-			else{
-				ad.setBytePictureList(imageService.getByteArrayFromMultipart(fileList));
-			}
-		}
-		else{
+		} else {
 			ad = adDao.findById(adForm.getId());
-			address=ad.getAddress();
+			address = ad.getAddress();
 
-			for (MultipartFile mf : fileList){
-				ad.getBytePictureList().add(imageService.getByteArrayFromMultipart(mf));
+			for (MultipartFile mf : fileList) {
+				ad.getBytePictureList().add(
+						imageService.getByteArrayFromMultipart(mf));
 			}
-			
 		}
-		
-		
-
 
 		ad.setNetto(adForm.getNetto());
 		ad.setCharges(adForm.getCharges());
@@ -87,13 +84,14 @@ public class AdServiceImpl implements AdService {
 			ad.setNrOfFlatMates(adForm.getNrOfFlatMates());
 			List<User> userList = getUserListFromUsernameList(adForm.getFlatmateList());
 			ad.setFlatmateList(userList);
-		
 
-
+			List<String> userListWitoutAccount = getUserWithoutAccount(adForm.getFlatmateList());
+			ad.setFlatmateListWithoutAccount(userListWitoutAccount);
 		} else {
 			ad.setType(AdType.FLAT);
 			ad.setNrOfFlatMates(0);
 		}
+
 		ad.setNrOfRooms(adForm.getNrOfRooms());
 
 		ad.setDescription(adForm.getDescription());
@@ -108,26 +106,21 @@ public class AdServiceImpl implements AdService {
 
 		ad.setAdAddedDate(new Date());
 
-
-
-		
 		address.setCity(adForm.getCity());
 		address.setZipCode(adForm.getZipCode());
 		address.setStreet(adForm.getStreet());
 		address.setStreetNumber(adForm.getStreetNumber());
 		addressDao.save(address);
 
-
-		ad = adDao.save(ad); // save object to DB
 		ad.setAddress(address);
 		ad = adDao.save(ad); // save object to DB
 
-
 		if (adForm.getVisitDate() != null) {
 			List<Visit> visitList = new ArrayList<Visit>();
+			
 			for (int i = 0; i < adForm.getVisitDate().size(); i++) {
 				if (!adForm.getVisitDate().get(i).equals("")) {
-					
+
 					Visit visit = new Visit();
 					visit.setDate(adForm.getVisitDate().get(i));
 					visit.setStartTime(adForm.getStartTime().get(i));
@@ -136,23 +129,36 @@ public class AdServiceImpl implements AdService {
 					visitDao.save(visit);
 					visitList.add(visit);
 				}
-				
 			}
 			ad.setVisitList(visitList);
 		}
-		
+
 		ad = adDao.save(ad);
 		adForm.setId(ad.getId());
 
 		return adForm;
 	}
 
+	private List<String> getUserWithoutAccount(List<String> flatmateList) {
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for (String username : flatmateList) {
+			User tempUser = userDao.findByUsername(username);
+
+			if (tempUser == null) {
+				list.add(username);
+			}
+		}
+		return list;
+	}
 
 	private List<User> getUserListFromUsernameList(List<String> nameList) {
 		ArrayList<User> list = new ArrayList<User>();
+		
 		for (String username : nameList) {
 			User tempUser = userDao.findByUsername(username);
-			if(tempUser!=null){
+
+			if (tempUser != null) {
 				list.add(tempUser);
 			}
 		}
@@ -170,6 +176,7 @@ public class AdServiceImpl implements AdService {
 		int length = tmp.size();
 
 		ArrayList<Ad> ads = new ArrayList<Ad>();
+
 		if (length > 6) {
 			for (int i = length - 1; i > length - 5; i--) {
 				ads.add(tmp.get(i));
@@ -178,7 +185,6 @@ public class AdServiceImpl implements AdService {
 		} else
 			return tmp;
 	}
-
 
 	public List<Ad> getAdByBrutto(int brutto) {
 		List<Ad> ads = adDao.findAllByBrutto(brutto);
@@ -207,7 +213,6 @@ public class AdServiceImpl implements AdService {
 		return ads;
 	}
 
-
 	public ArrayList<Ad> getAdByZip(int zipCode, String orderBy) {
 		ArrayList<Ad> ads = new ArrayList<Ad>();
 		ads = adDao.findAllByAddressZipCode(zipCode);
@@ -220,7 +225,7 @@ public class AdServiceImpl implements AdService {
 		if (orderBy.equals("price")) {
 			Collections.sort(ads, Ad.bruttoSorter);
 		}
-		
+
 		return ads;
 	}
 
@@ -253,34 +258,29 @@ public class AdServiceImpl implements AdService {
 			list.add(adId);
 			user.setBookmarks(list);
 			userDao.save(user);
-		}
-
-		else {
+		} else {
 			list.remove(list.indexOf(adId));
 			user.setBookmarks(list);
 			userDao.save(user);
-//			throw new BookmarkException("Already bookmarked!");
-
-		}
-
-	}
-
-	public void unBookMarkAdForUser(long adId, User user) {
-		List<Long> list = user.getBookmarks();
-		if (list.contains(adId)) {
-
-			list.remove(adId);
-
-			user.setBookmarks(list);
-			userDao.save(user);
-		} else {
-			throw new BookmarkException("Already bookmarked!");
-
 		}
 	}
+
+	// public void unBookMarkAdForUser(long adId, User user) {
+	// List<Long> list = user.getBookmarks();
+	//
+	// if (list.contains(adId)) {
+	// list.remove(adId);
+	// user.setBookmarks(list);
+	// userDao.save(user);
+	// }
+	// else {
+	// throw new BookmarkException("Already bookmarked!");
+	// }
+	// }
 
 	public List<Ad> getBookmarkedAds(List<Long> bookmarks) {
 		List<Ad> list = new ArrayList<Ad>();
+
 		for (Long id : bookmarks) {
 			Ad ad = adDao.findById(id);
 			list.add(ad);
@@ -293,7 +293,6 @@ public class AdServiceImpl implements AdService {
 	}
 
 	public List<Visit> getVisitList(long adId) {
-
 		return visitDao.findAllByAdId(adId);
 	}
 
@@ -303,7 +302,6 @@ public class AdServiceImpl implements AdService {
 		userDao.save(user);
 		visit.getVisitorList().add(user);
 		visitDao.save(visit);
-
 	}
 
 	public AdForm getAdFormForExistingAd(long adId) {
@@ -327,14 +325,10 @@ public class AdServiceImpl implements AdService {
 
 	public void deleteAd(Long adId) {
 		adDao.delete(adId);
-
 	}
 
 	public List<Visit> getVisitsUserRegistered(User user) {
-		
 		return user.getVisitsRegistered();
 	}
-
-
 
 }
