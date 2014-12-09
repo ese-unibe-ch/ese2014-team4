@@ -17,6 +17,7 @@
 					</tr>
 
 					
+
 					<c:choose>
 						<c:when test="${fn:length(visitList) eq 0}">
 							<tr>
@@ -41,15 +42,10 @@
 					
 					</c:choose>
 
-
-
-
 					
 				</table>
-
-				    <INPUT type="button" value="Add another visit" onclick="addRowVisit('visitTable')" />
- 
-    				<INPUT type="button" value="Delete selected visit" onclick="deleteRow('visitTable')" />
+				<INPUT type="button" value="Add another visit" onclick="addRowVisit('visitTable')" />
+ 				<INPUT type="button" value="Delete selected visit" onclick="deleteRow('visitTable')" />
 
 
 
@@ -60,7 +56,7 @@
 					});
 				</script>
 		
-				    <SCRIPT type="text/javascript">
+<SCRIPT type="text/javascript">
         function addRowVisit(tableID) {
  
             var table = document.getElementById(tableID);
@@ -102,8 +98,7 @@
         }
  
 		//delete defined in addFlatmates	
- 
-    </SCRIPT>
+</SCRIPT>
 
  
 

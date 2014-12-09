@@ -37,23 +37,15 @@
 		<div class="form-actions">
 			<span class="error">${errorMessage}</span>
 
-			<c:choose>
-				<c:when test="${isMyAd eq true}">
-					<c:set var="buttonLabel" value="Save Changes" />
-				</c:when>
-
-				<c:otherwise>
-					<c:set var="buttonLabel" value="Create Ad" />
-				</c:otherwise>
-			</c:choose>
-			
-			<fieldset style="padding-left:376px">
+			<fieldset style="padding-left:376px" id="basicButtons">
 				<button type="submit" class="btn btn-primary" tabindex="13"
-					value="Create Ad">${buttonLabel}</button>
+					value="Create Ad">Save ad</button>
 				<a type="button" href="${pageContext.request.contextPath}/myPage"
 					tabindex="14" class="btn btn-default" onclick="return showAlert()">Cancel</a>
+					
 			</fieldset>
 			
+<<<<<<< HEAD
 			<c:if test="${isMyAd eq true}">
 				<form method="post" action="modifyAd?adId=${adForm.id}">
 					<input type="submit" name="delete" value="Delete Ad"
@@ -61,6 +53,9 @@
 						class="btn btn-warning">
 				</form>
 			</c:if>
+=======
+			
+>>>>>>> 1c54eba06834e69a9de55069d11ef05aa2ceb82e
 		</div>
 	</div>
 
@@ -75,10 +70,19 @@
 
 			<div class="panel-body">
 				<c:import url="embedded/addVisits.jsp"></c:import>
-
 			</div>
 		</div>
-		<c:import url="embedded/addFlatmates.jsp"></c:import>
+			<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Flatmates</h3>
+				<br>
+			</div>
+
+			<div class="panel-body">
+				<c:import url="embedded/addFlatmates.jsp"></c:import>
+			</div>
+		</div>
+		
 	</div>
 
 

@@ -37,6 +37,8 @@ public class Ad {
 	@GeneratedValue
 	private Long id;
 
+	private Date creationDate = new Date();
+
 	@ManyToOne
 	// many Ads, one user
 	@JoinColumn(name = "user_id")
@@ -45,38 +47,44 @@ public class Ad {
 	@OneToOne(cascade = CascadeType.REMOVE)
 	private Address address;
 
+	// Basic-Data
+	private String title;
 	private AdType type;
-
-	@ElementCollection(fetch = FetchType.EAGER)
-	@IndexColumn(name = "LIST_INDEX")
-	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
-	@Column(name = "user_id", length = 50)
-	private List<User> flatmateList = new ArrayList<User>();
-
 	private float nrOfRooms;
+	private int size;
+	private String availableDate;
+	private String description;
+	private int nrOfFlatMates;
 
+	// Price
+	private int netto;
+	private int charges;
+	private int brutto;
+
+	// Pictures
 	@Lob
 	@ElementCollection(fetch = FetchType.EAGER)
 	@IndexColumn(name = "LIST_INDEX")
 	@CollectionTable(name = "adPictures", joinColumns = @JoinColumn(name = "ad_id"))
 	private List<byte[]> bytePictureList = new ArrayList<byte[]>();
 
+	// Flatmate-Names
+	@ElementCollection(fetch = FetchType.EAGER)
+	@IndexColumn(name = "LIST_INDEX")
+	@CollectionTable(name = "flatmates", joinColumns = @JoinColumn(name = "ad_id"))
+	@Column(name = "user_id", length = 50)
+	private List<User> flatmateList = new ArrayList<User>();
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@IndexColumn(name = "LIST_INDEX")
+	@CollectionTable(name = "flatmatesWithoutAccount", joinColumns = @JoinColumn(name = "ad_id"))
+	@Column(name = "user_id", length = 50)
+	private List<String> flatmateListWithoutAccount = new ArrayList<String>();
+	
+	// Visit-Dates
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany()
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Visit> visitList = new ArrayList<Visit>();
-
-	private Date creationDate = new Date();
-
-	private String title;
-	private int size;
-	private int netto;
-	private int charges;
-	private int brutto;
-
-	private String availableDate;
-	private String description;
-
-	private int nrOfFlatMates;
 
 	/**
 	 * 
@@ -88,6 +96,15 @@ public class Ad {
 
 	public void setFlatmateList(List<User> flatmateList) {
 		this.flatmateList = flatmateList;
+	}
+
+	public List<String> getFlatmateListWithoutAccount() {
+		return flatmateListWithoutAccount;
+	}
+
+	public void setFlatmateListWithoutAccount(
+			List<String> flatmateListWithoutAccount) {
+		this.flatmateListWithoutAccount = flatmateListWithoutAccount;
 	}
 
 	public List<Visit> getVisitList() {
@@ -134,7 +151,6 @@ public class Ad {
 		return id;
 	}
 
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -232,16 +248,6 @@ public class Ad {
 		this.brutto = netto + charges;
 	}
 
-//	public MapAddress getAddressForMap() {
-//		MapAddress tmpMapAddress = new MapAddress();
-//		String addressForMAp = address.getStreet() + " "
-//				+ address.getStreetNumber() + " " + address.getZipCode() + " "
-//				+ address.getCity();
-//		tmpMapAddress.setAddressAsString(addressForMAp);
-//		tmpMapAddress.setId(id);
-//		return tmpMapAddress;
-//	}
-
 	public static Comparator<Ad> bruttoSorter = new Comparator<Ad>() {
 		public int compare(Ad ad1, Ad ad2) {
 			int brutto1 = ad1.getBrutto();
@@ -272,7 +278,7 @@ public class Ad {
 
 		return date;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

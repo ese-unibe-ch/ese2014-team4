@@ -69,12 +69,12 @@
 		<label class="control-label" for="field-streetNumber">No<span
 			style="color: red"> <b>*</b></span></label>
 		<div class="controls">
-			<form:input type="number" min="1" max="1000" step="1" required="true"
+			<form:input type="text" required="true"
 				path="streetNumber" id="field-streetNumber" class="form-control"
-				tabindex="5" maxlength="4" value="${adForm.streetNumber}"
+				tabindex="5" maxlength="4" placeholder="0"
 				onfocus="(this.value == '0') && (this.value = '')"
 				onblur="(this.value == '') && (this.value = '0')"
-				pattern="\d{1,3}[A-Za-z]?" title="e.g. 60a" />
+				pattern="[1-9][0-9]{0,2}[A-Za-z]?" title="e.g. 1/1a/12/12a/123/123a" />
 			<form:errors path="streetNumber" cssClass="help-inline"
 				element="span" />
 		</div>
@@ -226,7 +226,7 @@
 			class="form-control" tabindex="13" maxlength="35"
 			placeholder="e.g. 01-01-2015"
 			onfocus="(this.placeholder == 'e.g. 01-01-2015') && (this.placeholder = '')"
-			onblur="(this.placeholder == '') && (this.placeholder = 'e.g. 01-01-2015')" />
+			onblur="(this.placeholder == '') && (this.placeholder = 'e.g. 01-01-2015')" title="e.g. 01-01-2015"/>
 		<form:errors path="availableDate" cssClass="help-inline"
 			element="span" />
 		<br>
