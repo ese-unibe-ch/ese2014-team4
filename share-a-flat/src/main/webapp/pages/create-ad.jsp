@@ -27,8 +27,10 @@
 <!--/masthead-->
 
 
-<form:form enctype="multipart/form-data" method="post" modelAttribute="adForm" action="submitAd"
-	onSubmit="return createFormIsValid()" id="adForm" cssClass="form-horizontal" autocomplete="off">
+<form:form enctype="multipart/form-data" method="post"
+	modelAttribute="adForm" action="submitAd"
+	onSubmit="return createFormIsValid()" id="adForm"
+	cssClass="form-horizontal" autocomplete="off">
 
 	<div class="col-md-3">
 
@@ -45,7 +47,7 @@
 					
 			</fieldset>
 			
-
+			
 		</div>
 	</div>
 

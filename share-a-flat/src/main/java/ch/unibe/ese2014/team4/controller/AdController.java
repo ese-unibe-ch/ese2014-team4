@@ -86,7 +86,8 @@ public class AdController {
 	public ModelAndView submitAd(AdForm adForm, BindingResult result,
 			Principal principal) throws Exception {
 		try{
-			adService.saveAdForm(adForm, userService.getUserByUsername(principal.getName()));
+			adService.saveAdForm(adForm,
+					userService.getUserByUsername(principal.getName()));
 			return showAd(adForm.getId(), principal);
 		}
 		
@@ -98,7 +99,7 @@ public class AdController {
 
 			return model;
 		}
-		// many possible exceptions, therefore just catch Exception
+		// many possible exceptions, therefore juxt catch Exception
 		catch (Exception e) {
 			ModelAndView model = new ModelAndView("create-ad");
 			model.addObject("zipCityAsArray", zipCityService.getZipCityAsList());

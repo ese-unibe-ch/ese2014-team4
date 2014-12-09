@@ -17,30 +17,22 @@
 					</tr>
 
 					
+					<c:choose><c:when test="${fn:length(adData.visitList) eq 0}">
+						<tr><TD><INPUT type="checkbox" name="chk"/></TD>
+						<td><input type="text" name="visitDate[0]" id="dateInput0"
+							size="7" tabindex="15" /></td>
+						<td><input name="startTime[0]" size="3" tabindex="15" /></td>
+						<td><input name="endTime[0]" size="3" tabindex="15" /></td>	</tr>
+					</c:when><c:otherwise><c:forEach items="${adData.visitList}" var="visit" varStatus="loop">
+						<tr><TD><INPUT type="checkbox" name="chkbox[]"/></TD>
+						<td><input type="text" name="visitDate[${loop.index}]" id="dateInput${loop.index}"
+							size="7" tabindex="15" value="${visit.date}" /></td>
+						<td><input name="startTime[${loop.index}]" size="3" tabindex="15" value="${visit.startTime}" /></td>
+						<td><input name="endTime[${loop.index}]" size="3" tabindex="15" value="${visit.endTime}" /></td></tr>					
+					</c:forEach></c:otherwise></c:choose>
 
-					<c:choose>
-						<c:when test="${fn:length(visitList) eq 0}">
-							<tr>
-								<TD><INPUT type="checkbox" name="chk"/></TD>
-								<td><input type="text" name="visitDate[0]" id="dateInput0"
-									size="7" tabindex="15" /></td>
-								<td><input name="startTime[0]" size="3" tabindex="15" /></td>
-								<td><input name="endTime[0]" size="3" tabindex="15" /></td>	
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${visitList}" var="visit" varStatus="loop">
-								<tr>
-									<TD><INPUT type="checkbox" name="chkbox[]"/></TD>
-									<td><input type="text" name="visitDate[${loop.index}]" id="dateInput${loop.index}"
-										size="7" tabindex="15" value="${visit.date}" /></td>
-									<td><input name="startTime[${loop.index}]" size="3" tabindex="15" value="${visit.startTime}" /></td>
-									<td><input name="endTime[${loop.index}]" size="3" tabindex="15" value="${visit.endTime}" /></td>
-								</tr>					
-							</c:forEach>
-						</c:otherwise>
-					
-					</c:choose>
+
+
 
 					
 				</table>

@@ -14,21 +14,17 @@
 
 					</tr>
 					<c:choose>
-
 						<c:when test="${fn:length(adData.flatmateList) eq 0}">
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
 								<td><input name="flatmateNames[0]" size="10" tabindex="16" id="flatmateInput0"/></td>
-
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${adData.flatmateList}" var="mate" varStatus="loop">
 							<tr>
 								<TD><INPUT type="checkbox" name="chk"/></TD>
-
 								<td><input name="flatmateNames[${loop.index}]" size="10" tabindex="16" value="${mate.username}" id="flatmateInput${loop.index}"/></td>
-
 							</tr>
 						</c:forEach>
 						</c:otherwise>
