@@ -153,8 +153,8 @@ public class SearcherTests {
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd2, adsFromSearcher.get(0));
-		assertEquals(testAd3, adsFromSearcher.get(1));
+		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd3, adsFromSearcher.get(0));
 		assertEquals(2, adsFromSearcher.size());
 		verify(mockDao);
 	}
@@ -195,8 +195,8 @@ public class SearcherTests {
 
 		replay(mockDao);
 		ArrayList<Ad> adsFromSearcher = searcher.getAdList(searchForm);
-		assertEquals(testAd1, adsFromSearcher.get(0));
-		assertEquals(testAd2, adsFromSearcher.get(1));
+		assertEquals(testAd1, adsFromSearcher.get(1));
+		assertEquals(testAd2, adsFromSearcher.get(0));
 		assertEquals(2, adsFromSearcher.size());
 		verify(mockDao);
 	}
