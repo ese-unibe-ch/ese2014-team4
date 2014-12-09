@@ -147,7 +147,7 @@
 						<div class="col-lg-8">
 							<form:input type="number" min="10" max="120" step="1"
 								class="form-control" path="age" id="field-age" tabindex="7"
-								maxlength="45" value="${user.age}" />
+								maxlength="3" value="${user.age}" />
 							<form:errors path="age" cssClass="help-inline" element="span" />
 						</div>
 					</div>
@@ -185,7 +185,7 @@
 							<form:textarea class="form-control" id="field-description"
 								value="${user.userDescription}" type="text"
 								path="userDescription" tabindex="10"
-								placeholder="describe yourself" />
+								placeholder="describe yourself" style="resize: none"/>
 							<form:errors path="userDescription" cssClass="help-inline"
 								element="span" />
 						</div>
