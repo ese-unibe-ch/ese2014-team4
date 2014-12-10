@@ -3,7 +3,6 @@
 
 <head>
 <meta name="viewport" content="width=1024" charset="utf-8" />
-<!-- <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> -->
 
 <link rel="stylesheet" type="text/css"
 	href="/share-a-flat/css/bootstrap.css" media="all" />
@@ -50,7 +49,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="search"><img src="img/logo3.png"
+				<a class="navbar-brand" href="search"><img src="img/logo.png"
 					alt="logo" style="width: 120px; height: 35px"></a>
 			</div>
 			<div class="collapse navbar-collapse">

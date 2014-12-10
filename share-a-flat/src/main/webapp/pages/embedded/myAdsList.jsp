@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<br>
-<hr>
+
+
 
 <c:forEach items="${myAdsList}" var="ad">
 	<a href="showAd?adId=${ad.id}" id="${ad.id}"

@@ -27,7 +27,7 @@
 				<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseBookmarks">My Bookmarks</a></h3>
 			</div>
 			<div class="panel-collapse collapse" id="collapseBookmarks">
-			<div class="panel-body" >
+			<div class="panel-body" style="max-height: 350px ;overflow-y: scroll;">
 			<c:choose><c:when test="${fn:length(adList) eq 0}">You have no bookmarks.</c:when><c:otherwise>
 				<c:import url="searchResultsList.jsp" />
 			</c:otherwise></c:choose>
@@ -40,7 +40,7 @@
 				<h3><a data-toggle="collapse" data-parent="#accordion" href="#collapseMyAds">My Ads</a></h3>
 		</div>
 		<div class="panel-collapse collapse" id="collapseMyAds">
-		<div class="panel-body">
+		<div class="panel-body" style="max-height: 585px ;overflow-y: scroll;">
 		<c:choose><c:when test="${fn:length(myAdsList) eq 0}">You have not submitted ads.</c:when><c:otherwise>
 			<c:import url="embedded/myAdsList.jsp" />
 		</c:otherwise></c:choose>

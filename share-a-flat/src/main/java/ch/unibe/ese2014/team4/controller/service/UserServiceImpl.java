@@ -19,46 +19,47 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	@Autowired
 	private ImageService imageService;
-	
+
 	@Transactional
-	public void updateUserFrom(ProfileForm profileForm, User user){
-		if (profileForm.getPassword().length()!=0){
+	public void updateUserFrom(ProfileForm profileForm, User user) {
+		if (profileForm.getPassword().length() != 0) {
 			user.setPassword(DigestUtils.shaHex(profileForm.getPassword()));
 		}
 		user.setPhoneNumber(profileForm.getPhoneNumber());
 		user.setAge(profileForm.getAge());
 		user.setSex(profileForm.getSex());
 		user.setUserDescription(profileForm.getUserDescription());
-		
-		
+
 		try {
 			MultipartFile imageFile = profileForm.getUploadedProfileImage();
-			if(imageFile.getSize()!=0){	
-				user.setProfileImage(imageService.getByteArrayFromMultipart(imageFile));
+			if (imageFile.getSize() != 0) {
+				user.setProfileImage(imageService
+						.getByteArrayFromMultipart(imageFile));
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		userDao.save(user);
 	}
-	
+
 	/**
 	 * @exception InvalidUserException
 	 */
 	public User getUserByUsername(String username) {
-		User user =  userDao.findByUsername(username);
-		if (user==null) throw new InvalidUserException("user not found");
+		User user = userDao.findByUsername(username);
+		if (user == null)
+			throw new InvalidUserException("user not found");
 		return user;
 	}
-	
+
 	public boolean doesEmailAddressAlreadyExist(String email) {
-		// TODO Auto-generated method stub
 		return !(userDao.findByEmail(email) == null);
 	}
+
 	public boolean doesUserAlreadyExists(String username) {
-		return!(userDao.findByUsername(username) == null);
+		return !(userDao.findByUsername(username) == null);
 	}
+
 	/**
 	 * @exception InvalidUserException
 	 */
@@ -71,16 +72,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean isBookmarked(User user, long adId) {
-		
 		return user.getBookmarks().contains(adId);
 	}
+
 	public boolean isPasswordCorrect(String oldPassword, User user) {
-		
 		return DigestUtils.shaHex(oldPassword).equals(user.getPassword());
 	}
 
 	public boolean isUserActivated(User user) {
-		return user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"));
+		return user.getAuthorities().contains(
+				new SimpleGrantedAuthority("ROLE_USER"));
 	}
 
 }

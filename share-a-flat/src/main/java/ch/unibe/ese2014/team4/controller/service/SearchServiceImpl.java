@@ -20,9 +20,10 @@ import ch.unibe.ese2014.team4.model.User;
 import ch.unibe.ese2014.team4.model.dao.SearchFormDao;
 
 /**
- * 
- * @author team4 get a list of ads from data base and sort is out according to
- *         the search criteria
+ *  Get a list of ads from data base and sort is out according to
+ *  the search criteria
+ *
+ *	@author team4
  *
  */
 @Service
